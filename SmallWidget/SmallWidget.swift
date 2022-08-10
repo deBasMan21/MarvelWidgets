@@ -90,11 +90,7 @@ struct SmallWidgetUpcoming : View {
     
     func downloadImage() {
         guard entry.upcomingProject.coverURL != "" else { return }
-        let url = URL(string: entry.upcomingProject.coverURL)
-        let data = try? Data(contentsOf: url!)
-        if let data = data, let uiImage = UIImage(data: data) {
-            image = Image(uiImage: uiImage)
-        }
+        image = ImageHelper.downloadImage(from: entry.upcomingProject.coverURL)
     }
 }
 

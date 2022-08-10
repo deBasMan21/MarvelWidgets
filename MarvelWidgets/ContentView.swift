@@ -9,21 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     @State var movies: [Movie] = []
+    @State var series: [Serie] = []
     
     var body: some View {
-        VStack{
-            List(movies) { item in
-                Text(item.title)
-            }
-        }.onAppear{
-                Task{
-                    do {
-                        movies = await MovieService.getMoviesChronologically()
-                    } catch let error {
-                        print(error)
-                    }
+        TabView{
+            MoviesView()
+                .tabItem{
+                    Label("Movies", systemImage: "film.circle.fill")
+                    Text("movies")
                 }
-            }
+            
+            SeriesView()
+                .tabItem{
+                    Label("Series", systemImage: "tv.circle.fill")
+                    Text("series")
+                }
+        }
     }
 }
 
