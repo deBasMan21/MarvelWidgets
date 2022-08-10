@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF4D265328A44ACE00B7BCEE /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383328A3E22E00B4CC0D /* SmallWidget.intentdefinition */; };
+		EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */; };
+		EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */; };
+		EF4D265728A4512600B7BCEE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* Config.swift */; };
+		EF4D265828A4512900B7BCEE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* Config.swift */; };
+		EF4D265928A4512A00B7BCEE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* Config.swift */; };
+		EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
+		EF578F3828A45632006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
+		EF578F3928A45633006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
+		EF578F3A28A45721006272AA /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382428A3E0A700B4CC0D /* LogService.swift */; };
+		EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
+		EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
+		EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
 		EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
@@ -25,6 +38,15 @@
 		EFCA5D9828A417880004AAC7 /* MarvelProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9728A417880004AAC7 /* MarvelProject.swift */; };
 		EFCA5D9928A41B420004AAC7 /* SeriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7E28A3F7F60004AAC7 /* SeriesService.swift */; };
 		EFCA5D9A28A41B680004AAC7 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8028A3F8470004AAC7 /* Serie.swift */; };
+		EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
+		EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
+		EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA128A41E820004AAC7 /* WidgetSettingsView.swift */; };
+		EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA328A43D360004AAC7 /* WidgetSettingsViewModel.swift */; };
+		EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
+		EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
+		EFCA5DAF28A445B40004AAC7 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCA5DAE28A445B40004AAC7 /* Intents.framework */; };
+		EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */; };
+		EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */; };
 		EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381028A3D7A700B4CC0D /* ContentView.swift */; };
 		EFCE381328A3D7AE00B4CC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCE381228A3D7AE00B4CC0D /* Assets.xcassets */; };
@@ -47,6 +69,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EFCA5DC528A445B40004AAC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFCE380328A3D7A700B4CC0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFCA5DAC28A445B40004AAC7;
+			remoteInfo = WidgetTypeConfiguration;
+		};
 		EFCE383928A3E22F00B4CC0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EFCE380328A3D7A700B4CC0D /* Project object */;
@@ -64,6 +93,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed App Extensions */,
+				EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +101,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EF4D265628A4512600B7BCEE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -84,6 +116,17 @@
 		EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewModel.swift; sourceTree = "<group>"; };
 		EFCA5D9728A417880004AAC7 /* MarvelProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelProject.swift; sourceTree = "<group>"; };
+		EFCA5D9B28A41C850004AAC7 /* MarvelWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarvelWidgets.entitlements; sourceTree = "<group>"; };
+		EFCA5D9C28A41C9A0004AAC7 /* SmallWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmallWidgetExtension.entitlements; sourceTree = "<group>"; };
+		EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
+		EFCA5DA128A41E820004AAC7 /* WidgetSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingsView.swift; sourceTree = "<group>"; };
+		EFCA5DA328A43D360004AAC7 /* WidgetSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSettingsViewModel.swift; sourceTree = "<group>"; };
+		EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultValues.swift; sourceTree = "<group>"; };
+		EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetTypeConfiguration.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFCA5DAE28A445B40004AAC7 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		EFCA5DB328A445B40004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFCA5DB928A445B40004AAC7 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelWidgetsApp.swift; sourceTree = "<group>"; };
 		EFCE381028A3D7A700B4CC0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +146,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EFCA5DAA28A445B40004AAC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFCA5DAF28A445B40004AAC7 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFCE380828A3D7A700B4CC0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,11 +209,39 @@
 			path = helpers;
 			sourceTree = "<group>";
 		};
+		EFCA5DA028A41E780004AAC7 /* widgetSettings */ = {
+			isa = PBXGroup;
+			children = (
+				EFCA5DA128A41E820004AAC7 /* WidgetSettingsView.swift */,
+			);
+			path = widgetSettings;
+			sourceTree = "<group>";
+		};
+		EFCA5DA528A43E190004AAC7 /* values */ = {
+			isa = PBXGroup;
+			children = (
+				EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */,
+				EF4D265628A4512600B7BCEE /* Config.swift */,
+			);
+			path = values;
+			sourceTree = "<group>";
+		};
+		EFCA5DB028A445B40004AAC7 /* WidgetTypeConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */,
+				EFCA5DB328A445B40004AAC7 /* Info.plist */,
+			);
+			path = WidgetTypeConfiguration;
+			sourceTree = "<group>";
+		};
 		EFCE380228A3D7A700B4CC0D = {
 			isa = PBXGroup;
 			children = (
+				EFCA5D9C28A41C9A0004AAC7 /* SmallWidgetExtension.entitlements */,
 				EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE383028A3E22E00B4CC0D /* SmallWidget */,
+				EFCA5DB028A445B40004AAC7 /* WidgetTypeConfiguration */,
 				EFCE382B28A3E22E00B4CC0D /* Frameworks */,
 				EFCE380C28A3D7A700B4CC0D /* Products */,
 			);
@@ -173,6 +252,7 @@
 			children = (
 				EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */,
 				EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */,
+				EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,12 +260,14 @@
 		EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				EFCA5D9B28A41C850004AAC7 /* MarvelWidgets.entitlements */,
 				EFCA5D7B28A3F5100004AAC7 /* Info.plist */,
 				EFCA5D8A28A3FEF10004AAC7 /* helpers */,
 				EFCA5D7428A3EF9D0004AAC7 /* extensions */,
 				EFCE382128A3DE0200B4CC0D /* viewmodels */,
 				EFCE382028A3DDFD00B4CC0D /* views */,
 				EFCE381F28A3DDF800B4CC0D /* domain */,
+				EFCA5DA528A43E190004AAC7 /* values */,
 				EFCE381C28A3DD3200B4CC0D /* services */,
 				EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */,
 				EFCE381028A3D7A700B4CC0D /* ContentView.swift */,
@@ -219,6 +301,7 @@
 				EFCE382228A3DE1B00B4CC0D /* Movie.swift */,
 				EFCA5D8028A3F8470004AAC7 /* Serie.swift */,
 				EFCA5D9728A417880004AAC7 /* MarvelProject.swift */,
+				EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -226,6 +309,7 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EFCA5DA028A41E780004AAC7 /* widgetSettings */,
 				EFCA5D8728A3FE0D0004AAC7 /* series */,
 				EFCA5D8628A3FE020004AAC7 /* movies */,
 			);
@@ -237,6 +321,7 @@
 			children = (
 				EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */,
 				EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */,
+				EFCA5DA328A43D360004AAC7 /* WidgetSettingsViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -246,6 +331,8 @@
 			children = (
 				EFCE382C28A3E22E00B4CC0D /* WidgetKit.framework */,
 				EFCE382E28A3E22E00B4CC0D /* SwiftUI.framework */,
+				EFCA5DAE28A445B40004AAC7 /* Intents.framework */,
+				EFCA5DB928A445B40004AAC7 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,6 +353,7 @@
 			children = (
 				EFCE381D28A3DD4200B4CC0D /* APIService.swift */,
 				EFCE382428A3E0A700B4CC0D /* LogService.swift */,
+				EF4D265A28A451E300B7BCEE /* CachingService.swift */,
 			);
 			path = generic;
 			sourceTree = "<group>";
@@ -273,6 +361,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFCA5DCB28A445B40004AAC7 /* Build configuration list for PBXNativeTarget "WidgetTypeConfiguration" */;
+			buildPhases = (
+				EFCA5DA928A445B40004AAC7 /* Sources */,
+				EFCA5DAA28A445B40004AAC7 /* Frameworks */,
+				EFCA5DAB28A445B40004AAC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetTypeConfiguration;
+			productName = WidgetTypeConfiguration;
+			productReference = EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EFCE380A28A3D7A700B4CC0D /* MarvelWidgets */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFCE381928A3D7AE00B4CC0D /* Build configuration list for PBXNativeTarget "MarvelWidgets" */;
@@ -286,6 +391,7 @@
 			);
 			dependencies = (
 				EFCE383A28A3E22F00B4CC0D /* PBXTargetDependency */,
+				EFCA5DC628A445B40004AAC7 /* PBXTargetDependency */,
 			);
 			name = MarvelWidgets;
 			packageProductDependencies = (
@@ -322,6 +428,9 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					EFCA5DAC28A445B40004AAC7 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					EFCE380A28A3D7A700B4CC0D = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -348,11 +457,19 @@
 			targets = (
 				EFCE380A28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE382928A3E22E00B4CC0D /* SmallWidgetExtension */,
+				EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EFCA5DAB28A445B40004AAC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFCE380928A3D7A700B4CC0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,19 +490,39 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EFCA5DA928A445B40004AAC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF578F3A28A45721006272AA /* LogService.swift in Sources */,
+				EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */,
+				EF4D265328A44ACE00B7BCEE /* SmallWidget.intentdefinition in Sources */,
+				EF578F3928A45633006272AA /* CachingService.swift in Sources */,
+				EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */,
+				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
+				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
+				EF4D265828A4512900B7BCEE /* Config.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFCE380728A3D7A700B4CC0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
+				EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */,
+				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
 				EFCA5D8328A3FD4C0004AAC7 /* MoviesView.swift in Sources */,
 				EFCA5D9428A40E010004AAC7 /* MoviesViewModel.swift in Sources */,
 				EFCA5D9628A4152B0004AAC7 /* SeriesViewModel.swift in Sources */,
+				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 				EFCA5D9228A403980004AAC7 /* MoviesDetailView.swift in Sources */,
+				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
 				EFCA5D8928A3FE1C0004AAC7 /* SeriesDetailView.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EFCA5D9828A417880004AAC7 /* MarvelProject.swift in Sources */,
+				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
 				EFCE383828A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
@@ -394,7 +531,9 @@
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFCA5D7F28A3F7F60004AAC7 /* SeriesService.swift in Sources */,
+				EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */,
 				EFCA5D8528A3FD530004AAC7 /* SeriesView.swift in Sources */,
+				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
 				EFCE384228A3E33500B4CC0D /* MovieService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,21 +544,31 @@
 			files = (
 				EFCE383728A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
+				EF4D265928A4512A00B7BCEE /* Config.swift in Sources */,
 				EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */,
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
+				EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
+				EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */,
 				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
 				EFCA5D9A28A41B680004AAC7 /* Serie.swift in Sources */,
 				EFCE384428A3E41B00B4CC0D /* MovieService.swift in Sources */,
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
 				EFCA5D9928A41B420004AAC7 /* SeriesService.swift in Sources */,
+				EF578F3828A45632006272AA /* CachingService.swift in Sources */,
 				EFCE384028A3E2CD00B4CC0D /* Movie.swift in Sources */,
+				EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EFCA5DC628A445B40004AAC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */;
+			targetProxy = EFCA5DC528A445B40004AAC7 /* PBXContainerItemProxy */;
+		};
 		EFCE383A28A3E22F00B4CC0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EFCE382928A3E22E00B4CC0D /* SmallWidgetExtension */;
@@ -428,6 +577,56 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		EFCA5DCC28A445B40004AAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 963LK66N4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetTypeConfiguration;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MarvelWidgets.WidgetTypeConfiguration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EFCA5DCD28A445B40004AAC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 963LK66N4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WidgetTypeConfiguration;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MarvelWidgets.WidgetTypeConfiguration;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EFCE381728A3D7AE00B4CC0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -548,6 +747,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
@@ -579,6 +779,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
@@ -609,6 +810,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 963LK66N4P;
@@ -636,6 +838,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 963LK66N4P;
@@ -661,6 +864,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EFCA5DCB28A445B40004AAC7 /* Build configuration list for PBXNativeTarget "WidgetTypeConfiguration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFCA5DCC28A445B40004AAC7 /* Debug */,
+				EFCA5DCD28A445B40004AAC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EFCE380628A3D7A700B4CC0D /* Build configuration list for PBXProject "MarvelWidgets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

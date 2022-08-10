@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     @State var movies: [Movie] = []
@@ -16,13 +17,16 @@ struct ContentView: View {
             MoviesView()
                 .tabItem{
                     Label("Movies", systemImage: "film.circle.fill")
-                    Text("movies")
                 }
             
             SeriesView()
                 .tabItem{
                     Label("Series", systemImage: "tv.circle.fill")
-                    Text("series")
+                }
+            
+            WidgetSettingsView()
+                .tabItem{
+                    Label("Instellingen", systemImage: "gearshape")
                 }
         }
     }

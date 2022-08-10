@@ -28,7 +28,13 @@ struct MoviesView: View {
                     NavigationLink{
                         MoviesDetailView(movie: item)
                     } label: {
-                        Text(item.title)
+                        VStack(alignment: .leading) {
+                            Text(item.title)
+                                .font(Font.headline.bold())
+                            
+                            Text(item.releaseDate ?? "Onbekende releasedatum")
+                                .font(Font.body.italic())
+                        }
                     }
                 }.refreshable {
                     Task {
