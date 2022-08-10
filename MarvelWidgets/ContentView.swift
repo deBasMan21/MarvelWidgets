@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var movies: [Movie] = []
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            List(movies) { item in
+                Text(item.title)
+            }
+        }.onAppear{
+                Task{
+                    do {
+                        movies = await MovieService.getMoviesChronologically()
+                    } catch let error {
+                        print(error)
+                    }
+                }
+            }
     }
 }
 
