@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
+		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
+		EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
+		EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
+		EFCA5D7D28A3F5CC0004AAC7 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7C28A3F5CC0004AAC7 /* SmallWidgetView.swift */; };
 		EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */; };
 		EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381028A3D7A700B4CC0D /* ContentView.swift */; };
 		EFCE381328A3D7AE00B4CC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCE381228A3D7AE00B4CC0D /* Assets.xcassets */; };
@@ -53,6 +58,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EFCA5D7C28A3F5CC0004AAC7 /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelWidgetsApp.swift; sourceTree = "<group>"; };
 		EFCE381028A3D7A700B4CC0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EFCA5D7428A3EF9D0004AAC7 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */,
+				EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		EFCE380228A3D7A700B4CC0D = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +131,8 @@
 		EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				EFCA5D7B28A3F5100004AAC7 /* Info.plist */,
+				EFCA5D7428A3EF9D0004AAC7 /* extensions */,
 				EFCE382128A3DE0200B4CC0D /* viewmodels */,
 				EFCE382028A3DDFD00B4CC0D /* views */,
 				EFCE381F28A3DDF800B4CC0D /* domain */,
@@ -180,6 +200,7 @@
 				EFCE383328A3E22E00B4CC0D /* SmallWidget.intentdefinition */,
 				EFCE383428A3E22F00B4CC0D /* Assets.xcassets */,
 				EFCE383628A3E22F00B4CC0D /* Info.plist */,
+				EFCA5D7C28A3F5CC0004AAC7 /* SmallWidgetView.swift */,
 			);
 			path = SmallWidget;
 			sourceTree = "<group>";
@@ -294,12 +315,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EFCE383828A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
+				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
 				EFCE382328A3DE1B00B4CC0D /* Movie.swift in Sources */,
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
+				EFCA5D7D28A3F5CC0004AAC7 /* SmallWidgetView.swift in Sources */,
 				EFCE384228A3E33500B4CC0D /* MovieService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,8 +333,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFCE383728A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
+				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
+				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
 				EFCE384428A3E41B00B4CC0D /* MovieService.swift in Sources */,
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
 				EFCE384028A3E2CD00B4CC0D /* Movie.swift in Sources */,
@@ -454,6 +480,7 @@
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelWidgets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -484,6 +511,7 @@
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelWidgets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
