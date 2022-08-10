@@ -8,23 +8,38 @@
 import SwiftUI
 
 struct MoviesView: View {
-    @State var movies : [Movie] = []
+    @StateObject var viewModel = MoviesViewModel()
     
     var body: some View {
         NavigationView {
-            List(movies) { item in
-                Text(item.title)
+            VStack{
+                Menu(content: {
+                    ForEach(OrderType.allCases, id: \.self){ item in
+                        Button(item.rawValue, action: {
+                            viewModel.orderMovies(by: item)
+                        })
+                    }
+                }, label: {
+                    Text("Sorteren op: \(String(describing: viewModel.orderType.rawValue))")
+                    Image(systemName: "arrow.up.arrow.down")
+                })
+                
+                List(viewModel.movies) { item in
+                    NavigationLink{
+                        MoviesDetailView(movie: item)
+                    } label: {
+                        Text(item.title)
+                    }
+                }.refreshable {
+                    Task {
+                        await viewModel.refresh()
+                    }
+                }
             }.navigationTitle("Marvel movies")
         }.onAppear{
             Task{
-                movies = await MovieService.getMoviesChronologically()
+                await viewModel.fetchMovies()
             }
         }
-    }
-}
-
-struct MoviesView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoviesView()
     }
 }

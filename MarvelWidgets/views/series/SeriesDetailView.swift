@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct SeriesDetailView: View {
     @State var serie: Serie
-    @State var image: Image = Image(uiImage: UIImage())
     
     var body: some View {
         VStack {
             ScrollView {
-                image
+                KFImage(URL(string: serie.coverURL)!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                 
@@ -33,13 +33,7 @@ struct SeriesDetailView: View {
                 Text(serie.saga?.rawValue ?? "Unkown saga")
                 
                 Text(serie.overview ?? "No overview")
-            }.onAppear {
-                downloadImage()
             }
         }.navigationTitle(serie.title)
-    }
-    
-    func downloadImage() {
-        image = ImageHelper.downloadImage(from: serie.coverURL)
     }
 }

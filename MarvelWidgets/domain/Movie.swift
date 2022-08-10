@@ -7,6 +7,14 @@
 
 import Foundation
 
+protocol Project {
+    var id: Int { get }
+    var title: String { get }
+    var releaseDate: String? { get }
+    var overview: String? { get }
+    var coverURL: String { get }
+}
+
 // MARK: - Welcome
 struct MovieList: Codable {
     let data: [Movie]
@@ -14,9 +22,10 @@ struct MovieList: Codable {
 }
 
 // MARK: - Datum
-struct Movie: Codable, Identifiable {
+struct Movie: Codable, Identifiable, Project {
     let id: Int
-    let title, releaseDate, boxOffice: String
+    let title, boxOffice: String
+    let releaseDate: String?
     let duration: Int
     let overview: String?
     let coverURL: String

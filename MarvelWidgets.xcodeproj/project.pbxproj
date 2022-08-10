@@ -18,6 +18,13 @@
 		EFCA5D8928A3FE1C0004AAC7 /* SeriesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8828A3FE1C0004AAC7 /* SeriesDetailView.swift */; };
 		EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
 		EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
+		EFCA5D9028A402D10004AAC7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EFCA5D8F28A402D10004AAC7 /* Kingfisher */; };
+		EFCA5D9228A403980004AAC7 /* MoviesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9128A403980004AAC7 /* MoviesDetailView.swift */; };
+		EFCA5D9428A40E010004AAC7 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */; };
+		EFCA5D9628A4152B0004AAC7 /* SeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */; };
+		EFCA5D9828A417880004AAC7 /* MarvelProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9728A417880004AAC7 /* MarvelProject.swift */; };
+		EFCA5D9928A41B420004AAC7 /* SeriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7E28A3F7F60004AAC7 /* SeriesService.swift */; };
+		EFCA5D9A28A41B680004AAC7 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8028A3F8470004AAC7 /* Serie.swift */; };
 		EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */; };
 		EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381028A3D7A700B4CC0D /* ContentView.swift */; };
 		EFCE381328A3D7AE00B4CC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCE381228A3D7AE00B4CC0D /* Assets.xcassets */; };
@@ -73,6 +80,10 @@
 		EFCA5D8428A3FD530004AAC7 /* SeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesView.swift; sourceTree = "<group>"; };
 		EFCA5D8828A3FE1C0004AAC7 /* SeriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailView.swift; sourceTree = "<group>"; };
 		EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		EFCA5D9128A403980004AAC7 /* MoviesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDetailView.swift; sourceTree = "<group>"; };
+		EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
+		EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewModel.swift; sourceTree = "<group>"; };
+		EFCA5D9728A417880004AAC7 /* MarvelProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelProject.swift; sourceTree = "<group>"; };
 		EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelWidgetsApp.swift; sourceTree = "<group>"; };
 		EFCE381028A3D7A700B4CC0D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFCA5D9028A402D10004AAC7 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				EFCA5D8228A3FD4C0004AAC7 /* MoviesView.swift */,
+				EFCA5D9128A403980004AAC7 /* MoviesDetailView.swift */,
 			);
 			path = movies;
 			sourceTree = "<group>";
@@ -167,8 +180,8 @@
 		EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				EFCA5D8A28A3FEF10004AAC7 /* helpers */,
 				EFCA5D7B28A3F5100004AAC7 /* Info.plist */,
+				EFCA5D8A28A3FEF10004AAC7 /* helpers */,
 				EFCA5D7428A3EF9D0004AAC7 /* extensions */,
 				EFCE382128A3DE0200B4CC0D /* viewmodels */,
 				EFCE382028A3DDFD00B4CC0D /* views */,
@@ -205,6 +218,7 @@
 			children = (
 				EFCE382228A3DE1B00B4CC0D /* Movie.swift */,
 				EFCA5D8028A3F8470004AAC7 /* Serie.swift */,
+				EFCA5D9728A417880004AAC7 /* MarvelProject.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -221,6 +235,8 @@
 		EFCE382128A3DE0200B4CC0D /* viewmodels */ = {
 			isa = PBXGroup;
 			children = (
+				EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */,
+				EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -272,6 +288,9 @@
 				EFCE383A28A3E22F00B4CC0D /* PBXTargetDependency */,
 			);
 			name = MarvelWidgets;
+			packageProductDependencies = (
+				EFCA5D8F28A402D10004AAC7 /* Kingfisher */,
+			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
 			productType = "com.apple.product-type.application";
@@ -320,6 +339,9 @@
 				Base,
 			);
 			mainGroup = EFCE380228A3D7A700B4CC0D;
+			packageReferences = (
+				EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = EFCE380C28A3D7A700B4CC0D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -357,9 +379,13 @@
 			files = (
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
 				EFCA5D8328A3FD4C0004AAC7 /* MoviesView.swift in Sources */,
+				EFCA5D9428A40E010004AAC7 /* MoviesViewModel.swift in Sources */,
+				EFCA5D9628A4152B0004AAC7 /* SeriesViewModel.swift in Sources */,
+				EFCA5D9228A403980004AAC7 /* MoviesDetailView.swift in Sources */,
 				EFCA5D8928A3FE1C0004AAC7 /* SeriesDetailView.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
+				EFCA5D9828A417880004AAC7 /* MarvelProject.swift in Sources */,
 				EFCE383828A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
@@ -383,8 +409,10 @@
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
 				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
+				EFCA5D9A28A41B680004AAC7 /* Serie.swift in Sources */,
 				EFCE384428A3E41B00B4CC0D /* MovieService.swift in Sources */,
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
+				EFCA5D9928A41B420004AAC7 /* SeriesService.swift in Sources */,
 				EFCE384028A3E2CD00B4CC0D /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +689,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EFCA5D8F28A402D10004AAC7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EFCE380328A3D7A700B4CC0D /* Project object */;
 }

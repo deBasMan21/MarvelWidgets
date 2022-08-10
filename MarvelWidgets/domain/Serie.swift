@@ -14,7 +14,7 @@ struct SeriesList: Codable {
 }
 
 // MARK: - Datum
-struct Serie: Codable, Identifiable {
+struct Serie: Codable, Identifiable, Project {
     let id: Int
     let title: String
     let releaseDate, lastAiredDate: String?

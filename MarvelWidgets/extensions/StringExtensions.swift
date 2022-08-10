@@ -14,4 +14,11 @@ extension String {
         
         return formatter.date(from: self)
     }
+    
+    func toMoney() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let intFromString = Int(self) ?? -1
+        return formatter.string(from: NSNumber(value: intFromString)) ?? ""
+    }
 }
