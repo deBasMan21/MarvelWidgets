@@ -6,24 +6,29 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     @State var movies: [Movie] = []
+    @State var series: [Serie] = []
     
     var body: some View {
-        VStack{
-            List(movies) { item in
-                Text(item.title)
-            }
-        }.onAppear{
-                Task{
-                    do {
-                        movies = await MovieService.getMoviesChronologically()
-                    } catch let error {
-                        print(error)
-                    }
+        TabView{
+            MoviesView()
+                .tabItem{
+                    Label("Movies", systemImage: "film.circle.fill")
                 }
-            }
+            
+            SeriesView()
+                .tabItem{
+                    Label("Series", systemImage: "tv.circle.fill")
+                }
+            
+            WidgetSettingsView()
+                .tabItem{
+                    Label("Instellingen", systemImage: "gearshape")
+                }
+        }
     }
 }
 

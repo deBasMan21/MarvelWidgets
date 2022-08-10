@@ -8,7 +8,7 @@
 import Foundation
 
 class LogService {
-    static func log(_ message: String, in objectType: Any) {
+    static func log<T>(_ message: String, in objectType: T.Type) {
         print("\(Date.now.description) in \(objectType) with message: \(message)")
     }
 }

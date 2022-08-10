@@ -24,7 +24,9 @@ class APIService {
         let(data, _) = try await URLSession.shared.data(for: request)
         
         do{
-            let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
+            //for logging json responses
+//            let jsonResponse = try JSONSerialization.jsonObject(with: data, options: [])
+//            LogService.log(jsonResponse, in: self)
             LogService.log("API call succeeded", in: self)
             
             let decoder = JSONDecoder()
