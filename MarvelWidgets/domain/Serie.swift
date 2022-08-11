@@ -17,6 +17,7 @@ struct SeriesList: Codable {
 struct Serie: Codable, Identifiable, Project {
     typealias A = UUID
     let id: UUID = UUID()
+    let serieId: Int
     let title: String
     let releaseDate, lastAiredDate: String?
     let numberSeasons, numberEpisodes: Int
@@ -29,7 +30,8 @@ struct Serie: Codable, Identifiable, Project {
     let imdbID: String
 
     enum CodingKeys: String, CodingKey {
-        case id, title
+        case serieId = "id"
+        case title
         case releaseDate = "release_date"
         case lastAiredDate = "last_aired_date"
         case numberSeasons = "number_seasons"

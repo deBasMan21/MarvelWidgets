@@ -10,7 +10,7 @@ import Foundation
 extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
         @Published var projects: [Project] = []
-        @Published var orderType: OrderType = .releaseDate
+        @Published var orderType: OrderType = .releaseDateASC
         @Published var pageType: WidgetType = .all
         var navigationTitle: String {
             switch pageType {
@@ -49,12 +49,10 @@ extension ProjectListView {
                 orderedProjects = projects.sorted(by: { $0.title < $1.title})
             case .nameDESC:
                 orderedProjects = projects.sorted(by: { $0.title > $1.title})
-            case .releaseDate:
-                orderedProjects = projects.sorted(by: {
-                    let dateOne: Date = $0.releaseDate?.toDate() ?? "3000-12-12".toDate()!
-                    let dateTwo: Date = $1.releaseDate?.toDate() ?? "3000-12-12".toDate()!
-                    return dateOne > dateTwo
-                })
+            case .releaseDateASC:
+                orderedProjects = projects.sorted(by: { $0.releaseDate ?? "3000-12-12" > $1.releaseDate ?? "3000-12-12" })
+            case .releaseDateDESC:
+                orderedProjects = projects.sorted(by: { $0.releaseDate ?? "3000-12-12" < $1.releaseDate ?? "3000-12-12" })
             }
             return orderedProjects
         }
@@ -69,8 +67,9 @@ extension ProjectListView {
     }
     
     enum OrderType: String, CaseIterable {
-        case nameASC = "Naam A-Z"
-        case nameDESC = "Naam Z-A"
-        case releaseDate = "Release datum"
+        case nameASC = "Name A-Z"
+        case nameDESC = "Name Z-A"
+        case releaseDateASC = "Release date (new-old)"
+        case releaseDateDESC = "Release date (old-new)"
     }
 }

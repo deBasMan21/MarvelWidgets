@@ -22,7 +22,7 @@ struct ProjectListView: View {
                         })
                     }
                 }, label: {
-                    Text("Sorteren op: **\(String(describing: viewModel.orderType.rawValue))**")
+                    Text("Order by: **\(String(describing: viewModel.orderType.rawValue))**")
                     Image(systemName: "arrow.up.arrow.down")
                 })
                 
@@ -30,13 +30,13 @@ struct ProjectListView: View {
                 
                 List(viewModel.projects, id: \.id) { item in
                     NavigationLink {
-                        ProjectDetailView(movie: item)
+                        ProjectDetailView(project: item)
                     } label: {
                         VStack(alignment: .leading) {
                             Text(item.title)
                                 .font(Font.headline.bold())
                             
-                            Text(item.releaseDate ?? "Onbekende releasedatum")
+                            Text(item.releaseDate ?? "Unknown releasedate")
                                 .font(Font.body.italic())
                         }
                     }

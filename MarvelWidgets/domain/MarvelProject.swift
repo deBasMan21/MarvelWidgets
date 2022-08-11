@@ -16,4 +16,5 @@ protocol Project {
     var directedBy: String? { get }
     var phase: Int { get }
     var saga: Saga? { get }
+    var trailerURL: String? { get }
 }

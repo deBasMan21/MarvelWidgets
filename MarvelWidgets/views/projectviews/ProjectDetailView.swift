@@ -9,52 +9,124 @@ import SwiftUI
 import Kingfisher
 
 struct ProjectDetailView: View {
-    @State var movie: Project
+    @State var project: Project
+    @StateObject var viewModel = ProjectDetailViewModel()
     
     var body: some View {
         ScrollView {
             VStack{
-                HStack {
-                    KFImage(URL(string: movie.coverURL)!)
+                HStack(alignment: .top) {
+                    KFImage(URL(string: project.coverURL)!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 150, alignment: .center)
+                        .cornerRadius(12)
                         .padding(.trailing, 20)
                     
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(movie.title)
-                            .font(Font.headline.bold())
-                        
-                        if let director = movie.directedBy, !director.isEmpty {
-                            Text(movie.directedBy!)
-                        } else {
-                            Text("No director confirmed")
+                    VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading) {
+                            Text("**Director**")
+                            if let director = project.directedBy, !director.isEmpty {
+                                Text(project.directedBy!)
+                            } else {
+                                Text("No director confirmed")
+                            }
                         }
                         
-                        Text(movie.releaseDate ?? "No release date set")
-                        
-                        if let movie = movie as? Movie {
-                            Text("\(movie.duration) minuten")
-                            
-                            Text("\(movie.postCreditScenes) post credit scenes")
-                            
-                            Text("€\(movie.boxOffice.toMoney()),- box office")
-                        } else if let movie = movie as? Serie {
-                            Text("\(movie.numberEpisodes) afleveringen")
-                            
-                            Text("\(movie.numberSeasons) seizoenen")
+                        VStack(alignment: .leading) {
+                            Text("**Release date**")
+                            Text(project.releaseDate ?? "No release date set")
                         }
                         
-                        Text("Phase \(movie.phase)")
+                        if let project = project as? Movie {
+                            VStack(alignment: .leading) {
+                                Text("**Duration**")
+                                Text("\(project.duration) minutes")
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Text("**Post credit scenes**")
+                                Text("\(project.postCreditScenes)")
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Text("**Box office**")
+                                Text("€\(project.boxOffice.toMoney()),- ")
+                            }
+                        } else if let project = project as? Serie {
+                            VStack(alignment: .leading) {
+                                Text("**Episodes**")
+                                Text("\(project.numberEpisodes)")
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Text("**Seasons**")
+                                Text("\(project.numberSeasons) seasons")
+                            }
+                        }
                         
-                        Text(movie.saga?.rawValue ?? "Unkown saga")
+                        VStack(alignment: .leading) {
+                            Text("**Phase \(project.phase)**")
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Text("**\(project.saga?.rawValue ?? "Unkown saga")**")
+                        }
+                    }
+                    
+                    Spacer()
+                }
+                
+                if let overview = project.overview {
+                    Text("Overview")
+                        .font(Font.largeTitle)
+                        .padding()
+                    
+                    Text(overview)
+                        .multilineTextAlignment(.center)
+                }
+                
+                if let url = project.trailerURL {
+                    Text("Trailer")
+                        .font(Font.largeTitle)
+                        .padding()
+                    
+                    VideoView(videoURL: url)
+                        .frame(height: 200)
+                        .cornerRadius(12)
+                }
+                
+                if let relatedProjects = viewModel.movie?.relatedMovies {
+                    Text("Related projects")
+                        .font(Font.largeTitle)
+                        .padding()
+                    
+                    VStack(spacing: 15){
+                        ForEach(relatedProjects, id: \.id) { movie in
+                            NavigationLink {
+                                ProjectDetailView(project: movie)
+                            } label: {
+                                VStack{
+                                    Text(movie.title)
+                                        .font(Font.headline.bold())
+                                    
+                                    Text(movie.releaseDate ?? "Unknown releasedate")
+                                        .font(Font.body.italic())
+                                        .foregroundColor(Color(uiColor: UIColor.label))
+                                }
+                            }
+                        }
                     }
                 }
                 
-                Text(movie.overview ?? "No overview")
-                    .multilineTextAlignment(.center)
-                
-            }.padding(.horizontal, 20)
-        }.navigationTitle(movie.title)
+            }.padding(20)
+        }.navigationTitle(project.title)
+            .onAppear{
+                if let movie = project as? Movie, movie.relatedMovies == nil {
+                    Task {
+                        await viewModel.getMovieDetails(for: movie.movieId)
+                    }
+                }
+            }
     }
 }
