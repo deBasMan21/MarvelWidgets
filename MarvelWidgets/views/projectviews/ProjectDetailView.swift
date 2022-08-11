@@ -54,6 +54,10 @@ struct ProjectDetailView: View {
                 Text(movie.overview ?? "No overview")
                     .multilineTextAlignment(.center)
                 
+                VideoView(videoURL: movie.trailerURL ?? "")
+                    .frame(height: 200)
+                    .cornerRadius(12)
+                
             }.padding(.horizontal, 20)
         }.navigationTitle(movie.title)
     }
