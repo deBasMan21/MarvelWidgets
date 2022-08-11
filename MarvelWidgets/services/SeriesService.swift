@@ -12,7 +12,7 @@ class SeriesService {
     
     static func getSeriesChronologically() async -> [Serie] {
         do {
-            let result = try await APIService.apiCall(url: moviesChronologicallyUrl, body: nil, method: "GET", obj: SeriesList(data: [], total: 0))
+            let result = try await APIService.apiCall(url: moviesChronologicallyUrl, body: nil, method: "GET", as: SeriesList.self)
             return result?.data ?? []
         } catch let error {
             LogService.log(error.localizedDescription, in: self)

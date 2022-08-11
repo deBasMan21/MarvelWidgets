@@ -62,6 +62,7 @@
 		EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382428A3E0A700B4CC0D /* LogService.swift */; };
 		EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
 		EFD8D75B28A55BFE00CA8DAC /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */; };
+		EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D75C28A5791D00CA8DAC /* ProjectDetailViewModel.swift */; };
 		EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */; };
 		EFFE152D28A54A9700DCF804 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382228A3DE1B00B4CC0D /* Movie.swift */; };
 		EFFE152E28A54A9A00DCF804 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8028A3F8470004AAC7 /* Serie.swift */; };
@@ -144,6 +145,7 @@
 		EFCE383628A3E22F00B4CC0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFCE384128A3E33500B4CC0D /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		EFD8D75C28A5791D00CA8DAC /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		EFFE153128A54AD100DCF804 /* Saga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saga.swift; sourceTree = "<group>"; };
 		EFFE153528A54BE000DCF804 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				EFCA5DA328A43D360004AAC7 /* WidgetSettingsViewModel.swift */,
 				EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */,
+				EFD8D75C28A5791D00CA8DAC /* ProjectDetailViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				EFCE383828A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
 				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
+				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
 				EFCA5D8128A3F8470004AAC7 /* Serie.swift in Sources */,
 				EFCE382328A3DE1B00B4CC0D /* Movie.swift in Sources */,
