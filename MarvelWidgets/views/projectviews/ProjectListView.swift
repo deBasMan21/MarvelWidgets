@@ -1,14 +1,16 @@
 //
-//  MoviesView.swift
+//  ProjectListView.swift
 //  MarvelWidgets
 //
-//  Created by Bas Buijsen on 10/08/2022.
+//  Created by Bas Buijsen on 11/08/2022.
 //
 
+import Foundation
 import SwiftUI
 
-struct MoviesView: View {
-    @StateObject var viewModel = MoviesViewModel()
+struct ProjectListView: View {
+    @State var type: WidgetType
+    @StateObject var viewModel = ProjectListViewModel()
     
     var body: some View {
         NavigationView {
@@ -16,17 +18,19 @@ struct MoviesView: View {
                 Menu(content: {
                     ForEach(OrderType.allCases, id: \.self){ item in
                         Button(item.rawValue, action: {
-                            viewModel.orderMovies(by: item)
+                            viewModel.orderProjects(by: item)
                         })
                     }
                 }, label: {
-                    Text("Sorteren op: \(String(describing: viewModel.orderType.rawValue))")
+                    Text("Sorteren op: **\(String(describing: viewModel.orderType.rawValue))**")
                     Image(systemName: "arrow.up.arrow.down")
                 })
                 
-                List(viewModel.movies) { item in
-                    NavigationLink{
-                        MoviesDetailView(movie: item)
+                Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
+                
+                List(viewModel.projects, id: \.id) { item in
+                    NavigationLink {
+                        ProjectDetailView(movie: item)
                     } label: {
                         VStack(alignment: .leading) {
                             Text(item.title)
@@ -36,15 +40,20 @@ struct MoviesView: View {
                                 .font(Font.body.italic())
                         }
                     }
+                }.onAppear {
+                    let tableHeaderView = UIView(frame: .zero)
+                    tableHeaderView.frame.size.height = 1
+                    UITableView.appearance().tableHeaderView = tableHeaderView
                 }.refreshable {
                     Task {
                         await viewModel.refresh()
                     }
                 }
-            }.navigationTitle("Marvel movies")
+            }.navigationTitle(viewModel.navigationTitle)
         }.onAppear{
             Task{
-                await viewModel.fetchMovies()
+                viewModel.pageType = type
+                await viewModel.fetchProjects()
             }
         }
     }

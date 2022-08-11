@@ -7,14 +7,6 @@
 
 import Foundation
 
-protocol Project {
-    var id: Int { get }
-    var title: String { get }
-    var releaseDate: String? { get }
-    var overview: String? { get }
-    var coverURL: String { get }
-}
-
 // MARK: - Welcome
 struct MovieList: Codable {
     let data: [Movie]
@@ -23,16 +15,17 @@ struct MovieList: Codable {
 
 // MARK: - Datum
 struct Movie: Codable, Identifiable, Project {
-    let id: Int
+    typealias A = UUID
+    let id: UUID = UUID()
     let title, boxOffice: String
     let releaseDate: String?
     let duration: Int
     let overview: String?
     let coverURL: String
     let trailerURL: String?
-    let directedBy: String
+    let directedBy: String?
     let phase: Int
-    let saga: Saga
+    let saga: Saga?
     let chronology, postCreditScenes: Int
     let imdbID: String
 
@@ -48,9 +41,4 @@ struct Movie: Codable, Identifiable, Project {
         case postCreditScenes = "post_credit_scenes"
         case imdbID = "imdb_id"
     }
-}
-
-enum Saga: String, Codable {
-    case infinitySaga = "Infinity Saga"
-    case multiverseSaga = "Multiverse Saga"
 }
