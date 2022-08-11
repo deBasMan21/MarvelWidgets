@@ -11,11 +11,11 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> UpcomingProjectEntry {
-        UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: Movie(id: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: ""), image: Image("secret wars"))
+        UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: Movie(title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: ""), image: Image("secret wars"))
     }
 
     func getSnapshot(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
-        let entry = UpcomingProjectEntry(date: Date(), configuration: configuration, upcomingProject: Movie(id: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: ""), image: Image("secret wars"))
+        let entry = UpcomingProjectEntry(date: Date(), configuration: configuration, upcomingProject: Movie(title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: ""), image: Image("secret wars"))
         completion(entry)
     }
 
@@ -109,15 +109,15 @@ struct SmallWidgetUpcoming : View {
                             .multilineTextAlignment(.center)
                             .shadow(color: .black, radius: 5)
                             .font(Font.headline.weight(.bold))
+                        
+                        Spacer()
+                        
+                        if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
+                            Text("\(difference) dagen")
+                                .padding(.bottom, 30)
+                        }
                     }
-                    
-                    Spacer()
-                    
-                    if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-                        Text("\(difference) dagen")
-                            .padding(.bottom, 50)
-                    }
-                }
+                }.padding()
             }
         }
     }

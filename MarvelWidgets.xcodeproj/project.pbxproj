@@ -26,15 +26,9 @@
 		EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
 		EFCA5D7F28A3F7F60004AAC7 /* SeriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7E28A3F7F60004AAC7 /* SeriesService.swift */; };
 		EFCA5D8128A3F8470004AAC7 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8028A3F8470004AAC7 /* Serie.swift */; };
-		EFCA5D8328A3FD4C0004AAC7 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8228A3FD4C0004AAC7 /* MoviesView.swift */; };
-		EFCA5D8528A3FD530004AAC7 /* SeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8428A3FD530004AAC7 /* SeriesView.swift */; };
-		EFCA5D8928A3FE1C0004AAC7 /* SeriesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8828A3FE1C0004AAC7 /* SeriesDetailView.swift */; };
 		EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
 		EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
 		EFCA5D9028A402D10004AAC7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EFCA5D8F28A402D10004AAC7 /* Kingfisher */; };
-		EFCA5D9228A403980004AAC7 /* MoviesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9128A403980004AAC7 /* MoviesDetailView.swift */; };
-		EFCA5D9428A40E010004AAC7 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */; };
-		EFCA5D9628A4152B0004AAC7 /* SeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */; };
 		EFCA5D9828A417880004AAC7 /* MarvelProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9728A417880004AAC7 /* MarvelProject.swift */; };
 		EFCA5D9928A41B420004AAC7 /* SeriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7E28A3F7F60004AAC7 /* SeriesService.swift */; };
 		EFCA5D9A28A41B680004AAC7 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8028A3F8470004AAC7 /* Serie.swift */; };
@@ -66,6 +60,17 @@
 		EFCE384428A3E41B00B4CC0D /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE384128A3E33500B4CC0D /* MovieService.swift */; };
 		EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381D28A3DD4200B4CC0D /* APIService.swift */; };
 		EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382428A3E0A700B4CC0D /* LogService.swift */; };
+		EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
+		EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */; };
+		EFFE152D28A54A9700DCF804 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382228A3DE1B00B4CC0D /* Movie.swift */; };
+		EFFE152E28A54A9A00DCF804 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8028A3F8470004AAC7 /* Serie.swift */; };
+		EFFE152F28A54ABF00DCF804 /* MarvelProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9728A417880004AAC7 /* MarvelProject.swift */; };
+		EFFE153028A54ABF00DCF804 /* MarvelProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9728A417880004AAC7 /* MarvelProject.swift */; };
+		EFFE153228A54AD100DCF804 /* Saga.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153128A54AD100DCF804 /* Saga.swift */; };
+		EFFE153328A54AD400DCF804 /* Saga.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153128A54AD100DCF804 /* Saga.swift */; };
+		EFFE153428A54AD400DCF804 /* Saga.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153128A54AD100DCF804 /* Saga.swift */; };
+		EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153528A54BE000DCF804 /* ProjectListView.swift */; };
+		EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,13 +113,7 @@
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EFCA5D7E28A3F7F60004AAC7 /* SeriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesService.swift; sourceTree = "<group>"; };
 		EFCA5D8028A3F8470004AAC7 /* Serie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
-		EFCA5D8228A3FD4C0004AAC7 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
-		EFCA5D8428A3FD530004AAC7 /* SeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesView.swift; sourceTree = "<group>"; };
-		EFCA5D8828A3FE1C0004AAC7 /* SeriesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailView.swift; sourceTree = "<group>"; };
 		EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
-		EFCA5D9128A403980004AAC7 /* MoviesDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDetailView.swift; sourceTree = "<group>"; };
-		EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
-		EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewModel.swift; sourceTree = "<group>"; };
 		EFCA5D9728A417880004AAC7 /* MarvelProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelProject.swift; sourceTree = "<group>"; };
 		EFCA5D9B28A41C850004AAC7 /* MarvelWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarvelWidgets.entitlements; sourceTree = "<group>"; };
 		EFCA5D9C28A41C9A0004AAC7 /* SmallWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmallWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -143,6 +142,10 @@
 		EFCE383428A3E22F00B4CC0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFCE383628A3E22F00B4CC0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFCE384128A3E33500B4CC0D /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
+		EFFE153128A54AD100DCF804 /* Saga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saga.swift; sourceTree = "<group>"; };
+		EFFE153528A54BE000DCF804 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
+		EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,24 +184,6 @@
 				EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */,
 			);
 			path = extensions;
-			sourceTree = "<group>";
-		};
-		EFCA5D8628A3FE020004AAC7 /* movies */ = {
-			isa = PBXGroup;
-			children = (
-				EFCA5D8228A3FD4C0004AAC7 /* MoviesView.swift */,
-				EFCA5D9128A403980004AAC7 /* MoviesDetailView.swift */,
-			);
-			path = movies;
-			sourceTree = "<group>";
-		};
-		EFCA5D8728A3FE0D0004AAC7 /* series */ = {
-			isa = PBXGroup;
-			children = (
-				EFCA5D8428A3FD530004AAC7 /* SeriesView.swift */,
-				EFCA5D8828A3FE1C0004AAC7 /* SeriesDetailView.swift */,
-			);
-			path = series;
 			sourceTree = "<group>";
 		};
 		EFCA5D8A28A3FEF10004AAC7 /* helpers */ = {
@@ -302,6 +287,7 @@
 				EFCA5D8028A3F8470004AAC7 /* Serie.swift */,
 				EFCA5D9728A417880004AAC7 /* MarvelProject.swift */,
 				EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */,
+				EFFE153128A54AD100DCF804 /* Saga.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -309,9 +295,8 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EFFE152A28A5480700DCF804 /* projectviews */,
 				EFCA5DA028A41E780004AAC7 /* widgetSettings */,
-				EFCA5D8728A3FE0D0004AAC7 /* series */,
-				EFCA5D8628A3FE020004AAC7 /* movies */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -319,9 +304,8 @@
 		EFCE382128A3DE0200B4CC0D /* viewmodels */ = {
 			isa = PBXGroup;
 			children = (
-				EFCA5D9328A40E010004AAC7 /* MoviesViewModel.swift */,
-				EFCA5D9528A4152B0004AAC7 /* SeriesViewModel.swift */,
 				EFCA5DA328A43D360004AAC7 /* WidgetSettingsViewModel.swift */,
+				EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -356,6 +340,15 @@
 				EF4D265A28A451E300B7BCEE /* CachingService.swift */,
 			);
 			path = generic;
+			sourceTree = "<group>";
+		};
+		EFFE152A28A5480700DCF804 /* projectviews */ = {
+			isa = PBXGroup;
+			children = (
+				EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */,
+				EFFE153528A54BE000DCF804 /* ProjectListView.swift */,
+			);
+			path = projectviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,8 +488,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF578F3A28A45721006272AA /* LogService.swift in Sources */,
+				EFFE153328A54AD400DCF804 /* Saga.swift in Sources */,
+				EFFE152F28A54ABF00DCF804 /* MarvelProject.swift in Sources */,
 				EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */,
+				EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */,
+				EFFE152D28A54A9700DCF804 /* Movie.swift in Sources */,
 				EF4D265328A44ACE00B7BCEE /* SmallWidget.intentdefinition in Sources */,
+				EFFE152E28A54A9A00DCF804 /* Serie.swift in Sources */,
 				EF578F3928A45633006272AA /* CachingService.swift in Sources */,
 				EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */,
 				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
@@ -511,28 +509,26 @@
 			files = (
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
 				EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */,
+				EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */,
 				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
-				EFCA5D8328A3FD4C0004AAC7 /* MoviesView.swift in Sources */,
-				EFCA5D9428A40E010004AAC7 /* MoviesViewModel.swift in Sources */,
-				EFCA5D9628A4152B0004AAC7 /* SeriesViewModel.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
-				EFCA5D9228A403980004AAC7 /* MoviesDetailView.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
-				EFCA5D8928A3FE1C0004AAC7 /* SeriesDetailView.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EFCA5D9828A417880004AAC7 /* MarvelProject.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
 				EFCE383828A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
+				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
 				EFCA5D8128A3F8470004AAC7 /* Serie.swift in Sources */,
 				EFCE382328A3DE1B00B4CC0D /* Movie.swift in Sources */,
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
+				EFFE153228A54AD100DCF804 /* Saga.swift in Sources */,
+				EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFCA5D7F28A3F7F60004AAC7 /* SeriesService.swift in Sources */,
 				EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */,
-				EFCA5D8528A3FD530004AAC7 /* SeriesView.swift in Sources */,
 				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
 				EFCE384228A3E33500B4CC0D /* MovieService.swift in Sources */,
 			);
@@ -543,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFCE383728A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
+				EFFE153428A54AD400DCF804 /* Saga.swift in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EF4D265928A4512A00B7BCEE /* Config.swift in Sources */,
 				EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */,
@@ -550,6 +547,7 @@
 				EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
 				EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */,
+				EFFE153028A54ABF00DCF804 /* MarvelProject.swift in Sources */,
 				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
 				EFCA5D9A28A41B680004AAC7 /* Serie.swift in Sources */,
 				EFCE384428A3E41B00B4CC0D /* MovieService.swift in Sources */,

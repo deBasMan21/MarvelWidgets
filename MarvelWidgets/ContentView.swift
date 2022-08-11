@@ -14,14 +14,19 @@ struct ContentView: View {
     
     var body: some View {
         TabView{
-            MoviesView()
+            ProjectListView(type: .all)
                 .tabItem{
-                    Label("Movies", systemImage: "film.circle.fill")
+                    Label("All", systemImage: "list.dash")
                 }
             
-            SeriesView()
+            ProjectListView(type: .movies)
                 .tabItem{
-                    Label("Series", systemImage: "tv.circle.fill")
+                    Label("Movies", systemImage: "film")
+                }
+            
+            ProjectListView(type: .series)
+                .tabItem{
+                    Label("Series", systemImage: "tv")
                 }
             
             WidgetSettingsView()

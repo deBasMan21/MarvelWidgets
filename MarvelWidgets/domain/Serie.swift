@@ -15,7 +15,8 @@ struct SeriesList: Codable {
 
 // MARK: - Datum
 struct Serie: Codable, Identifiable, Project {
-    let id: Int
+    typealias A = UUID
+    let id: UUID = UUID()
     let title: String
     let releaseDate, lastAiredDate: String?
     let numberSeasons, numberEpisodes: Int
