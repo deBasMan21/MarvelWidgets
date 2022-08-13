@@ -30,7 +30,7 @@ struct ProjectListView: View {
                 
                 List(viewModel.projects, id: \.id) { item in
                     NavigationLink {
-                        ProjectDetailView(project: item)
+                        ProjectDetailView(viewModel: ProjectDetailViewModel(project: item))
                     } label: {
                         VStack(alignment: .leading) {
                             Text(item.title)

@@ -9,6 +9,7 @@ import Foundation
 
 protocol Project {
     var id: UUID { get }
+    var projectId: Int { get }
     var title: String { get }
     var releaseDate: String? { get }
     var overview: String? { get }

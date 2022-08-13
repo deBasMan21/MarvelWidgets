@@ -17,7 +17,7 @@ struct MovieList: Codable {
 struct Movie: Codable, Identifiable, Project {
     typealias A = UUID
     let id: UUID = UUID()
-    let movieId: Int
+    let projectId: Int
     let title, boxOffice: String
     let releaseDate: String?
     let duration: Int
@@ -32,7 +32,7 @@ struct Movie: Codable, Identifiable, Project {
     let relatedMovies: [Movie]?
 
     enum CodingKeys: String, CodingKey {
-        case movieId = "id"
+        case projectId = "id"
         case title
         case releaseDate = "release_date"
         case boxOffice = "box_office"
@@ -47,7 +47,7 @@ struct Movie: Codable, Identifiable, Project {
     }
     
     func getUniqueProjectId() -> String {
-        return "m\(movieId)"
+        return "m\(projectId)"
     }
     
     func toData() -> Data? {

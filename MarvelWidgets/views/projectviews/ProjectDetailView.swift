@@ -9,14 +9,13 @@ import SwiftUI
 import Kingfisher
 
 struct ProjectDetailView: View {
-    @State var project: Project
-    @StateObject var viewModel = ProjectDetailViewModel()
+    @StateObject var viewModel: ProjectDetailViewModel
     
     var body: some View {
         ScrollView {
             VStack{
                 HStack(alignment: .top) {
-                    KFImage(URL(string: project.coverURL)!)
+                    KFImage(URL(string: viewModel.project.coverURL)!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 150, alignment: .center)
@@ -26,8 +25,8 @@ struct ProjectDetailView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading) {
                             Text("**Director**")
-                            if let director = project.directedBy, !director.isEmpty {
-                                Text(project.directedBy!)
+                            if let director = viewModel.project.directedBy, !director.isEmpty {
+                                Text(viewModel.project.directedBy!)
                             } else {
                                 Text("No director confirmed")
                             }
@@ -35,10 +34,10 @@ struct ProjectDetailView: View {
                         
                         VStack(alignment: .leading) {
                             Text("**Release date**")
-                            Text(project.releaseDate ?? "No release date set")
+                            Text(viewModel.project.releaseDate ?? "No release date set")
                         }
                         
-                        if let project = project as? Movie {
+                        if let project = viewModel.project as? Movie {
                             VStack(alignment: .leading) {
                                 Text("**Duration**")
                                 Text("\(project.duration) minutes")
@@ -53,7 +52,7 @@ struct ProjectDetailView: View {
                                 Text("**Box office**")
                                 Text("€\(project.boxOffice.toMoney()),- ")
                             }
-                        } else if let project = project as? Serie {
+                        } else if let project = viewModel.project as? Serie {
                             VStack(alignment: .leading) {
                                 Text("**Episodes**")
                                 Text("\(project.numberEpisodes)")
@@ -66,18 +65,18 @@ struct ProjectDetailView: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("**Phase \(project.phase)**")
+                            Text("**Phase \(viewModel.project.phase)**")
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("**\(project.saga?.rawValue ?? "Unkown saga")**")
+                            Text("**\(viewModel.project.saga?.rawValue ?? "Unkown saga")**")
                         }
                     }
                     
                     Spacer()
                 }
                 
-                if let overview = project.overview {
+                if let overview = viewModel.project.overview {
                     Text("Overview")
                         .font(Font.largeTitle)
                         .padding()
@@ -86,7 +85,7 @@ struct ProjectDetailView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                if let url = project.trailerURL {
+                if let url = viewModel.project.trailerURL {
                     Text("Trailer")
                         .font(Font.largeTitle)
                         .padding()
@@ -104,7 +103,7 @@ struct ProjectDetailView: View {
                     VStack(spacing: 15){
                         ForEach(relatedProjects, id: \.id) { movie in
                             NavigationLink {
-                                ProjectDetailView(project: movie)
+                                ProjectDetailView(viewModel: ProjectDetailViewModel(project: movie))
                             } label: {
                                 VStack{
                                     Text(movie.title)
@@ -120,17 +119,17 @@ struct ProjectDetailView: View {
                 }
                 
             }.padding(20)
-        }.navigationTitle(project.title)
+        }.navigationTitle(viewModel.project.title)
             .onAppear{
-                if let movie = project as? Movie, movie.relatedMovies == nil {
+                if viewModel.project is Movie {
                     Task {
-                        await viewModel.getMovieDetails(for: movie.movieId)
+                        await viewModel.getMovieDetails()
                     }
                 }
-                viewModel.setIsSavedIcon(for: project)
+                viewModel.setIsSavedIcon(for: viewModel.project)
             }
             .navigationBarItems(trailing: Button(action: {
-                viewModel.toggleSaveProject(project)
+                viewModel.toggleSaveProject(viewModel.project)
                 }, label: {
                     Image(systemName: viewModel.bookmarkString)
                 }

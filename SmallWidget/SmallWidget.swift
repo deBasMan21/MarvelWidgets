@@ -11,11 +11,11 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> UpcomingProjectEntry {
-        UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: Movie(movieId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
+        UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: Movie(projectId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
     }
 
     func getSnapshot(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
-        let entry = UpcomingProjectEntry(date: Date(), configuration: configuration, upcomingProject: Movie(movieId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
+        let entry = UpcomingProjectEntry(date: Date(), configuration: configuration, upcomingProject: Movie(projectId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
         completion(entry)
     }
 
@@ -35,7 +35,7 @@ struct Provider: IntentTimelineProvider {
                 upcomingProjects.append(contentsOf: await MovieService.getMoviesChronologically())
                 upcomingProjects.append(contentsOf: await SeriesService.getSeriesChronologically())
             case .saved:
-                print("no items")
+                upcomingProjects.append(contentsOf: SaveService.getProjectsFromUserDefaults())
             }
             
             switch configuration.RandomOrNext.rawValue {
