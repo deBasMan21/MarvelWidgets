@@ -13,7 +13,7 @@ extension ProjectDetailView {
         @Published var bookmarkString: String = "bookmark"
         
         func setIsSavedIcon(for proj: Project) {
-            let userDefs = UserDefaults(suiteName: UserDefaultValues.savedProjects)!
+            let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
 
             if userDefs.data(forKey: proj.getUniqueProjectId()) != nil {
                 bookmarkString = "bookmark.fill"
@@ -23,7 +23,7 @@ extension ProjectDetailView {
         }
         
         func toggleSaveProject(_ proj: Project) {
-            let userDefs = UserDefaults(suiteName: UserDefaultValues.savedProjects)!
+            let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
             var savedIds: [String] = userDefs.array(forKey: UserDefaultValues.savedProjectIds) as? [String] ?? []
 
             if userDefs.data(forKey: proj.getUniqueProjectId()) != nil {

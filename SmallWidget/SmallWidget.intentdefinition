@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>INEnumDisplayName</key>
-			<string>Type widget</string>
+			<string>Type of projects</string>
 			<key>INEnumDisplayNameID</key>
 			<string>mX7HAz</string>
 			<key>INEnumGeneratesHeader</key>
@@ -27,7 +27,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Alleen films</string>
+					<string>Only movies</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>hcsOVo</string>
 					<key>INEnumValueIndex</key>
@@ -37,7 +37,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Alleen series</string>
+					<string>Only series</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>ZSSuKV</string>
 					<key>INEnumValueIndex</key>
@@ -47,7 +47,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Alle projecten</string>
+					<string>All projects</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>wXGPH7</string>
 					<key>INEnumValueIndex</key>
@@ -55,11 +55,21 @@
 					<key>INEnumValueName</key>
 					<string>all</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Saved projects</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>eIQ8zV</string>
+					<key>INEnumValueIndex</key>
+					<integer>4</integer>
+					<key>INEnumValueName</key>
+					<string>saved</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>INEnumDisplayName</key>
-			<string>Random Or Not</string>
+			<string>Wich project</string>
 			<key>INEnumDisplayNameID</key>
 			<string>nyMK0s</string>
 			<key>INEnumGeneratesHeader</key>
@@ -80,7 +90,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Eerstvolgende project</string>
+					<string>First upcoming project</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>WIkN2j</string>
 					<key>INEnumValueIndex</key>
@@ -132,7 +142,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Random project of eerstvolgende project</string>
+					<string>Wich project</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>zHcGTE</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -167,7 +177,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Widget Type</string>
+					<string>Type of projects</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>r58WV7</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -222,7 +232,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Toont titel</string>
+					<string>Shows text</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>hQkLvN</string>
 					<key>INIntentParameterDisplayPriority</key>
