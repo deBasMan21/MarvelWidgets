@@ -20,6 +20,8 @@ extension ProjectListView {
                 return "Marvel Movies"
             case .series:
                 return "Marvel Series"
+            case .saved:
+                return "Saved Projects"
             }
         }
         
@@ -35,6 +37,10 @@ extension ProjectListView {
                         projects = await MovieService.getMoviesChronologically()
                     case .series:
                         projects = await SeriesService.getSeriesChronologically()
+                    case .saved:
+                        let defs = UserDefaults(suiteName: UserDefaultValues.savedProjects)!
+                        let ids: [String] = defs.array(forKey: UserDefaultValues.savedProjectIds) as? [String] ?? []
+                        projects = getProjectsFromUserDefaults(for: ids)
                     }
                     self.projects = orderProjects(projects, by: orderType)
                 }
@@ -63,6 +69,32 @@ extension ProjectListView {
         
         func refresh() async {
             await fetchProjects()
+        }
+        
+        func getProjectsFromUserDefaults(for ids: [String]) -> [Project] {
+            let defs = UserDefaults(suiteName: UserDefaultValues.savedProjects)!
+            var projects: [Project] = []
+            
+            for id in ids {
+                let decoder = JSONDecoder()
+                let projData = defs.data(forKey: id)
+                
+                if let data = projData {
+                    if id.starts(with: "s") {
+                        let proj = try? decoder.decode(Serie.self, from: data)
+                        if let proj = proj {
+                            projects.append(proj)
+                        }
+                    } else if id.starts(with: "m") {
+                        let proj = try? decoder.decode(Movie.self, from: data)
+                        if let proj = proj {
+                            projects.append(proj)
+                        }
+                    }
+                }
+            }
+            
+            return projects
         }
     }
     

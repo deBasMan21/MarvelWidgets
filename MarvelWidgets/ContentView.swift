@@ -29,6 +29,11 @@ struct ContentView: View {
                     Label("Series", systemImage: "tv")
                 }
             
+            ProjectListView(type: .saved)
+                .tabItem{
+                    Label("Saved", systemImage: "bookmark.fill")
+                }
+            
             WidgetSettingsView()
                 .tabItem{
                     Label("Instellingen", systemImage: "gearshape")

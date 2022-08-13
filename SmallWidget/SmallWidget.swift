@@ -34,6 +34,8 @@ struct Provider: IntentTimelineProvider {
             case .all:
                 upcomingProjects.append(contentsOf: await MovieService.getMoviesChronologically())
                 upcomingProjects.append(contentsOf: await SeriesService.getSeriesChronologically())
+            case .saved:
+                print("no items")
             }
             
             switch configuration.RandomOrNext.rawValue {
