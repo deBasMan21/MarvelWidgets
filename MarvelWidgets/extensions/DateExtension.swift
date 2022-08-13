@@ -16,4 +16,21 @@ extension Date {
                 
         return numberOfDays.day!
     }
+    
+    func differenceInHours(from date: Date) -> Int {
+        let calendar = Calendar.current
+        let fromDate = calendar.startOfDay(for: date)
+        let toDate = calendar.startOfDay(for: self)
+        let numberOfDays = calendar.dateComponents([.day, .hour], from: fromDate, to: toDate)
+        return numberOfDays.hour!
+    }
+    
+    func differenceForWidget(from date: Date) -> String {
+        let diffDays = differenceInDays(from: date)
+        if diffDays < 2 {
+            let diffHours = differenceInHours(from: date)
+            return "\(diffHours) uur"
+        }
+        return "\(diffDays) dagen"
+    }
 }

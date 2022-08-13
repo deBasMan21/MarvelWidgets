@@ -43,4 +43,13 @@ struct Serie: Codable, Identifiable, Project {
         case phase, saga
         case imdbID = "imdb_id"
     }
+    
+    func getUniqueProjectId() -> String {
+        return "s\(serieId)"
+    }
+    
+    func toData() -> Data? {
+        let encoder = JSONEncoder()
+        return try? encoder.encode(self)
+    }
 }

@@ -127,6 +127,14 @@ struct ProjectDetailView: View {
                         await viewModel.getMovieDetails(for: movie.movieId)
                     }
                 }
+                viewModel.setIsSavedIcon(for: project)
             }
+            .navigationBarItems(trailing: Button(action: {
+                viewModel.toggleSaveProject(project)
+                }, label: {
+                    Image(systemName: viewModel.bookmarkString)
+                }
+              )
+            )
     }
 }

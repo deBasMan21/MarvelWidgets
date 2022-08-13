@@ -45,4 +45,13 @@ struct Movie: Codable, Identifiable, Project {
         case imdbID = "imdb_id"
         case relatedMovies = "related_movies"
     }
+    
+    func getUniqueProjectId() -> String {
+        return "m\(movieId)"
+    }
+    
+    func toData() -> Data? {
+        let encoder = JSONEncoder()
+        return try? encoder.encode(self)
+    }
 }

@@ -17,4 +17,7 @@ protocol Project {
     var phase: Int { get }
     var saga: Saga? { get }
     var trailerURL: String? { get }
+    
+    func getUniqueProjectId() -> String
+    func toData() -> Data?
 }

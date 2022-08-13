@@ -11,6 +11,7 @@ enum WidgetType: String, CaseIterable {
     case all = "all"
     case movies = "movies"
     case series = "series"
+    case saved = "saved"
     
     static func getFromIndex(_ index: Int) -> WidgetType{
         switch index{
@@ -20,6 +21,8 @@ enum WidgetType: String, CaseIterable {
             return .movies
         case 3:
             return .series
+        case 4:
+            return .saved
         default:
             return .all
         }

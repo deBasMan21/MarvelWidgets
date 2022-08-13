@@ -13,6 +13,9 @@ struct UserDefaultValues {
     static let defaultWidgetType = "all"
     static let widgetType = "widgetType"
     
+    static let savedProjects = "savedProjects"
+    static let savedProjectIds = "savedProjectIds"
+    
     static let cachedMovies = "cachedMovies"
     static let cachedSeries = "cachedSeries"
 }

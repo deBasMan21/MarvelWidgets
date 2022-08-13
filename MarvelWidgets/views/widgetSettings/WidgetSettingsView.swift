@@ -23,6 +23,8 @@ struct WidgetSettingsView: View {
                 Text("Geselecteerde modus: \(viewModel.currentWidgetType)")
                 Image(systemName: "arrow.up.arrow.down")
             })
+        }.onAppear {
+            print(UserDefaults(suiteName: "savedProjects")?.array(forKey: "savedProjectIds"))
         }
     }
 }
