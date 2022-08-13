@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF4D265328A44ACE00B7BCEE /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383328A3E22E00B4CC0D /* SmallWidget.intentdefinition */; };
 		EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */; };
 		EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */; };
 		EF4D265728A4512600B7BCEE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* Config.swift */; };
@@ -52,8 +51,6 @@
 		EFCE382F28A3E22E00B4CC0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCE382E28A3E22E00B4CC0D /* SwiftUI.framework */; };
 		EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */; };
 		EFCE383528A3E22F00B4CC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCE383428A3E22F00B4CC0D /* Assets.xcassets */; };
-		EFCE383728A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383328A3E22E00B4CC0D /* SmallWidget.intentdefinition */; };
-		EFCE383828A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383328A3E22E00B4CC0D /* SmallWidget.intentdefinition */; };
 		EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EFCE384028A3E2CD00B4CC0D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382228A3DE1B00B4CC0D /* Movie.swift */; };
 		EFCE384228A3E33500B4CC0D /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE384128A3E33500B4CC0D /* MovieService.swift */; };
@@ -66,6 +63,19 @@
 		EFD8D75F28A7AC8D00CA8DAC /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */; };
 		EFD8D76028A7ACFD00CA8DAC /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */; };
 		EFD8D76128A7ACFD00CA8DAC /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */; };
+		EFD8D76428A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D76228A7F6A100CA8DAC /* MarvelWidgetBundle.swift */; };
+		EFD8D76528A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D76228A7F6A100CA8DAC /* MarvelWidgetBundle.swift */; };
+		EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */; };
+		EFD8D76828A7F84400CA8DAC /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE384128A3E33500B4CC0D /* MovieService.swift */; };
+		EFD8D76928A7F84600CA8DAC /* SeriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7E28A3F7F60004AAC7 /* SeriesService.swift */; };
+		EFD8D76A28A7F84C00CA8DAC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381D28A3DD4200B4CC0D /* APIService.swift */; };
+		EFD8D76B28A7F85C00CA8DAC /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
+		EFD8D77128A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */; };
+		EFD8D77228A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */; };
+		EFD8D77328A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */; };
+		EFD8D77528A83FB600CA8DAC /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */; };
+		EFD8D77628A83FB600CA8DAC /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */; };
+		EFD8D77728A83FB600CA8DAC /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */; };
 		EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */; };
 		EFFE152D28A54A9700DCF804 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382228A3DE1B00B4CC0D /* Movie.swift */; };
 		EFFE152E28A54A9A00DCF804 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8028A3F8470004AAC7 /* Serie.swift */; };
@@ -143,13 +153,15 @@
 		EFCE382C28A3E22E00B4CC0D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EFCE382E28A3E22E00B4CC0D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
-		EFCE383328A3E22E00B4CC0D /* SmallWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SmallWidget.intentdefinition; sourceTree = "<group>"; };
 		EFCE383428A3E22F00B4CC0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFCE383628A3E22F00B4CC0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFCE384128A3E33500B4CC0D /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		EFD8D75C28A5791D00CA8DAC /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
+		EFD8D76228A7F6A100CA8DAC /* MarvelWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelWidgetBundle.swift; sourceTree = "<group>"; };
+		EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = SmallWidget.intentdefinition; sourceTree = "<group>"; };
+		EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		EFFE153128A54AD100DCF804 /* Saga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saga.swift; sourceTree = "<group>"; };
 		EFFE153528A54BE000DCF804 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -307,6 +319,7 @@
 				EFFE152A28A5480700DCF804 /* projectviews */,
 				EFCA5DA028A41E780004AAC7 /* widgetSettings */,
 				EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */,
+				EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -336,9 +349,10 @@
 			isa = PBXGroup;
 			children = (
 				EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */,
-				EFCE383328A3E22E00B4CC0D /* SmallWidget.intentdefinition */,
+				EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */,
 				EFCE383428A3E22F00B4CC0D /* Assets.xcassets */,
 				EFCE383628A3E22F00B4CC0D /* Info.plist */,
+				EFD8D76228A7F6A100CA8DAC /* MarvelWidgetBundle.swift */,
 			);
 			path = SmallWidget;
 			sourceTree = "<group>";
@@ -499,15 +513,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF578F3A28A45721006272AA /* LogService.swift in Sources */,
+				EFD8D76A28A7F84C00CA8DAC /* APIService.swift in Sources */,
 				EFFE153328A54AD400DCF804 /* Saga.swift in Sources */,
 				EFFE152F28A54ABF00DCF804 /* MarvelProject.swift in Sources */,
 				EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */,
 				EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */,
 				EFFE152D28A54A9700DCF804 /* Movie.swift in Sources */,
-				EF4D265328A44ACE00B7BCEE /* SmallWidget.intentdefinition in Sources */,
 				EFFE152E28A54A9A00DCF804 /* Serie.swift in Sources */,
 				EFD8D76128A7ACFD00CA8DAC /* SaveService.swift in Sources */,
+				EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */,
+				EFD8D76B28A7F85C00CA8DAC /* ImageHelper.swift in Sources */,
+				EFD8D77728A83FB600CA8DAC /* PullToRefreshView.swift in Sources */,
+				EFD8D76528A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
 				EF578F3928A45633006272AA /* CachingService.swift in Sources */,
+				EFD8D76928A7F84600CA8DAC /* SeriesService.swift in Sources */,
+				EFD8D77328A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
+				EFD8D76828A7F84400CA8DAC /* MovieService.swift in Sources */,
 				EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */,
 				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
 				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
@@ -523,6 +544,7 @@
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
 				EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */,
 				EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */,
+				EFD8D77528A83FB600CA8DAC /* PullToRefreshView.swift in Sources */,
 				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
@@ -530,7 +552,6 @@
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EFCA5D9828A417880004AAC7 /* MarvelProject.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
-				EFCE383828A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
 				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
@@ -543,6 +564,7 @@
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFCA5D7F28A3F7F60004AAC7 /* SeriesService.swift in Sources */,
 				EFD8D75B28A55BFE00CA8DAC /* VideoView.swift in Sources */,
+				EFD8D77128A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */,
 				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
 				EFCE384228A3E33500B4CC0D /* MovieService.swift in Sources */,
@@ -553,7 +575,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFCE383728A3E22F00B4CC0D /* SmallWidget.intentdefinition in Sources */,
 				EFFE153428A54AD400DCF804 /* Saga.swift in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EF4D265928A4512A00B7BCEE /* Config.swift in Sources */,
@@ -565,13 +586,16 @@
 				EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */,
 				EFFE153028A54ABF00DCF804 /* MarvelProject.swift in Sources */,
 				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
+				EFD8D77628A83FB600CA8DAC /* PullToRefreshView.swift in Sources */,
 				EFCA5D9A28A41B680004AAC7 /* Serie.swift in Sources */,
 				EFCE384428A3E41B00B4CC0D /* MovieService.swift in Sources */,
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
+				EFD8D77228A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D9928A41B420004AAC7 /* SeriesService.swift in Sources */,
 				EF578F3828A45632006272AA /* CachingService.swift in Sources */,
 				EFCE384028A3E2CD00B4CC0D /* Movie.swift in Sources */,
 				EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
+				EFD8D76428A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

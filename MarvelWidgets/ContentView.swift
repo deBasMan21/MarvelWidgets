@@ -11,39 +11,44 @@ import WidgetKit
 struct ContentView: View {
     @State var movies: [Movie] = []
     @State var series: [Serie] = []
+    @State var urlClickedProject: [String: Bool] = [:]
+    @State var selectedIndex: Int = 0
+    @State var shouldStopReload = false
     
     var body: some View {
-        TabView{
-            ProjectListView(type: .all)
+        TabView(selection: $selectedIndex) {
+            ProjectListView(activeProject: $urlClickedProject, type: .all, shouldStopReload: $shouldStopReload)
                 .tabItem{
                     Label("All", systemImage: "list.dash")
-                }
+                }.tag(0)
             
-            ProjectListView(type: .movies)
+            ProjectListView(activeProject: $urlClickedProject, type: .movies, shouldStopReload: $shouldStopReload)
                 .tabItem{
                     Label("Movies", systemImage: "film")
-                }
+                }.tag(1)
             
-            ProjectListView(type: .series)
+            ProjectListView(activeProject: $urlClickedProject, type: .series, shouldStopReload: $shouldStopReload)
                 .tabItem{
                     Label("Series", systemImage: "tv")
-                }
+                }.tag(2)
             
-            ProjectListView(type: .saved)
+            ProjectListView(activeProject: $urlClickedProject, type: .saved, shouldStopReload: $shouldStopReload)
                 .tabItem{
                     Label("Saved", systemImage: "bookmark.fill")
-                }
+                }.tag(3)
             
             WidgetSettingsView()
                 .tabItem{
                     Label("Instellingen", systemImage: "gearshape")
+                }.tag(4)
+        }.onOpenURL(perform: { url in
+            selectedIndex = 0
+            if url.scheme == "marvelwidgets" {
+                if url.host == "project" {
+                    shouldStopReload = true
+                    urlClickedProject[url.lastPathComponent] = true
                 }
-        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+            }
+        })
     }
 }

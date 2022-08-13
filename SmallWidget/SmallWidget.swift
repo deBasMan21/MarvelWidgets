@@ -95,37 +95,90 @@ struct UpcomingProjectEntry: TimelineEntry {
 }
 
 struct SmallWidgetUpcoming : View {
+    @Environment(\.widgetFamily) var family
     var entry: Provider.Entry
 
     var body: some View {
-        ZStack{
-            entry.image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            HStack{
-                VStack{
-                    Spacer()
+        switch family{
+        case .systemMedium:
+            HStack(spacing: 20) {
+                entry.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100)
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(entry.upcomingProject.title)
+                        .foregroundColor(Color("AccentColor"))
+                        .fontWeight(.bold)
                     
-                    if let showTitle = entry.configuration.ShowTitle, showTitle == 1  {
-                        Text(entry.upcomingProject.title)
-                            .multilineTextAlignment(.center)
-                            .shadow(color: .black, radius: 5)
-                            .font(Font.headline.weight(.bold))
+                    VStack(alignment: .leading) {
+                        Text("Releasedate")
+                            .font(Font.body.italic())
                         
+                        Text(getReleaseDateString())
+                            .fontWeight(.bold)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Director")
+                            .font(Font.body.italic())
+                        
+                        Text(getDirectorString())
+                            .fontWeight(.bold)
+                    }
+                }
+                
+                Spacer()
+            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
+        case .systemSmall:
+            ZStack{
+                entry.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                HStack{
+                    VStack{
                         Spacer()
                         
-                        if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-                            Text("\(difference) dagen")
-                                .padding(.bottom, 30)
+                        if let showTitle = entry.configuration.ShowTitle, showTitle == 1  {
+                            Text(entry.upcomingProject.title)
+                                .multilineTextAlignment(.center)
+                                .shadow(color: .black, radius: 5)
+                                .font(Font.headline.weight(.bold))
+                            
+                            Spacer()
+                            
+                            if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
+                                Text("\(difference) dagen")
+                                    .padding(.bottom, 30)
+                            }
                         }
-                    }
-                }.padding()
-            }
+                    }.padding()
+                }
+            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
+        default:
+            Text("Not implemented")
+        }
+        
+    }
+    
+    func getReleaseDateString() -> String {
+        if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
+            return "\(entry.upcomingProject.releaseDate!) (\(difference) days)"
+        } else {
+            return entry.upcomingProject.releaseDate ?? "No releasedate"
+        }
+    }
+    
+    func getDirectorString() -> String {
+        if let director = entry.upcomingProject.directedBy, !director.isEmpty {
+            return director
+        } else {
+            return "No director yet"
         }
     }
 }
 
-@main
 struct SmallWidget: Widget {
     let kind: String = "SmallWidget"
 
@@ -135,6 +188,6 @@ struct SmallWidget: Widget {
         }
         .configurationDisplayName("Upcoming marvel")
         .description("This widget shows the first upcoming marvel project with a countdown.")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
