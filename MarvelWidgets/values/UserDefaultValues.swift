@@ -11,7 +11,7 @@ struct UserDefaultValues {
     static let suiteName = "group.marvelwidgets"
     
     static let defaultWidgetType = "all"
-    static let widgetType = "widgetType"
+    static let smallWidgetShowText = "smallWidgetShowText"
     
     static let savedProjectIds = "savedProjectIds"
     

@@ -132,15 +132,15 @@ struct SmallWidgetUpcoming : View {
                 Spacer()
             }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
         case .systemSmall:
-            ZStack{
+            ZStack {
                 entry.image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                HStack{
-                    VStack{
+                HStack {
+                    VStack {
                         Spacer()
                         
-                        if let showTitle = entry.configuration.ShowTitle, showTitle == 1  {
+                        if let showTitle = UserDefaults(suiteName: UserDefaultValues.suiteName)!.bool(forKey: UserDefaultValues.smallWidgetShowText), showTitle {
                             Text(entry.upcomingProject.title)
                                 .multilineTextAlignment(.center)
                                 .shadow(color: .black, radius: 5)

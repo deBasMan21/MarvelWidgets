@@ -10,16 +10,20 @@ import WidgetKit
 
 extension WidgetSettingsView {
     class WidgetSettingsViewModel: ObservableObject {
-        @Published var currentWidgetType: String = UserDefaultValues.defaultWidgetType
+        @Published var showText: Bool = true {
+            didSet {
+                setShowText(to: showText)
+            }
+        }
+        
         let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
         
         init() {
-            currentWidgetType = userDefs.string(forKey: UserDefaultValues.widgetType) ?? UserDefaultValues.defaultWidgetType
+            showText = userDefs.bool(forKey: UserDefaultValues.smallWidgetShowText)
         }
         
-        func setWidgetType(to type: WidgetType) {
-            userDefs.set(type.rawValue, forKey: UserDefaultValues.widgetType)
-            currentWidgetType = type.rawValue
+        func setShowText(to showText: Bool) {
+            userDefs.set(showText, forKey: UserDefaultValues.smallWidgetShowText)
             WidgetCenter.shared.reloadAllTimelines()
         }
     }

@@ -38,7 +38,7 @@ struct ProjectListView: View {
                     })
                     ForEach(viewModel.projects, id: \.id) { item in
                         NavigationLink(isActive: binding(for: item.getUniqueProjectId())) {
-                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: item))
+                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: item), shouldStopReload: $shouldStopReload)
                         } label: {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -59,10 +59,6 @@ struct ProjectListView: View {
                                 .cornerRadius(20)
                                 .padding(.horizontal)
                         }
-                    }.onAppear {
-                        let tableHeaderView = UIView(frame: .zero)
-                        tableHeaderView.frame.size.height = 1
-                        UITableView.appearance().tableHeaderView = tableHeaderView
                     }
                 }.coordinateSpace(name: "\(viewModel.pageType.rawValue)-list")
                 

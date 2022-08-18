@@ -10,6 +10,7 @@ import Kingfisher
 
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
+    @Binding var shouldStopReload: Bool
     
     var body: some View {
         ScrollView {
@@ -103,7 +104,7 @@ struct ProjectDetailView: View {
                     VStack(spacing: 15){
                         ForEach(relatedProjects, id: \.id) { movie in
                             NavigationLink {
-                                ProjectDetailView(viewModel: ProjectDetailViewModel(project: movie))
+                                ProjectDetailView(viewModel: ProjectDetailViewModel(project: movie), shouldStopReload: $shouldStopReload)
                             } label: {
                                 VStack{
                                     Text(movie.title)
@@ -121,6 +122,7 @@ struct ProjectDetailView: View {
             }.padding(20)
         }.navigationTitle(viewModel.project.title)
             .onAppear{
+                shouldStopReload = false
                 if viewModel.project is Movie {
                     Task {
                         await viewModel.getMovieDetails()

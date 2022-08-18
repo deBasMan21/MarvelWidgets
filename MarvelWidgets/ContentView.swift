@@ -42,11 +42,15 @@ struct ContentView: View {
                     Label("Instellingen", systemImage: "gearshape")
                 }.tag(4)
         }.onOpenURL(perform: { url in
-            selectedIndex = 0
-            if url.scheme == "marvelwidgets" {
-                if url.host == "project" {
-                    shouldStopReload = true
-                    urlClickedProject[url.lastPathComponent] = true
+            Task {
+                await MainActor.run {
+                    selectedIndex = 0
+                    if url.scheme == "marvelwidgets" {
+                        if url.host == "project" {
+                            shouldStopReload = true
+                            urlClickedProject[url.lastPathComponent] = true
+                        }
+                    }
                 }
             }
         })
