@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import Kingfisher
 
 struct WidgetSettingsView: View {
     @StateObject var viewModel = WidgetSettingsViewModel()
@@ -21,6 +22,16 @@ struct WidgetSettingsView: View {
                 Toggle(isOn: $viewModel.showText, label: {
                     Text("Show text on small widget:")
                 })
+                
+//                Spacer()
+//
+//                VStack {
+//                    let movie = SaveService.getProjectsFromUserDefaults()[2]
+//                    SmallWidgetUpcomingSmall(upcomingProject: movie, image: ImageHelper.downloadImage(from: movie.coverURL))
+//                        .frame(width: 150, height: 150)
+//                        .background(.white)
+//                        .cornerRadius(20)
+//                }.shadow(color: .white, radius: 20, x: 0, y: 0)
                 
                 Spacer()
                 

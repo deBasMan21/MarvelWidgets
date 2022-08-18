@@ -101,80 +101,11 @@ struct SmallWidgetUpcoming : View {
     var body: some View {
         switch family{
         case .systemMedium:
-            HStack(spacing: 20) {
-                entry.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100)
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(entry.upcomingProject.title)
-                        .foregroundColor(Color("AccentColor"))
-                        .fontWeight(.bold)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Releasedate")
-                            .font(Font.body.italic())
-                        
-                        Text(getReleaseDateString())
-                            .fontWeight(.bold)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Director")
-                            .font(Font.body.italic())
-                        
-                        Text(getDirectorString())
-                            .fontWeight(.bold)
-                    }
-                }
-                
-                Spacer()
-            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
+            SmallWidgetUpcomingMedium(upcomingProject: entry.upcomingProject, image: entry.image)
         case .systemSmall:
-            ZStack {
-                entry.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                HStack {
-                    VStack {
-                        Spacer()
-                        
-                        if let showTitle = UserDefaults(suiteName: UserDefaultValues.suiteName)!.bool(forKey: UserDefaultValues.smallWidgetShowText), showTitle {
-                            Text(entry.upcomingProject.title)
-                                .multilineTextAlignment(.center)
-                                .shadow(color: .black, radius: 5)
-                                .font(Font.headline.weight(.bold))
-                            
-                            Spacer()
-                            
-                            if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-                                Text("\(difference) dagen")
-                                    .padding(.bottom, 30)
-                            }
-                        }
-                    }.padding()
-                }
-            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
+            SmallWidgetUpcomingSmall(upcomingProject: entry.upcomingProject, image: entry.image)
         default:
             Text("Not implemented")
-        }
-        
-    }
-    
-    func getReleaseDateString() -> String {
-        if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-            return "\(entry.upcomingProject.releaseDate!) (\(difference) days)"
-        } else {
-            return entry.upcomingProject.releaseDate ?? "No releasedate"
-        }
-    }
-    
-    func getDirectorString() -> String {
-        if let director = entry.upcomingProject.directedBy, !director.isEmpty {
-            return director
-        } else {
-            return "No director yet"
         }
     }
 }
