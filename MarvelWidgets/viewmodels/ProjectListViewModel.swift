@@ -10,8 +10,9 @@ import Foundation
 extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
         @Published var projects: [Project] = []
-        @Published var orderType: OrderType = .releaseDate
+        @Published var orderType: OrderType = .releaseDateASC
         @Published var pageType: WidgetType = .all
+        
         var navigationTitle: String {
             switch pageType {
             case .all:
@@ -20,6 +21,8 @@ extension ProjectListView {
                 return "Marvel Movies"
             case .series:
                 return "Marvel Series"
+            case .saved:
+                return "Saved Projects"
             }
         }
         
@@ -35,6 +38,8 @@ extension ProjectListView {
                         projects = await MovieService.getMoviesChronologically()
                     case .series:
                         projects = await SeriesService.getSeriesChronologically()
+                    case .saved:
+                        projects = SaveService.getProjectsFromUserDefaults()
                     }
                     self.projects = orderProjects(projects, by: orderType)
                 }
@@ -49,12 +54,10 @@ extension ProjectListView {
                 orderedProjects = projects.sorted(by: { $0.title < $1.title})
             case .nameDESC:
                 orderedProjects = projects.sorted(by: { $0.title > $1.title})
-            case .releaseDate:
-                orderedProjects = projects.sorted(by: {
-                    let dateOne: Date = $0.releaseDate?.toDate() ?? "3000-12-12".toDate()!
-                    let dateTwo: Date = $1.releaseDate?.toDate() ?? "3000-12-12".toDate()!
-                    return dateOne > dateTwo
-                })
+            case .releaseDateASC:
+                orderedProjects = projects.sorted(by: { $0.releaseDate ?? "3000-12-12" > $1.releaseDate ?? "3000-12-12" })
+            case .releaseDateDESC:
+                orderedProjects = projects.sorted(by: { $0.releaseDate ?? "3000-12-12" < $1.releaseDate ?? "3000-12-12" })
             }
             return orderedProjects
         }
@@ -69,8 +72,9 @@ extension ProjectListView {
     }
     
     enum OrderType: String, CaseIterable {
-        case nameASC = "Naam A-Z"
-        case nameDESC = "Naam Z-A"
-        case releaseDate = "Release datum"
+        case nameASC = "Name A-Z"
+        case nameDESC = "Name Z-A"
+        case releaseDateASC = "Release date (new-old)"
+        case releaseDateDESC = "Release date (old-new)"
     }
 }

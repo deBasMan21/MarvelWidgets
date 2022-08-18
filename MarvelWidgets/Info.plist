@@ -4,7 +4,9 @@
 <dict>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>WidgetTypeConfigurationIntent</string>
+		<string>WidgetMediumConfiguratIntent</string>
+		<string>WidgetSmallConfigurationIntent</string>
+		<string>WidgetViewConfigurationIntent</string>
 	</array>
 </dict>
 </plist>

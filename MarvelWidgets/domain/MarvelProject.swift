@@ -9,6 +9,7 @@ import Foundation
 
 protocol Project {
     var id: UUID { get }
+    var projectId: Int { get }
     var title: String { get }
     var releaseDate: String? { get }
     var overview: String? { get }
@@ -16,4 +17,8 @@ protocol Project {
     var directedBy: String? { get }
     var phase: Int { get }
     var saga: Saga? { get }
+    var trailerURL: String? { get }
+    
+    func getUniqueProjectId() -> String
+    func toData() -> Data?
 }

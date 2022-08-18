@@ -8,7 +8,7 @@
 import Foundation
 
 class APIService {
-    static func apiCall<T : Decodable>(url : String, body : [String : Any]?, method : String, obj: T) async throws -> T? {
+    static func apiCall<T : Decodable>(url : String, body : [String : Any]?, method : String, as obj: T.Type) async throws -> T? {
         let url = URL(string: url)!
         var request = URLRequest(url: url)
         request.httpMethod = method

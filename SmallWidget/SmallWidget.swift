@@ -11,11 +11,11 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> UpcomingProjectEntry {
-        UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: Movie(title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: ""), image: Image("secret wars"))
+        UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: Movie(projectId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
     }
 
     func getSnapshot(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
-        let entry = UpcomingProjectEntry(date: Date(), configuration: configuration, upcomingProject: Movie(title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: ""), image: Image("secret wars"))
+        let entry = UpcomingProjectEntry(date: Date(), configuration: configuration, upcomingProject: Movie(projectId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
         completion(entry)
     }
 
@@ -34,6 +34,8 @@ struct Provider: IntentTimelineProvider {
             case .all:
                 upcomingProjects.append(contentsOf: await MovieService.getMoviesChronologically())
                 upcomingProjects.append(contentsOf: await SeriesService.getSeriesChronologically())
+            case .saved:
+                upcomingProjects.append(contentsOf: SaveService.getProjectsFromUserDefaults())
             }
             
             switch configuration.RandomOrNext.rawValue {
@@ -93,37 +95,90 @@ struct UpcomingProjectEntry: TimelineEntry {
 }
 
 struct SmallWidgetUpcoming : View {
+    @Environment(\.widgetFamily) var family
     var entry: Provider.Entry
 
     var body: some View {
-        ZStack{
-            entry.image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-            HStack{
-                VStack{
-                    Spacer()
+        switch family{
+        case .systemMedium:
+            HStack(spacing: 20) {
+                entry.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100)
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(entry.upcomingProject.title)
+                        .foregroundColor(Color("AccentColor"))
+                        .fontWeight(.bold)
                     
-                    if let showTitle = entry.configuration.ShowTitle, showTitle == 1  {
-                        Text(entry.upcomingProject.title)
-                            .multilineTextAlignment(.center)
-                            .shadow(color: .black, radius: 5)
-                            .font(Font.headline.weight(.bold))
+                    VStack(alignment: .leading) {
+                        Text("Releasedate")
+                            .font(Font.body.italic())
                         
+                        Text(getReleaseDateString())
+                            .fontWeight(.bold)
+                    }
+                    
+                    VStack(alignment: .leading) {
+                        Text("Director")
+                            .font(Font.body.italic())
+                        
+                        Text(getDirectorString())
+                            .fontWeight(.bold)
+                    }
+                }
+                
+                Spacer()
+            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
+        case .systemSmall:
+            ZStack {
+                entry.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                HStack {
+                    VStack {
                         Spacer()
                         
-                        if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-                            Text("\(difference) dagen")
-                                .padding(.bottom, 30)
+                        if let showTitle = UserDefaults(suiteName: UserDefaultValues.suiteName)!.bool(forKey: UserDefaultValues.smallWidgetShowText), showTitle {
+                            Text(entry.upcomingProject.title)
+                                .multilineTextAlignment(.center)
+                                .shadow(color: .black, radius: 5)
+                                .font(Font.headline.weight(.bold))
+                            
+                            Spacer()
+                            
+                            if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
+                                Text("\(difference) dagen")
+                                    .padding(.bottom, 30)
+                            }
                         }
-                    }
-                }.padding()
-            }
+                    }.padding()
+                }
+            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
+        default:
+            Text("Not implemented")
+        }
+        
+    }
+    
+    func getReleaseDateString() -> String {
+        if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
+            return "\(entry.upcomingProject.releaseDate!) (\(difference) days)"
+        } else {
+            return entry.upcomingProject.releaseDate ?? "No releasedate"
+        }
+    }
+    
+    func getDirectorString() -> String {
+        if let director = entry.upcomingProject.directedBy, !director.isEmpty {
+            return director
+        } else {
+            return "No director yet"
         }
     }
 }
 
-@main
 struct SmallWidget: Widget {
     let kind: String = "SmallWidget"
 
@@ -133,6 +188,6 @@ struct SmallWidget: Widget {
         }
         .configurationDisplayName("Upcoming marvel")
         .description("This widget shows the first upcoming marvel project with a countdown.")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

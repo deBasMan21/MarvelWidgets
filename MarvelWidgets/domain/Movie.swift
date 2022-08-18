@@ -17,6 +17,7 @@ struct MovieList: Codable {
 struct Movie: Codable, Identifiable, Project {
     typealias A = UUID
     let id: UUID = UUID()
+    let projectId: Int
     let title, boxOffice: String
     let releaseDate: String?
     let duration: Int
@@ -28,9 +29,11 @@ struct Movie: Codable, Identifiable, Project {
     let saga: Saga?
     let chronology, postCreditScenes: Int
     let imdbID: String
+    let relatedMovies: [Movie]?
 
     enum CodingKeys: String, CodingKey {
-        case id, title
+        case projectId = "id"
+        case title
         case releaseDate = "release_date"
         case boxOffice = "box_office"
         case duration, overview
@@ -40,5 +43,15 @@ struct Movie: Codable, Identifiable, Project {
         case phase, saga, chronology
         case postCreditScenes = "post_credit_scenes"
         case imdbID = "imdb_id"
+        case relatedMovies = "related_movies"
+    }
+    
+    func getUniqueProjectId() -> String {
+        return "m\(projectId)"
+    }
+    
+    func toData() -> Data? {
+        let encoder = JSONEncoder()
+        return try? encoder.encode(self)
     }
 }
