@@ -12,6 +12,8 @@ struct UserDefaultValues {
     
     static let defaultWidgetType = "all"
     static let smallWidgetShowText = "smallWidgetShowText"
+    static let specificSelectedProject = "specificProject"
+    static let specificSelectedProjectTitle = "specificProjectTitle"
     
     static let savedProjectIds = "savedProjectIds"
     
