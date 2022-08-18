@@ -13,6 +13,8 @@ class SaveService {
         let ids: [String] = defs.array(forKey: UserDefaultValues.savedProjectIds) as? [String] ?? []
         var projects: [Project] = []
         
+        print("debug: \(ids)")
+        
         for id in ids {
             let decoder = JSONDecoder()
             let projData = defs.data(forKey: id)

@@ -12,6 +12,7 @@ extension ProjectListView {
         @Published var projects: [Project] = []
         @Published var orderType: OrderType = .releaseDateASC
         @Published var pageType: WidgetType = .all
+        
         var navigationTitle: String {
             switch pageType {
             case .all:

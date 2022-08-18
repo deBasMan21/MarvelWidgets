@@ -12,17 +12,21 @@ struct WidgetSettingsView: View {
     @StateObject var viewModel = WidgetSettingsViewModel()
     
     var body: some View {
-        VStack{
-            Menu(content: {
-                ForEach(WidgetType.allCases, id: \.self){ item in
-                    Button(item.rawValue, action: {
-                        viewModel.setWidgetType(to: item)
-                    })
-                }
-            }, label: {
-                Text("Geselecteerde modus: \(viewModel.currentWidgetType)")
-                Image(systemName: "arrow.up.arrow.down")
-            })
+        NavigationView {
+            VStack{
+                Text("Small widget settings")
+                    .font(Font.headline.bold())
+                    .foregroundColor(.accentColor)
+                
+                Toggle(isOn: $viewModel.showText, label: {
+                    Text("Show text on small widget:")
+                })
+                
+                Spacer()
+                
+                Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
+            }.navigationTitle("Settings")
+                .padding()
         }
     }
 }

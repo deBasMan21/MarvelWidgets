@@ -9,8 +9,10 @@ import Foundation
 import SwiftUI
 
 struct ProjectListView: View {
+    @Binding var activeProject: [String: Bool]
     @State var type: WidgetType
     @StateObject var viewModel = ProjectListViewModel()
+    @Binding var shouldStopReload: Bool
     
     var body: some View {
         NavigationView {
@@ -28,33 +30,54 @@ struct ProjectListView: View {
                 
                 Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
                 
-                List(viewModel.projects, id: \.id) { item in
-                    NavigationLink {
-                        ProjectDetailView(viewModel: ProjectDetailViewModel(project: item))
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text(item.title)
-                                .font(Font.headline.bold())
-                            
-                            Text(item.releaseDate ?? "Unknown releasedate")
-                                .font(Font.body.italic())
+                ScrollView {
+                    PullToRefreshView(coordinateSpaceName: "\(viewModel.pageType.rawValue)-list", onRefresh: {
+                        Task {
+                            await viewModel.refresh()
+                        }
+                    })
+                    ForEach(viewModel.projects, id: \.id) { item in
+                        NavigationLink(isActive: binding(for: item.getUniqueProjectId())) {
+                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: item), shouldStopReload: $shouldStopReload)
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(item.title)
+                                        .font(Font.headline.bold())
+                                        .multilineTextAlignment(.leading)
+                                    
+                                    Text(item.releaseDate ?? "Unknown releasedate")
+                                        .font(Font.body.italic())
+                                }
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.right")
+                            }.padding()
+                                .foregroundColor(Color(uiColor: UIColor.label))
+                                .background(Color("ListItemBackground"))
+                                .cornerRadius(20)
+                                .padding(.horizontal)
                         }
                     }
-                }.onAppear {
-                    let tableHeaderView = UIView(frame: .zero)
-                    tableHeaderView.frame.size.height = 1
-                    UITableView.appearance().tableHeaderView = tableHeaderView
-                }.refreshable {
-                    Task {
-                        await viewModel.refresh()
-                    }
-                }
+                }.coordinateSpace(name: "\(viewModel.pageType.rawValue)-list")
+                
             }.navigationTitle(viewModel.navigationTitle)
         }.onAppear{
-            Task{
-                viewModel.pageType = type
-                await viewModel.fetchProjects()
+            if !shouldStopReload {
+                Task{
+                    viewModel.pageType = type
+                    await viewModel.fetchProjects()
+                }
+            } else {
+                shouldStopReload = false
             }
         }
+    }
+    
+    private func binding(for key: String) -> Binding<Bool> {
+        return .init(
+            get: { self.activeProject[key, default: false] },
+            set: { self.activeProject[key] = $0 })
     }
 }

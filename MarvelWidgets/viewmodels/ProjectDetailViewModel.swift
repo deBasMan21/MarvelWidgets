@@ -35,6 +35,7 @@ class ProjectDetailViewModel: ObservableObject {
                 savedIds.remove(at: index)
             }
             
+            userDefs.set(savedIds, forKey: UserDefaultValues.savedProjectIds)
             userDefs.set(nil, forKey: proj.getUniqueProjectId())
         } else {
             let dataObj: Data? = proj.toData()
