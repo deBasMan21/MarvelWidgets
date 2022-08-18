@@ -9,13 +9,17 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
+struct SmallWidgetProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> UpcomingProjectEntry {
-        UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: Movie(projectId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
+        let project = Movie(projectId: 0, title: "Avengers: Secret Wars", boxOffice: "", releaseDate: "2025-11-07", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil)
+        
+        return UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: project, nextProject: project, image: Image("secret wars"), nextImage: Image("secret wars"))
     }
 
     func getSnapshot(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
-        let entry = UpcomingProjectEntry(date: Date(), configuration: configuration, upcomingProject: Movie(projectId: 0, title: "temp", boxOffice: "", releaseDate: "", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil), image: Image("secret wars"))
+        let project = Movie(projectId: 0, title: "Avengers: Secret Wars", boxOffice: "", releaseDate: "2025-11-07", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil)
+        
+        let entry = UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: project, nextProject: project, image: Image("secret wars"), nextImage: Image("secret wars"))
         completion(entry)
     }
 
@@ -55,33 +59,44 @@ struct Provider: IntentTimelineProvider {
         formatter.dateFormat = "yyyy-MM-dd"
         
         var smallestDateProject : Project? = nil
+        var nextSmallestDateProject: Project? = nil
         for item in allProjects {
             let date = formatter.date(from: item.releaseDate ?? "2000-01-01")
             let temp = formatter.date(from: smallestDateProject?.releaseDate ?? "3000-01-01")
             
             if let date = date, let temp = temp, date > Date.now && date < temp {
+                nextSmallestDateProject = smallestDateProject
                 smallestDateProject = item
             }
         }
         
-        if let smallestDateProject = smallestDateProject {
+        if let smallestDateProject = smallestDateProject, let nextSmallestDateProject = nextSmallestDateProject {
             let image = ImageHelper.downloadImage(from: smallestDateProject.coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: smallestDateProject, image: image)
+            let nextImage = ImageHelper.downloadImage(from: nextSmallestDateProject.coverURL)
+            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: smallestDateProject, nextProject: nextSmallestDateProject, image: image, nextImage: nextImage)
         } else {
             let image = ImageHelper.downloadImage(from: allProjects[0].coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: allProjects[0], image: image)
+            let nextImage = ImageHelper.downloadImage(from: allProjects[1].coverURL)
+            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: allProjects[0], nextProject: allProjects[1], image: image, nextImage: nextImage)
         }
     }
     
     func randomProject(from allProjects: [Project], with configuration: WidgetTypeConfigurationIntent) -> UpcomingProjectEntry{
         let project = allProjects.randomElement()
+        var nextProject = allProjects.randomElement()
         
-        if let project = project {
+        while project?.getUniqueProjectId() == nextProject?.getUniqueProjectId() {
+            nextProject = allProjects.randomElement()
+        }
+        
+        if let project = project, let nextProject = nextProject {
             let image = ImageHelper.downloadImage(from: project.coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: project, image: image)
+            let nextImage = ImageHelper.downloadImage(from: nextProject.coverURL)
+            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: project, nextProject: nextProject, image: image, nextImage: nextImage)
         } else {
             let image = ImageHelper.downloadImage(from: allProjects[0].coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: allProjects[0], image: image)
+            let nextImage = ImageHelper.downloadImage(from: allProjects[1].coverURL)
+            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: allProjects[0], nextProject: allProjects[1], image: image, nextImage: nextImage)
         }
         
     }
@@ -90,91 +105,37 @@ struct Provider: IntentTimelineProvider {
 struct UpcomingProjectEntry: TimelineEntry {
     let date: Date
     let configuration: WidgetTypeConfigurationIntent
-    let upcomingProject: Project
+    let upcomingProject: Project?
+    let nextProject: Project?
     let image: Image
+    let nextImage: Image?
 }
 
 struct SmallWidgetUpcoming : View {
     @Environment(\.widgetFamily) var family
-    var entry: Provider.Entry
+    var entry: SmallWidgetProvider.Entry
 
     var body: some View {
-        switch family{
-        case .systemMedium:
-            HStack(spacing: 20) {
-                entry.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100)
-                
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(entry.upcomingProject.title)
-                        .foregroundColor(Color("AccentColor"))
-                        .fontWeight(.bold)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Releasedate")
-                            .font(Font.body.italic())
-                        
-                        Text(getReleaseDateString())
-                            .fontWeight(.bold)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Director")
-                            .font(Font.body.italic())
-                        
-                        Text(getDirectorString())
-                            .fontWeight(.bold)
-                    }
-                }
-                
-                Spacer()
-            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
-        case .systemSmall:
-            ZStack {
-                entry.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                HStack {
+        if let project = entry.upcomingProject {
+            switch family{
+            case .systemMedium:
+                SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
+            case .systemSmall:
+                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image)
+            case .systemLarge:
+                if let nextProject = entry.nextProject, let nextImage = entry.nextImage {
                     VStack {
-                        Spacer()
-                        
-                        if let showTitle = UserDefaults(suiteName: UserDefaultValues.suiteName)!.bool(forKey: UserDefaultValues.smallWidgetShowText), showTitle {
-                            Text(entry.upcomingProject.title)
-                                .multilineTextAlignment(.center)
-                                .shadow(color: .black, radius: 5)
-                                .font(Font.headline.weight(.bold))
-                            
-                            Spacer()
-                            
-                            if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-                                Text("\(difference) dagen")
-                                    .padding(.bottom, 30)
-                            }
-                        }
-                    }.padding()
+                        SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
+                        SmallWidgetUpcomingMedium(upcomingProject: nextProject, image: nextImage)
+                    }
+                } else {
+                    Text("No project")
                 }
-            }.widgetURL(URL(string: "marvelwidgets://project/\(entry.upcomingProject.getUniqueProjectId())")!)
-        default:
-            Text("Not implemented")
-        }
-        
-    }
-    
-    func getReleaseDateString() -> String {
-        if let difference = entry.upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-            return "\(entry.upcomingProject.releaseDate!) (\(difference) days)"
+            default:
+                Text("Not implemented")
+            }
         } else {
-            return entry.upcomingProject.releaseDate ?? "No releasedate"
-        }
-    }
-    
-    func getDirectorString() -> String {
-        if let director = entry.upcomingProject.directedBy, !director.isEmpty {
-            return director
-        } else {
-            return "No director yet"
+            Text("No project")
         }
     }
 }
@@ -183,11 +144,11 @@ struct SmallWidget: Widget {
     let kind: String = "SmallWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: WidgetTypeConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: WidgetTypeConfigurationIntent.self, provider: SmallWidgetProvider()) { entry in
             SmallWidgetUpcoming(entry: entry)
         }
         .configurationDisplayName("Upcoming marvel")
-        .description("This widget shows the first upcoming marvel project with a countdown.")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .description("This widget shows a marvel project with a countdown if the project is not released yet. This widget has configuration settings to change it to your needs.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
