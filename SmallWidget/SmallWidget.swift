@@ -147,8 +147,8 @@ struct SmallWidget: Widget {
         IntentConfiguration(kind: kind, intent: WidgetTypeConfigurationIntent.self, provider: SmallWidgetProvider()) { entry in
             SmallWidgetUpcoming(entry: entry)
         }
-        .configurationDisplayName("Upcoming marvel")
-        .description("This widget shows a marvel project with a countdown if the project is not released yet. This widget has configuration settings to change it to your needs.")
+        .configurationDisplayName("Upcoming MCU")
+        .description("This widget shows a MCU project with a countdown if the project is not released yet. This widget has configuration settings to change it to your needs.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

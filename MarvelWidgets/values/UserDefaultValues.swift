@@ -8,7 +8,7 @@
 import Foundation
 
 struct UserDefaultValues {
-    static let suiteName = "group.marvelwidgets"
+    static let suiteName = "group.mcuwidgets"
     
     static let defaultWidgetType = "all"
     static let smallWidgetShowText = "smallWidgetShowText"
