@@ -78,8 +78,8 @@ struct SpecificWidget: Widget {
         IntentConfiguration(kind: kind, intent: WidgetTypeConfigurationIntent.self, provider: SpecificWidgetProvider()) { entry in
             SpecificWidgetView(entry: entry)
         }
-        .configurationDisplayName("Specific marvel")
-        .description("This widget shows the project that you selected in the settings of the MarvelWidgets app.")
+        .configurationDisplayName("Specific mcu")
+        .description("This widget shows the project that you selected in the settings of the MCUWidgets app.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

@@ -16,11 +16,11 @@ extension ProjectListView {
         var navigationTitle: String {
             switch pageType {
             case .all:
-                return "Marvel Projects"
+                return "MCU Projects"
             case .movies:
-                return "Marvel Movies"
+                return "MCU Movies"
             case .series:
-                return "Marvel Series"
+                return "MCU Series"
             case .saved:
                 return "Saved Projects"
             }

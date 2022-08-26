@@ -45,7 +45,7 @@ struct ContentView: View {
             Task {
                 await MainActor.run {
                     selectedIndex = 0
-                    if url.scheme == "marvelwidgets" {
+                    if url.scheme == "mcuwidgets" {
                         if url.host == "project" {
                             shouldStopReload = true
                             urlClickedProject[url.lastPathComponent] = true
