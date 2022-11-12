@@ -16,7 +16,7 @@ struct ProjectDetailView: View {
         ScrollView {
             VStack{
                 HStack(alignment: .top) {
-                    KFImage(URL(string: viewModel.project.coverURL)!)
+                    KFImage(URL(string: viewModel.project.attributes.posters?.first?.posterURL ?? "")!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 150, alignment: .center)
@@ -26,8 +26,11 @@ struct ProjectDetailView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading) {
                             Text("**Director**")
-                            if let director = viewModel.project.directedBy, !director.isEmpty {
-                                Text(viewModel.project.directedBy!)
+                            if let director = viewModel.project.attributes.directors?.data.map({ director in
+                                return "\(director.attributes.firstName) \(director.attributes.lastName)"
+                                
+                            }).joined(separator: ", "), !director.isEmpty {
+                                Text(director)
                             } else {
                                 Text("No director confirmed")
                             }
@@ -35,49 +38,22 @@ struct ProjectDetailView: View {
                         
                         VStack(alignment: .leading) {
                             Text("**Release date**")
-                            Text(viewModel.project.releaseDate ?? "No release date set")
-                        }
-                        
-                        if let project = viewModel.project as? Movie {
-                            VStack(alignment: .leading) {
-                                Text("**Duration**")
-                                Text("\(project.duration) minutes")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Post credit scenes**")
-                                Text("\(project.postCreditScenes)")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Box office**")
-                                Text("€\(project.boxOffice.toMoney()),- ")
-                            }
-                        } else if let project = viewModel.project as? Serie {
-                            VStack(alignment: .leading) {
-                                Text("**Episodes**")
-                                Text("\(project.numberEpisodes)")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Seasons**")
-                                Text("\(project.numberSeasons) seasons")
-                            }
+                            Text(viewModel.project.attributes.releaseDate ?? "No release date set")
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("**Phase \(viewModel.project.phase)**")
+                            Text("**Phase \(viewModel.project.attributes.phase.rawValue)**")
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("**\(viewModel.project.saga?.rawValue ?? "Unkown saga")**")
+                            Text("**\(viewModel.project.attributes.saga.rawValue)**")
                         }
                     }
                     
                     Spacer()
                 }
                 
-                if let overview = viewModel.project.overview {
+                if let overview = viewModel.project.attributes.overview {
                     Text("Overview")
                         .font(Font.largeTitle)
                         .padding()
@@ -86,31 +62,33 @@ struct ProjectDetailView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                if let url = viewModel.project.trailerURL {
-                    Text("Trailer")
-                        .font(Font.largeTitle)
-                        .padding()
-                    
-                    VideoView(videoURL: url)
-                        .frame(height: 200)
-                        .cornerRadius(12)
+                if let trailers = viewModel.project.attributes.trailers {
+                    ForEach(trailers, id: \.youtubeLink) { trailer in
+                        Text(trailer.trailerName)
+                            .font(Font.largeTitle)
+                            .padding()
+                        
+                        VideoView(videoURL: trailer.youtubeLink)
+                            .frame(height: 200)
+                            .cornerRadius(12)
+                    }
                 }
                 
-                if let relatedProjects = viewModel.movie?.relatedMovies {
+                if let relatedProjects = viewModel.project.attributes.relatedProjects {
                     Text("Related projects")
                         .font(Font.largeTitle)
                         .padding()
                     
                     VStack(spacing: 15){
-                        ForEach(relatedProjects, id: \.id) { movie in
+                        ForEach(relatedProjects.data, id: \.uuid) { project in
                             NavigationLink {
-                                ProjectDetailView(viewModel: ProjectDetailViewModel(project: movie), shouldStopReload: $shouldStopReload)
+                                ProjectDetailView(viewModel: ProjectDetailViewModel(project: project), shouldStopReload: $shouldStopReload)
                             } label: {
                                 VStack{
-                                    Text(movie.title)
+                                    Text(project.attributes.title)
                                         .font(Font.headline.bold())
                                     
-                                    Text(movie.releaseDate ?? "Unknown releasedate")
+                                    Text(project.attributes.releaseDate ?? "Unknown releasedate")
                                         .font(Font.body.italic())
                                         .foregroundColor(Color(uiColor: UIColor.label))
                                 }
@@ -120,14 +98,9 @@ struct ProjectDetailView: View {
                 }
                 
             }.padding(20)
-        }.navigationTitle(viewModel.project.title)
+        }.navigationTitle(viewModel.project.attributes.title)
             .onAppear{
                 shouldStopReload = false
-                if viewModel.project is Movie {
-                    Task {
-                        await viewModel.getMovieDetails()
-                    }
-                }
                 viewModel.setIsSavedIcon(for: viewModel.project)
             }
             .navigationBarItems(trailing: Button(action: {

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ProjectListView: View {
-    @Binding var activeProject: [String: Bool]
+    @Binding var activeProject: [Int: Bool]
     @State var type: WidgetType
     @StateObject var viewModel = ProjectListViewModel()
     @Binding var shouldStopReload: Bool
@@ -37,16 +37,16 @@ struct ProjectListView: View {
                         }
                     })
                     ForEach(viewModel.projects, id: \.id) { item in
-                        NavigationLink(isActive: binding(for: item.getUniqueProjectId())) {
+                        NavigationLink(isActive: binding(for: item.id)) {
                             ProjectDetailView(viewModel: ProjectDetailViewModel(project: item), shouldStopReload: $shouldStopReload)
                         } label: {
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text(item.title)
+                                    Text(item.attributes.title)
                                         .font(Font.headline.bold())
                                         .multilineTextAlignment(.leading)
                                     
-                                    Text(item.releaseDate ?? "Unknown releasedate")
+                                    Text(item.attributes.releaseDate ?? "Unknown releasedate")
                                         .font(Font.body.italic())
                                 }
                                 
@@ -75,7 +75,7 @@ struct ProjectListView: View {
         }
     }
     
-    private func binding(for key: String) -> Binding<Bool> {
+    private func binding(for key: Int) -> Binding<Bool> {
         return .init(
             get: { self.activeProject[key, default: false] },
             set: { self.activeProject[key] = $0 })

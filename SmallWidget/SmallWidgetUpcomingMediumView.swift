@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct SmallWidgetUpcomingMedium: View {
-    let upcomingProject: Project
+    let upcomingProject: ProjectWrapper
     let image: Image
     
     var body: some View {
@@ -20,7 +20,7 @@ struct SmallWidgetUpcomingMedium: View {
                 .frame(width: 100)
             
             VStack(alignment: .leading, spacing: 5) {
-                Text(upcomingProject.title)
+                Text(upcomingProject.attributes.title)
                     .foregroundColor(Color("AccentColor"))
                     .fontWeight(.bold)
                 
@@ -42,19 +42,21 @@ struct SmallWidgetUpcomingMedium: View {
             }
             
             Spacer()
-        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.getUniqueProjectId())")!)
+        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.id)")!)
     }
     
-    func getReleaseDateString(upcomingProject: Project) -> String {
-        if let difference = upcomingProject.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-            return "\(upcomingProject.releaseDate!) (\(difference) days)"
+    func getReleaseDateString(upcomingProject: ProjectWrapper) -> String {
+        if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
+            return "\(upcomingProject.attributes.releaseDate!) (\(difference) days)"
         } else {
-            return upcomingProject.releaseDate ?? "No releasedate"
+            return upcomingProject.attributes.releaseDate ?? "No releasedate"
         }
     }
 
-    func getDirectorString(upcomingProject: Project) -> String {
-        if let director = upcomingProject.directedBy, !director.isEmpty {
+    func getDirectorString(upcomingProject: ProjectWrapper) -> String {
+        if let director = upcomingProject.attributes.directors?.data.map({ director in
+            return "\(director.attributes.firstName) \(director.attributes.lastName)"
+        }).joined(separator: ", "), !director.isEmpty {
             return director
         } else {
             return "No director yet"

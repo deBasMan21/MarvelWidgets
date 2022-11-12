@@ -38,8 +38,8 @@ struct WidgetSettingsView: View {
                             
                             Menu(content: {
                                 ForEach(viewModel.projects, id: \.id){ item in
-                                    Button(item.title, action: {
-                                        viewModel.setSpecificProject(to: item.getUniqueProjectId(), with: item.title)
+                                    Button(item.attributes.title, action: {
+                                        viewModel.setSpecificProject(to: item.id, with: item.attributes.title)
                                     })
                                 }
                             }, label: {

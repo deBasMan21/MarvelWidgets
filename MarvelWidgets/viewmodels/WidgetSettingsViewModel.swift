@@ -17,30 +17,29 @@ extension WidgetSettingsView {
             }
         }
         
-        @Published var projects: [Project] = []
-        @Published var selectedProject: String? = nil
+        @Published var projects: [ProjectWrapper] = []
+        @Published var selectedProject: Int? = nil
         @Published var selectedProjectTitle: String? = nil
-        @Published var selectedProjectObject: Project? = nil
+        @Published var selectedProjectObject: ProjectWrapper? = nil
         
         let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
         
         init() {
             showText = userDefs.bool(forKey: UserDefaultValues.smallWidgetShowText)
-            selectedProject = userDefs.string(forKey: UserDefaultValues.specificSelectedProject)
+            selectedProject = userDefs.integer(forKey: UserDefaultValues.specificSelectedProject)
             selectedProjectTitle = userDefs.string(forKey: UserDefaultValues.specificSelectedProjectTitle)
             Task {
                 await MainActor.run {
                     Task {
-                        selectedProjectObject = await getProjectById(selectedProject ?? "")
+                        selectedProjectObject = await getProjectById(selectedProject ?? -1)
                         
-                        projects = await MovieService.getMoviesChronologically()
-                        projects.append(contentsOf: await SeriesService.getSeriesChronologically())
+                        projects = await NewDomainService.getAll()
                     }
                 }
             }   
         }
         
-        func setSpecificProject(to id: String, with title: String) {
+        func setSpecificProject(to id: Int, with title: String) {
             userDefs.set(id, forKey: UserDefaultValues.specificSelectedProject)
             userDefs.set(title, forKey: UserDefaultValues.specificSelectedProjectTitle)
             selectedProject = id
@@ -48,7 +47,7 @@ extension WidgetSettingsView {
             Task {
                 await MainActor.run {
                     Task {
-                        selectedProjectObject = await getProjectById(selectedProject ?? "")
+                        selectedProjectObject = await getProjectById(selectedProject ?? -1)
                     }
                 }
             }
@@ -60,17 +59,8 @@ extension WidgetSettingsView {
             WidgetCenter.shared.reloadAllTimelines()
         }
         
-        func getProjectById(_ id: String) async -> Project? {
-            var proj: Project? = nil
-            if id.starts(with: "s") {
-                let projId = Int(id.replacingOccurrences(of: "s", with: "")) ?? 0
-                proj = await SeriesService.getSerieById(projId)
-            } else if id.starts(with: "m") {
-                let projId = Int(id.replacingOccurrences(of: "m", with: "")) ?? 0
-                proj = await MovieService.getMovieById(projId)
-            }
-            
-            return proj
+        func getProjectById(_ id: Int) async -> ProjectWrapper? {
+            return await NewDomainService.getById(id)
         }
     }
 }

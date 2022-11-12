@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WidgetPreviewView: View {
-    @Binding var project: Project?
+    @Binding var project: ProjectWrapper?
     
     var body: some View {
         if let project = project {
@@ -19,14 +19,14 @@ struct WidgetPreviewView: View {
                 VStack(spacing: 20) {
                     VStack {
                         let widgetBounds = WidgetHelper.widgetSize(forFamily: .systemSmall)
-                        SmallWidgetUpcomingSmall(upcomingProject: project, image: ImageHelper.downloadImage(from: project.coverURL))
+                        SmallWidgetUpcomingSmall(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""))
                             .frame(width: widgetBounds.width, height: widgetBounds.height)
                                 .cornerRadius(20)
                     }
                     
                     VStack {
                         let widgetBounds = WidgetHelper.widgetSize(forFamily: .systemMedium)
-                        SmallWidgetUpcomingMedium(upcomingProject: project, image: ImageHelper.downloadImage(from: project.coverURL))
+                        SmallWidgetUpcomingMedium(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""))
                             .frame(width: widgetBounds.width, height: widgetBounds.height)
                                 .background(Color(uiColor: UIColor.systemBackground))
                                 .cornerRadius(20)

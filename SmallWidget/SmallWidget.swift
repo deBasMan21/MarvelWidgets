@@ -10,34 +10,69 @@ import SwiftUI
 import Intents
 
 struct SmallWidgetProvider: IntentTimelineProvider {
+    let emptyProject = ProjectWrapper(
+        id: -1,
+        attributes: MCUProject(
+            title: "",
+            releaseDate: nil,
+            postCreditScenes: nil,
+            duration: nil,
+            phase: .unkown,
+            saga: .infinitySaga,
+            overview: nil,
+            type: .special,
+            boxOffice: nil,
+            createdAt: nil,
+            updatedAt: nil,
+            directors: nil,
+            actors: nil,
+            relatedProjects: nil,
+            trailers: nil,
+            posters: nil,
+            seasons: nil
+        )
+    )
+    
     func placeholder(in context: Context) -> UpcomingProjectEntry {
-        let project = Movie(projectId: 0, title: "Avengers: Secret Wars", boxOffice: "", releaseDate: "2025-11-07", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil)
-        
-        return UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: project, nextProject: project, image: Image("secret wars"), nextImage: Image("secret wars"))
+        return UpcomingProjectEntry(
+            date: Date(),
+            configuration: WidgetTypeConfigurationIntent(),
+            upcomingProject: emptyProject,
+            nextProject: emptyProject,
+            image: Image("secret wars"),
+            nextImage: Image("secret wars")
+        )
     }
 
     func getSnapshot(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
-        let project = Movie(projectId: 0, title: "Avengers: Secret Wars", boxOffice: "", releaseDate: "2025-11-07", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil)
+        let entry = UpcomingProjectEntry(
+            date: Date(),
+            configuration: WidgetTypeConfigurationIntent(),
+            upcomingProject: emptyProject,
+            nextProject: emptyProject,
+            image: Image("secret wars"),
+            nextImage: Image("secret wars")
+        )
         
-        let entry = UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: project, nextProject: project, image: Image("secret wars"), nextImage: Image("secret wars"))
         completion(entry)
     }
 
     func getTimeline(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
             var entries: [UpcomingProjectEntry] = []
-            var upcomingProjects : [Project] = []
+            var upcomingProjects : [ProjectWrapper] = []
             
             let widgetType: WidgetType = WidgetType.getFromIndex(configuration.WidgetType.rawValue)
             
             switch widgetType {
             case .movies:
-                upcomingProjects.append(contentsOf: await MovieService.getMoviesChronologically())
+                upcomingProjects.append(contentsOf: await NewDomainService.getByType(.movies))
             case .series:
-                upcomingProjects.append(contentsOf: await SeriesService.getSeriesChronologically())
+                upcomingProjects.append(contentsOf: await NewDomainService.getByType(.series))
+            case .special:
+                upcomingProjects.append(contentsOf: await NewDomainService.getByType(.special))
             case .all:
-                upcomingProjects.append(contentsOf: await MovieService.getMoviesChronologically())
-                upcomingProjects.append(contentsOf: await SeriesService.getSeriesChronologically())
+                upcomingProjects.append(contentsOf: await NewDomainService.getAll())
             case .saved:
                 upcomingProjects.append(contentsOf: SaveService.getProjectsFromUserDefaults())
             }
@@ -54,49 +89,109 @@ struct SmallWidgetProvider: IntentTimelineProvider {
         }
     }
     
-    func upcomingProject(from allProjects: [Project], with configuration: WidgetTypeConfigurationIntent) -> UpcomingProjectEntry {
+    func upcomingProject(from allProjects: [ProjectWrapper], with configuration: WidgetTypeConfigurationIntent) -> UpcomingProjectEntry {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
-        var smallestDateProject : Project? = nil
-        var nextSmallestDateProject: Project? = nil
-        for item in allProjects {
-            let date = formatter.date(from: item.releaseDate ?? "2000-01-01")
-            let temp = formatter.date(from: smallestDateProject?.releaseDate ?? "3000-01-01")
-            
-            if let date = date, let temp = temp, date > Date.now && date < temp {
-                nextSmallestDateProject = smallestDateProject
-                smallestDateProject = item
-            }
+        var smallestDateProject : ProjectWrapper? = nil
+        var nextSmallestDateProject: ProjectWrapper? = nil
+        
+        let proj = allProjects
+            .map({ proj in
+                let date = formatter.date(
+                    from: proj.attributes.releaseDate ?? "2000-01-01"
+                ) ?? Date.now.addingTimeInterval(-60 * 60 * 24 * 1000)
+                
+                return (proj, date)
+            }).filter({ tuple in
+                tuple.1 > Date.now
+            }).sorted(by: { $0.1 < $1.1 })
+            .prefix(2)
+        
+        for (index, projItem) in proj.enumerated() {
+            if index == 0 { smallestDateProject = projItem.0 }
+            else if index == 1 { nextSmallestDateProject = projItem.0 }
         }
         
         if let smallestDateProject = smallestDateProject, let nextSmallestDateProject = nextSmallestDateProject {
-            let image = ImageHelper.downloadImage(from: smallestDateProject.coverURL)
-            let nextImage = ImageHelper.downloadImage(from: nextSmallestDateProject.coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: smallestDateProject, nextProject: nextSmallestDateProject, image: image, nextImage: nextImage)
+            let image = ImageHelper.downloadImage(
+                from: smallestDateProject.attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            let nextImage = ImageHelper.downloadImage(
+                from: nextSmallestDateProject.attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            return UpcomingProjectEntry(
+                date: Date.now,
+                configuration: configuration,
+                upcomingProject: smallestDateProject,
+                nextProject: nextSmallestDateProject,
+                image: image,
+                nextImage: nextImage
+            )
         } else {
-            let image = ImageHelper.downloadImage(from: allProjects[0].coverURL)
-            let nextImage = ImageHelper.downloadImage(from: allProjects[1].coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: allProjects[0], nextProject: allProjects[1], image: image, nextImage: nextImage)
+            let image = ImageHelper.downloadImage(
+                from: allProjects[0].attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            let nextImage = ImageHelper.downloadImage(
+                from: allProjects[1].attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            return UpcomingProjectEntry(
+                date: Date.now,
+                configuration: configuration,
+                upcomingProject: allProjects[0],
+                nextProject: allProjects[1],
+                image: image,
+                nextImage: nextImage
+            )
         }
     }
     
-    func randomProject(from allProjects: [Project], with configuration: WidgetTypeConfigurationIntent) -> UpcomingProjectEntry{
+    func randomProject(from allProjects: [ProjectWrapper], with configuration: WidgetTypeConfigurationIntent) -> UpcomingProjectEntry{
         let project = allProjects.randomElement()
         var nextProject = allProjects.randomElement()
         
-        while project?.getUniqueProjectId() == nextProject?.getUniqueProjectId() {
+        while project?.id == nextProject?.id {
             nextProject = allProjects.randomElement()
         }
         
         if let project = project, let nextProject = nextProject {
-            let image = ImageHelper.downloadImage(from: project.coverURL)
-            let nextImage = ImageHelper.downloadImage(from: nextProject.coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: project, nextProject: nextProject, image: image, nextImage: nextImage)
+            let image = ImageHelper.downloadImage(
+                from: project.attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            let nextImage = ImageHelper.downloadImage(
+                from: nextProject.attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            return UpcomingProjectEntry(
+                date: Date.now,
+                configuration: configuration,
+                upcomingProject: project,
+                nextProject: nextProject,
+                image: image,
+                nextImage: nextImage
+            )
         } else {
-            let image = ImageHelper.downloadImage(from: allProjects[0].coverURL)
-            let nextImage = ImageHelper.downloadImage(from: allProjects[1].coverURL)
-            return UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: allProjects[0], nextProject: allProjects[1], image: image, nextImage: nextImage)
+            let image = ImageHelper.downloadImage(
+                from: allProjects[0].attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            let nextImage = ImageHelper.downloadImage(
+                from: allProjects[1].attributes.posters?.randomElement()?.posterURL ?? ""
+            )
+            
+            return UpcomingProjectEntry(
+                date: Date.now,
+                configuration: configuration,
+                upcomingProject: allProjects[0],
+                nextProject: allProjects[1],
+                image: image,
+                nextImage: nextImage
+            )
         }
         
     }
@@ -105,8 +200,8 @@ struct SmallWidgetProvider: IntentTimelineProvider {
 struct UpcomingProjectEntry: TimelineEntry {
     let date: Date
     let configuration: WidgetTypeConfigurationIntent
-    let upcomingProject: Project?
-    let nextProject: Project?
+    let upcomingProject: ProjectWrapper?
+    let nextProject: ProjectWrapper?
     let image: Image
     let nextImage: Image?
 }

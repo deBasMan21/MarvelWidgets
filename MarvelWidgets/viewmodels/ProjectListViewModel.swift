@@ -9,7 +9,7 @@ import Foundation
 
 extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
-        @Published var projects: [Project] = []
+        @Published var projects: [ProjectWrapper] = []
         @Published var orderType: OrderType = .releaseDateASC
         @Published var pageType: WidgetType = .all
         
@@ -21,6 +21,8 @@ extension ProjectListView {
                 return "MCU Movies"
             case .series:
                 return "MCU Series"
+            case .special:
+                return "MCU Specials"
             case .saved:
                 return "Saved Projects"
             }
@@ -29,35 +31,35 @@ extension ProjectListView {
         func fetchProjects() async {
             _ = await MainActor.run {
                 Task {
-                    var projects: [Project]
+                    var projects: [ProjectWrapper]
                     switch pageType {
                     case .all:
-                        projects = await MovieService.getMoviesChronologically()
-                        projects.append(contentsOf: await SeriesService.getSeriesChronologically())
-                    case .movies:
-                        projects = await MovieService.getMoviesChronologically()
-                    case .series:
-                        projects = await SeriesService.getSeriesChronologically()
+                        projects = await NewDomainService.getAll()
+                    case .movies, .series, .special:
+                        projects = await NewDomainService.getByType(pageType)
                     case .saved:
                         projects = SaveService.getProjectsFromUserDefaults()
                     }
+                    
+                    
+                    
                     self.projects = orderProjects(projects, by: orderType)
                 }
             }
         }
         
-        func orderProjects(_ projects: [Project], by orderType: OrderType) -> [Project] {
-            var orderedProjects: [Project]
+        func orderProjects(_ projects: [ProjectWrapper], by orderType: OrderType) -> [ProjectWrapper] {
+            var orderedProjects: [ProjectWrapper]
             self.orderType = orderType
             switch orderType {
             case .nameASC:
-                orderedProjects = projects.sorted(by: { $0.title < $1.title})
+                orderedProjects = projects.sorted(by: { $0.attributes.title < $1.attributes.title})
             case .nameDESC:
-                orderedProjects = projects.sorted(by: { $0.title > $1.title})
+                orderedProjects = projects.sorted(by: { $0.attributes.title > $1.attributes.title})
             case .releaseDateASC:
-                orderedProjects = projects.sorted(by: { $0.releaseDate ?? "3000-12-12" > $1.releaseDate ?? "3000-12-12" })
+                orderedProjects = projects.sorted(by: { $0.attributes.releaseDate ?? "3000-12-12" > $1.attributes.releaseDate ?? "3000-12-12" })
             case .releaseDateDESC:
-                orderedProjects = projects.sorted(by: { $0.releaseDate ?? "3000-12-12" < $1.releaseDate ?? "3000-12-12" })
+                orderedProjects = projects.sorted(by: { $0.attributes.releaseDate ?? "3000-12-12" < $1.attributes.releaseDate ?? "3000-12-12" })
             }
             return orderedProjects
         }

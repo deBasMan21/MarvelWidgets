@@ -1,5 +1,9 @@
-struct ResponseWrapper: Codable {
+struct ListResponseWrapper: Codable {
     let data: [ProjectWrapper]
+}
+
+struct SingleResponseWrapper: Codable {
+    let data: ProjectWrapper
 }
 
 // Welcome.swift
@@ -13,8 +17,14 @@ import Foundation
  
 // MARK: - Welcome
 struct ProjectWrapper: Codable {
+    let uuid = UUID()
     let id: Int
     let attributes: MCUProject
+    
+    func toData() -> Data? {
+        let encoder = JSONEncoder()
+        return try? encoder.encode(self)
+    }
 }
  
 // WelcomeAttributes.swift
@@ -33,14 +43,15 @@ struct MCUProject: Codable {
     let postCreditScenes, duration: Int?
     let phase: Phase
     let saga: Saga
-    let overview, type: String?
+    let overview: String?
+    let type: ProjectType
     let boxOffice, createdAt, updatedAt: String?
-    let directors: Directors
-    let actors: Actors
-    let relatedProjects: RelatedProjects
-    let trailers: [Trailer]
-    let posters: [Poster]
-    let seasons: [Season]
+    let directors: Directors?
+    let actors: Actors?
+    let relatedProjects: RelatedProjects?
+    let trailers: [Trailer]?
+    let posters: [Poster]?
+    let seasons: [Season]?
  
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -72,6 +83,12 @@ enum Phase: String, Codable {
 enum Saga: String, Codable {
     case infinitySaga = "Infinity Saga"
     case multiverseSaga = "Multiverse Saga"
+}
+
+enum ProjectType: String, Codable {
+    case movie = "Movie"
+    case serie = "Serie"
+    case special = "Special"
 }
  
 // Actors.swift
@@ -212,7 +229,27 @@ import Foundation
  
 // MARK: - RelatedProjects
 struct RelatedProjects: Codable {
-    let data: [MCUProject]
+    let data: [ProjectWrapper]
+}
+
+struct RelatedProjectWrapper: Codable {
+    let uuid = UUID()
+    let id: Int
+    let attributes: MCUProject
+    
+    enum CodingKeys: String, CodingKey {
+        case id, attributes
+    }
+}
+
+struct RelatedProject: Codable {
+    let title: String
+    let releaseDate: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "Title"
+        case releaseDate = "ReleaseDate"
+    }
 }
  
 // Trailer.swift
@@ -252,9 +289,9 @@ struct Season: Codable {
     let id: Int
     let seasonNumber: Int
     let numberOfEpisodes: Int?
-    let episodes: [Episode]
-    let seasonTrailers: [Trailer]
-    let posters: [Poster]
+    let episodes: [Episode]?
+    let seasonTrailers: [Trailer]?
+    let posters: [Poster]?
  
     enum CodingKeys: String, CodingKey {
         case id

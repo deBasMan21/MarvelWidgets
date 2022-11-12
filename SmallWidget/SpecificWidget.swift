@@ -10,16 +10,14 @@ import SwiftUI
 import Intents
 
 struct SpecificWidgetProvider: IntentTimelineProvider {
+    let emptyProject = ProjectWrapper(id: -1, attributes: MCUProject(title: "", releaseDate: nil, postCreditScenes: nil, duration: nil, phase: .unkown, saga: .infinitySaga, overview: nil, type: .special, boxOffice: nil, createdAt: nil, updatedAt: nil, directors: nil, actors: nil, relatedProjects: nil, trailers: nil, posters: nil, seasons: nil))
+    
     func placeholder(in context: Context) -> UpcomingProjectEntry {
-        let project = Movie(projectId: 0, title: "Avengers: Secret Wars", boxOffice: "", releaseDate: "2025-11-07", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil)
-        
-        return UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: project, nextProject: project, image: Image("secret wars"), nextImage: Image("secret wars"))
+        return UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: emptyProject, nextProject: emptyProject, image: Image("secret wars"), nextImage: Image("secret wars"))
     }
     
     func getSnapshot(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> Void) {
-        let project = Movie(projectId: 0, title: "Avengers: Secret Wars", boxOffice: "", releaseDate: "2025-11-07", duration: 0, overview: nil, coverURL: "", trailerURL: "", directedBy: "", phase: 0, saga: .infinitySaga, chronology: 0, postCreditScenes: 0, imdbID: "", relatedMovies: nil)
-        
-        let entry = UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: project, nextProject: project, image: Image("secret wars"), nextImage: Image("secret wars"))
+        let entry = UpcomingProjectEntry(date: Date(), configuration: WidgetTypeConfigurationIntent(), upcomingProject: emptyProject, nextProject: emptyProject, image: Image("secret wars"), nextImage: Image("secret wars"))
         completion(entry)
     }
     
@@ -27,18 +25,14 @@ struct SpecificWidgetProvider: IntentTimelineProvider {
         Task {
             let specificId = UserDefaults(suiteName: UserDefaultValues.suiteName)!.string(forKey: UserDefaultValues.specificSelectedProject) ?? ""
             
-            var proj: Project? = nil
-            if specificId.starts(with: "s") {
-                let projId = Int(specificId.replacingOccurrences(of: "s", with: "")) ?? 0
-                proj = await SeriesService.getSerieById(projId)
-            } else if specificId.starts(with: "m") {
-                let projId = Int(specificId.replacingOccurrences(of: "m", with: "")) ?? 0
-                proj = await MovieService.getMovieById(projId)
+            var proj: ProjectWrapper? = nil
+            if !specificId.isEmpty, let idAsInt = Int(specificId) {
+                proj = await NewDomainService.getById(idAsInt)
             }
             
             var image: Image = Image("AppIcon")
             if let proj = proj {
-                image = ImageHelper.downloadImage(from: proj.coverURL)
+                image = ImageHelper.downloadImage(from: proj.attributes.posters?.randomElement()?.posterURL ?? "")
             }
             
             let projEntry = UpcomingProjectEntry(date: Date.now, configuration: configuration, upcomingProject: proj, nextProject: nil, image: image, nextImage: nil)

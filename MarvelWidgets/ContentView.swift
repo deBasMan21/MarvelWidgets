@@ -9,9 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct ContentView: View {
-    @State var movies: [Movie] = []
-    @State var series: [Serie] = []
-    @State var urlClickedProject: [String: Bool] = [:]
+    @State var urlClickedProject: [Int: Bool] = [:]
     @State var selectedIndex: Int = 0
     @State var shouldStopReload = false
     
@@ -48,7 +46,7 @@ struct ContentView: View {
                     if url.scheme == "mcuwidgets" {
                         if url.host == "project" {
                             shouldStopReload = true
-                            urlClickedProject[url.lastPathComponent] = true
+                            urlClickedProject[Int(url.lastPathComponent) ?? -1] = true
                         }
                     }
                 }
