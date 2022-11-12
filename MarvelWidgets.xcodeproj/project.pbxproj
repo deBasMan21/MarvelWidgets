@@ -56,7 +56,7 @@
 		EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
 		EFCA5DAF28A445B40004AAC7 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCA5DAE28A445B40004AAC7 /* Intents.framework */; };
 		EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */; };
-		EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */; };
 		EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381028A3D7A700B4CC0D /* ContentView.swift */; };
 		EFCE381328A3D7AE00B4CC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCE381228A3D7AE00B4CC0D /* Assets.xcassets */; };
@@ -67,7 +67,7 @@
 		EFCE382F28A3E22E00B4CC0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCE382E28A3E22E00B4CC0D /* SwiftUI.framework */; };
 		EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */; };
 		EFCE383528A3E22F00B4CC0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCE383428A3E22F00B4CC0D /* Assets.xcassets */; };
-		EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381D28A3DD4200B4CC0D /* APIService.swift */; };
 		EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382428A3E0A700B4CC0D /* LogService.swift */; };
 		EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
@@ -110,16 +110,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EFCE383F28A3E22F00B4CC0D /* Embed App Extensions */ = {
+		EFCE383F28A3E22F00B4CC0D /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed App Extensions */,
-				EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed App Extensions */,
+				EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed Foundation Extensions */,
+				EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -250,7 +250,6 @@
 		EFCE380228A3D7A700B4CC0D = {
 			isa = PBXGroup;
 			children = (
-				EFCA5D9C28A41C9A0004AAC7 /* SmallWidgetExtension.entitlements */,
 				EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE383028A3E22E00B4CC0D /* SmallWidget */,
 				EFCA5DB028A445B40004AAC7 /* WidgetTypeConfiguration */,
@@ -351,6 +350,7 @@
 		EFCE383028A3E22E00B4CC0D /* SmallWidget */ = {
 			isa = PBXGroup;
 			children = (
+				EFCA5D9C28A41C9A0004AAC7 /* SmallWidgetExtension.entitlements */,
 				EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */,
 				EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */,
 				EFCE383428A3E22F00B4CC0D /* Assets.xcassets */,
@@ -409,7 +409,7 @@
 				EFCE380728A3D7A700B4CC0D /* Sources */,
 				EFCE380828A3D7A700B4CC0D /* Frameworks */,
 				EFCE380928A3D7A700B4CC0D /* Resources */,
-				EFCE383F28A3E22F00B4CC0D /* Embed App Extensions */,
+				EFCE383F28A3E22F00B4CC0D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -450,7 +450,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					EFCA5DAC28A445B40004AAC7 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -866,7 +866,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = SmallWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 963LK66N4P;
@@ -894,7 +894,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = SmallWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 963LK66N4P;
