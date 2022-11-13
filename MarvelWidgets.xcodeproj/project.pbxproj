@@ -23,9 +23,6 @@
 		EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
-		EF38FD6E291FF55600EA4BD9 /* NewDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD6D291FF55600EA4BD9 /* NewDomain.swift */; };
-		EF38FD6F291FF55600EA4BD9 /* NewDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD6D291FF55600EA4BD9 /* NewDomain.swift */; };
-		EF38FD70291FF55600EA4BD9 /* NewDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD6D291FF55600EA4BD9 /* NewDomain.swift */; };
 		EF38FD72291FF56400EA4BD9 /* NewDomainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* NewDomainService.swift */; };
 		EF38FD73291FF56400EA4BD9 /* NewDomainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* NewDomainService.swift */; };
 		EF38FD74291FF56400EA4BD9 /* NewDomainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* NewDomainService.swift */; };
@@ -93,6 +90,66 @@
 		EFF0E2682920EE0B00854E5F /* PosterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2672920EE0B00854E5F /* PosterListView.swift */; };
 		EFF0E26A2920EE3500854E5F /* ActorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2692920EE3500854E5F /* ActorListView.swift */; };
 		EFF0E26C2920EE5400854E5F /* DirectorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E26B2920EE5400854E5F /* DirectorListView.swift */; };
+		EFF0E271292107B500854E5F /* ListResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E270292107B500854E5F /* ListResponseWrapper.swift */; };
+		EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */; };
+		EFF0E275292107CE00854E5F /* ProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E274292107CE00854E5F /* ProjectWrapper.swift */; };
+		EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E276292107DE00854E5F /* MCUProject.swift */; };
+		EFF0E279292107EB00854E5F /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E278292107EB00854E5F /* Phase.swift */; };
+		EFF0E27B292107F500854E5F /* Saga.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27A292107F500854E5F /* Saga.swift */; };
+		EFF0E27D2921080600854E5F /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27C2921080600854E5F /* ProjectType.swift */; };
+		EFF0E27F2921081200854E5F /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27E2921081200854E5F /* Actors.swift */; };
+		EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2802921081F00854E5F /* ActorsWrapper.swift */; };
+		EFF0E2832921082A00854E5F /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2822921082A00854E5F /* Actor.swift */; };
+		EFF0E2852921083600854E5F /* Directors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2842921083600854E5F /* Directors.swift */; };
+		EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2862921084400854E5F /* DirectorsWrapper.swift */; };
+		EFF0E2892921084F00854E5F /* Director.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2882921084F00854E5F /* Director.swift */; };
+		EFF0E28B2921085900854E5F /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28A2921085900854E5F /* Poster.swift */; };
+		EFF0E28D2921086600854E5F /* RelatedProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28C2921086600854E5F /* RelatedProjects.swift */; };
+		EFF0E28F2921087300854E5F /* RelatedProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28E2921087300854E5F /* RelatedProjectWrapper.swift */; };
+		EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2902921087F00854E5F /* RelatedProject.swift */; };
+		EFF0E2932921088900854E5F /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2922921088900854E5F /* Trailer.swift */; };
+		EFF0E2952921089400854E5F /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2942921089400854E5F /* Season.swift */; };
+		EFF0E2972921089F00854E5F /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2962921089F00854E5F /* Episode.swift */; };
+		EFF0E2982921097100854E5F /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2822921082A00854E5F /* Actor.swift */; };
+		EFF0E2992921097100854E5F /* DirectorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2862921084400854E5F /* DirectorsWrapper.swift */; };
+		EFF0E29A2921097100854E5F /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E278292107EB00854E5F /* Phase.swift */; };
+		EFF0E29B2921097100854E5F /* Saga.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27A292107F500854E5F /* Saga.swift */; };
+		EFF0E29C2921097100854E5F /* SingleResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */; };
+		EFF0E29D2921097100854E5F /* MCUProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E276292107DE00854E5F /* MCUProject.swift */; };
+		EFF0E29E2921097100854E5F /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27E2921081200854E5F /* Actors.swift */; };
+		EFF0E29F2921097100854E5F /* ActorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2802921081F00854E5F /* ActorsWrapper.swift */; };
+		EFF0E2A02921097100854E5F /* RelatedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2902921087F00854E5F /* RelatedProject.swift */; };
+		EFF0E2A12921097100854E5F /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2922921088900854E5F /* Trailer.swift */; };
+		EFF0E2A22921097100854E5F /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2942921089400854E5F /* Season.swift */; };
+		EFF0E2A32921097100854E5F /* RelatedProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28E2921087300854E5F /* RelatedProjectWrapper.swift */; };
+		EFF0E2A42921097100854E5F /* Director.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2882921084F00854E5F /* Director.swift */; };
+		EFF0E2A52921097100854E5F /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2962921089F00854E5F /* Episode.swift */; };
+		EFF0E2A62921097100854E5F /* ProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E274292107CE00854E5F /* ProjectWrapper.swift */; };
+		EFF0E2A72921097100854E5F /* Directors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2842921083600854E5F /* Directors.swift */; };
+		EFF0E2A82921097100854E5F /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28A2921085900854E5F /* Poster.swift */; };
+		EFF0E2A92921097100854E5F /* RelatedProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28C2921086600854E5F /* RelatedProjects.swift */; };
+		EFF0E2AA2921097100854E5F /* ListResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E270292107B500854E5F /* ListResponseWrapper.swift */; };
+		EFF0E2AB2921097100854E5F /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27C2921080600854E5F /* ProjectType.swift */; };
+		EFF0E2AC2921097200854E5F /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2822921082A00854E5F /* Actor.swift */; };
+		EFF0E2AD2921097200854E5F /* DirectorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2862921084400854E5F /* DirectorsWrapper.swift */; };
+		EFF0E2AE2921097200854E5F /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E278292107EB00854E5F /* Phase.swift */; };
+		EFF0E2AF2921097200854E5F /* Saga.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27A292107F500854E5F /* Saga.swift */; };
+		EFF0E2B02921097200854E5F /* SingleResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */; };
+		EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E276292107DE00854E5F /* MCUProject.swift */; };
+		EFF0E2B22921097200854E5F /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27E2921081200854E5F /* Actors.swift */; };
+		EFF0E2B32921097200854E5F /* ActorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2802921081F00854E5F /* ActorsWrapper.swift */; };
+		EFF0E2B42921097200854E5F /* RelatedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2902921087F00854E5F /* RelatedProject.swift */; };
+		EFF0E2B52921097200854E5F /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2922921088900854E5F /* Trailer.swift */; };
+		EFF0E2B62921097200854E5F /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2942921089400854E5F /* Season.swift */; };
+		EFF0E2B72921097200854E5F /* RelatedProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28E2921087300854E5F /* RelatedProjectWrapper.swift */; };
+		EFF0E2B82921097200854E5F /* Director.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2882921084F00854E5F /* Director.swift */; };
+		EFF0E2B92921097200854E5F /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2962921089F00854E5F /* Episode.swift */; };
+		EFF0E2BA2921097200854E5F /* ProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E274292107CE00854E5F /* ProjectWrapper.swift */; };
+		EFF0E2BB2921097200854E5F /* Directors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2842921083600854E5F /* Directors.swift */; };
+		EFF0E2BC2921097200854E5F /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28A2921085900854E5F /* Poster.swift */; };
+		EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28C2921086600854E5F /* RelatedProjects.swift */; };
+		EFF0E2BE2921097200854E5F /* ListResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E270292107B500854E5F /* ListResponseWrapper.swift */; };
+		EFF0E2BF2921097200854E5F /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27C2921080600854E5F /* ProjectType.swift */; };
 		EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */; };
 		EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153528A54BE000DCF804 /* ProjectListView.swift */; };
 		EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */; };
@@ -136,7 +193,6 @@
 		EF178C4628AEAA5A003B9B76 /* SpecificWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificWidget.swift; sourceTree = "<group>"; };
 		EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHelper.swift; sourceTree = "<group>"; };
 		EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
-		EF38FD6D291FF55600EA4BD9 /* NewDomain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDomain.swift; sourceTree = "<group>"; };
 		EF38FD71291FF56400EA4BD9 /* NewDomainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDomainService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
@@ -181,6 +237,26 @@
 		EFF0E2672920EE0B00854E5F /* PosterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListView.swift; sourceTree = "<group>"; };
 		EFF0E2692920EE3500854E5F /* ActorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListView.swift; sourceTree = "<group>"; };
 		EFF0E26B2920EE5400854E5F /* DirectorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorListView.swift; sourceTree = "<group>"; };
+		EFF0E270292107B500854E5F /* ListResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponseWrapper.swift; sourceTree = "<group>"; };
+		EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleResponseWrapper.swift; sourceTree = "<group>"; };
+		EFF0E274292107CE00854E5F /* ProjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapper.swift; sourceTree = "<group>"; };
+		EFF0E276292107DE00854E5F /* MCUProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCUProject.swift; sourceTree = "<group>"; };
+		EFF0E278292107EB00854E5F /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
+		EFF0E27A292107F500854E5F /* Saga.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saga.swift; sourceTree = "<group>"; };
+		EFF0E27C2921080600854E5F /* ProjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectType.swift; sourceTree = "<group>"; };
+		EFF0E27E2921081200854E5F /* Actors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actors.swift; sourceTree = "<group>"; };
+		EFF0E2802921081F00854E5F /* ActorsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsWrapper.swift; sourceTree = "<group>"; };
+		EFF0E2822921082A00854E5F /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		EFF0E2842921083600854E5F /* Directors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directors.swift; sourceTree = "<group>"; };
+		EFF0E2862921084400854E5F /* DirectorsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorsWrapper.swift; sourceTree = "<group>"; };
+		EFF0E2882921084F00854E5F /* Director.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Director.swift; sourceTree = "<group>"; };
+		EFF0E28A2921085900854E5F /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
+		EFF0E28C2921086600854E5F /* RelatedProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedProjects.swift; sourceTree = "<group>"; };
+		EFF0E28E2921087300854E5F /* RelatedProjectWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedProjectWrapper.swift; sourceTree = "<group>"; };
+		EFF0E2902921087F00854E5F /* RelatedProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedProject.swift; sourceTree = "<group>"; };
+		EFF0E2922921088900854E5F /* Trailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailer.swift; sourceTree = "<group>"; };
+		EFF0E2942921089400854E5F /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		EFF0E2962921089F00854E5F /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		EFFE153528A54BE000DCF804 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
@@ -323,8 +399,27 @@
 		EFCE381F28A3DDF800B4CC0D /* domain */ = {
 			isa = PBXGroup;
 			children = (
-				EF38FD6D291FF55600EA4BD9 /* NewDomain.swift */,
 				EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */,
+				EFF0E270292107B500854E5F /* ListResponseWrapper.swift */,
+				EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */,
+				EFF0E274292107CE00854E5F /* ProjectWrapper.swift */,
+				EFF0E276292107DE00854E5F /* MCUProject.swift */,
+				EFF0E278292107EB00854E5F /* Phase.swift */,
+				EFF0E27A292107F500854E5F /* Saga.swift */,
+				EFF0E27C2921080600854E5F /* ProjectType.swift */,
+				EFF0E27E2921081200854E5F /* Actors.swift */,
+				EFF0E2802921081F00854E5F /* ActorsWrapper.swift */,
+				EFF0E2822921082A00854E5F /* Actor.swift */,
+				EFF0E2842921083600854E5F /* Directors.swift */,
+				EFF0E2862921084400854E5F /* DirectorsWrapper.swift */,
+				EFF0E2882921084F00854E5F /* Director.swift */,
+				EFF0E28A2921085900854E5F /* Poster.swift */,
+				EFF0E28C2921086600854E5F /* RelatedProjects.swift */,
+				EFF0E28E2921087300854E5F /* RelatedProjectWrapper.swift */,
+				EFF0E2902921087F00854E5F /* RelatedProject.swift */,
+				EFF0E2922921088900854E5F /* Trailer.swift */,
+				EFF0E2942921089400854E5F /* Season.swift */,
+				EFF0E2962921089F00854E5F /* Episode.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -566,26 +661,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF178C4E28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
+				EFF0E2B52921097200854E5F /* Trailer.swift in Sources */,
+				EFF0E2AF2921097200854E5F /* Saga.swift in Sources */,
 				EF578F3A28A45721006272AA /* LogService.swift in Sources */,
 				EFD8D76A28A7F84C00CA8DAC /* APIService.swift in Sources */,
+				EFF0E2AC2921097200854E5F /* Actor.swift in Sources */,
 				EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */,
 				EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */,
 				EF178C4128AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
 				EF38FD74291FF56400EA4BD9 /* NewDomainService.swift in Sources */,
+				EFF0E2B82921097200854E5F /* Director.swift in Sources */,
 				EF178C4928AEAA5A003B9B76 /* SpecificWidget.swift in Sources */,
+				EFF0E2AE2921097200854E5F /* Phase.swift in Sources */,
+				EFF0E2B92921097200854E5F /* Episode.swift in Sources */,
 				EFD8D76128A7ACFD00CA8DAC /* SaveService.swift in Sources */,
 				EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */,
+				EFF0E2AD2921097200854E5F /* DirectorsWrapper.swift in Sources */,
+				EFF0E2B72921097200854E5F /* RelatedProjectWrapper.swift in Sources */,
+				EFF0E2BA2921097200854E5F /* ProjectWrapper.swift in Sources */,
 				EFD8D76B28A7F85C00CA8DAC /* ImageHelper.swift in Sources */,
+				EFF0E2BE2921097200854E5F /* ListResponseWrapper.swift in Sources */,
+				EFF0E2BF2921097200854E5F /* ProjectType.swift in Sources */,
 				EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFD8D76528A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
 				EF578F3928A45633006272AA /* CachingService.swift in Sources */,
-				EF38FD70291FF55600EA4BD9 /* NewDomain.swift in Sources */,
 				EFD8D77328A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */,
 				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
+				EFF0E2B42921097200854E5F /* RelatedProject.swift in Sources */,
+				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
 				EF178C4528AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
+				EFF0E2BB2921097200854E5F /* Directors.swift in Sources */,
 				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
+				EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */,
+				EFF0E2B22921097200854E5F /* Actors.swift in Sources */,
+				EFF0E2B62921097200854E5F /* Season.swift in Sources */,
+				EFF0E2BC2921097200854E5F /* Poster.swift in Sources */,
 				EF4D265828A4512900B7BCEE /* Config.swift in Sources */,
+				EFF0E2B02921097200854E5F /* SingleResponseWrapper.swift in Sources */,
+				EFF0E2B32921097200854E5F /* ActorsWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,37 +707,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF0E271292107B500854E5F /* ListResponseWrapper.swift in Sources */,
+				EFF0E2972921089F00854E5F /* Episode.swift in Sources */,
 				EFD8D75F28A7AC8D00CA8DAC /* SaveService.swift in Sources */,
 				EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
 				EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */,
 				EF178C4728AEAA5A003B9B76 /* SpecificWidget.swift in Sources */,
+				EFF0E27F2921081200854E5F /* Actors.swift in Sources */,
 				EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */,
 				EFF0E26A2920EE3500854E5F /* ActorListView.swift in Sources */,
 				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
+				EFF0E28F2921087300854E5F /* RelatedProjectWrapper.swift in Sources */,
+				EFF0E2932921088900854E5F /* Trailer.swift in Sources */,
 				EFF0E2602920ED8200854E5F /* SeasonDetailView.swift in Sources */,
+				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
+				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
+				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
+				EFF0E27D2921080600854E5F /* ProjectType.swift in Sources */,
+				EFF0E2832921082A00854E5F /* Actor.swift in Sources */,
 				EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
+				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
 				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFF0E2642920EDD300854E5F /* TrailersView.swift in Sources */,
 				EFF0E26C2920EE5400854E5F /* DirectorListView.swift in Sources */,
+				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
+				EFF0E279292107EB00854E5F /* Phase.swift in Sources */,
 				EF178C4C28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
+				EFF0E275292107CE00854E5F /* ProjectWrapper.swift in Sources */,
+				EFF0E28D2921086600854E5F /* RelatedProjects.swift in Sources */,
 				EF178C3F28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
+				EFF0E27B292107F500854E5F /* Saga.swift in Sources */,
 				EF178C4328AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
-				EF38FD6E291FF55600EA4BD9 /* NewDomain.swift in Sources */,
+				EFF0E2952921089400854E5F /* Season.swift in Sources */,
 				EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */,
+				EFF0E2892921084F00854E5F /* Director.swift in Sources */,
 				EFF0E2622920EDB100854E5F /* FullscreenImageView.swift in Sources */,
 				EF38FD72291FF56400EA4BD9 /* NewDomainService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
+				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
+				EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */,
 				EFF0E2662920EDF300854E5F /* ImageSizedView.swift in Sources */,
 				EFF0E2682920EE0B00854E5F /* PosterListView.swift in Sources */,
 				EFD8D75B28A55BFE00CA8DAC /* VideoView.swift in Sources */,
@@ -638,26 +771,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF178C4D28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
+				EFF0E2A12921097100854E5F /* Trailer.swift in Sources */,
+				EFF0E29B2921097100854E5F /* Saga.swift in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EF4D265928A4512A00B7BCEE /* Config.swift in Sources */,
+				EFF0E2982921097100854E5F /* Actor.swift in Sources */,
 				EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */,
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
 				EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */,
 				EF178C4028AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
+				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
 				EF38FD73291FF56400EA4BD9 /* NewDomainService.swift in Sources */,
+				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
+				EFF0E2A52921097100854E5F /* Episode.swift in Sources */,
 				EFD8D76028A7ACFD00CA8DAC /* SaveService.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
+				EFF0E2992921097100854E5F /* DirectorsWrapper.swift in Sources */,
+				EFF0E2A32921097100854E5F /* RelatedProjectWrapper.swift in Sources */,
+				EFF0E2A62921097100854E5F /* ProjectWrapper.swift in Sources */,
 				EF178C4828AEAA5A003B9B76 /* SpecificWidget.swift in Sources */,
+				EFF0E2AA2921097100854E5F /* ListResponseWrapper.swift in Sources */,
+				EFF0E2AB2921097100854E5F /* ProjectType.swift in Sources */,
 				EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */,
 				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
 				EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
-				EF38FD6F291FF55600EA4BD9 /* NewDomain.swift in Sources */,
 				EFD8D77228A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EF578F3828A45632006272AA /* CachingService.swift in Sources */,
+				EFF0E2A02921097100854E5F /* RelatedProject.swift in Sources */,
+				EFF0E29D2921097100854E5F /* MCUProject.swift in Sources */,
 				EF178C4428AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
+				EFF0E2A72921097100854E5F /* Directors.swift in Sources */,
 				EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
+				EFF0E2A92921097100854E5F /* RelatedProjects.swift in Sources */,
+				EFF0E29E2921097100854E5F /* Actors.swift in Sources */,
+				EFF0E2A22921097100854E5F /* Season.swift in Sources */,
+				EFF0E2A82921097100854E5F /* Poster.swift in Sources */,
 				EFD8D76428A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
+				EFF0E29C2921097100854E5F /* SingleResponseWrapper.swift in Sources */,
+				EFF0E29F2921097100854E5F /* ActorsWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
