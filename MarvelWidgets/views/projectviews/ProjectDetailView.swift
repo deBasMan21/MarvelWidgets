@@ -45,7 +45,7 @@ struct ProjectDetailView: View {
                         }
                         
                         VStack(alignment: .leading) {
-                            Text("**Phase \(viewModel.project.attributes.phase.rawValue)**")
+                            Text("**\(viewModel.project.attributes.phase.rawValue)**")
                         }
                         
                         VStack(alignment: .leading) {
@@ -73,7 +73,7 @@ struct ProjectDetailView: View {
                         
                         if let postCreditScenes = viewModel.project.attributes.postCreditScenes {
                             VStack(alignment: .leading) {
-                                Text("**\(postCreditScenes) post credit scene(s)**")
+                                Text("**\(postCreditScenes) post credit scene\(postCreditScenes != 1 ? "s" : "")**")
                             }
                         }
                     }

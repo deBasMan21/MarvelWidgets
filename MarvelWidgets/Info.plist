@@ -6,6 +6,7 @@
 	<array>
 		<string>WidgetMediumConfiguratIntent</string>
 		<string>WidgetSmallConfigurationIntent</string>
+		<string>WidgetTypeConfigurationIntent</string>
 		<string>WidgetViewConfigurationIntent</string>
 	</array>
 </dict>

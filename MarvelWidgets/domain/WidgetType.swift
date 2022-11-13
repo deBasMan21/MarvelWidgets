@@ -24,6 +24,8 @@ enum WidgetType: String, CaseIterable {
             return .series
         case 4:
             return .saved
+        case 5:
+            return .special
         default:
             return .all
         }

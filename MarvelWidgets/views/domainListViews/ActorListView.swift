@@ -38,6 +38,8 @@ struct ActorListView: View {
                             .bold()
                             .foregroundColor(.accentColor)
                         
+                        Text("**\(actorItem.attributes.character)**")
+                        
                         if let birthDay = actorItem.attributes.dateOfBirth {
                             Text("\(birthDay)")
                         }
@@ -45,11 +47,11 @@ struct ActorListView: View {
                 }
             }
         ).loopPages()
-            .preferredItemSize(CGSize(width: 150, height: 250))
+            .preferredItemSize(CGSize(width: 150, height: 300))
             .multiplePagination()
             .interactive(scale: 0.9)
             .itemSpacing(10)
-            .frame(height: 300)
+            .frame(height: 350)
     }
     
     private func binding(for key: String) -> Binding<Bool> {
