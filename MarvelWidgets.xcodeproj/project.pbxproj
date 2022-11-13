@@ -87,6 +87,7 @@
 		EFD8D77528A83FB600CA8DAC /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */; };
 		EFD8D77628A83FB600CA8DAC /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */; };
 		EFD8D77728A83FB600CA8DAC /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77428A83FB600CA8DAC /* PullToRefreshView.swift */; };
+		EFF0E25C292065B900854E5F /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E25B292065B900854E5F /* SwiftUIPager */; };
 		EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */; };
 		EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153528A54BE000DCF804 /* ProjectListView.swift */; };
 		EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */; };
@@ -186,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF0E25C292065B900854E5F /* SwiftUIPager in Frameworks */,
 				EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +422,7 @@
 			name = MarvelWidgets;
 			packageProductDependencies = (
 				EF9B913F28B9045200C5F7B2 /* Kingfisher */,
+				EFF0E25B292065B900854E5F /* SwiftUIPager */,
 			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
@@ -474,6 +477,7 @@
 			mainGroup = EFCE380228A3D7A700B4CC0D;
 			packageReferences = (
 				EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EFF0E25A292065B900854E5F /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 			);
 			productRefGroup = EFCE380C28A3D7A700B4CC0D /* Products */;
 			projectDirPath = "";
@@ -967,6 +971,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		EFF0E25A292065B900854E5F /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -974,6 +986,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		EFF0E25B292065B900854E5F /* SwiftUIPager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFF0E25A292065B900854E5F /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			productName = SwiftUIPager;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

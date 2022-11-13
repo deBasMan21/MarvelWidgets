@@ -116,6 +116,7 @@ import Foundation
  
 // MARK: - ActorsDatum
 struct ActorsWrapper: Codable {
+    let uuid = UUID()
     let id: Int
     let attributes: Actor
 }
@@ -171,6 +172,7 @@ import Foundation
  
 // MARK: - DirectorsDatum
 struct DirectorsWrapper: Codable {
+    let uuid = UUID()
     let id: Int
     let attributes: Director
 }
@@ -208,7 +210,7 @@ struct Director: Codable {
 import Foundation
  
 // MARK: - Poster
-struct Poster: Codable {
+struct Poster: Codable, Identifiable, Equatable {
     let id: Int
     let posterURL: String
  
@@ -262,7 +264,7 @@ struct RelatedProject: Codable {
 import Foundation
  
 // MARK: - Trailer
-struct Trailer: Codable {
+struct Trailer: Codable, Identifiable, Equatable {
     let id: Int
     let trailerName: String
     let youtubeLink: String
@@ -286,6 +288,7 @@ import Foundation
  
 // MARK: - Welcome
 struct Season: Codable {
+    let uuid = UUID()
     let id: Int
     let seasonNumber: Int
     let numberOfEpisodes: Int?
@@ -313,7 +316,8 @@ struct Season: Codable {
 import Foundation
  
 // MARK: - Episode
-struct Episode: Codable {
+struct Episode: Codable, Identifiable, Equatable {
+    let uuid = UUID()
     let id: Int
     let title, episodeDescription: String
     let postCreditScenes: Int

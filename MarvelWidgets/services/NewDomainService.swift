@@ -33,7 +33,7 @@ class NewDomainService {
     }
     
     static func getAll() async -> [ProjectWrapper] {
-        let url = "\(baseUrl)?\(UrlComponents.populateNormal.rawValue)"
+        let url = "\(baseUrl)?\(UrlComponents.populateDeep.rawValue)"
         do {
             let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
             
