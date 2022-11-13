@@ -115,10 +115,14 @@ struct Actors: Codable {
 import Foundation
  
 // MARK: - ActorsDatum
-struct ActorsWrapper: Codable {
+struct ActorsWrapper: Codable, Identifiable, Equatable {
     let uuid = UUID()
     let id: Int
     let attributes: Actor
+    
+    static func == (lhs: ActorsWrapper, rhs: ActorsWrapper) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
  
 // PurpleAttributes.swift
@@ -171,10 +175,14 @@ struct Directors: Codable {
 import Foundation
  
 // MARK: - DirectorsDatum
-struct DirectorsWrapper: Codable {
+struct DirectorsWrapper: Codable, Identifiable, Equatable  {
     let uuid = UUID()
     let id: Int
     let attributes: Director
+    
+    static func == (lhs: DirectorsWrapper, rhs: DirectorsWrapper) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
  
 // FluffyAttributes.swift
@@ -190,13 +198,14 @@ import Foundation
 struct Director: Codable {
     let firstName, lastName: String
     let createdAt, updatedAt: String
-    let imageURL: String?
+    let imageURL, dateOfBirth: String?
  
     enum CodingKeys: String, CodingKey {
         case firstName = "FirstName"
         case lastName = "LastName"
         case createdAt, updatedAt
         case imageURL = "ImageUrl"
+        case dateOfBirth = "DateOfBirth"
     }
 }
  

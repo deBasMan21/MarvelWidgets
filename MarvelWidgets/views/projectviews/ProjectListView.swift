@@ -31,11 +31,6 @@ struct ProjectListView: View {
                 Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
                 
                 ScrollView {
-                    PullToRefreshView(coordinateSpaceName: "\(viewModel.pageType.rawValue)-list", onRefresh: {
-                        Task {
-                            await viewModel.refresh()
-                        }
-                    })
                     ForEach(viewModel.projects, id: \.id) { item in
                         NavigationLink(isActive: binding(for: item.id)) {
                             ProjectDetailView(viewModel: ProjectDetailViewModel(project: item), shouldStopReload: $shouldStopReload)
@@ -60,7 +55,11 @@ struct ProjectListView: View {
                                 .padding(.horizontal)
                         }
                     }
-                }.coordinateSpace(name: "\(viewModel.pageType.rawValue)-list")
+                }.refreshable {
+                    Task {
+                        await viewModel.refresh()
+                    }
+                }
                 
             }.navigationTitle(viewModel.navigationTitle)
         }.onAppear{
