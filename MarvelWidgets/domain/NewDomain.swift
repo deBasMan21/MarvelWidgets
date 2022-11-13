@@ -296,7 +296,7 @@ struct Trailer: Codable, Identifiable, Equatable {
 import Foundation
  
 // MARK: - Welcome
-struct Season: Codable {
+struct Season: Codable, Identifiable, Equatable {
     let uuid = UUID()
     let id: Int
     let seasonNumber: Int

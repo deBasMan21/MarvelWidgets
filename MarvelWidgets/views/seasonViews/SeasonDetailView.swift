@@ -20,7 +20,7 @@ struct SeasonDetailView: View {
     
     var body: some View {
         ScrollView {
-            if let episodes = season.episodes {
+            if let episodes = season.episodes, episodes.count > 0 {
                 VStack {
                     Text("Episode info")
                         .font(.largeTitle)
@@ -72,11 +72,11 @@ struct SeasonDetailView: View {
                 }.padding()
             }
             
-            if let trailers = season.seasonTrailers {
+            if let trailers = season.seasonTrailers, trailers.count > 0 {
                 TrailersView(trailers: trailers)
             }
             
-            if let posters = season.posters {
+            if let posters = season.posters, posters.count > 0 {
                 VStack {
                     Text("Posters")
                         .font(.largeTitle)

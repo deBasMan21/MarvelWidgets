@@ -25,7 +25,7 @@ struct DirectorListView: View {
             content: { director in
                 VStack {
                     if let imageUrl = director.attributes.imageURL {
-                        NavigationLink(destination: FullscreenImageView(url: imageUrl), isActive: binding(for: imageUrl)) {
+                        NavigationLink(destination: FullscreenImageView(url: imageUrl, imageName: "\(director.attributes.firstName) \(director.attributes.lastName)"), isActive: binding(for: imageUrl)) {
                             EmptyView()
                         }
                         

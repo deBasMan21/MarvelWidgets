@@ -167,17 +167,3 @@ struct ProjectDetailView: View {
             )
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

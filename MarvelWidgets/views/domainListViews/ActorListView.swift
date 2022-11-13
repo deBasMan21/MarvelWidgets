@@ -25,7 +25,7 @@ struct ActorListView: View {
             content: { actorItem in
                 VStack {
                     if let imageUrl = actorItem.attributes.imageURL {
-                        NavigationLink(destination: FullscreenImageView(url: imageUrl), isActive: binding(for: imageUrl)) {
+                        NavigationLink(destination: FullscreenImageView(url: imageUrl, imageName: "\(actorItem.attributes.firstName) \(actorItem.attributes.lastName)"), isActive: binding(for: imageUrl)) {
                             EmptyView()
                         }
                         
