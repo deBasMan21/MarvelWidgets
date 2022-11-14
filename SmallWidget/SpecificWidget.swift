@@ -27,7 +27,7 @@ struct SpecificWidgetProvider: IntentTimelineProvider {
             
             var proj: ProjectWrapper? = nil
             if !specificId.isEmpty, let idAsInt = Int(specificId) {
-                proj = await NewDomainService.getById(idAsInt)
+                proj = await ProjectService.getById(idAsInt)
             }
             
             var image: Image = Image("AppIcon")

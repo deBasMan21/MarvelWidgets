@@ -13,6 +13,12 @@ class ProjectDetailViewModel: ObservableObject {
     
     init(project: ProjectWrapper) {
         self.project = project
+        
+        Task {
+            if let populatedProject = await getPopulatedProject(project.id) {
+                self.project = populatedProject
+            }
+        }
     }
     
     func setIsSavedIcon(for proj: ProjectWrapper) {
@@ -44,5 +50,9 @@ class ProjectDetailViewModel: ObservableObject {
             userDefs.set(savedIds, forKey: UserDefaultValues.savedProjectIds)
         }
         setIsSavedIcon(for: proj)
+    }
+    
+    func getPopulatedProject(_ id: Int) async -> ProjectWrapper? {
+        return await ProjectService.getById(id)
     }
 }

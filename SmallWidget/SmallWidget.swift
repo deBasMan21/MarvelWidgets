@@ -66,13 +66,13 @@ struct SmallWidgetProvider: IntentTimelineProvider {
             
             switch widgetType {
             case .movies:
-                upcomingProjects.append(contentsOf: await NewDomainService.getByType(.movies))
+                upcomingProjects.append(contentsOf: await ProjectService.getByType(.movies, populate: .populateNormal))
             case .series:
-                upcomingProjects.append(contentsOf: await NewDomainService.getByType(.series))
+                upcomingProjects.append(contentsOf: await ProjectService.getByType(.series, populate: .populateNormal))
             case .special:
-                upcomingProjects.append(contentsOf: await NewDomainService.getByType(.special))
+                upcomingProjects.append(contentsOf: await ProjectService.getByType(.special, populate: .populateNormal))
             case .all:
-                upcomingProjects.append(contentsOf: await NewDomainService.getAll())
+                upcomingProjects.append(contentsOf: await ProjectService.getAll(populate: .populateNormal))
             case .saved:
                 upcomingProjects.append(contentsOf: SaveService.getProjectsFromUserDefaults())
             }

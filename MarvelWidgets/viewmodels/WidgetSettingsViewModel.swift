@@ -33,7 +33,7 @@ extension WidgetSettingsView {
                     Task {
                         selectedProjectObject = await getProjectById(selectedProject ?? -1)
                         
-                        projects = await NewDomainService.getAll()
+                        projects = await ProjectService.getAll()
                     }
                 }
             }   
@@ -60,7 +60,7 @@ extension WidgetSettingsView {
         }
         
         func getProjectById(_ id: Int) async -> ProjectWrapper? {
-            return await NewDomainService.getById(id)
+            return await ProjectService.getById(id)
         }
     }
 }

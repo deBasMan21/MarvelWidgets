@@ -12,18 +12,26 @@ import SwiftUIPager
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
     @Binding var shouldStopReload: Bool
+    @Binding var showLoader: Bool
     
     var body: some View {
         ScrollView {
             VStack{
                 HStack(alignment: .top) {
                     NavigationLink(destination: FullscreenImageView(url: viewModel.project.attributes.posters?.first?.posterURL ?? "")) {
-                        KFImage(URL(string: viewModel.project.attributes.posters?.first?.posterURL ?? "")!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 150, alignment: .center)
-                            .cornerRadius(12)
-                            .padding(.trailing, 20)
+                        if let posterURL = viewModel.project.attributes.posters?.first?.posterURL {
+                            KFImage(URL(string: posterURL)!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 150, alignment: .center)
+                                .cornerRadius(12)
+                                .padding(.trailing, 20)
+                                .onAppear {
+                                    withAnimation {
+                                        showLoader = false
+                                    }
+                                }
+                        }
                     }
                     
                     VStack(alignment: .leading, spacing: 10) {
@@ -137,7 +145,7 @@ struct ProjectDetailView: View {
                         VStack(spacing: 15){
                             ForEach(relatedProjects.data, id: \.uuid) { project in
                                 NavigationLink {
-                                    ProjectDetailView(viewModel: ProjectDetailViewModel(project: project), shouldStopReload: $shouldStopReload)
+                                    ProjectDetailView(viewModel: ProjectDetailViewModel(project: project), shouldStopReload: $shouldStopReload, showLoader: $showLoader)
                                 } label: {
                                     VStack{
                                         Text(project.attributes.title)

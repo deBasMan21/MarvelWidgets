@@ -13,6 +13,7 @@ struct ProjectListView: View {
     @State var type: WidgetType
     @StateObject var viewModel = ProjectListViewModel()
     @Binding var shouldStopReload: Bool
+    @Binding var showLoader: Bool
     
     var body: some View {
         NavigationView {
@@ -33,7 +34,13 @@ struct ProjectListView: View {
                 ScrollView {
                     ForEach(viewModel.projects, id: \.id) { item in
                         NavigationLink(isActive: binding(for: item.id)) {
-                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: item), shouldStopReload: $shouldStopReload)
+                            ProjectDetailView(
+                                viewModel: ProjectDetailViewModel(
+                                    project: item
+                                ),
+                                shouldStopReload: $shouldStopReload,
+                                showLoader: $showLoader
+                            )
                         } label: {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -77,6 +84,14 @@ struct ProjectListView: View {
     private func binding(for key: Int) -> Binding<Bool> {
         return .init(
             get: { self.activeProject[key, default: false] },
-            set: { self.activeProject[key] = $0 })
+            set: {
+                if $0 {
+                    withAnimation {
+                        showLoader = true
+                    }
+                }
+                self.activeProject[key] = $0
+                
+            })
     }
 }

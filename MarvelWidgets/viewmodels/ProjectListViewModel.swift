@@ -34,9 +34,9 @@ extension ProjectListView {
                     var projects: [ProjectWrapper]
                     switch pageType {
                     case .all:
-                        projects = await NewDomainService.getAll()
+                        projects = await ProjectService.getAll()
                     case .movies, .series, .special:
-                        projects = await NewDomainService.getByType(pageType)
+                        projects = await ProjectService.getByType(pageType)
                     case .saved:
                         projects = SaveService.getProjectsFromUserDefaults()
                     }
