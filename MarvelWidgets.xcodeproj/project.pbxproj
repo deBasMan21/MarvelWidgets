@@ -150,6 +150,8 @@
 		EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28C2921086600854E5F /* RelatedProjects.swift */; };
 		EFF0E2BE2921097200854E5F /* ListResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E270292107B500854E5F /* ListResponseWrapper.swift */; };
 		EFF0E2BF2921097200854E5F /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27C2921080600854E5F /* ProjectType.swift */; };
+		EFF0E2C22922B79200854E5F /* ActorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2C12922B79200854E5F /* ActorDetailView.swift */; };
+		EFF0E2C42922B79B00854E5F /* DirectorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2C32922B79B00854E5F /* DirectorDetailView.swift */; };
 		EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */; };
 		EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153528A54BE000DCF804 /* ProjectListView.swift */; };
 		EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */; };
@@ -257,6 +259,8 @@
 		EFF0E2922921088900854E5F /* Trailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trailer.swift; sourceTree = "<group>"; };
 		EFF0E2942921089400854E5F /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		EFF0E2962921089F00854E5F /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		EFF0E2C12922B79200854E5F /* ActorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailView.swift; sourceTree = "<group>"; };
+		EFF0E2C32922B79B00854E5F /* DirectorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorDetailView.swift; sourceTree = "<group>"; };
 		EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		EFFE153528A54BE000DCF804 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
@@ -427,6 +431,7 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EFF0E2C02922B77E00854E5F /* personDetailViews */,
 				EFF0E26F2920EEE300854E5F /* domainListViews */,
 				EFF0E26E2920EECB00854E5F /* shared */,
 				EFF0E26D2920EEC200854E5F /* seasonViews */,
@@ -511,6 +516,15 @@
 				EFF0E26B2920EE5400854E5F /* DirectorListView.swift */,
 			);
 			path = domainListViews;
+			sourceTree = "<group>";
+		};
+		EFF0E2C02922B77E00854E5F /* personDetailViews */ = {
+			isa = PBXGroup;
+			children = (
+				EFF0E2C12922B79200854E5F /* ActorDetailView.swift */,
+				EFF0E2C32922B79B00854E5F /* DirectorDetailView.swift */,
+			);
+			path = personDetailViews;
 			sourceTree = "<group>";
 		};
 		EFFE152A28A5480700DCF804 /* projectviews */ = {
@@ -739,8 +753,10 @@
 				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
+				EFF0E2C22922B79200854E5F /* ActorDetailView.swift in Sources */,
 				EFF0E279292107EB00854E5F /* Phase.swift in Sources */,
 				EF178C4C28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
+				EFF0E2C42922B79B00854E5F /* DirectorDetailView.swift in Sources */,
 				EFF0E275292107CE00854E5F /* ProjectWrapper.swift in Sources */,
 				EFF0E28D2921086600854E5F /* RelatedProjects.swift in Sources */,
 				EF178C3F28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,

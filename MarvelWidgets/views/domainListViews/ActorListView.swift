@@ -11,6 +11,8 @@ import SwiftUIPager
 
 struct ActorListView: View {
     @State var actors: [ActorsWrapper]
+    @Binding var shouldStopReload: Bool
+    @Binding var showLoader: Bool
     
     @State var width: CGFloat = 150
     @State var height: CGFloat = 250
@@ -25,7 +27,7 @@ struct ActorListView: View {
             content: { actorItem in
                 VStack {
                     if let imageUrl = actorItem.attributes.imageURL {
-                        NavigationLink(destination: FullscreenImageView(url: imageUrl, imageName: "\(actorItem.attributes.firstName) \(actorItem.attributes.lastName)"), isActive: binding(for: imageUrl)) {
+                        NavigationLink(destination: ActorDetailView(actor: actorItem, showLoader: $showLoader, shouldStopReload: $shouldStopReload), isActive: binding(for: imageUrl)) {
                             EmptyView()
                         }
                         

@@ -123,7 +123,7 @@ struct ProjectDetailView: View {
                         Text("Actors")
                             .font(.largeTitle)
                         
-                        ActorListView(actors: actors.data)
+                        ActorListView(actors: actors.data, shouldStopReload: $shouldStopReload, showLoader: $showLoader)
                     }.padding()
                 }
                 
@@ -132,7 +132,7 @@ struct ProjectDetailView: View {
                         Text("Directors")
                             .font(.largeTitle)
                         
-                        DirectorListView(directors: directors.data)
+                        DirectorListView(directors: directors.data, shouldStopReload: $shouldStopReload, showLoader: $showLoader)
                     }.padding()
                 }
                 
