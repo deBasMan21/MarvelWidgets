@@ -166,12 +166,21 @@ struct ProjectDetailView: View {
                 shouldStopReload = false
                 viewModel.setIsSavedIcon(for: viewModel.project)
             }
-//            .navigationBarItems(trailing: Button(action: {
-//                viewModel.toggleSaveProject(viewModel.project)
-//                }, label: {
-//                    Image(systemName: viewModel.bookmarkString)
-//                }
-//              )
-//            )
+            .navigationBarItems(trailing: Button(action: {
+                if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
+                    UIApplication.shared.open(URL(string: dpUrl)!)
+                }
+                
+                }, label: {
+                    VStack {
+                        if viewModel.project.attributes.disneyPlusUrl != nil {
+                            Image(systemName: "play.fill")
+                        } else {
+                            EmptyView()
+                        }
+                    }
+                }
+              )
+            )
     }
 }

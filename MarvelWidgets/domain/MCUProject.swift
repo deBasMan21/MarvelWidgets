@@ -15,7 +15,7 @@ struct MCUProject: Codable {
     let saga: Saga
     let overview: String?
     let type: ProjectType
-    let boxOffice, createdAt, updatedAt: String?
+    let boxOffice, createdAt, updatedAt, disneyPlusUrl: String?
     let directors: Directors?
     let actors: Actors?
     let relatedProjects: RelatedProjects?
@@ -38,5 +38,6 @@ struct MCUProject: Codable {
         case trailers = "Trailers"
         case posters = "Posters"
         case seasons = "Seasons"
+        case disneyPlusUrl = "DisneyPlusUrl"
     }
 }

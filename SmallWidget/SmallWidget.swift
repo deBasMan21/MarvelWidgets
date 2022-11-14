@@ -24,6 +24,7 @@ struct SmallWidgetProvider: IntentTimelineProvider {
             boxOffice: nil,
             createdAt: nil,
             updatedAt: nil,
+            disneyPlusUrl: nil,
             directors: nil,
             actors: nil,
             relatedProjects: nil,
