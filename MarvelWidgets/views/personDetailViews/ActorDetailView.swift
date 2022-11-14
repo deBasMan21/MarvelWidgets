@@ -45,7 +45,7 @@ struct ActorDetailView: View {
                 }
                 
                 VStack {
-                    Text("Directed projects")
+                    Text("Played in")
                         .font(Font.largeTitle)
                         .padding()
                     
