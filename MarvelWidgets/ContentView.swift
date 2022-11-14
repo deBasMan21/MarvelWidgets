@@ -34,10 +34,15 @@ struct ContentView: View {
                         Label("Series", systemImage: "tv")
                     }.tag(2)
                 
-                ProjectListView(activeProject: $urlClickedProject, type: .saved, shouldStopReload: $shouldStopReload, showLoader: $showLoader)
+                ProjectListView(activeProject: $urlClickedProject, type: .special, shouldStopReload: $shouldStopReload, showLoader: $showLoader)
                     .tabItem{
-                        Label("Saved", systemImage: "bookmark.fill")
+                        Label("Specials", systemImage: "star.circle.fill")
                     }.tag(3)
+                
+//                ProjectListView(activeProject: $urlClickedProject, type: .saved, shouldStopReload: $shouldStopReload, showLoader: $showLoader)
+//                    .tabItem{
+//                        Label("Saved", systemImage: "bookmark.fill")
+//                    }.tag(3)
                 
                 WidgetSettingsView()
                     .tabItem{

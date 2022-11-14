@@ -26,12 +26,15 @@ struct SmallWidgetUpcomingSmall: View {
                             .multilineTextAlignment(.center)
                             .shadow(color: .black, radius: 5)
                             .font(Font.headline.weight(.bold))
+                            .foregroundColor(.white)
                         
                         Spacer()
                         
                         if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
                             Text("\(difference) dagen")
+                                .shadow(color: .black, radius: 5)
                                 .padding(.bottom, 30)
+                                .foregroundColor(.white)
                         }
                     }
                 }.padding()

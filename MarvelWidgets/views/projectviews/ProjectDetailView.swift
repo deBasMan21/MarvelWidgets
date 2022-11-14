@@ -166,12 +166,12 @@ struct ProjectDetailView: View {
                 shouldStopReload = false
                 viewModel.setIsSavedIcon(for: viewModel.project)
             }
-            .navigationBarItems(trailing: Button(action: {
-                viewModel.toggleSaveProject(viewModel.project)
-                }, label: {
-                    Image(systemName: viewModel.bookmarkString)
-                }
-              )
-            )
+//            .navigationBarItems(trailing: Button(action: {
+//                viewModel.toggleSaveProject(viewModel.project)
+//                }, label: {
+//                    Image(systemName: viewModel.bookmarkString)
+//                }
+//              )
+//            )
     }
 }
