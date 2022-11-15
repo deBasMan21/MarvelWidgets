@@ -38,6 +38,8 @@
 		EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
 		EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
+		EF6B82B02924130A00A5D69C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82AF2924130A00A5D69C /* NotificationService.swift */; };
+		EF6B82B42924130A00A5D69C /* RichPushNotificationsMCU.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
@@ -152,12 +154,26 @@
 		EFF0E2BF2921097200854E5F /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27C2921080600854E5F /* ProjectType.swift */; };
 		EFF0E2C22922B79200854E5F /* ActorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2C12922B79200854E5F /* ActorDetailView.swift */; };
 		EFF0E2C42922B79B00854E5F /* DirectorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2C32922B79B00854E5F /* DirectorDetailView.swift */; };
+		EFF0E2C62924062C00854E5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFF0E2C52924062C00854E5F /* GoogleService-Info.plist */; };
+		EFF0E2C72924062C00854E5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFF0E2C52924062C00854E5F /* GoogleService-Info.plist */; };
+		EFF0E2C82924062C00854E5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFF0E2C52924062C00854E5F /* GoogleService-Info.plist */; };
+		EFF0E2D329240B7B00854E5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2D229240B7B00854E5F /* AppDelegate.swift */; };
+		EFF0E2D729240D4900854E5F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E2D629240D4900854E5F /* FirebaseAnalytics */; };
+		EFF0E2D929240D4900854E5F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E2D829240D4900854E5F /* FirebaseCrashlytics */; };
+		EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E2DA29240D4900854E5F /* FirebaseMessaging */; };
 		EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */; };
 		EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153528A54BE000DCF804 /* ProjectListView.swift */; };
 		EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EF6B82B22924130A00A5D69C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFCE380328A3D7A700B4CC0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF6B82AC2924130A00A5D69C;
+			remoteInfo = RichPushNotifications;
+		};
 		EFCA5DC528A445B40004AAC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EFCE380328A3D7A700B4CC0D /* Project object */;
@@ -182,6 +198,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed Foundation Extensions */,
+				EF6B82B42924130A00A5D69C /* RichPushNotificationsMCU.appex in Embed Foundation Extensions */,
 				EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
@@ -198,6 +215,11 @@
 		EF38FD71291FF56400EA4BD9 /* ProjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
+		EF6B8298292412CA00A5D69C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichPushNotificationsMCU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF6B82AF2924130A00A5D69C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		EF6B82B12924130A00A5D69C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -261,12 +283,21 @@
 		EFF0E2962921089F00854E5F /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		EFF0E2C12922B79200854E5F /* ActorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailView.swift; sourceTree = "<group>"; };
 		EFF0E2C32922B79B00854E5F /* DirectorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorDetailView.swift; sourceTree = "<group>"; };
+		EFF0E2C52924062C00854E5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EFF0E2D229240B7B00854E5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		EFFE153528A54BE000DCF804 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EF6B82AA2924130A00A5D69C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFCA5DAA28A445B40004AAC7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,7 +311,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF0E25C292065B900854E5F /* SwiftUIPager in Frameworks */,
+				EFF0E2D929240D4900854E5F /* FirebaseCrashlytics in Frameworks */,
+				EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */,
 				EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */,
+				EFF0E2D729240D4900854E5F /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +330,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF6B82AE2924130A00A5D69C /* RichPushNotificationsMCU */ = {
+			isa = PBXGroup;
+			children = (
+				EF6B82AF2924130A00A5D69C /* NotificationService.swift */,
+				EF6B82B12924130A00A5D69C /* Info.plist */,
+			);
+			path = RichPushNotificationsMCU;
+			sourceTree = "<group>";
+		};
 		EFCA5D7428A3EF9D0004AAC7 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +390,7 @@
 				EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE383028A3E22E00B4CC0D /* SmallWidget */,
 				EFCA5DB028A445B40004AAC7 /* WidgetTypeConfiguration */,
+				EF6B82AE2924130A00A5D69C /* RichPushNotificationsMCU */,
 				EFCE382B28A3E22E00B4CC0D /* Frameworks */,
 				EFCE380C28A3D7A700B4CC0D /* Products */,
 			);
@@ -358,6 +402,7 @@
 				EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */,
 				EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */,
 				EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */,
+				EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -365,6 +410,7 @@
 		EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				EFF0E2C52924062C00854E5F /* GoogleService-Info.plist */,
 				EFCA5D9B28A41C850004AAC7 /* MarvelWidgets.entitlements */,
 				EFCA5D7B28A3F5100004AAC7 /* Info.plist */,
 				EFCA5D8A28A3FEF10004AAC7 /* helpers */,
@@ -378,6 +424,7 @@
 				EFCE381028A3D7A700B4CC0D /* ContentView.swift */,
 				EFCE381228A3D7AE00B4CC0D /* Assets.xcassets */,
 				EFCE381428A3D7AE00B4CC0D /* Preview Content */,
+				EFF0E2D229240B7B00854E5F /* AppDelegate.swift */,
 			);
 			path = MarvelWidgets;
 			sourceTree = "<group>";
@@ -458,6 +505,8 @@
 				EFCE382E28A3E22E00B4CC0D /* SwiftUI.framework */,
 				EFCA5DAE28A445B40004AAC7 /* Intents.framework */,
 				EFCA5DB928A445B40004AAC7 /* IntentsUI.framework */,
+				EF6B8298292412CA00A5D69C /* UserNotifications.framework */,
+				EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -539,6 +588,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EF6B82AC2924130A00A5D69C /* RichPushNotificationsMCU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF6B82B52924130A00A5D69C /* Build configuration list for PBXNativeTarget "RichPushNotificationsMCU" */;
+			buildPhases = (
+				EF6B82A92924130A00A5D69C /* Sources */,
+				EF6B82AA2924130A00A5D69C /* Frameworks */,
+				EF6B82AB2924130A00A5D69C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RichPushNotificationsMCU;
+			productName = RichPushNotifications;
+			productReference = EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFCA5DCB28A445B40004AAC7 /* Build configuration list for PBXNativeTarget "WidgetTypeConfiguration" */;
@@ -570,11 +636,15 @@
 			dependencies = (
 				EFCE383A28A3E22F00B4CC0D /* PBXTargetDependency */,
 				EFCA5DC628A445B40004AAC7 /* PBXTargetDependency */,
+				EF6B82B32924130A00A5D69C /* PBXTargetDependency */,
 			);
 			name = MarvelWidgets;
 			packageProductDependencies = (
 				EF9B913F28B9045200C5F7B2 /* Kingfisher */,
 				EFF0E25B292065B900854E5F /* SwiftUIPager */,
+				EFF0E2D629240D4900854E5F /* FirebaseAnalytics */,
+				EFF0E2D829240D4900854E5F /* FirebaseCrashlytics */,
+				EFF0E2DA29240D4900854E5F /* FirebaseMessaging */,
 			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
@@ -604,9 +674,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					EF6B82AC2924130A00A5D69C = {
+						CreatedOnToolsVersion = 14.1;
+					};
 					EFCA5DAC28A445B40004AAC7 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -630,6 +703,7 @@
 			packageReferences = (
 				EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				EFF0E25A292065B900854E5F /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+				EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EFCE380C28A3D7A700B4CC0D /* Products */;
 			projectDirPath = "";
@@ -638,15 +712,24 @@
 				EFCE380A28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE382928A3E22E00B4CC0D /* SmallWidgetExtension */,
 				EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */,
+				EF6B82AC2924130A00A5D69C /* RichPushNotificationsMCU */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EF6B82AB2924130A00A5D69C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFCA5DAB28A445B40004AAC7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF0E2C82924062C00854E5F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFCE381628A3D7AE00B4CC0D /* Preview Assets.xcassets in Resources */,
+				EFF0E2C62924062C00854E5F /* GoogleService-Info.plist in Resources */,
 				EFCE381328A3D7AE00B4CC0D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,12 +748,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFCE383528A3E22F00B4CC0D /* Assets.xcassets in Resources */,
+				EFF0E2C72924062C00854E5F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EF6B82A92924130A00A5D69C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF6B82B02924130A00A5D69C /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFCA5DA928A445B40004AAC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -778,6 +871,7 @@
 				EFD8D75B28A55BFE00CA8DAC /* VideoView.swift in Sources */,
 				EFD8D77128A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */,
+				EFF0E2D329240B7B00854E5F /* AppDelegate.swift in Sources */,
 				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,6 +926,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EF6B82B32924130A00A5D69C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF6B82AC2924130A00A5D69C /* RichPushNotificationsMCU */;
+			targetProxy = EF6B82B22924130A00A5D69C /* PBXContainerItemProxy */;
+		};
 		EFCA5DC628A445B40004AAC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */;
@@ -845,6 +944,60 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		EF6B82B62924130A00A5D69C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 963LK66N4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RichPushNotificationsMCU/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RichPushNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.RichPushNotificationsMCU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF6B82B72924130A00A5D69C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 963LK66N4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RichPushNotificationsMCU/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RichPushNotifications;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.RichPushNotificationsMCU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EFCA5DCC28A445B40004AAC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1140,6 +1293,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EF6B82B52924130A00A5D69C /* Build configuration list for PBXNativeTarget "RichPushNotificationsMCU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF6B82B62924130A00A5D69C /* Debug */,
+				EF6B82B72924130A00A5D69C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EFCA5DCB28A445B40004AAC7 /* Build configuration list for PBXNativeTarget "WidgetTypeConfiguration" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1195,6 +1357,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1207,6 +1377,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EFF0E25A292065B900854E5F /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
 			productName = SwiftUIPager;
+		};
+		EFF0E2D629240D4900854E5F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		EFF0E2D829240D4900854E5F /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		EFF0E2DA29240D4900854E5F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
