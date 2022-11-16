@@ -8,6 +8,7 @@
 import SwiftUI
 import WidgetKit
 import Kingfisher
+import FirebaseMessaging
 
 struct WidgetSettingsView: View {
     @StateObject var viewModel = WidgetSettingsViewModel()
@@ -67,6 +68,18 @@ struct WidgetSettingsView: View {
                 
                 Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
                     .padding()
+                
+                Button("Subscribe to all", action: {
+                    Messaging.messaging().subscribe(toTopic: "Movie") { error in
+                        print("subscirbed to Movies")
+                    }
+                    Messaging.messaging().subscribe(toTopic: "Serie") { error in
+                        print("subscirbed to Series")
+                    }
+                    Messaging.messaging().subscribe(toTopic: "Special") { error in
+                        print("subscirbed to Specials")
+                    }
+                })
             }.navigationTitle("Settings")
         }
     }
