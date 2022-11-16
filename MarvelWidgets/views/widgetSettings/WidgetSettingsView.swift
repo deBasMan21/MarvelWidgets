@@ -17,7 +17,33 @@ struct WidgetSettingsView: View {
         NavigationView {
             VStack {
                 ScrollView {
-                    VStack(spacing: 50) {
+                    VStack(spacing: 20) {
+                        VStack {
+                            VStack {
+                                Text("Notification settings")
+                                    .font(Font.title2.bold())
+                                    .foregroundColor(.accentColor)
+                                
+                                Text("If you enable the notifications for a type of project you get a notification when a project of that type is released.")
+                                    .multilineTextAlignment(.center)
+                                    .padding(.bottom)
+                            }
+                            
+                            Toggle(isOn: $viewModel.notificationMovie) {
+                                Text("Movie")
+                            }
+                            
+                            Toggle(isOn: $viewModel.notificationSerie) {
+                                Text("Serie")
+                            }
+                            
+                            Toggle(isOn: $viewModel.notificationSpecial) {
+                                Text("Special")
+                            }
+                        }
+                        
+                        Divider()
+                        
                         VStack {
                             Text("Small widget settings")
                                 .font(Font.title2.bold())
@@ -27,6 +53,8 @@ struct WidgetSettingsView: View {
                                 Text("Show text on small widget:")
                             })
                         }
+                        
+                        Divider()
                         
                         VStack {
                             Text("Specific widget settings")
@@ -68,18 +96,6 @@ struct WidgetSettingsView: View {
                 
                 Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
                     .padding()
-                
-                Button("Subscribe to all", action: {
-                    Messaging.messaging().subscribe(toTopic: "Movie") { error in
-                        print("subscirbed to Movies")
-                    }
-                    Messaging.messaging().subscribe(toTopic: "Serie") { error in
-                        print("subscirbed to Series")
-                    }
-                    Messaging.messaging().subscribe(toTopic: "Special") { error in
-                        print("subscirbed to Specials")
-                    }
-                })
             }.navigationTitle("Settings")
         }
     }

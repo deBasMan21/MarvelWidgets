@@ -89,3 +89,9 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+
+# temp for fastlane
+fastlane
+Gemfile
+Gemfile.lock

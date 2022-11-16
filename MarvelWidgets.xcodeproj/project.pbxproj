@@ -40,6 +40,7 @@
 		EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
 		EF6B82B02924130A00A5D69C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82AF2924130A00A5D69C /* NotificationService.swift */; };
 		EF6B82B42924130A00A5D69C /* RichPushNotificationsMCU.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
@@ -220,6 +221,7 @@
 		EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichPushNotificationsMCU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF6B82AF2924130A00A5D69C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		EF6B82B12924130A00A5D69C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 				EFCE381D28A3DD4200B4CC0D /* APIService.swift */,
 				EFCE382428A3E0A700B4CC0D /* LogService.swift */,
 				EF4D265A28A451E300B7BCEE /* CachingService.swift */,
+				EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */,
 			);
 			path = generic;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				EFF0E26A2920EE3500854E5F /* ActorListView.swift in Sources */,
 				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
 				EFF0E28F2921087300854E5F /* RelatedProjectWrapper.swift in Sources */,
+				EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */,
 				EFF0E2932921088900854E5F /* Trailer.swift in Sources */,
 				EFF0E2602920ED8200854E5F /* SeasonDetailView.swift in Sources */,
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
@@ -949,7 +953,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RichPushNotificationsMCU/Info.plist;
@@ -976,7 +980,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RichPushNotificationsMCU/Info.plist;
@@ -1002,7 +1006,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
@@ -1027,7 +1031,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
@@ -1170,7 +1174,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
@@ -1206,7 +1210,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
@@ -1241,7 +1245,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallWidget/Info.plist;
@@ -1269,7 +1273,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallWidget/Info.plist;
