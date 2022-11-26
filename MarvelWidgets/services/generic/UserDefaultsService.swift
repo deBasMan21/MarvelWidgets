@@ -16,6 +16,7 @@ class UserDefaultsService {
         static let showOtherTabsKey = "showOtherTabs"
         static let showNewsTabKey = "showNewsTab"
         static let showActorsAndDirectorsKey = "showActorsAndDirectors"
+        static let disableCaching = "disableCaching"
     }
     
     var subscribeTopics: [String] {
@@ -42,6 +43,12 @@ class UserDefaultsService {
     var showActorsAndDirectors: Bool {
         get {
             defs.bool(forKey: UserDefaultsKeys.showActorsAndDirectorsKey)
+        }
+    }
+    
+    var disableCaching: Bool {
+        get {
+            defs.bool(forKey: UserDefaultsKeys.disableCaching)
         }
     }
 }

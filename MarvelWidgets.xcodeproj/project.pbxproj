@@ -52,6 +52,9 @@
 		EF6B8344293233A300A5D69C /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = EF6B8343293233A300A5D69C /* DataCache */; };
 		EF6B83462932347C00A5D69C /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = EF6B83452932347C00A5D69C /* DataCache */; };
 		EF6B83482932348300A5D69C /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = EF6B83472932348300A5D69C /* DataCache */; };
+		EF6B83492932956200A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
+		EF6B834B2932956300A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
+		EF6B834C2932956400A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
@@ -805,6 +808,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF6B834B2932956300A5D69C /* UserDefaultsService.swift in Sources */,
 				EF6B82CF29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift in Sources */,
 				EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */,
 			);
@@ -850,6 +854,7 @@
 				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
 				EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */,
 				EFF0E2B22921097200854E5F /* Actors.swift in Sources */,
+				EF6B834C2932956400A5D69C /* UserDefaultsService.swift in Sources */,
 				EFF0E2B62921097200854E5F /* Season.swift in Sources */,
 				EFF0E2BC2921097200854E5F /* Poster.swift in Sources */,
 				EF4D265828A4512900B7BCEE /* Config.swift in Sources */,
@@ -969,6 +974,7 @@
 				EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 				EFF0E2A92921097100854E5F /* RelatedProjects.swift in Sources */,
 				EFF0E29E2921097100854E5F /* Actors.swift in Sources */,
+				EF6B83492932956200A5D69C /* UserDefaultsService.swift in Sources */,
 				EFF0E2A22921097100854E5F /* Season.swift in Sources */,
 				EFF0E2A82921097100854E5F /* Poster.swift in Sources */,
 				EFD8D76428A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,

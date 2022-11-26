@@ -173,10 +173,9 @@ struct ProjectDetailView: View {
             }
         }.navigationTitle(viewModel.project.attributes.title)
             .navigationBarItems(trailing: Button(action: {
-                if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
-                    UIApplication.shared.open(URL(string: dpUrl)!)
-                }
-                
+                    if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
+                        UIApplication.shared.open(URL(string: dpUrl)!)
+                    }
                 }, label: {
                     VStack {
                         if viewModel.project.attributes.disneyPlusUrl != nil {
@@ -188,5 +187,10 @@ struct ProjectDetailView: View {
                 }
               )
             )
+            .refreshable(action: {
+                Task {
+                    await viewModel.refresh(id: viewModel.project.id)
+                }
+            })
     }
 }

@@ -19,6 +19,24 @@ class CachingService {
     }
     
     static func getFromCache<T: Codable>(key: String) -> T? {
+        guard !UserDefaultsService.standard.disableCaching else {
+            print("caching disabled")
+            return nil
+        }
         return try? DataCache.instance.readCodable(forKey: key)
+    }
+    
+    enum CachingKeys {
+        case actors
+        case directors
+        case project(id: String)
+        
+        func getString() -> String {
+            switch self {
+            case .actors: return "actors"
+            case .directors: return "directors"
+            case .project(let id): return "project#\(id)"
+            }
+        }
     }
 }
