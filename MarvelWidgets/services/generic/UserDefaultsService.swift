@@ -13,6 +13,9 @@ class UserDefaultsService {
     private var defs = UserDefaults.standard
     private enum UserDefaultsKeys {
         static let topicsKey = "subscribedTopics"
+        static let showOtherTabsKey = "showOtherTabs"
+        static let showNewsTabKey = "showNewsTab"
+        static let showActorsAndDirectorsKey = "showActorsAndDirectors"
     }
     
     var subscribeTopics: [String] {
@@ -21,6 +24,24 @@ class UserDefaultsService {
         }
         set(value) {
             defs.set(value, forKey: UserDefaultsKeys.topicsKey)
+        }
+    }
+    
+    var showOtherTabs: Bool {
+        get {
+            defs.bool(forKey: UserDefaultsKeys.showOtherTabsKey)
+        }
+    }
+    
+    var showNewsTab: Bool {
+        get {
+            defs.bool(forKey: UserDefaultsKeys.showNewsTabKey)
+        }
+    }
+    
+    var showActorsAndDirectors: Bool {
+        get {
+            defs.bool(forKey: UserDefaultsKeys.showActorsAndDirectorsKey)
         }
     }
 }

@@ -38,9 +38,20 @@
 		EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
 		EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
-		EF6B82B02924130A00A5D69C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82AF2924130A00A5D69C /* NotificationService.swift */; };
-		EF6B82B42924130A00A5D69C /* RichPushNotificationsMCU.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
+		EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82C529258B9300A5D69C /* NotificationService.swift */; };
+		EF6B82CA29258B9300A5D69C /* MCUWidgetsRPN.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF6B82C329258B9300A5D69C /* MCUWidgetsRPN.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EF6B82CF29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82CE29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift */; };
+		EF6B82D1292AAC1D00A5D69C /* InstagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */; };
+		EF6B82D3292AB72D00A5D69C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EF6B82D2292AB72D00A5D69C /* Settings.bundle */; };
+		EF6B82D6292D4E9700A5D69C /* DirectorListPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82D5292D4E9700A5D69C /* DirectorListPageView.swift */; };
+		EF6B82D8292D4F9000A5D69C /* PersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82D7292D4F9000A5D69C /* PersonService.swift */; };
+		EF6B82DA292D577500A5D69C /* ActorListPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82D9292D577500A5D69C /* ActorListPageView.swift */; };
+		EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */; };
+		EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */; };
+		EF6B8344293233A300A5D69C /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = EF6B8343293233A300A5D69C /* DataCache */; };
+		EF6B83462932347C00A5D69C /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = EF6B83452932347C00A5D69C /* DataCache */; };
+		EF6B83482932348300A5D69C /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = EF6B83472932348300A5D69C /* DataCache */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
@@ -168,12 +179,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EF6B82B22924130A00A5D69C /* PBXContainerItemProxy */ = {
+		EF6B82C829258B9300A5D69C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EFCE380328A3D7A700B4CC0D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EF6B82AC2924130A00A5D69C;
-			remoteInfo = RichPushNotifications;
+			remoteGlobalIDString = EF6B82C229258B9300A5D69C;
+			remoteInfo = MCUWidgetsRPN;
 		};
 		EFCA5DC528A445B40004AAC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -199,8 +210,8 @@
 			dstSubfolderSpec = 13;
 			files = (
 				EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed Foundation Extensions */,
-				EF6B82B42924130A00A5D69C /* RichPushNotificationsMCU.appex in Embed Foundation Extensions */,
 				EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed Foundation Extensions */,
+				EF6B82CA29258B9300A5D69C /* MCUWidgetsRPN.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,10 +229,16 @@
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
 		EF6B8298292412CA00A5D69C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RichPushNotificationsMCU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF6B82AF2924130A00A5D69C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		EF6B82B12924130A00A5D69C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		EF6B82C329258B9300A5D69C /* MCUWidgetsRPN.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MCUWidgetsRPN.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF6B82C529258B9300A5D69C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		EF6B82C729258B9300A5D69C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF6B82CE29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNotificationAttachmentExtension.swift; sourceTree = "<group>"; };
+		EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramView.swift; sourceTree = "<group>"; };
+		EF6B82D2292AB72D00A5D69C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		EF6B82D5292D4E9700A5D69C /* DirectorListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorListPageView.swift; sourceTree = "<group>"; };
+		EF6B82D7292D4F9000A5D69C /* PersonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
+		EF6B82D9292D577500A5D69C /* ActorListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListPageView.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -293,7 +310,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EF6B82AA2924130A00A5D69C /* Frameworks */ = {
+		EF6B82C029258B9300A5D69C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFCA5DAF28A445B40004AAC7 /* Intents.framework in Frameworks */,
+				EF6B83482932348300A5D69C /* DataCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +335,7 @@
 				EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */,
 				EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */,
 				EFF0E2D729240D4900854E5F /* FirebaseAnalytics in Frameworks */,
+				EF6B8344293233A300A5D69C /* DataCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,19 +345,30 @@
 			files = (
 				EFCE382F28A3E22E00B4CC0D /* SwiftUI.framework in Frameworks */,
 				EFCE382D28A3E22E00B4CC0D /* WidgetKit.framework in Frameworks */,
+				EF6B83462932347C00A5D69C /* DataCache in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EF6B82AE2924130A00A5D69C /* RichPushNotificationsMCU */ = {
+		EF6B82C429258B9300A5D69C /* MCUWidgetsRPN */ = {
 			isa = PBXGroup;
 			children = (
-				EF6B82AF2924130A00A5D69C /* NotificationService.swift */,
-				EF6B82B12924130A00A5D69C /* Info.plist */,
+				EF6B82C529258B9300A5D69C /* NotificationService.swift */,
+				EF6B82C729258B9300A5D69C /* Info.plist */,
+				EF6B82CE29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift */,
 			);
-			path = RichPushNotificationsMCU;
+			path = MCUWidgetsRPN;
+			sourceTree = "<group>";
+		};
+		EF6B82D4292D4E8200A5D69C /* personListViews */ = {
+			isa = PBXGroup;
+			children = (
+				EF6B82D5292D4E9700A5D69C /* DirectorListPageView.swift */,
+				EF6B82D9292D577500A5D69C /* ActorListPageView.swift */,
+			);
+			path = personListViews;
 			sourceTree = "<group>";
 		};
 		EFCA5D7428A3EF9D0004AAC7 /* extensions */ = {
@@ -392,7 +422,7 @@
 				EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE383028A3E22E00B4CC0D /* SmallWidget */,
 				EFCA5DB028A445B40004AAC7 /* WidgetTypeConfiguration */,
-				EF6B82AE2924130A00A5D69C /* RichPushNotificationsMCU */,
+				EF6B82C429258B9300A5D69C /* MCUWidgetsRPN */,
 				EFCE382B28A3E22E00B4CC0D /* Frameworks */,
 				EFCE380C28A3D7A700B4CC0D /* Products */,
 			);
@@ -404,7 +434,7 @@
 				EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */,
 				EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */,
 				EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */,
-				EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */,
+				EF6B82C329258B9300A5D69C /* MCUWidgetsRPN.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -427,6 +457,7 @@
 				EFCE381228A3D7AE00B4CC0D /* Assets.xcassets */,
 				EFCE381428A3D7AE00B4CC0D /* Preview Content */,
 				EFF0E2D229240B7B00854E5F /* AppDelegate.swift */,
+				EF6B82D2292AB72D00A5D69C /* Settings.bundle */,
 			);
 			path = MarvelWidgets;
 			sourceTree = "<group>";
@@ -445,6 +476,7 @@
 				EF38FD71291FF56400EA4BD9 /* ProjectService.swift */,
 				EFCE384328A3E33900B4CC0D /* generic */,
 				EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */,
+				EF6B82D7292D4F9000A5D69C /* PersonService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -480,6 +512,8 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EF6B82D4292D4E8200A5D69C /* personListViews */,
+				EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */,
 				EFF0E2C02922B77E00854E5F /* personDetailViews */,
 				EFF0E26F2920EEE300854E5F /* domainListViews */,
 				EFF0E26E2920EECB00854E5F /* shared */,
@@ -591,21 +625,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EF6B82AC2924130A00A5D69C /* RichPushNotificationsMCU */ = {
+		EF6B82C229258B9300A5D69C /* MCUWidgetsRPN */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF6B82B52924130A00A5D69C /* Build configuration list for PBXNativeTarget "RichPushNotificationsMCU" */;
+			buildConfigurationList = EF6B82CB29258B9400A5D69C /* Build configuration list for PBXNativeTarget "MCUWidgetsRPN" */;
 			buildPhases = (
-				EF6B82A92924130A00A5D69C /* Sources */,
-				EF6B82AA2924130A00A5D69C /* Frameworks */,
-				EF6B82AB2924130A00A5D69C /* Resources */,
+				EF6B82BF29258B9300A5D69C /* Sources */,
+				EF6B82C029258B9300A5D69C /* Frameworks */,
+				EF6B82C129258B9300A5D69C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RichPushNotificationsMCU;
-			productName = RichPushNotifications;
-			productReference = EF6B82AD2924130A00A5D69C /* RichPushNotificationsMCU.appex */;
+			name = MCUWidgetsRPN;
+			productName = MCUWidgetsRPN;
+			productReference = EF6B82C329258B9300A5D69C /* MCUWidgetsRPN.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */ = {
@@ -621,6 +655,9 @@
 			dependencies = (
 			);
 			name = WidgetTypeConfiguration;
+			packageProductDependencies = (
+				EF6B83472932348300A5D69C /* DataCache */,
+			);
 			productName = WidgetTypeConfiguration;
 			productReference = EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -639,7 +676,7 @@
 			dependencies = (
 				EFCE383A28A3E22F00B4CC0D /* PBXTargetDependency */,
 				EFCA5DC628A445B40004AAC7 /* PBXTargetDependency */,
-				EF6B82B32924130A00A5D69C /* PBXTargetDependency */,
+				EF6B82C929258B9300A5D69C /* PBXTargetDependency */,
 			);
 			name = MarvelWidgets;
 			packageProductDependencies = (
@@ -648,6 +685,7 @@
 				EFF0E2D629240D4900854E5F /* FirebaseAnalytics */,
 				EFF0E2D829240D4900854E5F /* FirebaseCrashlytics */,
 				EFF0E2DA29240D4900854E5F /* FirebaseMessaging */,
+				EF6B8343293233A300A5D69C /* DataCache */,
 			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
@@ -666,6 +704,9 @@
 			dependencies = (
 			);
 			name = SmallWidgetExtension;
+			packageProductDependencies = (
+				EF6B83452932347C00A5D69C /* DataCache */,
+			);
 			productName = SmallWidgetExtension;
 			productReference = EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -680,7 +721,7 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					EF6B82AC2924130A00A5D69C = {
+					EF6B82C229258B9300A5D69C = {
 						CreatedOnToolsVersion = 14.1;
 					};
 					EFCA5DAC28A445B40004AAC7 = {
@@ -707,6 +748,7 @@
 				EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				EFF0E25A292065B900854E5F /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
 				EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */,
 			);
 			productRefGroup = EFCE380C28A3D7A700B4CC0D /* Products */;
 			projectDirPath = "";
@@ -715,13 +757,13 @@
 				EFCE380A28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE382928A3E22E00B4CC0D /* SmallWidgetExtension */,
 				EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */,
-				EF6B82AC2924130A00A5D69C /* RichPushNotificationsMCU */,
+				EF6B82C229258B9300A5D69C /* MCUWidgetsRPN */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EF6B82AB2924130A00A5D69C /* Resources */ = {
+		EF6B82C129258B9300A5D69C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -740,6 +782,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF6B82D3292AB72D00A5D69C /* Settings.bundle in Resources */,
 				EFCE381628A3D7AE00B4CC0D /* Preview Assets.xcassets in Resources */,
 				EFF0E2C62924062C00854E5F /* GoogleService-Info.plist in Resources */,
 				EFCE381328A3D7AE00B4CC0D /* Assets.xcassets in Resources */,
@@ -758,11 +801,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EF6B82A92924130A00A5D69C /* Sources */ = {
+		EF6B82BF29258B9300A5D69C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF6B82B02924130A00A5D69C /* NotificationService.swift in Sources */,
+				EF6B82CF29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift in Sources */,
+				EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +827,7 @@
 				EFF0E2B82921097200854E5F /* Director.swift in Sources */,
 				EF178C4928AEAA5A003B9B76 /* SpecificWidget.swift in Sources */,
 				EFF0E2AE2921097200854E5F /* Phase.swift in Sources */,
+				EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */,
 				EFF0E2B92921097200854E5F /* Episode.swift in Sources */,
 				EFD8D76128A7ACFD00CA8DAC /* SaveService.swift in Sources */,
 				EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */,
@@ -848,6 +893,7 @@
 				EFF0E2642920EDD300854E5F /* TrailersView.swift in Sources */,
 				EFF0E26C2920EE5400854E5F /* DirectorListView.swift in Sources */,
 				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
+				EF6B82DA292D577500A5D69C /* ActorListPageView.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
 				EFF0E2C22922B79200854E5F /* ActorDetailView.swift in Sources */,
@@ -857,6 +903,7 @@
 				EFF0E275292107CE00854E5F /* ProjectWrapper.swift in Sources */,
 				EFF0E28D2921086600854E5F /* RelatedProjects.swift in Sources */,
 				EF178C3F28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
+				EF6B82D6292D4E9700A5D69C /* DirectorListPageView.swift in Sources */,
 				EFF0E27B292107F500854E5F /* Saga.swift in Sources */,
 				EF178C4328AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
@@ -872,11 +919,13 @@
 				EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */,
 				EFF0E2662920EDF300854E5F /* ImageSizedView.swift in Sources */,
 				EFF0E2682920EE0B00854E5F /* PosterListView.swift in Sources */,
+				EF6B82D8292D4F9000A5D69C /* PersonService.swift in Sources */,
 				EFD8D75B28A55BFE00CA8DAC /* VideoView.swift in Sources */,
 				EFD8D77128A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */,
 				EFF0E2D329240B7B00854E5F /* AppDelegate.swift in Sources */,
 				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
+				EF6B82D1292AAC1D00A5D69C /* InstagramView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +946,7 @@
 				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
 				EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
+				EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */,
 				EFF0E2A52921097100854E5F /* Episode.swift in Sources */,
 				EFD8D76028A7ACFD00CA8DAC /* SaveService.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
@@ -930,10 +980,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EF6B82B32924130A00A5D69C /* PBXTargetDependency */ = {
+		EF6B82C929258B9300A5D69C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EF6B82AC2924130A00A5D69C /* RichPushNotificationsMCU */;
-			targetProxy = EF6B82B22924130A00A5D69C /* PBXContainerItemProxy */;
+			target = EF6B82C229258B9300A5D69C /* MCUWidgetsRPN */;
+			targetProxy = EF6B82C829258B9300A5D69C /* PBXContainerItemProxy */;
 		};
 		EFCA5DC628A445B40004AAC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -948,16 +998,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		EF6B82B62924130A00A5D69C /* Debug */ = {
+		EF6B82CC29258B9400A5D69C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RichPushNotificationsMCU/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = RichPushNotifications;
+				INFOPLIST_FILE = MCUWidgetsRPN/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MCUWidgetsRPN;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -965,8 +1015,8 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.RichPushNotificationsMCU;
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.MCUWidgetsRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -975,16 +1025,16 @@
 			};
 			name = Debug;
 		};
-		EF6B82B72924130A00A5D69C /* Release */ = {
+		EF6B82CD29258B9400A5D69C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RichPushNotificationsMCU/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = RichPushNotifications;
+				INFOPLIST_FILE = MCUWidgetsRPN/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MCUWidgetsRPN;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -992,8 +1042,8 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.RichPushNotificationsMCU;
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.MCUWidgetsRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1006,7 +1056,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
@@ -1017,7 +1067,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.WidgetTypeConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1031,7 +1081,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
@@ -1042,7 +1092,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.WidgetTypeConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1174,7 +1224,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
@@ -1184,13 +1234,13 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1210,7 +1260,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
@@ -1220,13 +1270,13 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1245,7 +1295,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallWidget/Info.plist;
@@ -1256,7 +1306,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.SmallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1273,7 +1323,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallWidget/Info.plist;
@@ -1284,7 +1334,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.SmallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1297,11 +1347,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF6B82B52924130A00A5D69C /* Build configuration list for PBXNativeTarget "RichPushNotificationsMCU" */ = {
+		EF6B82CB29258B9400A5D69C /* Build configuration list for PBXNativeTarget "MCUWidgetsRPN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EF6B82B62924130A00A5D69C /* Debug */,
-				EF6B82B72924130A00A5D69C /* Release */,
+				EF6B82CC29258B9400A5D69C /* Debug */,
+				EF6B82CD29258B9400A5D69C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1345,6 +1395,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1372,6 +1430,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EF6B8343293233A300A5D69C /* DataCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */;
+			productName = DataCache;
+		};
+		EF6B83452932347C00A5D69C /* DataCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */;
+			productName = DataCache;
+		};
+		EF6B83472932348300A5D69C /* DataCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */;
+			productName = DataCache;
+		};
 		EF9B913F28B9045200C5F7B2 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EFCA5D8E28A402D10004AAC7 /* XCRemoteSwiftPackageReference "Kingfisher" */;

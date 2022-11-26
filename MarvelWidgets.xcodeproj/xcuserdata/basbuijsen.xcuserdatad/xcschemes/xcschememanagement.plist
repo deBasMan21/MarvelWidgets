@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MCUWidgetsRPN.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>MarvelWidgets.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -14,31 +19,26 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Promises (Playground) 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 		<key>Promises (Playground).xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<key>RichPushNotifications.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>7</integer>
-		</dict>
-		<key>RichPushNotificationsMCU.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>SmallWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
@@ -58,6 +58,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>EF6B82C229258B9300A5D69C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EFCA5DAC28A445B40004AAC7</key>
 		<dict>
 			<key>primary</key>

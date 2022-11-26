@@ -11,7 +11,6 @@ import SwiftUIPager
 
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
-    @Binding var shouldStopReload: Bool
     @Binding var showLoader: Bool
     
     var body: some View {
@@ -123,7 +122,10 @@ struct ProjectDetailView: View {
                         Text("Actors")
                             .font(.largeTitle)
                         
-                        ActorListView(actors: actors.data, shouldStopReload: $shouldStopReload, showLoader: $showLoader)
+                        ActorListView(
+                            actors: actors.data,
+                            showLoader: $showLoader
+                        )
                     }.padding()
                 }
                 
@@ -132,7 +134,10 @@ struct ProjectDetailView: View {
                         Text("Directors")
                             .font(.largeTitle)
                         
-                        DirectorListView(directors: directors.data, shouldStopReload: $shouldStopReload, showLoader: $showLoader)
+                        DirectorListView(
+                            directors: directors.data,
+                            showLoader: $showLoader
+                        )
                     }.padding()
                 }
                 
@@ -145,7 +150,12 @@ struct ProjectDetailView: View {
                         VStack(spacing: 15){
                             ForEach(relatedProjects.data, id: \.uuid) { project in
                                 NavigationLink {
-                                    ProjectDetailView(viewModel: ProjectDetailViewModel(project: project), shouldStopReload: $shouldStopReload, showLoader: $showLoader)
+                                    ProjectDetailView(
+                                        viewModel: ProjectDetailViewModel(
+                                            project: project
+                                        ),
+                                        showLoader: $showLoader
+                                    )
                                 } label: {
                                     VStack{
                                         Text(project.attributes.title)
@@ -162,10 +172,6 @@ struct ProjectDetailView: View {
                 }
             }
         }.navigationTitle(viewModel.project.attributes.title)
-            .onAppear{
-                shouldStopReload = false
-                viewModel.setIsSavedIcon(for: viewModel.project)
-            }
             .navigationBarItems(trailing: Button(action: {
                 if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
                     UIApplication.shared.open(URL(string: dpUrl)!)

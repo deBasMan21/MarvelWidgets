@@ -9,10 +9,8 @@ import Foundation
 import SwiftUI
 
 struct ProjectListView: View {
-    @Binding var activeProject: [Int: Bool]
     @State var type: WidgetType
     @StateObject var viewModel = ProjectListViewModel()
-    @Binding var shouldStopReload: Bool
     @Binding var showLoader: Bool
     
     var body: some View {
@@ -33,12 +31,11 @@ struct ProjectListView: View {
                 
                 ScrollView {
                     ForEach(viewModel.projects, id: \.id) { item in
-                        NavigationLink(isActive: binding(for: item.id)) {
+                        NavigationLink {
                             ProjectDetailView(
                                 viewModel: ProjectDetailViewModel(
                                     project: item
                                 ),
-                                shouldStopReload: $shouldStopReload,
                                 showLoader: $showLoader
                             )
                         } label: {
@@ -70,28 +67,10 @@ struct ProjectListView: View {
                 
             }.navigationTitle(viewModel.navigationTitle)
         }.onAppear{
-            if !shouldStopReload {
-                Task{
-                    viewModel.pageType = type
-                    await viewModel.fetchProjects()
-                }
-            } else {
-                shouldStopReload = false
+            Task{
+                viewModel.pageType = type
+                await viewModel.fetchProjects()
             }
         }
-    }
-    
-    private func binding(for key: Int) -> Binding<Bool> {
-        return .init(
-            get: { self.activeProject[key, default: false] },
-            set: {
-                if $0 {
-                    withAnimation {
-                        showLoader = true
-                    }
-                }
-                self.activeProject[key] = $0
-                
-            })
     }
 }

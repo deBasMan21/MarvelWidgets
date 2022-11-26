@@ -12,7 +12,6 @@ import Kingfisher
 struct ActorDetailView: View {
     @State var actor: ActorsWrapper
     @Binding var showLoader: Bool
-    @Binding var shouldStopReload: Bool
     
     var body: some View {
         ScrollView {
@@ -57,7 +56,12 @@ struct ActorDetailView: View {
                 VStack(spacing: 15){
                     ForEach(actor.attributes.mcuProjects?.data ?? [], id: \.uuid) { project in
                         NavigationLink {
-                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: project), shouldStopReload: $shouldStopReload, showLoader: $showLoader)
+                            ProjectDetailView(
+                                viewModel: ProjectDetailViewModel(
+                                    project: project
+                                ),
+                                showLoader: $showLoader
+                            )
                         } label: {
                             VStack{
                                 Text(project.attributes.title)

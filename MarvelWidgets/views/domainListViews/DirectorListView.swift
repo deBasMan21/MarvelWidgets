@@ -11,7 +11,6 @@ import SwiftUIPager
 
 struct DirectorListView: View {
     @State var directors: [DirectorsWrapper]
-    @Binding var shouldStopReload: Bool
     @Binding var showLoader: Bool
     
     @State var width: CGFloat = 150
@@ -27,7 +26,14 @@ struct DirectorListView: View {
             content: { director in
                 VStack {
                     if let imageUrl = director.attributes.imageURL {
-                        NavigationLink(destination: DirectorDetailView(director: director, showLoader: $showLoader, shouldStopReload: $shouldStopReload), isActive: binding(for: imageUrl)) {
+                        NavigationLink(destination: DirectorDetailView(
+                                director: director,
+                                showLoader: $showLoader
+                            ),
+                            isActive: binding(
+                                for: imageUrl
+                            )
+                        ) {
                             EmptyView()
                         }
                         
