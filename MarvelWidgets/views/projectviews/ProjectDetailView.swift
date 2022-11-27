@@ -192,9 +192,7 @@ struct ProjectDetailView: View {
               )
             )
             .refreshable(action: {
-                Task {
-                    await viewModel.refresh(id: viewModel.project.id)
-                }
+                await viewModel.refresh(id: viewModel.project.id, force: true)
             })
     }
 }

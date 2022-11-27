@@ -60,9 +60,7 @@ struct ProjectListView: View {
                     }
                 }
             }.refreshable {
-                Task {
-                    await viewModel.refresh()
-                }
+                await viewModel.refresh(force: true)
             }
         }.onAppear{
             Task{

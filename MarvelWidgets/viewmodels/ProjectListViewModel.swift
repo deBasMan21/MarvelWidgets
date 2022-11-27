@@ -51,21 +51,21 @@ extension ProjectListView {
             }
         }
         
-        func fetchProjects() async {
+        func fetchProjects(force: Bool = false) async {
             _ = await MainActor.run {
                 Task {
                     var projects: [ProjectWrapper] = []
                     if let pageType = pageType {
                         switch pageType {
                         case .all:
-                            projects = await ProjectService.getAll()
+                            projects = await ProjectService.getAll(force: force)
                         case .movies, .series, .special:
-                            projects = await ProjectService.getByType(pageType)
+                            projects = await ProjectService.getByType(pageType, force: force)
                         case .saved:
                             projects = SaveService.getProjectsFromUserDefaults()
                         }
                     } else if let relatedPageType = relatedPageType {
-                        projects = await ProjectService.getOtherByType(relatedPageType)
+                        projects = await ProjectService.getOtherByType(relatedPageType, force: force)
                     }
                     
                     self.projects = orderProjects(projects, by: orderType)
@@ -93,8 +93,8 @@ extension ProjectListView {
             projects = orderProjects(projects, by: orderType)
         }
         
-        func refresh() async {
-            await fetchProjects()
+        func refresh(force: Bool = false) async {
+            await fetchProjects(force: force)
         }
     }
     
