@@ -95,6 +95,6 @@ struct WidgetSettingsView: View {
             
             Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
                 .padding()
-        }
+        }.navigationTitle("Settings")
     }
 }

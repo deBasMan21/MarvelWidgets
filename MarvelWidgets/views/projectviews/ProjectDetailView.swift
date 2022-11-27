@@ -51,12 +51,16 @@ struct ProjectDetailView: View {
                             Text(viewModel.project.attributes.releaseDate ?? "No release date set")
                         }
                         
-                        VStack(alignment: .leading) {
-                            Text("**\(viewModel.project.attributes.phase.rawValue)**")
+                        if let phase = viewModel.project.attributes.phase {
+                            VStack(alignment: .leading) {
+                                Text("**\(phase.rawValue)**")
+                            }
                         }
                         
-                        VStack(alignment: .leading) {
-                            Text("**\(viewModel.project.attributes.saga.rawValue)**")
+                        if let saga = viewModel.project.attributes.saga {
+                            VStack(alignment: .leading) {
+                                Text("**\(saga.rawValue)**")
+                            }
                         }
                         
                         VStack(alignment: .leading) {

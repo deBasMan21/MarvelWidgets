@@ -15,7 +15,7 @@ struct InstagramView: View {
     var body: some View {
         VStack {
             WebView(webView: webView.webView)
-        }
+        }.navigationTitle("Latest news")
     }
 }
 

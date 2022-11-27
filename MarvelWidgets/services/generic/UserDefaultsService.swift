@@ -34,18 +34,6 @@ class UserDefaultsService {
         }
     }
     
-    var showNewsTab: Bool {
-        get {
-            defs.bool(forKey: UserDefaultsKeys.showNewsTabKey)
-        }
-    }
-    
-    var showActorsAndDirectors: Bool {
-        get {
-            defs.bool(forKey: UserDefaultsKeys.showActorsAndDirectorsKey)
-        }
-    }
-    
     var disableCaching: Bool {
         get {
             defs.bool(forKey: UserDefaultsKeys.disableCaching)

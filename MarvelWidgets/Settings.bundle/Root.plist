@@ -20,26 +20,6 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Show actors and directors</string>
-			<key>Key</key>
-			<string>showActorsAndDirectors</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Show news tab</string>
-			<key>Key</key>
-			<string>showNewsTab</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
 			<string>Show other tabs</string>
 			<key>Key</key>
 			<string>showOtherTabs</string>

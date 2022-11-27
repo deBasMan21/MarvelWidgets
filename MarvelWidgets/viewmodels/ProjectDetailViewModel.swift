@@ -51,14 +51,28 @@ class ProjectDetailViewModel: ObservableObject {
     }
     
     func refresh(id: Int) async {
-        if let populatedProject = await getPopulatedProject(id) {
-            await MainActor.run {
-                self.project = populatedProject
+        switch project.attributes.type {
+        case .sony, .defenders, .fox, .marvelOther, .marvelTelevision:
+            if let populatedProject = await getPopulatedOtherProject(id) {
+                await MainActor.run {
+                    self.project = populatedProject
+                }
+            }
+        default:
+            if let populatedProject = await getPopulatedProject(id) {
+                await MainActor.run {
+                    self.project = populatedProject
+                }
             }
         }
+        
     }
     
     func getPopulatedProject(_ id: Int) async -> ProjectWrapper? {
         return await ProjectService.getById(id)
+    }
+    
+    func getPopulatedOtherProject(_ id: Int) async -> ProjectWrapper? {
+        return await ProjectService.getOtherById(id)
     }
 }

@@ -10,23 +10,31 @@ import SwiftUI
 
 struct ActorListPageView: View {
     @Binding var showLoader: Bool
-    
-    @State var actors: [ActorsWrapper] = []
-    let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
+    @StateObject var viewModel = ViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack {
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(actors) { actorObj in
-                        NavigationLink(destination: ActorDetailView(actor: actorObj, showLoader: $showLoader)) {
-                            VStack {
-                                ImageSizedView(url: actorObj.attributes.imageURL ?? "")
-                                
-                                Text("\(actorObj.attributes.firstName) \(actorObj.attributes.lastName)")
+        VStack {
+            Menu(content: {
+                ForEach(SortKeys.allCases, id: \.self){ item in
+                    Button(item.rawValue, action: {
+                        viewModel.sortActors(by: item)
+                    })
+                }
+            }, label: {
+                Text("Order by: **\(String(describing: viewModel.orderType.rawValue))**")
+                Image(systemName: "arrow.up.arrow.down")
+            })
+            
+            ScrollView {
+                VStack {
+                    LazyVGrid(columns: viewModel.columns, spacing: 20) {
+                        ForEach(viewModel.actors) { actorObj in
+                            NavigationLink(destination: ActorDetailView(actor: actorObj, showLoader: $showLoader)) {
+                                VStack {
+                                    ImageSizedView(url: actorObj.attributes.imageURL ?? "")
+                                    
+                                    Text("\(actorObj.attributes.firstName) \(actorObj.attributes.lastName)")
+                                }
                             }
                         }
                     }
@@ -34,36 +42,8 @@ struct ActorListPageView: View {
             }
         }.onAppear {
             Task {
-                await getActors()
+                await viewModel.getActors()
             }
-        }
-    }
-    
-    func getActors() async {
-        actors = await ProjectService.getActors()
-        sortActors(by: .projects)
-    }
-    
-    private func sortActors(by type: SortKeys) {
-        switch type {
-        case .nameASC:
-            actors = actors.sorted(by: {
-                "\($0.attributes.firstName) \($0.attributes.lastName)" < "\($1.attributes.firstName) \($1.attributes.lastName)"
-            })
-        case .nameDESC:
-            actors = actors.sorted(by: {
-                "\($0.attributes.firstName) \($0.attributes.lastName)" > "\($1.attributes.firstName) \($1.attributes.lastName)"
-            })
-        case .projects:
-            actors = actors.sorted(by: {
-                $0.attributes.mcuProjects?.data.count ?? 0 > $1.attributes.mcuProjects?.data.count ?? 0
-            })
-        }
-    }
-    
-    private enum SortKeys {
-        case nameASC
-        case nameDESC
-        case projects
+        }.navigationTitle("Actors")
     }
 }

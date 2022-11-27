@@ -55,6 +55,10 @@
 		EF6B83492932956200A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF6B834B2932956300A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF6B834C2932956400A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
+		EF6B834E29338CB100A5D69C /* MoreMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B834D29338CB100A5D69C /* MoreMenuView.swift */; };
+		EF6B83532933A0D200A5D69C /* DirectorListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83522933A0D200A5D69C /* DirectorListPageViewModel.swift */; };
+		EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83542933A17000A5D69C /* PersonSortKeys.swift */; };
+		EF6B83572933A1B400A5D69C /* ActorListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83562933A1B400A5D69C /* ActorListPageViewModel.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
@@ -242,6 +246,10 @@
 		EF6B82D5292D4E9700A5D69C /* DirectorListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorListPageView.swift; sourceTree = "<group>"; };
 		EF6B82D7292D4F9000A5D69C /* PersonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
 		EF6B82D9292D577500A5D69C /* ActorListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListPageView.swift; sourceTree = "<group>"; };
+		EF6B834D29338CB100A5D69C /* MoreMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMenuView.swift; sourceTree = "<group>"; };
+		EF6B83522933A0D200A5D69C /* DirectorListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorListPageViewModel.swift; sourceTree = "<group>"; };
+		EF6B83542933A17000A5D69C /* PersonSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSortKeys.swift; sourceTree = "<group>"; };
+		EF6B83562933A1B400A5D69C /* ActorListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListPageViewModel.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -508,6 +516,7 @@
 				EFF0E2922921088900854E5F /* Trailer.swift */,
 				EFF0E2942921089400854E5F /* Season.swift */,
 				EFF0E2962921089F00854E5F /* Episode.swift */,
+				EF6B83542933A17000A5D69C /* PersonSortKeys.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -523,6 +532,7 @@
 				EFF0E26D2920EEC200854E5F /* seasonViews */,
 				EFFE152A28A5480700DCF804 /* projectviews */,
 				EFCA5DA028A41E780004AAC7 /* widgetSettings */,
+				EF6B834D29338CB100A5D69C /* MoreMenuView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -533,6 +543,8 @@
 				EFCA5DA328A43D360004AAC7 /* WidgetSettingsViewModel.swift */,
 				EFFE153728A54C2400DCF804 /* ProjectListViewModel.swift */,
 				EFD8D75C28A5791D00CA8DAC /* ProjectDetailViewModel.swift */,
+				EF6B83522933A0D200A5D69C /* DirectorListPageViewModel.swift */,
+				EF6B83562933A1B400A5D69C /* ActorListPageViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -885,6 +897,8 @@
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
+				EF6B834E29338CB100A5D69C /* MoreMenuView.swift in Sources */,
+				EF6B83532933A0D200A5D69C /* DirectorListPageViewModel.swift in Sources */,
 				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
 				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
 				EFF0E27D2921080600854E5F /* ProjectType.swift in Sources */,
@@ -894,6 +908,7 @@
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
+				EF6B83572933A1B400A5D69C /* ActorListPageViewModel.swift in Sources */,
 				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFF0E2642920EDD300854E5F /* TrailersView.swift in Sources */,
 				EFF0E26C2920EE5400854E5F /* DirectorListView.swift in Sources */,
@@ -921,6 +936,7 @@
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
+				EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */,
 				EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */,
 				EFF0E2662920EDF300854E5F /* ImageSizedView.swift in Sources */,
 				EFF0E2682920EE0B00854E5F /* PosterListView.swift in Sources */,

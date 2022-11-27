@@ -11,8 +11,8 @@ struct MCUProject: Codable {
     let title: String
     let releaseDate: String?
     let postCreditScenes, duration: Int?
-    let phase: Phase
-    let saga: Saga
+    let phase: Phase?
+    let saga: Saga?
     let overview: String?
     let type: ProjectType
     let boxOffice, createdAt, updatedAt, disneyPlusUrl: String?

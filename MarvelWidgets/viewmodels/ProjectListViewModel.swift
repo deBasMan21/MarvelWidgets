@@ -11,37 +11,62 @@ extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
         @Published var projects: [ProjectWrapper] = []
         @Published var orderType: OrderType = .releaseDateASC
-        @Published var pageType: WidgetType = .all
+        @Published var pageType: WidgetType? = nil
+        @Published var relatedPageType: ProjectType? = nil
         
         var navigationTitle: String {
-            switch pageType {
-            case .all:
-                return "MCU Projects"
-            case .movies:
-                return "MCU Movies"
-            case .series:
-                return "MCU Series"
-            case .special:
-                return "MCU Specials"
-            case .saved:
-                return "Saved Projects"
+//            return ""
+            if let pageType = pageType {
+                switch pageType {
+                case .all:
+                    return "MCU Projects"
+                case .movies:
+                    return "MCU Movies"
+                case .series:
+                    return "MCU Series"
+                case .special:
+                    return "MCU Specials"
+                case .saved:
+                    return "Saved Projects"
+                default:
+                    return ""
+                }
+            } else if let relatedPageType = relatedPageType {
+                switch relatedPageType {
+                case .defenders:
+                    return "Defenders"
+                case .marvelTelevision:
+                    return "Marvel television"
+                case .marvelOther:
+                    return "Marvel other"
+                case .fox:
+                    return "Fox films"
+                case .sony:
+                    return "Sony films"
+                default:
+                    return "Unkown"
+                }
+            } else {
+                return ""
             }
         }
         
         func fetchProjects() async {
             _ = await MainActor.run {
                 Task {
-                    var projects: [ProjectWrapper]
-                    switch pageType {
-                    case .all:
-                        projects = await ProjectService.getAll()
-                    case .movies, .series, .special:
-                        projects = await ProjectService.getByType(pageType)
-                    case .saved:
-                        projects = SaveService.getProjectsFromUserDefaults()
+                    var projects: [ProjectWrapper] = []
+                    if let pageType = pageType {
+                        switch pageType {
+                        case .all:
+                            projects = await ProjectService.getAll()
+                        case .movies, .series, .special:
+                            projects = await ProjectService.getByType(pageType)
+                        case .saved:
+                            projects = SaveService.getProjectsFromUserDefaults()
+                        }
+                    } else if let relatedPageType = relatedPageType {
+                        projects = await ProjectService.getOtherByType(relatedPageType)
                     }
-                    
-                    
                     
                     self.projects = orderProjects(projects, by: orderType)
                 }

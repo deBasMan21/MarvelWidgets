@@ -30,12 +30,14 @@ class CachingService {
         case actors
         case directors
         case project(id: String)
+        case otherProject(id: String)
         
         func getString() -> String {
             switch self {
             case .actors: return "actors"
             case .directors: return "directors"
             case .project(let id): return "project#\(id)"
+            case .otherProject(let id): return "other#\(id)"
             }
         }
     }

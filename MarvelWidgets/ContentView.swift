@@ -19,76 +19,43 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             TabView {
-                ProjectListView(type: .all, showLoader: $showLoader)
-                    .tabItem{
-                        Label("All", systemImage: "list.dash")
-                    }.tag(0)
+                NavigationView {
+                    ProjectListView(type: .all, showLoader: $showLoader)
+                }.tabItem{
+                    Label("All", systemImage: "list.dash")
+                }
                 
-                ProjectListView(type: .movies, showLoader: $showLoader)
-                    .tabItem{
-                        Label("Movies", systemImage: "film")
-                    }.tag(1)
+                NavigationView {
+                    ProjectListView(type: .movies, showLoader: $showLoader)
+                }.tabItem{
+                    Label("Movies", systemImage: "film")
+                }
                 
-                ProjectListView(type: .series, showLoader: $showLoader)
-                    .tabItem{
-                        Label("Series", systemImage: "tv")
-                    }.tag(2)
+                NavigationView {
+                    ProjectListView(type: .series, showLoader: $showLoader)
+                }.tabItem{
+                    Label("Series", systemImage: "tv")
+                }
                 
-                ProjectListView(type: .special, showLoader: $showLoader)
-                    .tabItem{
-                        Label("Specials", systemImage: "star.circle.fill")
-                    }.tag(3)
+                NavigationView {
+                    ProjectListView(type: .special, showLoader: $showLoader)
+                }.tabItem{
+                    Label("Specials", systemImage: "star.circle.fill")
+                }
                 
                 if UserDefaultsService.standard.showOtherTabs {
-                    Text("Fox (xmen, fantastic four, deadpool etc.)")
-                        .tabItem {
-                            Label("Fox", systemImage: "film")
-                        }
-                    
-                    Text("Defenders (daredevil, luke cage, jessica jones etc.)")
-                        .tabItem {
-                            Label("Defenders universe", systemImage: "film")
-                        }
-                    
-                    Text("Sony (spiderman, amazing spiderman, venom etc.)")
-                        .tabItem {
-                            Label("Sony films", systemImage: "film")
-                        }
-                    
-                    Text("Marvel television (agents of shield, agent carter)")
-                        .tabItem {
-                            Label("Marvel television", systemImage: "film")
-                        }
-                    
-                    Text("Other marvel (assembled, legends etc.)")
-                        .tabItem {
-                            Label("Marvel other", systemImage: "film")
-                        }
-                }
-                
-                if UserDefaultsService.standard.showActorsAndDirectors {
-                    DirectorListPageView(showLoader: $showLoader)
-                        .tabItem {
-                            Label("Directors", systemImage: "person.fill")
-                        }
-                    
-                    ActorListPageView(showLoader: $showLoader)
-                        .tabItem {
-                            Label("Actors", systemImage: "person.fill")
-                        }
-                }
-                
-                if UserDefaultsService.standard.showNewsTab {
-                    InstagramView()
-                        .tabItem {
-                            Label("Latest news (twitter @themcutimes)", systemImage: "newspaper.fill")
-                        }
-                }
-                
-                WidgetSettingsView()
-                    .tabItem{
+                    MoreMenuView(showLoader: $showLoader)
+                    .tabItem {
+                        Label("More", systemImage: "ellipsis")
+                    }
+                } else {
+                    NavigationView {
+                        WidgetSettingsView()
+                    }.tabItem {
                         Label("Settings", systemImage: "gearshape")
-                    }.navigationTitle("Settings")
+                    }
+                }
+                
             }.onOpenURL(perform: { url in
                 if url.scheme == "mcuwidgets" {
                     if url.host == "project" {
@@ -131,9 +98,14 @@ struct ContentView: View {
                         if showView {
                             NavigationView {
                                 detailView
+                                    .navigationBarItems(leading:
+                                        Button("Close", action: {
+                                            showSheet = false
+                                        })
+                                    )
                             }
                         } else {
-                            Text("Loading...")
+                            ProgressView()
                                 .onAppear {
                                     Task {
                                         try? await Task.sleep(nanoseconds: 1000000000)
@@ -143,7 +115,6 @@ struct ContentView: View {
                         }
                     }
                 }
-            
             if showLoader {
                 VStack {
                     Spacer()
