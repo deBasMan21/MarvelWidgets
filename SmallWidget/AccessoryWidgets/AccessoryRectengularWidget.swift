@@ -12,13 +12,15 @@ struct AccessoryRectengularWidget: View {
     
     var body: some View {
         HStack {
-            Text(getReleaseDateString(upcomingProject: project))
-                .font(.system(size: 50))
-                .minimumScaleFactor(0.01)
-                .bold()
-                .frame(width: 30)
-            
-            Divider()
+            if let dateFormatted = getReleaseDateString(upcomingProject: project) {
+                Text(dateFormatted)
+                    .font(.system(size: 50))
+                    .minimumScaleFactor(0.01)
+                    .bold()
+                    .frame(width: 30)
+                
+                Divider()
+            }
             
             VStack {
                 Text(project.attributes.title)
@@ -31,11 +33,11 @@ struct AccessoryRectengularWidget: View {
         }.widgetURL(URL(string: "mcuwidgets://project/\(project.id)")!)
     }
     
-    func getReleaseDateString(upcomingProject: ProjectWrapper) -> String {
+    func getReleaseDateString(upcomingProject: ProjectWrapper) -> String? {
         if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
             return "\(difference)"
         } else {
-            return upcomingProject.attributes.releaseDate ?? "No releasedate"
+            return nil
         }
     }
 }

@@ -13,8 +13,8 @@ struct SmallWidgetProvider: IntentTimelineProvider {
     let emptyProject = ProjectWrapper(
         id: -1,
         attributes: MCUProject(
-            title: "",
-            releaseDate: nil,
+            title: "Next project",
+            releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).ISO8601Format(),
             postCreditScenes: nil,
             duration: nil,
             phase: .unkown,
@@ -78,41 +78,11 @@ struct SmallWidgetProvider: IntentTimelineProvider {
                 upcomingProjects.append(contentsOf: SaveService.getProjectsFromUserDefaults())
             }
             
-            if context.family == .accessoryCircular {
-                let previous = upcomingProjects.compactMap {
-                    let date = $0.attributes.releaseDate?.toDate()
-                    if let date = date {
-                        return ($0, date)
-                    } else {
-                        return nil
-                    }
-                }.filter { (item: (ProjectWrapper, Date)) in
-                    item.1 < Date.now
-                }.sorted { $0.1 > $1.1 }
-                    .first
-                
-                let next = upcomingProjects.compactMap {
-                    let date = $0.attributes.releaseDate?.toDate()
-                    if let date = date {
-                        return ($0, date)
-                    } else {
-                        return nil
-                    }
-                }.filter { (item: (ProjectWrapper, Date)) in
-                    item.1 > Date.now
-                }.sorted { $0.1 < $1.1 }
-                    .first
-                
-                guard let previous = previous, let next = next else { return }
-                let entry = UpcomingProjectEntry(date: previous.1, configuration: configuration, upcomingProject: previous.0, nextProject: next.0, image: Image(""), nextImage: Image(""))
-                entries.append(entry)
-            } else {
-                switch configuration.RandomOrNext.rawValue {
-                case 2:
-                    entries.append(randomProject(from: upcomingProjects, with: configuration))
-                default:
-                    entries.append(upcomingProject(from: upcomingProjects, with: configuration))
-                }
+            switch configuration.RandomOrNext.rawValue {
+            case 2:
+                entries.append(randomProject(from: upcomingProjects, with: configuration))
+            default:
+                entries.append(upcomingProject(from: upcomingProjects, with: configuration))
             }
             
             let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -258,7 +228,7 @@ struct SmallWidgetUpcoming : View {
                     Text("No project")
                 }
             case .accessoryCircular:
-                AccessoryCircularWidget(entry: entry)
+                AccessoryCircularWidget(project: project)
             case .accessoryInline:
                 AccessoryInlineWidget(project: project)
             case .accessoryRectangular:
@@ -279,7 +249,7 @@ struct SmallWidget: Widget {
         IntentConfiguration(kind: kind, intent: WidgetTypeConfigurationIntent.self, provider: SmallWidgetProvider()) { entry in
             SmallWidgetUpcoming(entry: entry)
         }
-        .configurationDisplayName("Upcoming MCU")
+        .configurationDisplayName("Any MCU Project")
         .description("This widget shows a MCU project with a countdown if the project is not released yet. This widget has configuration settings to change it to your needs.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular, .accessoryInline, .accessoryRectangular])
     }
