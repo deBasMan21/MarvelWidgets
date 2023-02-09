@@ -110,6 +110,12 @@
 		EF78F6192995705600CA9028 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EF78F61A2995706900CA9028 /* SmallWidgetUpcomingMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift */; };
 		EF78F61B2995707500CA9028 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
+		EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F61F29959CF600CA9028 /* ViewExtensions.swift */; };
+		EF78F62129959CF600CA9028 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F61F29959CF600CA9028 /* ViewExtensions.swift */; };
+		EF78F62229959CF600CA9028 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F61F29959CF600CA9028 /* ViewExtensions.swift */; };
+		EF78F62429959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
+		EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
+		EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
@@ -318,6 +324,8 @@
 		EF78F5EB29956D1700CA9028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF78F5ED29956D1700CA9028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF78F61C2995721A00CA9028 /* OtherWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OtherWidgetsExtension.entitlements; sourceTree = "<group>"; };
+		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -496,6 +504,8 @@
 			children = (
 				EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */,
 				EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */,
+				EF78F61F29959CF600CA9028 /* ViewExtensions.swift */,
+				EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1033,6 +1043,7 @@
 				EF38FD74291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E2B82921097200854E5F /* Director.swift in Sources */,
 				EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
+				EF78F62229959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2AE2921097200854E5F /* Phase.swift in Sources */,
 				EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */,
 				EFF0E2B92921097200854E5F /* Episode.swift in Sources */,
@@ -1046,6 +1057,7 @@
 				EFF0E2BF2921097200854E5F /* ProjectType.swift in Sources */,
 				EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFD8D76528A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
+				EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */,
 				EF578F3928A45633006272AA /* CachingService.swift in Sources */,
 				EFD8D77328A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */,
@@ -1129,6 +1141,7 @@
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
+				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
 				EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */,
@@ -1141,6 +1154,7 @@
 				EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */,
 				EFF0E2D329240B7B00854E5F /* AppDelegate.swift in Sources */,
 				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
+				EF78F62429959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */,
 				EF6B82D1292AAC1D00A5D69C /* InstagramView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1162,6 +1176,7 @@
 				EF178C4028AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
 				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
 				EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
+				EF78F62129959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
 				EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */,
@@ -1175,6 +1190,7 @@
 				EFF0E2AB2921097100854E5F /* ProjectType.swift in Sources */,
 				EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */,
 				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
+				EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */,
 				EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
 				EFD8D77228A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,

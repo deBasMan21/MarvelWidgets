@@ -29,40 +29,74 @@ struct ProjectListView: View {
             
             Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
             
-            ScrollView {
-                ForEach(viewModel.projects, id: \.id) { item in
-                    NavigationLink {
-                        ProjectDetailView(
-                            viewModel: ProjectDetailViewModel(
-                                project: item
-                            ),
-                            showLoader: $showLoader
-                        )
-                    } label: {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.attributes.title)
-                                    .font(Font.headline.bold())
-                                    .multilineTextAlignment(.leading)
-                                
-                                Text(item.attributes.releaseDate ?? "Unknown releasedate")
-                                    .font(Font.body.italic())
+            ScrollViewReader { reader in
+                ZStack {
+                    ScrollView {
+                        LazyVGrid(columns: viewModel.columns, spacing: 20)  {
+                            ForEach(viewModel.projects, id: \.id) { item in
+                                NavigationLink {
+                                    ProjectDetailView(
+                                        viewModel: ProjectDetailViewModel(
+                                            project: item
+                                        ),
+                                        showLoader: $showLoader
+                                    )
+                                } label: {
+                                    ZStack {
+                                        ImageSizedView(url: item.attributes.posters?.first?.posterURL ?? "", showGradient: true)
+                                        
+                                        VStack {
+                                            Spacer()
+                                            
+                                            VStack {
+                                                Text(item.attributes.title)
+                                                    .font(Font.headline.bold())
+                                                    .multilineTextAlignment(.center)
+                                                    .lineLimit(2)
+                                                
+                                                Text(item.attributes.releaseDate ?? "Unknown releasedate")
+                                                    .font(Font.body.italic())
+
+                                            }
+                                        }.padding(.horizontal, 20)
+                                            .padding(.bottom)
+                                    }.foregroundColor(.white)
+                                        .shadow(color: Color(uiColor: UIColor.white.withAlphaComponent(0.3)), radius: 5)
+                                }.id(item.id)
                             }
+                        }
+                    }.refreshable {
+                        await viewModel.refresh(force: true)
+                    }.simultaneousGesture(
+                        DragGesture().onChanged({ _ in
+                            withAnimation {
+                                viewModel.showScroll = true
+                            }
+                        }))
+                    
+                    if viewModel.showScroll && !viewModel.forceClose {
+                        VStack {
+                            HStack {
+                                Text("To now")
+                                    .onTapGesture {
+                                        withAnimation {
+                                            reader.scrollTo(viewModel.closestDateId, anchor: .top)
+                                            viewModel.showScroll = false
+                                        }
+                                    }
+                            }.padding(.horizontal)
+                                .padding(.vertical, 2)
+                                .background(Color.red)
+                                .cornerRadius(50)
+                                .padding(.top, 20)
                             
                             Spacer()
-                            
-                            Image(systemName: "chevron.right")
-                        }.padding()
-                            .foregroundColor(Color(uiColor: UIColor.label))
-                            .background(Color("ListItemBackground"))
-                            .cornerRadius(20)
-                            .padding(.horizontal)
+                        }
                     }
                 }
-            }.refreshable {
-                await viewModel.refresh(force: true)
             }
         }.onAppear{
+            showLoader = true
             Task{
                 if let type = type {
                     viewModel.pageType = type
@@ -70,6 +104,7 @@ struct ProjectListView: View {
                     viewModel.relatedPageType = otherType
                 }
                 await viewModel.fetchProjects()
+                showLoader = false
             }
         }.navigationTitle(viewModel.navigationTitle)
     }

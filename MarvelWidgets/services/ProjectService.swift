@@ -37,7 +37,7 @@ class ProjectService {
     enum UrlPopulateComponents: String {
         case populateDeep = "populate=deep&pagination[pageSize]=100"
         case populateNormal = "populate=%2A&pagination[pageSize]=100"
-        case populateNone = "pagination[pageSize]=100"
+        case populateNone = "populate[0]=Posters&pagination[pageSize]=100"
     }
     
     static func getAll(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {

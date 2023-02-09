@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct ProjectWrapper: Codable {
+struct ProjectWrapper: Codable, Comparable {
+    static func < (lhs: ProjectWrapper, rhs: ProjectWrapper) -> Bool {
+        lhs.attributes > rhs.attributes
+    }
+    
+    static func == (lhs: ProjectWrapper, rhs: ProjectWrapper) -> Bool {
+        lhs.attributes == rhs.attributes
+    }
+    
     let uuid = UUID()
     let id: Int
     let attributes: MCUProject

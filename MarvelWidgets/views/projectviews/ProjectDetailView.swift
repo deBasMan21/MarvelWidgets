@@ -17,32 +17,18 @@ struct ProjectDetailView: View {
         ScrollView {
             VStack{
                 HStack(alignment: .top) {
-                    NavigationLink(destination: FullscreenImageView(url: viewModel.project.attributes.posters?.first?.posterURL ?? "")) {
-                        if let posterURL = viewModel.project.attributes.posters?.first?.posterURL {
-                            KFImage(URL(string: posterURL)!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150, alignment: .center)
-                                .cornerRadius(12)
-                                .padding(.trailing, 20)
-                                .onAppear {
-                                    withAnimation {
-                                        showLoader = false
-                                    }
-                                }
-                        }
-                    }
-                    
                     VStack(alignment: .leading, spacing: 10) {
                         VStack(alignment: .leading) {
-                            Text("**Director**")
-                            if let director = viewModel.project.attributes.directors?.data.map({ director in
-                                return "\(director.attributes.firstName) \(director.attributes.lastName)"
-                                
-                            }).joined(separator: ", "), !director.isEmpty {
+                            if let director =
+                                viewModel.project
+                                    .attributes
+                                    .directors?
+                                    .data
+                                    .compactMap({ "\($0.attributes.firstName) \($0.attributes.lastName)"})
+                                    .joined(separator: ", "),
+                                !director.isEmpty {
+                                Text("**Director**")
                                 Text(director)
-                            } else {
-                                Text("No director confirmed")
                             }
                         }
                         
@@ -90,6 +76,22 @@ struct ProjectDetailView: View {
                     }
                     
                     Spacer()
+                    
+                    NavigationLink(destination: FullscreenImageView(url: viewModel.project.attributes.posters?.first?.posterURL ?? "")) {
+                        if let posterURL = viewModel.project.attributes.posters?.first?.posterURL {
+                            KFImage(URL(string: posterURL)!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 150, alignment: .center)
+                                .cornerRadius(12)
+                                .padding(.leading, 20)
+                                .onAppear {
+                                    withAnimation {
+                                        showLoader = false
+                                    }
+                                }
+                        }
+                    }
                 }.padding(20)
                 
                 if let overview = viewModel.project.attributes.overview {

@@ -6,13 +6,21 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
         @Published var projects: [ProjectWrapper] = []
+        @Published var closestDateId: Int = -1
+        @Published var showScroll: Bool = false
+        @Published var forceClose: Bool = false
         @Published var orderType: OrderType = .releaseDateASC
         @Published var pageType: WidgetType? = nil
         @Published var relatedPageType: ProjectType? = nil
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
         
         var navigationTitle: String {
 //            return ""
@@ -69,6 +77,8 @@ extension ProjectListView {
                     }
                     
                     self.projects = orderProjects(projects, by: orderType)
+                    closestDateId = projects.getClosest()
+                    showScroll = true
                 }
             }
         }
