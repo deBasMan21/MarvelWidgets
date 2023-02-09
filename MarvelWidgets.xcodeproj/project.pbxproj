@@ -59,6 +59,15 @@
 		EF6B83532933A0D200A5D69C /* DirectorListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83522933A0D200A5D69C /* DirectorListPageViewModel.swift */; };
 		EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83542933A17000A5D69C /* PersonSortKeys.swift */; };
 		EF6B83572933A1B400A5D69C /* ActorListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83562933A1B400A5D69C /* ActorListPageViewModel.swift */; };
+		EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
+		EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
+		EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
+		EF78F5C42993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C32993BC7500CA9028 /* AccessoryInlineWidget.swift */; };
+		EF78F5C52993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C32993BC7500CA9028 /* AccessoryInlineWidget.swift */; };
+		EF78F5C62993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C32993BC7500CA9028 /* AccessoryInlineWidget.swift */; };
+		EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */; };
+		EF78F5C92993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */; };
+		EF78F5CA2993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
@@ -250,6 +259,9 @@
 		EF6B83522933A0D200A5D69C /* DirectorListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorListPageViewModel.swift; sourceTree = "<group>"; };
 		EF6B83542933A17000A5D69C /* PersonSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSortKeys.swift; sourceTree = "<group>"; };
 		EF6B83562933A1B400A5D69C /* ActorListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorListPageViewModel.swift; sourceTree = "<group>"; };
+		EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircularWidget.swift; sourceTree = "<group>"; };
+		EF78F5C32993BC7500CA9028 /* AccessoryInlineWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineWidget.swift; sourceTree = "<group>"; };
+		EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectengularWidget.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -574,6 +586,9 @@
 				EF178C3E28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift */,
 				EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */,
 				EF178C4628AEAA5A003B9B76 /* SpecificWidget.swift */,
+				EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */,
+				EF78F5C32993BC7500CA9028 /* AccessoryInlineWidget.swift */,
+				EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */,
 			);
 			path = SmallWidget;
 			sourceTree = "<group>";
@@ -733,7 +748,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					EF6B82C229258B9300A5D69C = {
@@ -835,12 +850,14 @@
 				EFF0E2AF2921097200854E5F /* Saga.swift in Sources */,
 				EF578F3A28A45721006272AA /* LogService.swift in Sources */,
 				EFD8D76A28A7F84C00CA8DAC /* APIService.swift in Sources */,
+				EF78F5C62993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
 				EFF0E2AC2921097200854E5F /* Actor.swift in Sources */,
 				EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */,
 				EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */,
 				EF178C4128AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
 				EF38FD74291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E2B82921097200854E5F /* Director.swift in Sources */,
+				EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF178C4928AEAA5A003B9B76 /* SpecificWidget.swift in Sources */,
 				EFF0E2AE2921097200854E5F /* Phase.swift in Sources */,
 				EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */,
@@ -872,6 +889,7 @@
 				EF4D265828A4512900B7BCEE /* Config.swift in Sources */,
 				EFF0E2B02921097200854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFF0E2B32921097200854E5F /* ActorsWrapper.swift in Sources */,
+				EF78F5CA2993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,6 +914,7 @@
 				EFF0E2602920ED8200854E5F /* SeasonDetailView.swift in Sources */,
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
+				EF78F5C42993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
 				EF6B834E29338CB100A5D69C /* MoreMenuView.swift in Sources */,
 				EF6B83532933A0D200A5D69C /* DirectorListPageViewModel.swift in Sources */,
@@ -905,6 +924,7 @@
 				EFF0E2832921082A00854E5F /* Actor.swift in Sources */,
 				EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
+				EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
@@ -936,6 +956,7 @@
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
+				EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */,
 				EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */,
 				EFF0E2662920EDF300854E5F /* ImageSizedView.swift in Sources */,
@@ -959,12 +980,14 @@
 				EFF0E29B2921097100854E5F /* Saga.swift in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EF4D265928A4512A00B7BCEE /* Config.swift in Sources */,
+				EF78F5C52993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
 				EFF0E2982921097100854E5F /* Actor.swift in Sources */,
 				EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */,
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
 				EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */,
 				EF178C4028AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
 				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
+				EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
 				EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */,
@@ -996,6 +1019,7 @@
 				EFD8D76428A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
 				EFF0E29C2921097100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFF0E29F2921097100854E5F /* ActorsWrapper.swift in Sources */,
+				EF78F5C92993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1031,7 +1055,7 @@
 				INFOPLIST_FILE = MCUWidgetsRPN/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MCUWidgetsRPN;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1058,7 +1082,7 @@
 				INFOPLIST_FILE = MCUWidgetsRPN/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MCUWidgetsRPN;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1084,6 +1108,7 @@
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetTypeConfiguration;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1109,6 +1134,7 @@
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetTypeConfiguration;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1174,7 +1200,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1228,7 +1254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1258,6 +1284,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1294,6 +1321,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1323,6 +1351,7 @@
 				INFOPLIST_FILE = SmallWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmallWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1351,6 +1380,7 @@
 				INFOPLIST_FILE = SmallWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmallWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

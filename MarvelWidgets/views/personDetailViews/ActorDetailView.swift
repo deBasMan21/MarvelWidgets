@@ -52,33 +52,65 @@ struct ActorDetailView: View {
                     }
                 }
                 
-                VStack(alignment: .center) {
-                    Text("Played in")
-                        .font(Font.largeTitle)
-                        .padding()
-                    
-                    VStack(spacing: 15){
-                        ForEach(actor.attributes.mcuProjects?.data ?? [], id: \.uuid) { project in
-                            NavigationLink {
-                                ProjectDetailView(
-                                    viewModel: ProjectDetailViewModel(
-                                        project: project
-                                    ),
-                                    showLoader: $showLoader
-                                )
-                            } label: {
-                                VStack{
-                                    Text(project.attributes.title)
-                                        .font(Font.headline.bold())
-                                    
-                                    Text(project.attributes.releaseDate ?? "Unknown releasedate")
-                                        .font(Font.body.italic())
-                                        .foregroundColor(Color(uiColor: UIColor.label))
+                if let mcuProjects = actor.attributes.mcuProjects?.data, mcuProjects.count > 0 {
+                    VStack(alignment: .center) {
+                        Text("Played in MCU projects")
+                            .font(Font.title2)
+                            .padding()
+                        
+                        VStack(spacing: 15){
+                            ForEach(mcuProjects, id: \.uuid) { project in
+                                NavigationLink {
+                                    ProjectDetailView(
+                                        viewModel: ProjectDetailViewModel(
+                                            project: project
+                                        ),
+                                        showLoader: $showLoader
+                                    )
+                                } label: {
+                                    VStack{
+                                        Text(project.attributes.title)
+                                            .font(Font.headline.bold())
+                                        
+                                        Text(project.attributes.releaseDate ?? "Unknown releasedate")
+                                            .font(Font.body.italic())
+                                            .foregroundColor(Color(uiColor: UIColor.label))
+                                    }
                                 }
                             }
                         }
-                    }
-                }.padding()
+                    }.padding()
+                }
+                
+                if let relatedProjects = actor.attributes.relatedProjects?.data, relatedProjects.count > 0 {
+                    VStack(alignment: .center) {
+                        Text("Played in")
+                            .font(Font.title2)
+                            .padding()
+                        
+                        VStack(spacing: 15){
+                            ForEach(relatedProjects, id: \.uuid) { project in
+                                NavigationLink {
+                                    ProjectDetailView(
+                                        viewModel: ProjectDetailViewModel(
+                                            project: project
+                                        ),
+                                        showLoader: $showLoader
+                                    )
+                                } label: {
+                                    VStack{
+                                        Text(project.attributes.title)
+                                            .font(Font.headline.bold())
+                                        
+                                        Text(project.attributes.releaseDate ?? "Unknown releasedate")
+                                            .font(Font.body.italic())
+                                            .foregroundColor(Color(uiColor: UIColor.label))
+                                    }
+                                }
+                            }
+                        }
+                    }.padding()
+                }
             }.navigationTitle("\(actor.attributes.firstName) \(actor.attributes.lastName)")
         }
     }

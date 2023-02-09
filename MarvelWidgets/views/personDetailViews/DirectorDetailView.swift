@@ -47,33 +47,67 @@ struct DirectorDetailView: View {
                     }
                 }
                 
-                VStack {
-                    Text("Directed projects")
-                        .font(Font.largeTitle)
-                        .padding()
-                    
-                    VStack(spacing: 15){
-                        ForEach(director.attributes.mcuProjects?.data ?? [], id: \.uuid) { project in
-                            NavigationLink {
-                                ProjectDetailView(
-                                    viewModel: ProjectDetailViewModel(
-                                        project: project
-                                    ),
-                                    showLoader: $showLoader
-                                )
-                            } label: {
-                                VStack{
-                                    Text(project.attributes.title)
-                                        .font(Font.headline.bold())
-                                    
-                                    Text(project.attributes.releaseDate ?? "Unknown releasedate")
-                                        .font(Font.body.italic())
-                                        .foregroundColor(Color(uiColor: UIColor.label))
+                
+                if let mcuProjects = director.attributes.mcuProjects?.data, mcuProjects.count > 0 {
+                    VStack {
+                        Text("Directed MCU projects")
+                            .font(Font.title2)
+                            .padding()
+                        
+                        VStack(spacing: 15){
+                            ForEach(mcuProjects, id: \.uuid) { project in
+                                NavigationLink {
+                                    ProjectDetailView(
+                                        viewModel: ProjectDetailViewModel(
+                                            project: project
+                                        ),
+                                        showLoader: $showLoader
+                                    )
+                                } label: {
+                                    VStack{
+                                        Text(project.attributes.title)
+                                            .font(Font.headline.bold())
+                                        
+                                        Text(project.attributes.releaseDate ?? "Unknown releasedate")
+                                            .font(Font.body.italic())
+                                            .foregroundColor(Color(uiColor: UIColor.label))
+                                    }
                                 }
                             }
                         }
-                    }
-                }.padding()
+                    }.padding()
+                }
+                
+                
+                if let relatedProjects = director.attributes.relatedProjects?.data, relatedProjects.count > 0 {
+                    VStack {
+                        Text("Directed related projects")
+                            .font(Font.title2)
+                            .padding()
+                        
+                        VStack(spacing: 15){
+                            ForEach(relatedProjects, id: \.uuid) { project in
+                                NavigationLink {
+                                    ProjectDetailView(
+                                        viewModel: ProjectDetailViewModel(
+                                            project: project
+                                        ),
+                                        showLoader: $showLoader
+                                    )
+                                } label: {
+                                    VStack{
+                                        Text(project.attributes.title)
+                                            .font(Font.headline.bold())
+                                        
+                                        Text(project.attributes.releaseDate ?? "Unknown releasedate")
+                                            .font(Font.body.italic())
+                                            .foregroundColor(Color(uiColor: UIColor.label))
+                                    }
+                                }
+                            }
+                        }
+                    }.padding()
+                }
             }.navigationTitle("\(director.attributes.firstName) \(director.attributes.lastName)")
         }
     }

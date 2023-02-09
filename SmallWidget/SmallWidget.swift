@@ -58,7 +58,7 @@ struct SmallWidgetProvider: IntentTimelineProvider {
         completion(entry)
     }
 
-    func getTimeline(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (Timeline<UpcomingProjectEntry>) -> ()) {
         Task {
             var entries: [UpcomingProjectEntry] = []
             var upcomingProjects : [ProjectWrapper] = []
@@ -78,11 +78,41 @@ struct SmallWidgetProvider: IntentTimelineProvider {
                 upcomingProjects.append(contentsOf: SaveService.getProjectsFromUserDefaults())
             }
             
-            switch configuration.RandomOrNext.rawValue {
-            case 2:
-                entries.append(randomProject(from: upcomingProjects, with: configuration))
-            default:
-                entries.append(upcomingProject(from: upcomingProjects, with: configuration))
+            if context.family == .accessoryCircular {
+                let previous = upcomingProjects.compactMap {
+                    let date = $0.attributes.releaseDate?.toDate()
+                    if let date = date {
+                        return ($0, date)
+                    } else {
+                        return nil
+                    }
+                }.filter { (item: (ProjectWrapper, Date)) in
+                    item.1 < Date.now
+                }.sorted { $0.1 > $1.1 }
+                    .first
+                
+                let next = upcomingProjects.compactMap {
+                    let date = $0.attributes.releaseDate?.toDate()
+                    if let date = date {
+                        return ($0, date)
+                    } else {
+                        return nil
+                    }
+                }.filter { (item: (ProjectWrapper, Date)) in
+                    item.1 > Date.now
+                }.sorted { $0.1 < $1.1 }
+                    .first
+                
+                guard let previous = previous, let next = next else { return }
+                let entry = UpcomingProjectEntry(date: previous.1, configuration: configuration, upcomingProject: previous.0, nextProject: next.0, image: Image(""), nextImage: Image(""))
+                entries.append(entry)
+            } else {
+                switch configuration.RandomOrNext.rawValue {
+                case 2:
+                    entries.append(randomProject(from: upcomingProjects, with: configuration))
+                default:
+                    entries.append(upcomingProject(from: upcomingProjects, with: configuration))
+                }
             }
             
             let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -227,6 +257,12 @@ struct SmallWidgetUpcoming : View {
                 } else {
                     Text("No project")
                 }
+            case .accessoryCircular:
+                AccessoryCircularWidget(entry: entry)
+            case .accessoryInline:
+                AccessoryInlineWidget(project: project)
+            case .accessoryRectangular:
+                AccessoryRectengularWidget(project: project)
             default:
                 Text("Not implemented")
             }
@@ -245,6 +281,6 @@ struct SmallWidget: Widget {
         }
         .configurationDisplayName("Upcoming MCU")
         .description("This widget shows a MCU project with a countdown if the project is not released yet. This widget has configuration settings to change it to your needs.")
-        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular, .accessoryInline, .accessoryRectangular])
     }
 }
