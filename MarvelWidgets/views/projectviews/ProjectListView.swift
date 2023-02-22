@@ -9,23 +9,111 @@ import Foundation
 import SwiftUI
 
 struct ProjectListView: View {
-    @State var type: WidgetType?
-    @State var otherType: ProjectType?
+    @State var pageType: ListPageType
     @StateObject var viewModel = ProjectListViewModel()
     @Binding var showLoader: Bool
     
     var body: some View {
         VStack{
-            Menu(content: {
-                ForEach(OrderType.allCases, id: \.self){ item in
-                    Button(item.rawValue, action: {
-                        viewModel.orderProjects(by: item)
-                    })
-                }
-            }, label: {
-                Text("Order by: **\(String(describing: viewModel.orderType.rawValue))**")
-                Image(systemName: "arrow.up.arrow.down")
-            })
+            if viewModel.showFilters {
+                VStack(spacing: 20) {
+                    HStack {
+                        TextField("Search", text: $viewModel.searchQuery)
+                            .padding(10)
+                        
+                        Image(systemName: viewModel.searchQuery.isEmpty ? "magnifyingglass" : "xmark")
+                            .padding(.trailing, 10)
+                            .onTapGesture {
+                                viewModel.searchQuery = ""
+                            }
+                    }.overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.accentColor, lineWidth: 2)
+                    )
+                    
+                    HStack {
+                        Text("Type: ")
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 10) {
+                                ForEach(viewModel.typeFilters, id: \.rawValue) { type in
+                                    Text(type.toString())
+                                        .padding(.vertical, 5)
+                                        .padding(.horizontal, 20)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .stroke(Color.accentColor, lineWidth: 3)
+                                        )
+                                        .if(viewModel.selectedTypes.contains(type)) { view in
+                                            view.background(Color.accentColor)
+                                        }
+                                        .cornerRadius(20)
+                                        .onTapGesture {
+                                            if viewModel.selectedTypes.contains(type),
+                                               let index = viewModel.selectedTypes.firstIndex(of: type) {
+                                                viewModel.selectedTypes.remove(at: index)
+                                            } else {
+                                                viewModel.selectedTypes.append(type)
+                                            }
+                                        }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if viewModel.pageType == .mcu {
+                        HStack {
+                            Text("Phase: ")
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 10) {
+                                    ForEach(Phase.allCases, id: \.rawValue) { phase in
+                                        Text(phase.rawValue)
+                                            .padding(.vertical, 5)
+                                            .padding(.horizontal, 20)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 20)
+                                                    .stroke(Color.accentColor, lineWidth: 3)
+                                            )
+                                            .if(viewModel.selectedFilters.contains(phase)) { view in
+                                                view.background(Color.accentColor)
+                                            }
+                                            .cornerRadius(20)
+                                            .onTapGesture {
+                                                if viewModel.selectedFilters.contains(phase),
+                                                   let index = viewModel.selectedFilters.firstIndex(of: phase) {
+                                                    viewModel.selectedFilters.remove(at: index)
+                                                } else {
+                                                    viewModel.selectedFilters.append(phase)
+                                                }
+                                            }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                    HStack {
+                        Text("Order by:")
+                        
+                        Spacer()
+                        
+                        Menu(content: {
+                            ForEach(OrderType.allCases, id: \.self){ item in
+                                Button(item.rawValue, action: {
+                                    viewModel.orderProjects(by: item)
+                                })
+                            }
+                        }, label: {
+                            HStack {
+                                Text("**\(String(describing: viewModel.orderType.rawValue))**")
+                                Image(systemName: "arrow.up.arrow.down")
+                            }
+                        })
+                    }
+                }.padding()
+            }
             
             Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
             
@@ -76,21 +164,24 @@ struct ProjectListView: View {
                     
                     if viewModel.showScroll && !viewModel.forceClose {
                         VStack {
+                            Spacer()
+                            
                             HStack {
-                                Text("To now")
+                                Spacer()
+                                
+                                Image(systemName: "calendar.badge.clock")
+                                    .multilineTextAlignment(.center)
+                                    .frame(width: 50, height: 50)
+                                    .background(Color.accentColor)
+                                    .clipShape(Circle())
+                                    .padding(20)
                                     .onTapGesture {
                                         withAnimation {
                                             reader.scrollTo(viewModel.closestDateId, anchor: .top)
                                             viewModel.showScroll = false
                                         }
                                     }
-                            }.padding(.horizontal)
-                                .padding(.vertical, 2)
-                                .background(Color.red)
-                                .cornerRadius(50)
-                                .padding(.top, 20)
-                            
-                            Spacer()
+                            }
                         }
                     }
                 }
@@ -98,14 +189,22 @@ struct ProjectListView: View {
         }.onAppear{
             showLoader = true
             Task{
-                if let type = type {
-                    viewModel.pageType = type
-                } else if let otherType = otherType {
-                    viewModel.relatedPageType = otherType
-                }
+                viewModel.pageType = pageType
                 await viewModel.fetchProjects()
                 showLoader = false
             }
         }.navigationTitle(viewModel.navigationTitle)
+            .toolbar {
+                Button {
+                    withAnimation {
+                        viewModel.showFilters.toggle()
+                    }
+                } label: {
+                    HStack {
+                        Text("Filters")
+                        Image(systemName: "line.3.horizontal.decrease")
+                    }
+                }
+            }
     }
 }

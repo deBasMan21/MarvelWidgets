@@ -10,52 +10,53 @@ import SwiftUI
 
 extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
+        @Published var pageType: ListPageType = .mcu {
+            didSet {
+                switch pageType {
+                case .mcu:
+                    typeFilters = [.movie, .serie, .special]
+                case .other:
+                    typeFilters = [.defenders, .fox, .sony, .marvelTelevision, .marvelOther]
+                }
+                
+                updateScrollButton()
+            }
+        }
+        @Published var typeFilters: [ProjectType] = []
+        @Published var showFilters: Bool = false
+        private var allProjects: [ProjectWrapper] = []
         @Published var projects: [ProjectWrapper] = []
         @Published var closestDateId: Int = -1
         @Published var showScroll: Bool = false
         @Published var forceClose: Bool = false
         @Published var orderType: OrderType = .releaseDateASC
-        @Published var pageType: WidgetType? = nil
-        @Published var relatedPageType: ProjectType? = nil
+        @Published var selectedFilters: [Phase] = [] {
+            didSet {
+                filterProjects()
+            }
+        }
+        @Published var selectedTypes: [ProjectType] = [] {
+            didSet {
+                filterProjects()
+            }
+        }
+        @Published var searchQuery: String = "" {
+            didSet {
+                filterProjects()
+            }
+        }
+        
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
         
         var navigationTitle: String {
-//            return ""
-            if let pageType = pageType {
-                switch pageType {
-                case .all:
-                    return "MCU Projects"
-                case .movies:
-                    return "MCU Movies"
-                case .series:
-                    return "MCU Series"
-                case .special:
-                    return "MCU Specials"
-                case .saved:
-                    return "Saved Projects"
-                default:
-                    return ""
-                }
-            } else if let relatedPageType = relatedPageType {
-                switch relatedPageType {
-                case .defenders:
-                    return "Defenders"
-                case .marvelTelevision:
-                    return "Marvel television"
-                case .marvelOther:
-                    return "Marvel other"
-                case .fox:
-                    return "Fox films"
-                case .sony:
-                    return "Sony films"
-                default:
-                    return "Unkown"
-                }
-            } else {
-                return ""
+            switch pageType {
+            case .mcu:
+                return "MCU Projects"
+            case .other:
+                return "Marvel other"
             }
         }
         
@@ -63,20 +64,16 @@ extension ProjectListView {
             _ = await MainActor.run {
                 Task {
                     var projects: [ProjectWrapper] = []
-                    if let pageType = pageType {
-                        switch pageType {
-                        case .all:
-                            projects = await ProjectService.getAll(force: force)
-                        case .movies, .series, .special:
-                            projects = await ProjectService.getByType(pageType, force: force)
-                        case .saved:
-                            projects = SaveService.getProjectsFromUserDefaults()
-                        }
-                    } else if let relatedPageType = relatedPageType {
-                        projects = await ProjectService.getOtherByType(relatedPageType, force: force)
+                    switch pageType {
+                    case .mcu:
+                        projects = await ProjectService.getAll(force: force)
+                    case .other:
+                        projects = await ProjectService.getAllOther(force: force)
                     }
                     
-                    self.projects = orderProjects(projects, by: orderType)
+                    allProjects = orderProjects(projects, by: orderType)
+                    filterProjects()
+                    
                     closestDateId = projects.getClosest()
                     showScroll = true
                 }
@@ -100,11 +97,39 @@ extension ProjectListView {
         }
         
         func orderProjects(by orderType: OrderType) {
-            projects = orderProjects(projects, by: orderType)
+            withAnimation {
+                projects = orderProjects(projects, by: orderType)
+            }
         }
         
         func refresh(force: Bool = false) async {
             await fetchProjects(force: force)
+        }
+        
+        func filterProjects() {
+            withAnimation {
+                if selectedFilters.count > 0 {
+                    projects = allProjects.filter { selectedFilters.contains($0.attributes.phase ?? .unkown) }
+                } else {
+                    projects = allProjects
+                }
+                
+                if selectedTypes.count > 0 {
+                    projects = projects.filter { selectedTypes.contains($0.attributes.type) }
+                }
+                
+                if !searchQuery.isEmpty {
+                    projects = projects.filter { $0.attributes.title.contains(searchQuery) }
+                }
+            }
+            
+            updateScrollButton()
+        }
+        
+        func updateScrollButton() {
+            withAnimation {
+                forceClose = pageType != .mcu || selectedTypes.count != 0 || selectedFilters.count != 0 || !searchQuery.isEmpty
+            }
         }
     }
     

@@ -20,46 +20,41 @@ struct ContentView: View {
         ZStack {
             TabView {
                 NavigationView {
-                    ProjectListView(type: .all, showLoader: $showLoader)
+                    ProjectListView(pageType: .mcu, showLoader: $showLoader)
                 }.tabItem{
-                    Label("All", systemImage: "list.dash")
+                    Label("MCU", systemImage: "list.dash")
                 }
                 
                 NavigationView {
-                    ProjectListView(type: .movies, showLoader: $showLoader)
+                    ProjectListView(pageType: .other, showLoader: $showLoader)
                 }.tabItem{
-                    Label("Movies", systemImage: "film")
+                    Label("Related", systemImage: "film")
                 }
                 
                 NavigationView {
-                    ProjectListView(type: .series, showLoader: $showLoader)
-                }.tabItem{
-                    Label("Series", systemImage: "tv")
+                    ActorListPageView(showLoader: $showLoader)
+                }.tabItem {
+                    Label("Actors", systemImage: "person.fill")
                 }
                 
                 NavigationView {
-                    ProjectListView(type: .special, showLoader: $showLoader)
-                }.tabItem{
-                    Label("Specials", systemImage: "star.circle.fill")
+                    DirectorListPageView(showLoader: $showLoader)
+                }.tabItem {
+                    Label("Directors", systemImage: "megaphone")
                 }
                 
-                if UserDefaultsService.standard.showOtherTabs {
-                    MoreMenuView(showLoader: $showLoader)
-                    .tabItem {
-                        Label("More", systemImage: "ellipsis")
-                    }
-                } else {
-                    NavigationView {
-                        WidgetSettingsView()
-                    }.tabItem {
-                        Label("Settings", systemImage: "gearshape")
-                    }
+                NavigationView {
+                    WidgetSettingsView()
+                }.tabItem {
+                    Label("Settings", systemImage: "gearshape")
                 }
-                
+            }.onAppear {
+                // Fix to always show the tabbar background
+                let tabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithDefaultBackground()
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }.onOpenURL(perform: { url in
-                if url.scheme == "mcuwidgets" {
-                    if url.host == "project" {
-                        let id = Int(url.lastPathComponent) ?? -1
+                if url.scheme == "mcuwidgets", url.host == "project", let id = Int(url.lastPathComponent) {
                         self.detailView = ProjectDetailView(
                             viewModel: ProjectDetailViewModel(
                                 project: ProjectWrapper(
@@ -90,7 +85,6 @@ struct ContentView: View {
                         )
                         
                         self.showSheet = true
-                    }
                 }
             }).disabled(showLoader)
                 .sheet(isPresented: $showSheet) {
@@ -124,7 +118,7 @@ struct ContentView: View {
                         
                         ProgressView()
                             .padding(10)
-                            .background(.red)
+                            .background(Color.accentColor)
                             .cornerRadius(10)
                         
                         Spacer()

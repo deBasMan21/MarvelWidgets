@@ -43,20 +43,20 @@ class ProjectService {
     static func getAll(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
         let url = "\(baseUrl)/mcu-projects?\(populate.rawValue)"
         do {
-            let cachedResult: ListResponseWrapper? = CachingService.getFromCache(key: WidgetType.all.rawValue)
+            let cachedResult: ListResponseWrapper? = CachingService.getFromCache(key: ListPageType.mcu.rawValue)
             
             if let cachedResult = cachedResult, !force {
                 Task {
                     let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
                     
-                    CachingService.saveToCache(result: result, key: WidgetType.all.rawValue)
+                    CachingService.saveToCache(result: result, key: ListPageType.mcu.rawValue)
                 }
                 
                 return cachedResult.data
             } else {
                 let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
                 
-                CachingService.saveToCache(result: result, key: WidgetType.all.rawValue)
+                CachingService.saveToCache(result: result, key: ListPageType.mcu.rawValue)
                 
                 return result?.data ?? []
             }
@@ -75,14 +75,14 @@ class ProjectService {
                 Task {
                     let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
                     
-                    CachingService.saveToCache(result: result, key: UserDefaultValues.cachedMovies)
+                    CachingService.saveToCache(result: result, key: type.rawValue)
                 }
                 
                 return cachedResult.data
             } else {
                 let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
                 
-                CachingService.saveToCache(result: result, key: UserDefaultValues.cachedMovies)
+                CachingService.saveToCache(result: result, key: type.rawValue)
                 
                 return result?.data ?? []
             }
@@ -119,23 +119,23 @@ class ProjectService {
         }
     }
     
-    static func getOtherByType(_ type: ProjectType, populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
-        let url = "\(baseUrl)/related-projects?\(UrlFilterComponents.emptyFilter.rawValue)\(type.rawValue)&\(populate.rawValue)"
+    static func getAllOther(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
+        let url = "\(baseUrl)/related-projects?\(populate.rawValue)"
         do {
-            let cachedResult: ListResponseWrapper? = CachingService.getFromCache(key: type.rawValue)
+            let cachedResult: ListResponseWrapper? = CachingService.getFromCache(key: ListPageType.other.rawValue)
             
             if let cachedResult = cachedResult, !force {
                 Task {
                     let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
                     
-                    CachingService.saveToCache(result: result, key: type.rawValue)
+                    CachingService.saveToCache(result: result, key: ListPageType.other.rawValue)
                 }
                 
                 return cachedResult.data
             } else {
                 let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
                 
-                CachingService.saveToCache(result: result, key: type.rawValue)
+                CachingService.saveToCache(result: result, key: ListPageType.other.rawValue)
                 
                 return result?.data ?? []
             }

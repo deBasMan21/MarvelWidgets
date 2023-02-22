@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Phase: String, Codable {
+enum Phase: String, Codable, CaseIterable {
     case phase_1 = "Phase 1"
     case phase_2 = "Phase 2"
     case phase_3 = "Phase 3"

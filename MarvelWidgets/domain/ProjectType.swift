@@ -18,4 +18,16 @@ enum ProjectType: String, Codable {
     case marvelTelevision = "MarvelTelevision"
     case marvelOther = "MarvelOther"
     case defenders = "Defenders"
+    
+    func toString() -> String {
+        // Cant change the strings from the cases because they are used for decoding so this returns different strings for some cases
+        switch self {
+        case .marvelTelevision:
+            return "Marvel Television"
+        case .marvelOther:
+            return "Other Marvel"
+        default:
+            return self.rawValue
+        }
+    }
 }
