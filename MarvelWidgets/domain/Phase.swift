@@ -13,5 +13,6 @@ enum Phase: String, Codable, CaseIterable {
     case phase_3 = "Phase 3"
     case phase_4 = "Phase 4"
     case phase_5 = "Phase 5"
+    case phase_6 = "Phase 6"
     case unkown = "Unkown"
 }

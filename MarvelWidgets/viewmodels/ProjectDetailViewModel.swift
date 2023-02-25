@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ProjectDetailViewModel: ObservableObject {
     @Published var project: ProjectWrapper
-    @Published var bookmarkString: String = "bookmark"
+    @Published var showBottomLoader = true
     
     init(project: ProjectWrapper) {
         self.project = project
@@ -19,53 +20,31 @@ class ProjectDetailViewModel: ObservableObject {
         }
     }
     
-    func setIsSavedIcon(for proj: ProjectWrapper) {
-        let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
-
-        if userDefs.data(forKey: "\(proj.id)") != nil {
-            bookmarkString = "bookmark.fill"
-        } else {
-            bookmarkString = "bookmark"
-        }
-    }
-    
-    func toggleSaveProject(_ proj: ProjectWrapper) {
-        let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
-        var savedIds: [String] = userDefs.array(forKey: UserDefaultValues.savedProjectIds) as? [String] ?? []
-
-        if userDefs.data(forKey: "\(proj.id)") != nil {
-            if let indexValue = savedIds.firstIndex(of: "\(proj.id)"), let index = indexValue.codingKey.intValue {
-                savedIds.remove(at: index)
-            }
-            
-            userDefs.set(savedIds, forKey: UserDefaultValues.savedProjectIds)
-            userDefs.set(nil, forKey: "\(proj.id)")
-        } else {
-            let dataObj: Data? = proj.toData()
-            savedIds.append("\(proj.id)")
-            
-            userDefs.set(dataObj, forKey: "\(proj.id)")
-            userDefs.set(savedIds, forKey: UserDefaultValues.savedProjectIds)
-        }
-        setIsSavedIcon(for: proj)
-    }
-    
     func refresh(id: Int, force: Bool = false) async {
         switch project.attributes.type {
         case .sony, .defenders, .fox, .marvelOther, .marvelTelevision:
             if let populatedProject = await getPopulatedOtherProject(id, force: force) {
                 await MainActor.run {
-                    self.project = populatedProject
+                    withAnimation {
+                        self.project = populatedProject
+                    }
                 }
             }
         default:
             if let populatedProject = await getPopulatedProject(id, force: force) {
                 await MainActor.run {
-                    self.project = populatedProject
+                    withAnimation {
+                        self.project = populatedProject
+                    }
                 }
             }
         }
         
+        await MainActor.run {
+            withAnimation {
+                showBottomLoader = false
+            }
+        }
     }
     
     func getPopulatedProject(_ id: Int, force: Bool) async -> ProjectWrapper? {

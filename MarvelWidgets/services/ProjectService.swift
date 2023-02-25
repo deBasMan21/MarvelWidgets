@@ -17,6 +17,7 @@ class ProjectService {
         case filterMovie = "filters[type][$eq]=Movie"
         case filterSerie = "filters[type][$eq]=Serie"
         case filterSpecial = "filters[type][$eq]=Special"
+        case firstUpcoming = "populate[0]=Posters&sort[0]=ReleaseDate:asc&filters[ReleaseDate][$gt]=2023-02-25&pagination[pageSize]=2"
         
         case emptyFilter = "filters[type][$eq]="
         
@@ -60,6 +61,19 @@ class ProjectService {
                 
                 return result?.data ?? []
             }
+        } catch let error {
+            LogService.log(error.localizedDescription, in: self)
+            return []
+        }
+    }
+    
+    static func getFirstUpcoming(for type: WidgetType) async -> [ProjectWrapper] {
+        let typeFilter = UrlFilterComponents.getFilterForType(type)
+        let filterString = typeFilter.isEmpty ? "" : "&\(typeFilter)"
+        let url = "\(baseUrl)/mcu-projects?\(UrlFilterComponents.firstUpcoming.rawValue)\(filterString)"
+        do {
+            let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: apiKey)
+            return result?.data ?? []
         } catch let error {
             LogService.log(error.localizedDescription, in: self)
             return []

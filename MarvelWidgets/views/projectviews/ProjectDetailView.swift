@@ -77,8 +77,8 @@ struct ProjectDetailView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: FullscreenImageView(url: viewModel.project.attributes.posters?.first?.posterURL ?? "")) {
-                        if let posterURL = viewModel.project.attributes.posters?.first?.posterURL {
+                    if let posterURL = viewModel.project.attributes.posters?.first?.posterURL {
+                        NavigationLink(destination: FullscreenImageView(url: posterURL)) {
                             KFImage(URL(string: posterURL)!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -105,15 +105,6 @@ struct ProjectDetailView: View {
                     }.padding()
                 }
                 
-                if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
-                    SeasonView(seasons: seasons, seriesTitle: viewModel.project.attributes.title)
-                        .padding()
-                }
-                
-                if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
-                    TrailersView(trailers: trailers)
-                }
-                
                 if let posters = viewModel.project.attributes.posters {
                     VStack {
                         Text("Posters")
@@ -121,6 +112,15 @@ struct ProjectDetailView: View {
                         
                         PosterListView(posters: posters)
                     }.padding()
+                }
+                
+                if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
+                    TrailersView(trailers: trailers)
+                }
+                
+                if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
+                    SeasonView(seasons: seasons, seriesTitle: viewModel.project.attributes.title)
+                        .padding()
                 }
                 
                 if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
@@ -175,6 +175,11 @@ struct ProjectDetailView: View {
                             }
                         }
                     }.padding()
+                }
+                
+                if viewModel.showBottomLoader {
+                    ProgressView()
+                        .padding()
                 }
             }
         }.navigationTitle(viewModel.project.attributes.title)

@@ -123,6 +123,12 @@
 		EFD8D77128A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */; };
 		EFD8D77228A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */; };
 		EFD8D77328A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */; };
+		EFD9565E29AAA5B6009D5EDD /* SmallWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9565D29AAA5B6009D5EDD /* SmallWidgetProvider.swift */; };
+		EFD9565F29AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9565D29AAA5B6009D5EDD /* SmallWidgetProvider.swift */; };
+		EFD9566029AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9565D29AAA5B6009D5EDD /* SmallWidgetProvider.swift */; };
+		EFD9566229AAA5E1009D5EDD /* UpcomingProjectEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */; };
+		EFD9566329AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */; };
+		EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */; };
 		EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
 		EFE69E4329A69367002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
 		EFE69E4729A693B8002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
@@ -316,6 +322,8 @@
 		EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
 		EFD8D76228A7F6A100CA8DAC /* MarvelWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelWidgetBundle.swift; sourceTree = "<group>"; };
 		EFD8D77028A7FFD900CA8DAC /* SmallWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = SmallWidget.intentdefinition; sourceTree = "<group>"; };
+		EFD9565D29AAA5B6009D5EDD /* SmallWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetProvider.swift; sourceTree = "<group>"; };
+		EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingProjectEntry.swift; sourceTree = "<group>"; };
 		EFE69E4A29A69568002345FF /* WidgetProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProjectService.swift; sourceTree = "<group>"; };
 		EFF0E25D2920ED6400854E5F /* SeasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonView.swift; sourceTree = "<group>"; };
 		EFF0E25F2920ED8200854E5F /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
@@ -622,6 +630,7 @@
 		EFCE383028A3E22E00B4CC0D /* SmallWidget */ = {
 			isa = PBXGroup;
 			children = (
+				EFD9565C29AAA59C009D5EDD /* SmallWidgetConfiguration */,
 				EFE69E4929A69545002345FF /* Services */,
 				EF78F61E2995798D00CA9028 /* HomeScreenWidgets */,
 				EF78F61D2995798500CA9028 /* AccessoryWidgets */,
@@ -646,6 +655,15 @@
 				EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */,
 			);
 			path = generic;
+			sourceTree = "<group>";
+		};
+		EFD9565C29AAA59C009D5EDD /* SmallWidgetConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				EFD9565D29AAA5B6009D5EDD /* SmallWidgetProvider.swift */,
+				EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */,
+			);
+			path = SmallWidgetConfiguration;
 			sourceTree = "<group>";
 		};
 		EFE69E4929A69545002345FF /* Services */ = {
@@ -918,6 +936,8 @@
 				EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */,
 				EFF0E2B92921097200854E5F /* Episode.swift in Sources */,
 				EFD8D76128A7ACFD00CA8DAC /* SaveService.swift in Sources */,
+				EFD9566029AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */,
+				EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */,
 				EFF0E2AD2921097200854E5F /* DirectorsWrapper.swift in Sources */,
 				EFF0E2B72921097200854E5F /* RelatedProjectWrapper.swift in Sources */,
@@ -968,6 +988,7 @@
 				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
 				EFF0E28F2921087300854E5F /* RelatedProjectWrapper.swift in Sources */,
 				EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */,
+				EFD9565E29AAA5B6009D5EDD /* SmallWidgetProvider.swift in Sources */,
 				EFF0E2932921088900854E5F /* Trailer.swift in Sources */,
 				EFF0E2602920ED8200854E5F /* SeasonDetailView.swift in Sources */,
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
@@ -995,6 +1016,7 @@
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
 				EFF0E2C22922B79200854E5F /* ActorDetailView.swift in Sources */,
+				EFD9566229AAA5E1009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFF0E279292107EB00854E5F /* Phase.swift in Sources */,
 				EF178C4C28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
 				EFF0E2C42922B79B00854E5F /* DirectorDetailView.swift in Sources */,
@@ -1057,6 +1079,8 @@
 				EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
 				EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */,
+				EFD9565F29AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */,
+				EFD9566329AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFF0E2A52921097100854E5F /* Episode.swift in Sources */,
 				EFD8D76028A7ACFD00CA8DAC /* SaveService.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
@@ -1129,7 +1153,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.MCUWidgetsRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1156,7 +1180,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.MCUWidgetsRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1182,7 +1206,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.WidgetTypeConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1208,7 +1232,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.WidgetTypeConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1275,6 +1299,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSION_STRING = 2.1;
 			};
 			name = Debug;
 		};
@@ -1329,6 +1354,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERSION_STRING = 2.1;
 			};
 			name = Release;
 		};
@@ -1357,7 +1383,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1425,7 +1451,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.SmallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1454,7 +1480,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.SmallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
