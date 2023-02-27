@@ -48,7 +48,7 @@ struct ActorListView: View {
                                         .bold()
                                         .foregroundColor(.accentColor)
                                     
-                                    if let birthDay = actor.attributes.dateOfBirth {
+                                    if let birthDay = actor.attributes.dateOfBirth?.toDate()?.toFormattedString() {
                                         Text("\(birthDay)")
                                     }
                                 }

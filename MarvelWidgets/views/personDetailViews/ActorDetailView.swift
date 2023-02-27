@@ -39,7 +39,7 @@ struct ActorDetailView: View {
                             
                             VStack(alignment: .leading) {
                                 Text("**Date of birth**")
-                                Text(actor.attributes.dateOfBirth ?? "Unkown")
+                                Text(actor.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
                             }
                             
                             VStack(alignment: .leading) {

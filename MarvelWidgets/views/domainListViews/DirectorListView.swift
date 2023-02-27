@@ -42,7 +42,7 @@ struct DirectorListView: View {
                                     .bold()
                                     .foregroundColor(.accentColor)
                                 
-                                if let birthDay = director.attributes.dateOfBirth {
+                                if let birthDay = director.attributes.dateOfBirth?.toDate()?.toFormattedString() {
                                     Text("\(birthDay)")
                                 }
                             }

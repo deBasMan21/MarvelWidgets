@@ -90,7 +90,7 @@ struct ProjectDetailView: View {
                                             Text("\(director.attributes.firstName) \(director.attributes.lastName)")
                                                 .bold()
                                             
-                                            Text(director.attributes.dateOfBirth ?? "Unknown")
+                                            Text(director.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unknown")
                                                 .foregroundColor(Color.foregroundColor)
                                         }
                                     }

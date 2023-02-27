@@ -39,7 +39,7 @@ struct DirectorDetailView: View {
                             
                             VStack(alignment: .leading) {
                                 Text("**Date of birth**")
-                                Text(director.attributes.dateOfBirth ?? "Unkown")
+                                Text(director.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
                             }
                         }
                         
