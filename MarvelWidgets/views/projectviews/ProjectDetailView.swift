@@ -27,69 +27,75 @@ struct ProjectDetailView: View {
                         .multilineTextAlignment(.center)
                     
                     LazyVGrid(columns: viewModel.columns)  {
-                        VStack(alignment: .leading, spacing: 10) {
-                            if let director =
-                                viewModel.project
-                                .attributes
-                                .directors?
-                                .data
-                                .compactMap({ "\($0.attributes.firstName) \($0.attributes.lastName)"})
-                                .joined(separator: ", "),
-                               !director.isEmpty {
+                            HStack {
+                                Image(systemName: viewModel.project.attributes.type.imageString())
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)
+                                
                                 VStack(alignment: .leading) {
-                                    Text("**Director**")
-                                    Text(director)
+                                    Text("Type project")
+                                        .bold()
+                                        .foregroundColor(Color.accentColor)
+                                    
+                                    Text(viewModel.project.attributes.type.rawValue)
                                 }
                             }
                             
-                            VStack(alignment: .leading) {
-                                Text("**Type project**")
-                                Text(viewModel.project.attributes.type.rawValue)
-                            }
                             
-                            if let boxOffice = viewModel.project.attributes.boxOffice {
-                                VStack(alignment: .leading) {
-                                    Text("**Box office**")
-                                    Text(boxOffice.toMoney())
+                            if let directors = viewModel.project.attributes.directors, directors.data.count > 0 {
+                                ForEach(directors.data) { director in
+                                    NavigationLink(destination: DirectorDetailView(director: director, showLoader: $showLoader)) {
+                                        HStack {
+                                            KFImage(URL(string: director.attributes.imageURL ?? "")!)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 40, height: 40)
+                                                .clipShape(Circle())
+                                            
+                                            VStack(alignment: .leading)  {
+                                                Text("\(director.attributes.firstName) \(director.attributes.lastName)")
+                                                    .bold()
+                                                
+                                                Text(director.attributes.dateOfBirth ?? "Unknown")
+                                                    .foregroundColor(Color.foregroundColor)
+                                            }
+                                        }
+                                    }
                                 }
                             }
-                            
-                            if let saga = viewModel.project.attributes.saga {
-                                VStack(alignment: .leading) {
-                                    Text("**\(saga.rawValue)**")
-                                }
-                            }
-                            
-                            Spacer()
-                        }
                         
-                        VStack(alignment: .leading, spacing: 10) {
-                            VStack(alignment: .leading) {
-                                Text("**Release date**")
-                                Text(viewModel.project.attributes.releaseDate ?? "No release date set")
+                            HStack {
+                                Image(systemName: "calendar.circle.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Release date")
+                                        .bold()
+                                        .foregroundColor(Color.accentColor)
+                                    
+                                    Text(viewModel.project.attributes.releaseDate ?? "No release date set")
+                                }
                             }
                             
                             if let duration = viewModel.project.attributes.duration {
-                                VStack(alignment: .leading) {
-                                    Text("**Duration**")
-                                    Text("\(duration) minutes")
+                                HStack {
+                                    Image(systemName: "clock.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                    
+                                    VStack(alignment: .leading)  {
+                                        Text("Duration")
+                                            .bold()
+                                            .foregroundColor(Color.accentColor)
+                                        
+                                        Text("\(duration) minutes")
+                                    }
                                 }
                             }
-                            
-                            if let postCreditScenes = viewModel.project.attributes.postCreditScenes {
-                                VStack(alignment: .leading) {
-                                    Text("**\(postCreditScenes) post credit scene\(postCreditScenes != 1 ? "s" : "")**\n")
-                                }
-                            }
-                            
-                            if let phase = viewModel.project.attributes.phase {
-                                VStack(alignment: .leading) {
-                                    Text("**\(phase.rawValue)**")
-                                }
-                            }
-                            
-                            Spacer()
-                        }
                     }.padding(20)
                     
                     if let overview = viewModel.project.attributes.overview {
@@ -100,7 +106,47 @@ struct ProjectDetailView: View {
                             
                             Text(overview)
                                 .multilineTextAlignment(.center)
+                                .padding(.bottom)
+                            
+                            LazyVGrid(columns: viewModel.columns, spacing: 10) {
+                                if let boxOffice = viewModel.project.attributes.boxOffice {
+                                    VStack(alignment: .leading) {
+                                        Text("**Box office**")
+                                        Text(boxOffice.toMoney())
+                                    }
+                                }
+                                
+                                if let postCreditScenes = viewModel.project.attributes.postCreditScenes {
+                                    VStack(alignment: .leading) {
+                                        Text("**\(postCreditScenes) post credit scene\(postCreditScenes != 1 ? "s" : "")**")
+                                    }
+                                }
+                                
+                                if let phase = viewModel.project.attributes.phase {
+                                    VStack(alignment: .leading) {
+                                        Text("**\(phase.rawValue)**")
+                                    }
+                                }
+                                
+                                if let saga = viewModel.project.attributes.saga {
+                                    VStack(alignment: .leading) {
+                                        Text("**\(saga.rawValue)**")
+                                    }
+                                }
+                            }
                         }.padding()
+                    }
+                    
+                    if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
+                        SeasonView(seasons: seasons, seriesTitle: viewModel.project.attributes.title)
+                            .padding()
+                    }
+                    
+                    if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
+                        ActorListView(
+                            actors: actors.data,
+                            showLoader: $showLoader
+                        ).padding()
                     }
                     
                     if let posters = viewModel.project.attributes.posters {
@@ -114,35 +160,6 @@ struct ProjectDetailView: View {
                     
                     if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
                         TrailersView(trailers: trailers)
-                    }
-                    
-                    if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
-                        SeasonView(seasons: seasons, seriesTitle: viewModel.project.attributes.title)
-                            .padding()
-                    }
-                    
-                    if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
-                        VStack {
-                            Text("Actors")
-                                .font(.largeTitle)
-                            
-                            ActorListView(
-                                actors: actors.data,
-                                showLoader: $showLoader
-                            )
-                        }.padding()
-                    }
-                    
-                    if let directors = viewModel.project.attributes.directors, directors.data.count > 0 {
-                        VStack {
-                            Text("Directors")
-                                .font(.largeTitle)
-                            
-                            DirectorListView(
-                                directors: directors.data,
-                                showLoader: $showLoader
-                            )
-                        }.padding()
                     }
                     
                     if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {

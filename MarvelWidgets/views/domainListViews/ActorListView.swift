@@ -20,47 +20,45 @@ struct ActorListView: View {
     @State var selectedImage: Page = .first()
     
     var body: some View {
-        Pager(
-            page: selectedImage,
-            data: actors,
-            content: { actorItem in
-                VStack {
-                    if let imageUrl = actorItem.attributes.imageURL {
-                        NavigationLink(
-                            destination: ActorDetailView(
-                                actor: actorItem,
-                                showLoader: $showLoader
-                            ),
-                            isActive: binding(
-                                for: imageUrl
-                            )
-                        ) {
-                            EmptyView()
+        VStack {
+            Text("Actors")
+                .font(.largeTitle)
+            
+            GeometryReader { reader in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(actors) { actor in
+                            VStack {
+                                if let imageUrl = actor.attributes.imageURL {
+                                    NavigationLink(destination: ActorDetailView(
+                                            actor: actor,
+                                            showLoader: $showLoader
+                                        ),
+                                        isActive: binding(
+                                            for: imageUrl
+                                        )
+                                    ) {
+                                        EmptyView()
+                                    }
+                                    
+                                    CircularImageView(imageUrl: imageUrl, onTapCallback: { url in
+                                        activeImageFullscreen[url] = true
+                                    })
+                                    
+                                    Text("\(actor.attributes.firstName) \(actor.attributes.lastName)")
+                                        .bold()
+                                        .foregroundColor(.accentColor)
+                                    
+                                    if let birthDay = actor.attributes.dateOfBirth {
+                                        Text("\(birthDay)")
+                                    }
+                                }
+                            }.frame(width: 150)
                         }
-                        
-                        ImageSizedView(url: imageUrl)
-                            .onTapGesture {
-                                activeImageFullscreen[imageUrl] = true
-                            }
-                        
-                        Text("\(actorItem.attributes.firstName) \(actorItem.attributes.lastName)")
-                            .bold()
-                            .foregroundColor(.accentColor)
-                        
-                        Text("**\(actorItem.attributes.character)**")
-                        
-                        if let birthDay = actorItem.attributes.dateOfBirth {
-                            Text("\(birthDay)")
-                        }
-                    }
+                    }.frame(minWidth: reader.size.width)
                 }
-            }
-        ).loopPages()
-            .preferredItemSize(CGSize(width: 150, height: 300))
-            .multiplePagination()
-            .interactive(scale: 0.9)
-            .itemSpacing(10)
-            .frame(height: 350)
+            }.frame(height: 150)
+        }
     }
     
     private func binding(for key: String) -> Binding<Bool> {

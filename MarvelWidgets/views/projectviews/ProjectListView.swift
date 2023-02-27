@@ -101,7 +101,7 @@ struct ProjectListView: View {
                         
                         Spacer()
                         
-                        DatePicker(selection: $beforeDate, displayedComponents: .date) {
+                        DatePicker(selection: $viewModel.afterDate, displayedComponents: .date) {
                                         Text("")
                                     }
                     }
@@ -111,7 +111,7 @@ struct ProjectListView: View {
                         
                         Spacer()
                         
-                        DatePicker(selection: $afterDate, displayedComponents: .date) {
+                        DatePicker(selection: $viewModel.beforeDate, displayedComponents: .date) {
                                         Text("")
                                     }
                     }

@@ -30,4 +30,17 @@ enum ProjectType: String, Codable {
             return self.rawValue
         }
     }
+    
+    func imageString() -> String {
+        switch self {
+        case .movie:
+            return "film.circle.fill"
+        case .serie:
+            return "tv.circle.fill"
+        case .special:
+            return "star.circle.fill"
+        default:
+            return ""
+        }
+    }
 }

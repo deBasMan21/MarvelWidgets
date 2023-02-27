@@ -24,7 +24,12 @@ extension ProjectListView {
         }
         @Published var typeFilters: [ProjectType] = []
         @Published var showFilters: Bool = false
-        private var allProjects: [ProjectWrapper] = []
+        private var allProjects: [ProjectWrapper] = [] {
+            didSet {
+                afterDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min() ?? Date.now
+                beforeDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max() ?? Date.now
+            }
+        }
         @Published var projects: [ProjectWrapper] = []
         @Published var closestDateId: Int = -1
         @Published var showScroll: Bool = false
@@ -41,6 +46,17 @@ extension ProjectListView {
             }
         }
         @Published var searchQuery: String = "" {
+            didSet {
+                filterProjects()
+            }
+        }
+        @Published var beforeDate: Date = Date.now {
+            didSet {
+                filterProjects()
+            }
+        }
+        
+        @Published var afterDate: Date = Date.now {
             didSet {
                 filterProjects()
             }
@@ -108,10 +124,13 @@ extension ProjectListView {
         
         func filterProjects() {
             withAnimation {
+                projects = allProjects.filter {
+                    guard let projDate = $0.attributes.releaseDate?.toDate() else { return true }
+                    return projDate > afterDate && projDate < beforeDate
+                }
+                
                 if selectedFilters.count > 0 {
-                    projects = allProjects.filter { selectedFilters.contains($0.attributes.phase ?? .unkown) }
-                } else {
-                    projects = allProjects
+                    projects = projects.filter { selectedFilters.contains($0.attributes.phase ?? .unkown) }
                 }
                 
                 if selectedTypes.count > 0 {
