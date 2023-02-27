@@ -72,7 +72,7 @@ struct ActorDetailView: View {
                                         Text(project.attributes.title)
                                             .font(Font.headline.bold())
                                         
-                                        Text(project.attributes.releaseDate ?? "Unknown releasedate")
+                                        Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
                                             .font(Font.body.italic())
                                             .foregroundColor(Color(uiColor: UIColor.label))
                                     }
@@ -102,7 +102,7 @@ struct ActorDetailView: View {
                                         Text(project.attributes.title)
                                             .font(Font.headline.bold())
                                         
-                                        Text(project.attributes.releaseDate ?? "Unknown releasedate")
+                                        Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
                                             .font(Font.body.italic())
                                             .foregroundColor(Color(uiColor: UIColor.label))
                                     }

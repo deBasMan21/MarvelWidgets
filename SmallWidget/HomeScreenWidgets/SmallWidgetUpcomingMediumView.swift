@@ -21,7 +21,7 @@ struct SmallWidgetUpcomingMedium: View {
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(upcomingProject.attributes.title)
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(Color.accentColor)
                     .fontWeight(.bold)
                 
                 VStack(alignment: .leading) {
@@ -49,7 +49,7 @@ struct SmallWidgetUpcomingMedium: View {
         if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
             return "\(upcomingProject.attributes.releaseDate!) (\(difference) days)"
         } else {
-            return upcomingProject.attributes.releaseDate ?? "No releasedate"
+            return upcomingProject.attributes.releaseDate?.toDate()?.toFormattedString() ?? "No releasedate"
         }
     }
 

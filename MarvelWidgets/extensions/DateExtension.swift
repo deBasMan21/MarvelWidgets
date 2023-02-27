@@ -33,4 +33,10 @@ extension Date {
         }
         return "\(diffDays) dagen"
     }
+    
+    func toFormattedString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-YYYY"
+        return formatter.string(from: self)
+    }
 }

@@ -16,9 +16,11 @@ struct ProjectDetailView: View {
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true) {
-            KFImage(URL(string: viewModel.project.attributes.posters?.first?.posterURL ?? "")!)
-                .resizable()
-                .scaledToFill()
+            if let posterUrl = viewModel.project.attributes.posters?.first?.posterURL {
+                KFImage(URL(string: posterUrl)!)
+                    .resizable()
+                    .scaledToFill()
+            }
         } content: {
                 VStack {
                     Text(viewModel.project.attributes.title)
@@ -26,76 +28,75 @@ struct ProjectDetailView: View {
                         .bold()
                         .multilineTextAlignment(.center)
                     
-                    LazyVGrid(columns: viewModel.columns)  {
+                    LazyVGrid(columns: viewModel.columns, alignment: .leading)  {
+                        HStack {
+                            Image(systemName: viewModel.project.attributes.type.imageString())
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                            
+                            VStack(alignment: .leading) {
+                                Text("Type project")
+                                    .bold()
+                                    .foregroundColor(Color.accentColor)
+                                
+                                Text(viewModel.project.attributes.type.rawValue)
+                            }
+                        }
+                    
+                        HStack {
+                            Image(systemName: "calendar.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 40, height: 40)
+                            
+                            VStack(alignment: .leading) {
+                                Text("Release date")
+                                    .bold()
+                                    .foregroundColor(Color.accentColor)
+                                
+                                Text(viewModel.project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "No release date set")
+                            }
+                        }
+                        
+                        if let duration = viewModel.project.attributes.duration {
                             HStack {
-                                Image(systemName: viewModel.project.attributes.type.imageString())
+                                Image(systemName: "clock.fill")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 40, height: 40)
                                 
-                                VStack(alignment: .leading) {
-                                    Text("Type project")
+                                VStack(alignment: .leading)  {
+                                    Text("Duration")
                                         .bold()
                                         .foregroundColor(Color.accentColor)
                                     
-                                    Text(viewModel.project.attributes.type.rawValue)
+                                    Text("\(duration) minutes")
                                 }
                             }
-                            
-                            
-                            if let directors = viewModel.project.attributes.directors, directors.data.count > 0 {
-                                ForEach(directors.data) { director in
-                                    NavigationLink(destination: DirectorDetailView(director: director, showLoader: $showLoader)) {
-                                        HStack {
-                                            KFImage(URL(string: director.attributes.imageURL ?? "")!)
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(width: 40, height: 40)
-                                                .clipShape(Circle())
+                        }
+                        
+                        if let directors = viewModel.project.attributes.directors, directors.data.count > 0 {
+                            ForEach(directors.data) { director in
+                                NavigationLink(destination: DirectorDetailView(director: director, showLoader: $showLoader)) {
+                                    HStack {
+                                        KFImage(URL(string: director.attributes.imageURL ?? "")!)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 40, height: 40)
+                                            .clipShape(Circle())
+                                        
+                                        VStack(alignment: .leading)  {
+                                            Text("\(director.attributes.firstName) \(director.attributes.lastName)")
+                                                .bold()
                                             
-                                            VStack(alignment: .leading)  {
-                                                Text("\(director.attributes.firstName) \(director.attributes.lastName)")
-                                                    .bold()
-                                                
-                                                Text(director.attributes.dateOfBirth ?? "Unknown")
-                                                    .foregroundColor(Color.foregroundColor)
-                                            }
+                                            Text(director.attributes.dateOfBirth ?? "Unknown")
+                                                .foregroundColor(Color.foregroundColor)
                                         }
                                     }
                                 }
                             }
-                        
-                            HStack {
-                                Image(systemName: "calendar.circle.fill")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 40, height: 40)
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Release date")
-                                        .bold()
-                                        .foregroundColor(Color.accentColor)
-                                    
-                                    Text(viewModel.project.attributes.releaseDate ?? "No release date set")
-                                }
-                            }
-                            
-                            if let duration = viewModel.project.attributes.duration {
-                                HStack {
-                                    Image(systemName: "clock.fill")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 40, height: 40)
-                                    
-                                    VStack(alignment: .leading)  {
-                                        Text("Duration")
-                                            .bold()
-                                            .foregroundColor(Color.accentColor)
-                                        
-                                        Text("\(duration) minutes")
-                                    }
-                                }
-                            }
+                        }
                     }.padding(20)
                     
                     if let overview = viewModel.project.attributes.overview {
@@ -108,17 +109,10 @@ struct ProjectDetailView: View {
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom)
                             
-                            LazyVGrid(columns: viewModel.columns, spacing: 10) {
-                                if let boxOffice = viewModel.project.attributes.boxOffice {
+                            VStack(spacing: 10) {
+                                if let saga = viewModel.project.attributes.saga {
                                     VStack(alignment: .leading) {
-                                        Text("**Box office**")
-                                        Text(boxOffice.toMoney())
-                                    }
-                                }
-                                
-                                if let postCreditScenes = viewModel.project.attributes.postCreditScenes {
-                                    VStack(alignment: .leading) {
-                                        Text("**\(postCreditScenes) post credit scene\(postCreditScenes != 1 ? "s" : "")**")
+                                        Text("**\(saga.rawValue)**")
                                     }
                                 }
                                 
@@ -128,9 +122,15 @@ struct ProjectDetailView: View {
                                     }
                                 }
                                 
-                                if let saga = viewModel.project.attributes.saga {
+                                if let postCreditScenes = viewModel.project.attributes.postCreditScenes {
                                     VStack(alignment: .leading) {
-                                        Text("**\(saga.rawValue)**")
+                                        Text("**\(postCreditScenes) post credit scene\(postCreditScenes != 1 ? "s" : "")**")
+                                    }
+                                }
+                                
+                                if let boxOffice = viewModel.project.attributes.boxOffice {
+                                    VStack(alignment: .leading) {
+                                        Text("**\(boxOffice.toMoney())**")
                                     }
                                 }
                             }
@@ -182,7 +182,7 @@ struct ProjectDetailView: View {
                                             Text(project.attributes.title)
                                                 .font(Font.headline.bold())
                                             
-                                            Text(project.attributes.releaseDate ?? "Unknown releasedate")
+                                            Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
                                                 .font(Font.body.italic())
                                                 .foregroundColor(Color(uiColor: UIColor.label))
                                         }

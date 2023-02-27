@@ -126,7 +126,7 @@ extension ProjectListView {
             withAnimation {
                 projects = allProjects.filter {
                     guard let projDate = $0.attributes.releaseDate?.toDate() else { return true }
-                    return projDate > afterDate && projDate < beforeDate
+                    return projDate >= afterDate && projDate <= beforeDate
                 }
                 
                 if selectedFilters.count > 0 {

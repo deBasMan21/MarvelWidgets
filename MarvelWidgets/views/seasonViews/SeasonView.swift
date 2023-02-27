@@ -46,9 +46,9 @@ struct SeasonView: View {
                             }
                         }.padding()
                             .frame(width: 220)
-                            .background(Color("ListItemBackground"))
+                            .background(Color.accentGray)
                             .cornerRadius(5)
-                            .foregroundColor(Color("ForegroundColor"))
+                            .foregroundColor(Color.foregroundColor)
                             .onTapGesture {
                                 if season.posters?.count ?? 0 > 0 || season.seasonTrailers?.count ?? 0 > 0 || season.episodes?.count ?? 0 > 0 {
                                     activeSeasons[season.id] = true

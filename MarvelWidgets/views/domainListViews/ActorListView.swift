@@ -17,7 +17,6 @@ struct ActorListView: View {
     @State var height: CGFloat = 250
     
     @State var activeImageFullscreen: [String: Bool] = [:]
-    @State var selectedImage: Page = .first()
     
     var body: some View {
         VStack {

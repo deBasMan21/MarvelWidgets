@@ -41,16 +41,10 @@ struct ProjectListView: View {
                             HStack(spacing: 10) {
                                 ForEach(viewModel.typeFilters, id: \.rawValue) { type in
                                     Text(type.toString())
-                                        .padding(.vertical, 5)
-                                        .padding(.horizontal, 20)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 20)
-                                                .stroke(Color.accentColor, lineWidth: 3)
-                                        )
-                                        .if(viewModel.selectedTypes.contains(type)) { view in
-                                            view.background(Color.accentColor)
-                                        }
-                                        .cornerRadius(20)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 7)
+                                        .background(viewModel.selectedTypes.contains(type) ? Color.accentColor : Color.accentGray)
+                                        .cornerRadius(8)
                                         .onTapGesture {
                                             if viewModel.selectedTypes.contains(type),
                                                let index = viewModel.selectedTypes.firstIndex(of: type) {
@@ -72,16 +66,10 @@ struct ProjectListView: View {
                                 HStack(spacing: 10) {
                                     ForEach(Phase.allCases, id: \.rawValue) { phase in
                                         Text(phase.rawValue)
-                                            .padding(.vertical, 5)
-                                            .padding(.horizontal, 20)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .stroke(Color.accentColor, lineWidth: 3)
-                                            )
-                                            .if(viewModel.selectedFilters.contains(phase)) { view in
-                                                view.background(Color.accentColor)
-                                            }
-                                            .cornerRadius(20)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 7)
+                                            .background(viewModel.selectedFilters.contains(phase) ? Color.accentColor : Color.accentGray)
+                                            .cornerRadius(8)
                                             .onTapGesture {
                                                 if viewModel.selectedFilters.contains(phase),
                                                    let index = viewModel.selectedFilters.firstIndex(of: phase) {
@@ -130,9 +118,12 @@ struct ProjectListView: View {
                             }
                         }, label: {
                             HStack {
-                                Text("**\(String(describing: viewModel.orderType.rawValue))**")
-                                Image(systemName: "arrow.up.arrow.down")
-                            }
+                                Text("\(String(describing: viewModel.orderType.rawValue))")
+                            }.foregroundColor(Color.foregroundColor)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 7)
+                                .background(Color.accentGray)
+                                .cornerRadius(8)
                         })
                     }
                 }.padding()
@@ -165,7 +156,7 @@ struct ProjectListView: View {
                                                     .multilineTextAlignment(.center)
                                                     .lineLimit(2)
                                                 
-                                                Text(item.attributes.releaseDate ?? "Unknown releasedate")
+                                                Text(item.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
                                                     .font(Font.body.italic())
 
                                             }
