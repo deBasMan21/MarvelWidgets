@@ -12,6 +12,11 @@ class ProjectDetailViewModel: ObservableObject {
     @Published var project: ProjectWrapper
     @Published var showBottomLoader = true
     
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     init(project: ProjectWrapper) {
         self.project = project
         

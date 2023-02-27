@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "fancyscrollview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nerdsupremacist/FancyScrollView",
+      "state" : {
+        "revision" : "7f8194b23dc209cdb5b0ebc9799a8de487166fdf",
+        "version" : "0.1.4"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
@@ -124,6 +133,15 @@
       "state" : {
         "revision" : "ab3a58b7209a17d781c0d1dbb3e1ff3da306bae8",
         "version" : "1.20.3"
+      }
+    },
+    {
+      "identity" : "swiftuinavigationheader",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alexeichhorn/SwiftUINavigationHeader",
+      "state" : {
+        "branch" : "main",
+        "revision" : "20f950fe92bec12ea45f51d8f53308bcaef7a5b5"
       }
     },
     {
