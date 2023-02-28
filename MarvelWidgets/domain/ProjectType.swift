@@ -40,7 +40,7 @@ enum ProjectType: String, Codable {
         case .special:
             return "star.circle.fill"
         default:
-            return ""
+            return "film.circle.fill"
         }
     }
 }

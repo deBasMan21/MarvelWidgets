@@ -24,6 +24,7 @@
 		EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
+		EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */; };
 		EF28E7F729A6988E00B7C845 /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
 		EF28E7F829A6996300B7C845 /* WidgetProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE69E4A29A69568002345FF /* WidgetProjectService.swift */; };
 		EF28E7F929A6996400B7C845 /* WidgetProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE69E4A29A69568002345FF /* WidgetProjectService.swift */; };
@@ -266,6 +267,7 @@
 		EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetUpcomingSmallView.swift; sourceTree = "<group>"; };
 		EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHelper.swift; sourceTree = "<group>"; };
 		EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
+		EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageType.swift; sourceTree = "<group>"; };
 		EF38FD71291FF56400EA4BD9 /* ProjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -290,7 +292,6 @@
 		EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectengularWidget.swift; sourceTree = "<group>"; };
 		EF78F5E829956D1600CA9028 /* OtherWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherWidgets.swift; sourceTree = "<group>"; };
 		EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = OtherWidgets.intentdefinition; sourceTree = "<group>"; };
-		EF78F61C2995721A00CA9028 /* OtherWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OtherWidgetsExtension.entitlements; sourceTree = "<group>"; };
 		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -457,6 +458,7 @@
 				EF78F61F29959CF600CA9028 /* ViewExtensions.swift */,
 				EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */,
 				EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */,
+				EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -501,7 +503,6 @@
 		EFCE380228A3D7A700B4CC0D = {
 			isa = PBXGroup;
 			children = (
-				EF78F61C2995721A00CA9028 /* OtherWidgetsExtension.entitlements */,
 				EFCE380D28A3D7A700B4CC0D /* MarvelWidgets */,
 				EFCE383028A3E22E00B4CC0D /* SmallWidget */,
 				EFCA5DB028A445B40004AAC7 /* WidgetTypeConfiguration */,
@@ -1010,6 +1011,7 @@
 				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
 				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
 				EF78F5EF29956D1700CA9028 /* OtherWidgets.intentdefinition in Sources */,
+				EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */,
 				EFF0E27D2921080600854E5F /* ProjectType.swift in Sources */,
 				EFF0E2832921082A00854E5F /* Actor.swift in Sources */,
 				EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */,

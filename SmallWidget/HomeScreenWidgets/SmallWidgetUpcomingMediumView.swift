@@ -21,7 +21,7 @@ struct SmallWidgetUpcomingMedium: View {
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(upcomingProject.attributes.title)
-                    .foregroundColor(Color.accentColor)
+                    .foregroundColor(Color("AccentColor"))
                     .fontWeight(.bold)
                 
                 VStack(alignment: .leading) {

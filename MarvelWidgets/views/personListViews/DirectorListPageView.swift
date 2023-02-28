@@ -40,6 +40,39 @@ struct DirectorListPageView: View {
                     }
                 }
             }
+            
+            if viewModel.birthdayDirectors.count > 0 && viewModel.showBirthdays {
+                HStack {
+                    Text("Today's \nbirthday:")
+                    
+                    GeometryReader { geometry in
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(viewModel.birthdayDirectors) { director in
+                                    NavigationLink(destination: DirectorDetailView(director:  director, showLoader: $showLoader)) {
+                                        VStack {
+                                            Text("\(director.attributes.firstName) \(director.attributes.lastName) (\(director.attributes.dateOfBirth?.toDate()?.calculateAge() ?? 0))")
+                                                .bold()
+                                            
+                                            Text("\(director.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "")")
+                                                .foregroundColor(.white)
+                                        }.padding()
+                                            .background(Color.accentGray)
+                                            .cornerRadius(10)
+                                    }
+                                }
+                            }.frame(width: geometry.size.width)
+                        }
+                    }.frame(height: 75)
+                    
+                    Image(systemName: "xmark")
+                        .onTapGesture {
+                            withAnimation {
+                                viewModel.showBirthdays = false
+                            }
+                        }
+                }.padding(3)
+            }
         }.onAppear {
             Task {
                 await viewModel.getDirectors()

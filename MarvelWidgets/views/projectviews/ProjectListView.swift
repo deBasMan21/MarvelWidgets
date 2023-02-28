@@ -216,9 +216,9 @@ struct ProjectListView: View {
                 } label: {
                     HStack {
                         Text("Filters")
-                        Image(systemName: "line.3.horizontal.decrease")
+                        Image(systemName: viewModel.showFilters ? "xmark" : "line.3.horizontal.decrease")
                     }
-                }
+                }.tint(.accentColor)
             }
     }
 }

@@ -15,13 +15,15 @@ struct ProjectDetailView: View {
     @Binding var showLoader: Bool
     
     var body: some View {
-        NavigationHeaderContainer(bottomFadeout: true) {
+        NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
             if let posterUrl = viewModel.project.attributes.posters?.first?.posterURL {
-                KFImage(URL(string: posterUrl)!)
-                    .resizable()
-                    .scaledToFill()
+                NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
+                    KFImage(URL(string: posterUrl)!)
+                        .resizable()
+                        .scaledToFill()
+                }
             }
-        } content: {
+        }, content: {
                 VStack {
                     Text(viewModel.project.attributes.title)
                         .font(Font.largeTitle)
@@ -87,10 +89,11 @@ struct ProjectDetailView: View {
                                             .clipShape(Circle())
                                         
                                         VStack(alignment: .leading)  {
-                                            Text("\(director.attributes.firstName) \(director.attributes.lastName)")
+                                            Text("Director")
                                                 .bold()
                                             
-                                            Text(director.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unknown")
+                                            Text("\(director.attributes.firstName) \(director.attributes.lastName)")
+                                                .lineLimit(1)
                                                 .foregroundColor(Color.foregroundColor)
                                         }
                                     }
@@ -197,20 +200,21 @@ struct ProjectDetailView: View {
                             .padding()
                     }
                 }.offset(x: 0, y: -50)
-        }.baseTintColor(Color("AccentColor"))
-            .headerHeight({ _ in 300 })
-            .navigationBarItems(trailing: Button(action: {
-                if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
-                    UIApplication.shared.open(URL(string: dpUrl)!)
-                }
-            }, label: {
+        }, toolbar: { state in
+            HeaderToolbarItem(barState: state, content: {
                 VStack {
                     if viewModel.project.attributes.disneyPlusUrl != nil {
                         Image(systemName: "play.fill")
                     } else {
                         EmptyView()
                     }
+                }.onTapGesture {
+                    if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
+                        UIApplication.shared.open(URL(string: dpUrl)!)
+                    }
                 }
-            }))
-        }
+            })
+        }).baseTintColor(Color("AccentColor"))
+            .headerHeight({ _ in 300 })
+    }
 }
