@@ -20,9 +20,6 @@ struct ActorListView: View {
     
     var body: some View {
         VStack {
-            Text("Actors")
-                .font(.largeTitle)
-            
             GeometryReader { reader in
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {

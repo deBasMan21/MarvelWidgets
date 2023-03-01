@@ -17,30 +17,22 @@ struct TrailersView: View {
     
     var body: some View {
         VStack {
-            Text("Trailers")
-                .font(.largeTitle)
-            
-            Pager(
-                page: trailersIndex,
-                data: trailers,
-                content: { trailer in
+            TabView {
+                ForEach(trailers, id: \.id) { trailer in
                     VStack {
-                        Text(trailer.trailerName)
-                            .bold()
-                            .foregroundColor(.accentColor)
-                        
                         VideoView(videoURL: trailer.youtubeLink)
                             .frame(width: 300, height: 170)
                             .cornerRadius(12)
+                        
+                        Text(trailer.trailerName)
+                            .bold()
+                            .foregroundColor(.accentColor)
+                    }.tabItem {
+                        Text("Poster")
                     }
                 }
-            )
-                .preferredItemSize(CGSize(width: 280, height: 200))
-                .multiplePagination()
-                .itemSpacing(10)
-                .interactive(rotation: true)
-                .interactive(scale: 0.7)
-                .frame(height: 200)
+            }.tabViewStyle(.page(indexDisplayMode: .always))
+                .frame(height: 250)
         }.padding()
     }
 }

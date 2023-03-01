@@ -19,7 +19,7 @@ struct ActorDetailView: View {
     ]
     
     var body: some View {
-        NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
+        NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .top, header: {
             if let posterUrl = actor.attributes.imageURL {
                 NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
                     KFImage(URL(string: posterUrl)!)
@@ -81,6 +81,7 @@ struct ActorDetailView: View {
                     }
                 }.offset(x: 0, y: -50)
             }
-        })
+        }).baseTintColor(Color("AccentColor"))
+            .headerHeight({ _ in 500 })
     }
 }

@@ -39,6 +39,7 @@ class ProjectService {
         case populateDeep = "populate=deep&pagination[pageSize]=100"
         case populateNormal = "populate=%2A&pagination[pageSize]=100"
         case populateNone = "populate[0]=Posters&pagination[pageSize]=100"
+        case populatePersonPosters = "pagination[pageSize]=100&populate[0]=related_projects&populate[1]=related_projects.Posters&populate=*&populate[2]=mcu_projects&populate[3]=mcu_projects.Posters"
     }
     
     static func getAll(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
@@ -186,7 +187,7 @@ class ProjectService {
         }
     }
     
-    static func getDirectors(populate: UrlPopulateComponents = .populateNormal, force: Bool = false) async -> [DirectorsWrapper] {
+    static func getDirectors(populate: UrlPopulateComponents = .populatePersonPosters, force: Bool = false) async -> [DirectorsWrapper] {
         let url = "\(baseUrl)/directors?\(populate.rawValue)"
         do {
             let cachedResult: Directors? = CachingService.getFromCache(key: CachingService.CachingKeys.directors.getString())
@@ -212,7 +213,7 @@ class ProjectService {
         }
     }
     
-    static func getActors(populate: UrlPopulateComponents = .populateNormal, force: Bool = false) async -> [ActorsWrapper] {
+    static func getActors(populate: UrlPopulateComponents = .populatePersonPosters, force: Bool = false) async -> [ActorsWrapper] {
         let url = "\(baseUrl)/actors?\(populate.rawValue)"
         do {
             let cachedResult: Actors? = CachingService.getFromCache(key: CachingService.CachingKeys.actors.getString())

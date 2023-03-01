@@ -16,15 +16,20 @@ struct ProjectDetailView: View {
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
-            if let posterUrl = viewModel.project.attributes.posters?.first?.posterURL {
-                NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
-                    KFImage(URL(string: posterUrl)!)
-                        .resizable()
-                        .scaledToFill()
-                }
+            NavigationLink(destination: FullscreenImageView(url: viewModel.posterURL)) {
+                KFImage(URL(string: viewModel.posterURL)!)
+                    .resizable()
+                    .scaledToFill()
+                    .gesture(DragGesture().onEnded { value in
+                        viewModel.swipeImage(direction: viewModel.detectDirection(value: value))
+                    })
             }
         }, content: {
                 VStack {
+                    Text("Poster \(viewModel.posterIndex + 1) of \(viewModel.project.attributes.posters?.count ?? 0)")
+                        .font(Font.footnote)
+                        .italic()
+                    
                     Text(viewModel.project.attributes.title)
                         .font(Font.largeTitle)
                         .bold()
@@ -59,6 +64,8 @@ struct ProjectDetailView: View {
                                 
                                 Text(viewModel.project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "No release date set")
                             }
+                        }.onTapGesture {
+                            viewModel.createEventinTheCalendar()
                         }
                         
                         if let duration = viewModel.project.attributes.duration {
@@ -104,10 +111,6 @@ struct ProjectDetailView: View {
                     
                     if let overview = viewModel.project.attributes.overview {
                         VStack {
-                            Text("Overview")
-                                .font(Font.largeTitle)
-                                .padding()
-                            
                             Text(overview)
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom)
@@ -152,15 +155,6 @@ struct ProjectDetailView: View {
                         ).padding()
                     }
                     
-                    if let posters = viewModel.project.attributes.posters {
-                        VStack {
-                            Text("Posters")
-                                .font(.largeTitle)
-                            
-                            PosterListView(posters: posters)
-                        }.padding()
-                    }
-                    
                     if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
                         TrailersView(trailers: trailers)
                     }
@@ -171,28 +165,32 @@ struct ProjectDetailView: View {
                                 .font(Font.largeTitle)
                                 .padding()
                             
-                            VStack(spacing: 15){
-                                ForEach(relatedProjects.data, id: \.uuid) { project in
-                                    NavigationLink {
-                                        ProjectDetailView(
-                                            viewModel: ProjectDetailViewModel(
-                                                project: project
-                                            ),
-                                            showLoader: $showLoader
-                                        )
-                                    } label: {
-                                        VStack{
-                                            Text(project.attributes.title)
-                                                .font(Font.headline.bold())
-                                            
-                                            Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
-                                                .font(Font.body.italic())
-                                                .foregroundColor(Color(uiColor: UIColor.label))
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 15){
+                                    ForEach(relatedProjects.data, id: \.uuid) { project in
+                                        NavigationLink {
+                                            ProjectDetailView(
+                                                viewModel: ProjectDetailViewModel(
+                                                    project: project
+                                                ),
+                                                showLoader: $showLoader
+                                            )
+                                        } label: {
+                                            VStack{
+                                                ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
+                                                
+                                                Text(project.attributes.title)
+                                                    .font(Font.headline.bold())
+                                                
+                                                Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                                    .font(Font.body.italic())
+                                                    .foregroundColor(Color(uiColor: UIColor.label))
+                                            }.frame(width: 150)
                                         }
                                     }
                                 }
                             }
-                        }.padding()
+                        }.padding(.horizontal)
                     }
                     
                     if viewModel.showBottomLoader {
@@ -215,6 +213,9 @@ struct ProjectDetailView: View {
                 }
             })
         }).baseTintColor(Color("AccentColor"))
-            .headerHeight({ _ in 300 })
+            .headerHeight({ _ in 500 })
+            .alert(isPresented: $viewModel.showAlert, content: {
+                Alert(title: Text("Succes!"), message: Text("Added \(viewModel.project.attributes.title) to your calendar on \(viewModel.project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "")"))
+            })
     }
 }
