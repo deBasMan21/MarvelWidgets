@@ -214,8 +214,5 @@ struct ProjectDetailView: View {
             })
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
-            .alert(isPresented: $viewModel.showAlert, content: {
-                Alert(title: Text("Succes!"), message: Text("Added \(viewModel.project.attributes.title) to your calendar on \(viewModel.project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "")"))
-            })
     }
 }

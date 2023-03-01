@@ -217,6 +217,7 @@ struct ProjectListView: View {
                     HStack {
                         Text("Filters")
                         Image(systemName: viewModel.showFilters ? "xmark" : "line.3.horizontal.decrease")
+                            .frame(width: 24, height: 24)
                     }
                 }.tint(.accentColor)
             }

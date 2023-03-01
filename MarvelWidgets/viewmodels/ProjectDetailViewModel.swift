@@ -12,7 +12,6 @@ import EventKit
 class ProjectDetailViewModel: ObservableObject {
     @Published var project: ProjectWrapper
     @Published var showBottomLoader = true
-    @Published var showAlert = false
     @Published var posterURL: String
     @Published var posterIndex: Int = 0 {
         didSet {
@@ -106,7 +105,15 @@ class ProjectDetailViewModel: ObservableObject {
                 
                 do {
                     try self.store.save(event, span: .thisEvent)
-                    self.showAlert = true
+                    
+                    let interval = releaseDate.timeIntervalSinceReferenceDate
+                    if let url = URL(string: "calshow:\(interval)") {
+                        Task {
+                            await MainActor.run {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
+                        }
+                    }
                 } catch let error as NSError {
                     print("failed to save event with error : \(error)")
                 }
