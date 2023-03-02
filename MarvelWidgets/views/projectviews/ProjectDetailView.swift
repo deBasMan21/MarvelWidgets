@@ -14,15 +14,19 @@ struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
     @Binding var showLoader: Bool
     
+    @State var showCalendarAppointment: Bool = false
+    
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
-            NavigationLink(destination: FullscreenImageView(url: viewModel.posterURL)) {
-                KFImage(URL(string: viewModel.posterURL)!)
-                    .resizable()
-                    .scaledToFill()
-                    .gesture(DragGesture().onEnded { value in
-                        viewModel.swipeImage(direction: viewModel.detectDirection(value: value))
-                    })
+            if let posterUrl = viewModel.posterURL, !posterUrl.isEmpty {
+                NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
+                    KFImage(URL(string: posterUrl)!)
+                        .resizable()
+                        .scaledToFill()
+                        .gesture(DragGesture().onEnded { value in
+                            viewModel.swipeImage(direction: viewModel.detectDirection(value: value))
+                        })
+                }
             }
         }, content: {
                 VStack {
@@ -65,7 +69,7 @@ struct ProjectDetailView: View {
                                 Text(viewModel.project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "No release date set")
                             }
                         }.onTapGesture {
-                            viewModel.createEventinTheCalendar()
+                            showCalendarAppointment = true
                         }
                         
                         if let duration = viewModel.project.attributes.duration {
@@ -214,5 +218,14 @@ struct ProjectDetailView: View {
             })
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
+            .alert(isPresented: $showCalendarAppointment, content: {
+                Alert(title: Text("Calendar"),
+                      message: Text("Do you want to add this project to your calendar?"),
+                      primaryButton: .default(Text("Yes")) {
+                            viewModel.createEventinTheCalendar()
+                      },
+                      secondaryButton: .cancel()
+                )
+            })
     }
 }

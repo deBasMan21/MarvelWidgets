@@ -10,13 +10,17 @@ import SwiftUI
 import EventKit
 
 class ProjectDetailViewModel: ObservableObject {
-    @Published var project: ProjectWrapper
+    @Published var project: ProjectWrapper {
+        didSet {    
+            posterURL = project.attributes.posters?.first?.posterURL
+        }
+    }
     @Published var showBottomLoader = true
-    @Published var posterURL: String
+    @Published var posterURL: String?
     @Published var posterIndex: Int = 0 {
         didSet {
             withAnimation {
-                posterURL = project.attributes.posters?[posterIndex].posterURL ?? ConfigValues.placeholderImageUrl
+                posterURL = project.attributes.posters?[posterIndex].posterURL
             }
         }
     }
@@ -29,7 +33,6 @@ class ProjectDetailViewModel: ObservableObject {
     
     init(project: ProjectWrapper) {
         self.project = project
-        posterURL = project.attributes.posters?.first?.posterURL ?? ConfigValues.placeholderImageUrl
         
         Task {
             await refresh(id: project.id)
