@@ -9,4 +9,5 @@ import Foundation
 
 struct ConfigValues {
     static let useCaching = true
+    static let placeholderImageUrl = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
 }

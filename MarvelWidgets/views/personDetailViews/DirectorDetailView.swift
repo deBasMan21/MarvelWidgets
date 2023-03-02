@@ -8,73 +8,76 @@
 import Foundation
 import SwiftUI
 import Kingfisher
+import SwiftUINavigationHeader
 
 struct DirectorDetailView: View {
     @State var director: DirectorsWrapper
     @Binding var showLoader: Bool
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
-        VStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    HStack(alignment: .top) {
-                        VStack {
-                            if let imageUrl = director.attributes.imageURL {
-                                NavigationLink(destination: FullscreenImageView(url: imageUrl)) {
-                                    KFImage(URL(string: imageUrl)!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 150)
-                                        .cornerRadius(12)
-                                        .padding(.horizontal, 20)
-                                }
-                            }
-                        }
-                        
-                        VStack(alignment: .leading, spacing: 10) {
-                            VStack(alignment: .leading) {
-                                Text("**Name**")
-                                Text("\(director.attributes.firstName) \(director.attributes.lastName)")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Date of birth**")
-                                Text(director.attributes.dateOfBirth ?? "Unkown")
-                            }
-                        }
-                        
-                        Spacer()
-                    }
+        NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .top, header: {
+            if let posterUrl = director.attributes.imageURL {
+                NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
+                    KFImage(URL(string: posterUrl)!)
+                        .resizable()
+                        .scaledToFill()
                 }
-                
-                VStack {
-                    Text("Directed projects")
-                        .font(Font.largeTitle)
-                        .padding()
+            }
+        }, content: {
+            VStack {
+                ScrollView {
+                    VStack {
+                        Text("\(director.attributes.firstName) \(director.attributes.lastName)")
+                            .font(Font.largeTitle)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        
+                        Text(director.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
+                            .font(Font.subheadline)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                    }
                     
-                    VStack(spacing: 15){
-                        ForEach(director.attributes.mcuProjects?.data ?? [], id: \.uuid) { project in
-                            NavigationLink {
-                                ProjectDetailView(
-                                    viewModel: ProjectDetailViewModel(
-                                        project: project
-                                    ),
-                                    showLoader: $showLoader
-                                )
-                            } label: {
-                                VStack{
-                                    Text(project.attributes.title)
-                                        .font(Font.headline.bold())
-                                    
-                                    Text(project.attributes.releaseDate ?? "Unknown releasedate")
-                                        .font(Font.body.italic())
-                                        .foregroundColor(Color(uiColor: UIColor.label))
+                    if let mcuProjectsTmp = director.attributes.mcuProjects?.data, let relatedProjects = director.attributes.relatedProjects?.data, let mcuProjects = mcuProjectsTmp + relatedProjects, mcuProjects.count > 0 {
+                        VStack {
+                            Text("Directed projects")
+                                .font(Font.largeTitle)
+                                .padding()
+                            
+                            LazyVGrid(columns: columns, spacing: 15) {
+                                ForEach(mcuProjects, id: \.uuid) { project in
+                                    NavigationLink {
+                                        ProjectDetailView(
+                                            viewModel: ProjectDetailViewModel(
+                                                project: project
+                                            ),
+                                            showLoader: $showLoader
+                                        )
+                                    } label: {
+                                        VStack {
+                                            ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
+                                            
+                                            Text(project.attributes.title)
+                                                .font(Font.headline.bold())
+                                            
+                                            Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                                .font(Font.body.italic())
+                                                .foregroundColor(Color(uiColor: UIColor.label))
+                                            
+                                            Spacer()
+                                        }
+                                    }
                                 }
                             }
-                        }
+                        }.padding()
                     }
-                }.padding()
-            }.navigationTitle("\(director.attributes.firstName) \(director.attributes.lastName)")
-        }
+                }.offset(x: 0, y: -50)
+            }
+        }).baseTintColor(Color("AccentColor"))
+            .headerHeight({ _ in 500 })
     }
 }

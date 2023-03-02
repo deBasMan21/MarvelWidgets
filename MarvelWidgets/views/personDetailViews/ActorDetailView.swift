@@ -8,78 +8,80 @@
 import Foundation
 import SwiftUI
 import Kingfisher
+import SwiftUINavigationHeader
 
 struct ActorDetailView: View {
     @State var actor: ActorsWrapper
     @Binding var showLoader: Bool
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
-        VStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    HStack(alignment: .top) {
-                        VStack {
-                            if let imageUrl = actor.attributes.imageURL {
-                                NavigationLink(destination: FullscreenImageView(url: imageUrl)) {
-                                    KFImage(URL(string: imageUrl)!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 150)
-                                        .cornerRadius(12)
-                                        .padding(.horizontal, 20)
-                                }
-                            }
-                        }
-                        
-                        VStack(alignment: .leading, spacing: 10) {
-                            VStack(alignment: .leading) {
-                                Text("**Name**")
-                                Text("\(actor.attributes.firstName) \(actor.attributes.lastName)")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Date of birth**")
-                                Text(actor.attributes.dateOfBirth ?? "Unkown")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Role**")
-                                Text(actor.attributes.character)
-                            }
-                        }
-                        
-                        Spacer()
-                    }
+        NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .top, header: {
+            if let posterUrl = actor.attributes.imageURL {
+                NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
+                    KFImage(URL(string: posterUrl)!)
+                        .resizable()
+                        .scaledToFill()
                 }
-                
-                VStack(alignment: .center) {
-                    Text("Played in")
-                        .font(Font.largeTitle)
-                        .padding()
-                    
-                    VStack(spacing: 15){
-                        ForEach(actor.attributes.mcuProjects?.data ?? [], id: \.uuid) { project in
-                            NavigationLink {
-                                ProjectDetailView(
-                                    viewModel: ProjectDetailViewModel(
-                                        project: project
-                                    ),
-                                    showLoader: $showLoader
-                                )
-                            } label: {
-                                VStack{
-                                    Text(project.attributes.title)
-                                        .font(Font.headline.bold())
-                                    
-                                    Text(project.attributes.releaseDate ?? "Unknown releasedate")
-                                        .font(Font.body.italic())
-                                        .foregroundColor(Color(uiColor: UIColor.label))
+            }
+        }, content: {
+            VStack {
+                ScrollView {
+                    VStack {
+                        Text("\(actor.attributes.firstName) \(actor.attributes.lastName)")
+                            .font(Font.largeTitle)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        
+                        Text(actor.attributes.character)
+                            .font(Font.subheadline)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                        
+                        Text(actor.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
+                    }
+                        
+                    if let mcuProjectsTmp = actor.attributes.mcuProjects?.data, let relatedProjects = actor.attributes.relatedProjects?.data, let mcuProjects = mcuProjectsTmp + relatedProjects, mcuProjects.count > 0 {
+                        VStack(alignment: .center) {
+                            Text("Played in")
+                                .font(Font.largeTitle)
+                                .padding()
+                            
+                            LazyVGrid(columns: columns, spacing: 15){
+                                ForEach(mcuProjects, id: \.uuid) { project in
+                                    VStack {
+                                        NavigationLink {
+                                            ProjectDetailView(
+                                                viewModel: ProjectDetailViewModel(
+                                                    project: project
+                                                ),
+                                                showLoader: $showLoader
+                                            )
+                                        } label: {
+                                            VStack{
+                                                ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
+                                                
+                                                Text(project.attributes.title)
+                                                    .font(Font.headline.bold())
+                                                
+                                                Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                                    .font(Font.body.italic())
+                                                    .foregroundColor(Color(uiColor: UIColor.label))
+                                            }
+                                        }
+                                        
+                                        Spacer()
+                                    }
                                 }
                             }
-                        }
+                        }.padding()
                     }
-                }.padding()
-            }.navigationTitle("\(actor.attributes.firstName) \(actor.attributes.lastName)")
-        }
+                }.offset(x: 0, y: -50)
+            }
+        }).baseTintColor(Color("AccentColor"))
+            .headerHeight({ _ in 500 })
     }
 }

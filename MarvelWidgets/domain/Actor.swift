@@ -13,6 +13,7 @@ struct Actor: Codable {
     let createdAt, updatedAt: String
     let imageURL: String?
     let mcuProjects: ListResponseWrapper?
+    let relatedProjects: ListResponseWrapper?
  
     enum CodingKeys: String, CodingKey {
         case firstName = "FirstName"
@@ -22,5 +23,6 @@ struct Actor: Codable {
         case createdAt, updatedAt
         case imageURL = "ImageUrl"
         case mcuProjects = "mcu_projects"
+        case relatedProjects = "related_projects"
     }
 }

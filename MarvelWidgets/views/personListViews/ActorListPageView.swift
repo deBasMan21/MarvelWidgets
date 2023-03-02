@@ -40,6 +40,39 @@ struct ActorListPageView: View {
                     }
                 }
             }
+            
+            if viewModel.birthdayActors.count > 0 && viewModel.showBirthdays {
+                HStack {
+                    Text("Today's \nbirthday:")
+                    
+                    GeometryReader { geometry in
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(viewModel.birthdayActors) { actor in
+                                    NavigationLink(destination: ActorDetailView(actor: actor, showLoader: $showLoader)) {
+                                        VStack {
+                                            Text("\(actor.attributes.firstName) \(actor.attributes.lastName) (\(actor.attributes.dateOfBirth?.toDate()?.calculateAge() ?? 0))")
+                                                .bold()
+                                            
+                                            Text("\(actor.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "")")
+                                                .foregroundColor(.white)
+                                        }.padding()
+                                            .background(Color.accentGray)
+                                            .cornerRadius(10)
+                                    }
+                                }
+                            }.frame(width: geometry.size.width)
+                        }
+                    }.frame(height: 75)
+                    
+                    Image(systemName: "xmark")
+                        .onTapGesture {
+                            withAnimation {
+                                viewModel.showBirthdays = false
+                            }
+                        }
+                }.padding(3)
+            }
         }.onAppear {
             Task {
                 await viewModel.getActors()

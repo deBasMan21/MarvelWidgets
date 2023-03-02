@@ -33,4 +33,28 @@ extension Date {
         }
         return "\(diffDays) dagen"
     }
+    
+    func toFormattedString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-YYYY"
+        return formatter.string(from: self)
+    }
+    
+    func calculateAge() -> Int {
+        let now = Date()
+        let calendar = Calendar.current
+
+        let ageComponents = calendar.dateComponents([.year], from: self, to: now)
+        return ageComponents.year!
+    }
+}
+
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
 }

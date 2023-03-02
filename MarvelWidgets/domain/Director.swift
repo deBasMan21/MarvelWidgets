@@ -12,6 +12,7 @@ struct Director: Codable {
     let createdAt, updatedAt: String
     let imageURL, dateOfBirth: String?
     let mcuProjects: ListResponseWrapper?
+    let relatedProjects: ListResponseWrapper?
  
     enum CodingKeys: String, CodingKey {
         case firstName = "FirstName"
@@ -20,5 +21,6 @@ struct Director: Codable {
         case imageURL = "ImageUrl"
         case dateOfBirth = "DateOfBirth"
         case mcuProjects = "mcu_projects"
+        case relatedProjects = "related_projects"
     }
 }

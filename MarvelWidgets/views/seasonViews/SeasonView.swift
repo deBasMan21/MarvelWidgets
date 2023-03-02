@@ -13,61 +13,95 @@ struct SeasonView: View {
     @State var seasons: [Season]
     @State var seriesTitle: String
     
-    @State var selectedSeason: Page = .first()
-    @State var activeSeasons: [Int: Bool] = [:]
+    @State var activeSeason: Int = 0
     
     var body: some View {
         VStack {
             Text("Seasons")
                 .font(.largeTitle)
             
-            Pager(
-                page: selectedSeason,
-                data: seasons,
-                content: { season in
+            VStack(spacing: 20) {
+                ForEach(seasons) { season in
                     VStack {
-                        NavigationLink(destination: SeasonDetailView(season: season, seriesTitle: seriesTitle), isActive: binding(for: season.id)) {
-                            EmptyView()
+                        HStack {
+                            Image(systemName: "arrowtriangle.right")
+                                .rotationEffect(.degrees(activeSeason == season.id ? 90 : 0))
+                            
+                            VStack {
+                                Text("Season \(season.seasonNumber)")
+                                    .bold()
+                                    .foregroundColor(.accentColor)
+                                
+                                let episodesString = season.numberOfEpisodes != nil ? "\(season.numberOfEpisodes ?? 0) episodes" : "Coming soon"
+                                Text(episodesString)
+                            }
                         }
                         
-                        VStack {
-                            Text("Season \(season.seasonNumber)")
-                                .bold()
-                                .foregroundColor(.accentColor)
-                            
-                            if let numberOfEpisodes = season.numberOfEpisodes {
-                                Text("\(numberOfEpisodes) episodes")
-                            }
-                            
-                            if season.posters?.count ?? 0 <= 0 && season.seasonTrailers?.count ?? 0 <= 0 && season.episodes?.count ?? 0 <= 0 {
-                                Text("*Details available soon*")
+                        if activeSeason == season.id {
+                            if let episodes = season.episodes, episodes.count > 0 {
+                                SeasonEpisodeListView(episodes: episodes)
                             } else {
-                                Text("*Click for details*")
+                                Text("More season information coming soon")
+                                    .padding()
                             }
-                        }.padding()
-                            .frame(width: 220)
-                            .background(Color("ListItemBackground"))
-                            .cornerRadius(5)
-                            .foregroundColor(Color("ForegroundColor"))
-                            .onTapGesture {
-                                if season.posters?.count ?? 0 > 0 || season.seasonTrailers?.count ?? 0 > 0 || season.episodes?.count ?? 0 > 0 {
-                                    activeSeasons[season.id] = true
-                                }
-                            }
+                        }
+                    }.onTapGesture {
+                        let activeSeasonIsTheSame = activeSeason == season.id
+                        
+                        withAnimation {
+                            activeSeason = activeSeasonIsTheSame ? 0 : season.id
+                        }
                     }
                 }
-            )
-                .preferredItemSize(CGSize(width: 220, height: 100))
-                .multiplePagination()
-                .interactive(scale: 0.9)
-                .itemSpacing(10)
-                .frame(height: 100)
+            }
         }
     }
+}
+
+
+struct SeasonEpisodeListView: View {
+    @State var episodes: [Episode]
     
-    private func binding(for key: Int) -> Binding<Bool> {
-        return .init(
-            get: { self.activeSeasons[key, default: false] },
-            set: { self.activeSeasons[key] = $0 })
+    var body: some View {
+        VStack {
+            ForEach(episodes) { episode in
+                VStack {
+                    Text("\(episode.title) (Episode \(episode.episodeNumber))")
+                        .bold()
+                        .multilineTextAlignment(.center)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            Text("\(episode.duration) minutes")
+                                .textStyle(RedChipText())
+                            
+                            Text(episode.episodeReleaseDate.toDate()?.toFormattedString() ?? "")
+                                .textStyle(RedChipText())
+
+                            Text("\(episode.postCreditScenes) post credit scenes")
+                                .textStyle(RedChipText())
+                        }
+                    }
+                    
+                    Text(episode.episodeDescription)
+                        .multilineTextAlignment(.center)
+                    
+                }.padding()
+                    .background(Color.accentGray)
+                    .cornerRadius(10)
+                    .padding()
+            }
+        }
+    }
+}
+
+struct RedChipText: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(2)
+            .padding(.horizontal, 7)
+            .background(Color.accentColor.withAlphaComponent(0.2))
+            .foregroundColor(.white)
+            .cornerRadius(20)
     }
 }

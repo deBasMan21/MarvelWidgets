@@ -6,48 +6,34 @@
 //
 
 import Foundation
+import SwiftUI
+import EventKit
 
 class ProjectDetailViewModel: ObservableObject {
     @Published var project: ProjectWrapper
-    @Published var bookmarkString: String = "bookmark"
+    @Published var showBottomLoader = true
+    @Published var posterURL: String
+    @Published var posterIndex: Int = 0 {
+        didSet {
+            withAnimation {
+                posterURL = project.attributes.posters?[posterIndex].posterURL ?? ConfigValues.placeholderImageUrl
+            }
+        }
+    }
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    let store = EKEventStore()
     
     init(project: ProjectWrapper) {
         self.project = project
+        posterURL = project.attributes.posters?.first?.posterURL ?? ConfigValues.placeholderImageUrl
         
         Task {
             await refresh(id: project.id)
         }
-    }
-    
-    func setIsSavedIcon(for proj: ProjectWrapper) {
-        let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
-
-        if userDefs.data(forKey: "\(proj.id)") != nil {
-            bookmarkString = "bookmark.fill"
-        } else {
-            bookmarkString = "bookmark"
-        }
-    }
-    
-    func toggleSaveProject(_ proj: ProjectWrapper) {
-        let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
-        var savedIds: [String] = userDefs.array(forKey: UserDefaultValues.savedProjectIds) as? [String] ?? []
-
-        if userDefs.data(forKey: "\(proj.id)") != nil {
-            if let indexValue = savedIds.firstIndex(of: "\(proj.id)"), let index = indexValue.codingKey.intValue {
-                savedIds.remove(at: index)
-            }
-            
-            userDefs.set(savedIds, forKey: UserDefaultValues.savedProjectIds)
-            userDefs.set(nil, forKey: "\(proj.id)")
-        } else {
-            let dataObj: Data? = proj.toData()
-            savedIds.append("\(proj.id)")
-            
-            userDefs.set(dataObj, forKey: "\(proj.id)")
-            userDefs.set(savedIds, forKey: UserDefaultValues.savedProjectIds)
-        }
-        setIsSavedIcon(for: proj)
     }
     
     func refresh(id: Int, force: Bool = false) async {
@@ -55,17 +41,26 @@ class ProjectDetailViewModel: ObservableObject {
         case .sony, .defenders, .fox, .marvelOther, .marvelTelevision:
             if let populatedProject = await getPopulatedOtherProject(id, force: force) {
                 await MainActor.run {
-                    self.project = populatedProject
+                    withAnimation {
+                        self.project = populatedProject
+                    }
                 }
             }
         default:
             if let populatedProject = await getPopulatedProject(id, force: force) {
                 await MainActor.run {
-                    self.project = populatedProject
+                    withAnimation {
+                        self.project = populatedProject
+                    }
                 }
             }
         }
         
+        await MainActor.run {
+            withAnimation {
+                showBottomLoader = false
+            }
+        }
     }
     
     func getPopulatedProject(_ id: Int, force: Bool) async -> ProjectWrapper? {
@@ -74,5 +69,79 @@ class ProjectDetailViewModel: ObservableObject {
     
     func getPopulatedOtherProject(_ id: Int, force: Bool) async -> ProjectWrapper? {
         return await ProjectService.getOtherById(id, force: force)
+    }
+    
+    func swipeImage(direction: SwipeHVDirection) {
+        if let posters = project.attributes.posters {
+            if direction == .right {
+                if posterIndex + 1 < posters.count {
+                    posterIndex += 1
+                } else {
+                    posterIndex = 0
+                }
+            } else if direction == .left {
+                if posterIndex - 1 >= 0 {
+                    posterIndex -= 1
+                } else {
+                    posterIndex = posters.count - 1
+                }
+            }
+        }
+    }
+    
+    func createEventinTheCalendar() {
+        guard let releaseDate = project.attributes.releaseDate?.toDate() else { return }
+        
+        store.requestAccess(to: .event) { (success, error) in
+            if  error == nil {
+                let event = EKEvent(eventStore: self.store)
+                event.title = self.project.attributes.title
+                event.calendar = self.store.defaultCalendarForNewEvents
+                event.startDate = releaseDate
+                event.endDate = releaseDate
+                event.isAllDay = true
+                
+                event.addAlarm(EKAlarm(absoluteDate: Date(timeInterval: -3600, since: event.startDate)))
+                
+                do {
+                    try self.store.save(event, span: .thisEvent)
+                    
+                    let interval = releaseDate.timeIntervalSinceReferenceDate
+                    if let url = URL(string: "calshow:\(interval)") {
+                        Task {
+                            await MainActor.run {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
+                        }
+                    }
+                } catch let error as NSError {
+                    print("failed to save event with error : \(error)")
+                }
+
+            } else {
+                //we have error in getting access to device calnedar
+                print("error = \(String(describing: error?.localizedDescription))")
+            }
+        }
+    }
+    
+    enum SwipeHVDirection: String {
+        case left, right, up, down, none
+    }
+
+    func detectDirection(value: DragGesture.Value) -> SwipeHVDirection {
+        if value.startLocation.x < value.location.x - 24 {
+            return .left
+        }
+        if value.startLocation.x > value.location.x + 24 {
+            return .right
+        }
+        if value.startLocation.y < value.location.y - 24 {
+            return .down
+        }
+        if value.startLocation.y > value.location.y + 24 {
+            return .up
+        }
+        return .none
     }
 }

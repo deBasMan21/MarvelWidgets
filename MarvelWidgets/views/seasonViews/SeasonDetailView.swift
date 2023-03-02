@@ -36,7 +36,7 @@ struct SeasonDetailView: View {
                                     .bold()
                                     .multilineTextAlignment(.center)
 
-                                Text(episode.episodeReleaseDate)
+                                Text(episode.episodeReleaseDate.toDate()?.toFormattedString() ?? "")
 
                                 Text("Overview")
                                     .bold()
@@ -57,9 +57,9 @@ struct SeasonDetailView: View {
                                 Spacer()
                             }.padding()
                                 .frame(width: 300)
-                                .background(Color("ListItemBackground"))
+                                .background(Color.accentGray)
                                 .cornerRadius(12)
-                                .foregroundColor(Color("ForegroundColor"))
+                                .foregroundColor(Color.foregroundColor)
                         }
                     )
                         .preferredItemSize(CGSize(width: 280, height: 400))

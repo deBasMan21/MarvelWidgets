@@ -16,7 +16,4 @@ struct UserDefaultValues {
     static let specificSelectedProjectTitle = "specificProjectTitle"
     
     static let savedProjectIds = "savedProjectIds"
-    
-    static let cachedMovies = "cachedMovies"
-    static let cachedSeries = "cachedSeries"
 }

@@ -12,6 +12,6 @@ import SwiftUI
 struct MarvelWidgetBundle: WidgetBundle {
     var body: some Widget {
         SmallWidget()
-        SpecificWidget()
+        OtherWidgets()
     }
 }

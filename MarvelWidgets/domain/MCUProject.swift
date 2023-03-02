@@ -7,7 +7,19 @@
 
 import Foundation
 
-struct MCUProject: Codable {
+struct MCUProject: Codable, Comparable {
+    static func < (lhs: MCUProject, rhs: MCUProject) -> Bool {
+        guard let lhsDate = lhs.releaseDate?.toDate() else { return false }
+        guard let rhsDate = rhs.releaseDate?.toDate() else { return true }
+        return lhsDate < rhsDate
+    }
+    
+    static func == (lhs: MCUProject, rhs: MCUProject) -> Bool {
+        guard let lhsDate = lhs.releaseDate?.toDate() else { return false }
+        guard let rhsDate = rhs.releaseDate?.toDate() else { return true }
+        return lhsDate == rhsDate
+    }
+    
     let title: String
     let releaseDate: String?
     let postCreditScenes, duration: Int?
