@@ -13,9 +13,6 @@ struct ProjectListView: View {
     @StateObject var viewModel = ProjectListViewModel()
     @Binding var showLoader: Bool
     
-    @State var beforeDate: Date = Date()
-    @State var afterDate: Date = Date()
-    
     var body: some View {
         VStack{
             if viewModel.showFilters {

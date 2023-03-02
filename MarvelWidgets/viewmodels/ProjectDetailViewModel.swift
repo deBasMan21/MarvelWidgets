@@ -16,7 +16,7 @@ class ProjectDetailViewModel: ObservableObject {
     @Published var posterIndex: Int = 0 {
         didSet {
             withAnimation {
-                posterURL = project.attributes.posters?[posterIndex].posterURL ?? ""
+                posterURL = project.attributes.posters?[posterIndex].posterURL ?? ConfigValues.placeholderImageUrl
             }
         }
     }
@@ -29,7 +29,7 @@ class ProjectDetailViewModel: ObservableObject {
     
     init(project: ProjectWrapper) {
         self.project = project
-        posterURL = project.attributes.posters?.first?.posterURL ?? ""
+        posterURL = project.attributes.posters?.first?.posterURL ?? ConfigValues.placeholderImageUrl
         
         Task {
             await refresh(id: project.id)
