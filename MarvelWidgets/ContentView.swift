@@ -15,9 +15,17 @@ struct ContentView: View {
     @State var showView = false
     
     @State var detailView: ProjectDetailView?
+    @State var showOnboarding: Bool = {
+        !UserDefaultsService.standard.seenOnboarding || UserDefaultsService.standard.alwaysShowOnboarding
+    }()
     
     var body: some View {
         ZStack {
+            if showOnboarding {
+                OnboardingView(showOnboarding: $showOnboarding)
+                    .zIndex(1)
+            }
+            
             TabView {
                 NavigationView {
                     ProjectListView(pageType: .mcu, showLoader: $showLoader)

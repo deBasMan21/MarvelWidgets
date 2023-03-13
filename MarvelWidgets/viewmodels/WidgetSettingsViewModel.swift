@@ -40,16 +40,16 @@ extension WidgetSettingsView {
         }
         
         let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
+        let notificationService = NotificationService()
         
         init() {
             showText = userDefs.bool(forKey: UserDefaultValues.smallWidgetShowText)
             selectedProject = userDefs.integer(forKey: UserDefaultValues.specificSelectedProject)
             selectedProjectTitle = userDefs.string(forKey: UserDefaultValues.specificSelectedProjectTitle)
             
-            let topics = UserDefaultsService.standard.subscribeTopics
-            notificationMovie = topics.firstIndex(of: NotificationTopics.movie.rawValue) != nil
-            notificationSerie = topics.firstIndex(of: NotificationTopics.serie.rawValue) != nil
-            notificationSpecial = topics.firstIndex(of: NotificationTopics.special.rawValue) != nil
+            notificationMovie = notificationService.isSubscribedTo(topic: .movie)
+            notificationSerie = notificationService.isSubscribedTo(topic: .serie)
+            notificationSpecial = notificationService.isSubscribedTo(topic: .special)
             
             Task {
                 await MainActor.run {
@@ -87,26 +87,8 @@ extension WidgetSettingsView {
         }
         
         func toggleTopic(_ topic: NotificationTopics) {
-            var topics = UserDefaultsService.standard.subscribeTopics
-
-            if let index = topics.firstIndex(of: topic.rawValue) {
-                print("unsubscribed \(topic.rawValue)")
-                topics.remove(at: index)
-                Messaging.messaging().unsubscribe(fromTopic: topic.rawValue)
-            } else {
-                print("subscribed \(topic.rawValue)")
-                topics.append(topic.rawValue)
-                Messaging.messaging().subscribe(toTopic: topic.rawValue)
-            }
-            
-            UserDefaultsService.standard.subscribeTopics = topics
+            notificationService.toggleTopic(topic)
         }
-    }
-    
-    enum NotificationTopics: String, CaseIterable {
-        case movie = "Movie"
-        case serie = "Serie"
-        case special = "Special"
     }
 }
 

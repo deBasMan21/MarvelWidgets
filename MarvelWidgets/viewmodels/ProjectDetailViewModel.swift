@@ -33,6 +33,7 @@ class ProjectDetailViewModel: ObservableObject {
     
     init(project: ProjectWrapper) {
         self.project = project
+        self.posterURL = project.attributes.posters?.first?.posterURL
         
         Task {
             await refresh(id: project.id)

@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "concentriconboarding",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/ConcentricOnboarding.git",
+      "state" : {
+        "revision" : "db2c7730fcd210e763fcc8d4dcfc8cea1b0c5c8b",
+        "version" : "1.0.3"
+      }
+    },
+    {
       "identity" : "datacache",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/huynguyencong/DataCache.git",

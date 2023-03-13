@@ -20,9 +20,9 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Show other tabs</string>
+			<string>Always show onboarding</string>
 			<key>Key</key>
-			<string>showOtherTabs</string>
+			<string>alwaysShowOnboarding</string>
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
