@@ -28,7 +28,7 @@ struct ContentView: View {
             
             TabView {
                 NavigationView {
-                    ProjectListView(pageType: .mcu, showLoader: $showLoader)
+                    ProjectListView(pageType: .mcu, showLoader: $showLoader).navigationBarState(.compact, displayMode: .automatic)
                 }.tabItem{
                     Label("MCU", systemImage: "list.dash")
                 }
@@ -72,20 +72,28 @@ struct ContentView: View {
                                         releaseDate: nil,
                                         postCreditScenes: nil,
                                         duration: nil,
+                                        voteCount: nil,
+                                        awardsNominated: nil,
+                                        awardsWon: nil,
+                                        productionBudget: nil,
                                         phase: .unkown,
                                         saga: .infinitySaga,
                                         overview: nil,
-                                        type: .movie,
+                                        type: .special,
                                         boxOffice: nil,
                                         createdAt: nil,
                                         updatedAt: nil,
                                         disneyPlusUrl: nil,
+                                        categories: nil,
+                                        quote: nil,
+                                        quoteCaption: nil,
                                         directors: nil,
                                         actors: nil,
                                         relatedProjects: nil,
                                         trailers: nil,
                                         posters: nil,
-                                        seasons: nil
+                                        seasons: nil,
+                                        rating: nil
                                     )
                                 )
                             ),
@@ -136,6 +144,6 @@ struct ContentView: View {
                 }.background(.black.opacity(0.7))
                     .transition(.opacity)
             }
-        }
+        }.navigationBarState(.compact, displayMode: .automatic)
     }
 }

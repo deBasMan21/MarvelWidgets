@@ -14,11 +14,13 @@ struct OnboardingPageFiveView: View {
     @State var icons = [
         AppIcon(
             imageName: "AppIconLargeLight",
-            appIconName: nil
+            appIconName: nil,
+            visibleName: "Light"
         ),
         AppIcon(
             imageName: "AppIconLargeDark",
-            appIconName: "AppIcon1"
+            appIconName: "AppIcon1",
+            visibleName: "Dark"
         )
     ]
     
@@ -35,16 +37,26 @@ struct OnboardingPageFiveView: View {
                 
                 ForEach(icons) { icon in
                     VStack {
+                        Text(icon.visibleName)
+                            .bold()
+                        
                         Image(icon.imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 75)
                             .cornerRadius(20)
                             .shadow(color: Color.foregroundColor.withAlphaComponent(0.25), radius: 3)
-                        
-                        if selectedImage == icon.appIconName {
-                            Text("Selected")
-                        }
+                            .if(selectedImage == icon.appIconName, transform: { view in
+                                view.overlay (
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .foregroundColor(.green)
+                                        .frame(width: 40, height: 40)
+                                        .background(Color.backgroundColor)
+                                        .clipShape(Circle())
+                                )
+                            })
                     }.onTapGesture {
                         if selectedImage != icon.appIconName {
                             selectedImage = icon.appIconName

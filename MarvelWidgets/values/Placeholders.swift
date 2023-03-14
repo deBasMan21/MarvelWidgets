@@ -17,6 +17,10 @@ class Placeholders {
             releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).toOriginalFormattedString(),
             postCreditScenes: nil,
             duration: nil,
+            voteCount: nil,
+            awardsNominated: nil,
+            awardsWon: nil,
+            productionBudget: nil,
             phase: .unkown,
             saga: .infinitySaga,
             overview: nil,
@@ -25,6 +29,9 @@ class Placeholders {
             createdAt: nil,
             updatedAt: nil,
             disneyPlusUrl: nil,
+            categories: nil,
+            quote: nil,
+            quoteCaption: nil,
             directors: Directors(
                 data: [
                     DirectorsWrapper(
@@ -46,7 +53,8 @@ class Placeholders {
             relatedProjects: nil,
             trailers: nil,
             posters: nil,
-            seasons: nil
+            seasons: nil,
+            rating: nil
         )
     )
     
@@ -58,6 +66,10 @@ class Placeholders {
             releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).toOriginalFormattedString(),
             postCreditScenes: nil,
             duration: nil,
+            voteCount: nil,
+            awardsNominated: nil,
+            awardsWon: nil,
+            productionBudget: nil,
             phase: .unkown,
             saga: .infinitySaga,
             overview: nil,
@@ -66,6 +78,9 @@ class Placeholders {
             createdAt: nil,
             updatedAt: nil,
             disneyPlusUrl: nil,
+            categories: nil,
+            quote: nil,
+            quoteCaption: nil,
             directors: Directors(
                 data: [
                     DirectorsWrapper(
@@ -87,7 +102,8 @@ class Placeholders {
             relatedProjects: nil,
             trailers: nil,
             posters: nil,
-            seasons: nil
+            seasons: nil,
+            rating: nil
         )
     )
 }

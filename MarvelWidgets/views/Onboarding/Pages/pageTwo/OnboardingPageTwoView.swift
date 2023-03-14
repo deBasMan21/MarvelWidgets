@@ -15,14 +15,12 @@ struct OnboardingPageTwoView: View {
                 .font(.largeTitle)
                 .bold()
             
-            ScrollView {
-                VStack(spacing: 20) {
-                    Text("The MCUWidgets app has several types of homescreen and lockscreen widgets. There are two types of content for the widgets available. These are \"Any MCU Project\" and \"Specific MCU Project\".")
-                    
-                    Text("The \"Any MCU Project\" widget can be used to display the first upcoming or a random MCU Project.")
-                    
-                    Text("The \"Specific MCU Project\" widget can be used to display one specific project which can be selected in the settings of the MCUWidgets app.")
-                }
+            VStack(spacing: 20) {
+                Text("The MCUWidgets app has several types of homescreen and lockscreen widgets. There are two types of content for the widgets available. These are \"Any MCU Project\" and \"Specific MCU Project\".")
+                
+                Text("The \"Any MCU Project\" widget can be used to display the first upcoming or a random MCU Project.")
+                
+                Text("The \"Specific MCU Project\" widget can be used to display one specific project which can be selected in the settings of the MCUWidgets app.")
             }
         }.multilineTextAlignment(.center)
     }

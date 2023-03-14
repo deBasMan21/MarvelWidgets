@@ -13,10 +13,14 @@ struct SmallWidgetProvider: IntentTimelineProvider {
     let emptyProject = ProjectWrapper(
         id: -1,
         attributes: MCUProject(
-            title: "Next project not available",
-            releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).ISO8601Format(),
+            title: "",
+            releaseDate: nil,
             postCreditScenes: nil,
             duration: nil,
+            voteCount: nil,
+            awardsNominated: nil,
+            awardsWon: nil,
+            productionBudget: nil,
             phase: .unkown,
             saga: .infinitySaga,
             overview: nil,
@@ -25,12 +29,16 @@ struct SmallWidgetProvider: IntentTimelineProvider {
             createdAt: nil,
             updatedAt: nil,
             disneyPlusUrl: nil,
+            categories: nil,
+            quote: nil,
+            quoteCaption: nil,
             directors: nil,
             actors: nil,
             relatedProjects: nil,
             trailers: nil,
             posters: nil,
-            seasons: nil
+            seasons: nil,
+            rating: nil
         )
     )
     

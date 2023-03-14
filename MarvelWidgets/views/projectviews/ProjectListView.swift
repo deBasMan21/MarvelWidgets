@@ -80,26 +80,26 @@ struct ProjectListView: View {
                             }
                         }
                     }
-                    
-                    HStack {
-                        Text("After date:")
-                        
-                        Spacer()
-                        
-                        DatePicker(selection: $viewModel.afterDate, displayedComponents: .date) {
-                                        Text("")
-                                    }
-                    }
-                    
-                    HStack {
-                        Text("Before date:")
-                        
-                        Spacer()
-                        
-                        DatePicker(selection: $viewModel.beforeDate, displayedComponents: .date) {
-                                        Text("")
-                                    }
-                    }
+                    // Date filters work but filters get too big with them
+//                    HStack {
+//                        Text("After date:")
+//
+//                        Spacer()
+//
+//                        DatePicker(selection: $viewModel.afterDate, displayedComponents: .date) {
+//                                        Text("")
+//                                    }
+//                    }
+//
+//                    HStack {
+//                        Text("Before date:")
+//
+//                        Spacer()
+//
+//                        DatePicker(selection: $viewModel.beforeDate, displayedComponents: .date) {
+//                                        Text("")
+//                                    }
+//                    }
                     
                     
                     HStack {
@@ -197,14 +197,15 @@ struct ProjectListView: View {
                     }
                 }
             }
-        }.onAppear{
-            showLoader = true
-            Task{
-                viewModel.pageType = pageType
-                await viewModel.fetchProjects()
-                showLoader = false
-            }
-        }.navigationTitle(viewModel.navigationTitle)
+        }.navigationBarState(.compact, displayMode: .automatic)
+            .onAppear{
+                showLoader = true
+                Task{
+                    viewModel.pageType = pageType
+                    await viewModel.fetchProjects()
+                    showLoader = false
+                }
+            }.navigationTitle(viewModel.navigationTitle)
             .toolbar {
                 Button {
                     withAnimation {
@@ -217,6 +218,8 @@ struct ProjectListView: View {
                             .frame(width: 24, height: 24)
                     }
                 }.tint(.accentColor)
+                    .foregroundColor(.accentColor)
+                    .navigationBarState(.compact, displayMode: .automatic)
             }
     }
 }

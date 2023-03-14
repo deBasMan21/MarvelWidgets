@@ -24,20 +24,52 @@ class ProjectDetailViewModel: ObservableObject {
             }
         }
     }
+    @Published var showCalendarAppointment: Bool = false
+    @Published var tableViewContent: [(Int, any View)] = []
     
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
     let store = EKEventStore()
     
     init(project: ProjectWrapper) {
         self.project = project
         self.posterURL = project.attributes.posters?.first?.posterURL
         
+        getTableViewContent()
+        
         Task {
             await refresh(id: project.id)
         }
+    }
+    
+    func getTableViewContent() {
+        var tableViewContent: [any View] = []
+        if let saga = project.attributes.saga {
+            tableViewContent.append(TableRowView(title: "Saga", value: saga.rawValue))
+        }
+        
+        if let phase = project.attributes.phase {
+            tableViewContent.append(TableRowView(title: "Phase", value: phase.rawValue))
+        }
+        
+        if let postCreditScenes = project.attributes.postCreditScenes {
+            tableViewContent.append(TableRowView(title: "Post Credit Scenes", value: String(postCreditScenes)))
+        }
+        
+        if let boxOffice = project.attributes.boxOffice {
+            tableViewContent.append(TableRowView(title: "Worldwide Box Office", value: boxOffice.toMoney()))
+        }
+        
+        if let budget = project.attributes.productionBudget {
+            tableViewContent.append(TableRowView(title: "Production Budget", value: budget.toMoney()))
+        }
+        
+        if let awardsNominated = project.attributes.awardsNominated {
+            tableViewContent.append(contentsOf: [
+                TableRowView(title: "Awards Nominated", value: String(awardsNominated)),
+                TableRowView(title: "Awards Won", value: String(project.attributes.awardsWon ?? 0))
+            ])
+        }
+        
+        self.tableViewContent = tableViewContent.enumerated().compactMap { ($0, $1) }
     }
     
     func refresh(id: Int, force: Bool = false) async {

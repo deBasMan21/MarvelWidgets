@@ -50,6 +50,7 @@
 		EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
 		EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
+		EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67932C29BF96A900ED1451 /* StarsView.swift */; };
 		EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82C529258B9300A5D69C /* NotificationService.swift */; };
 		EF6B82CA29258B9300A5D69C /* MCUWidgetsRPN.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF6B82C329258B9300A5D69C /* MCUWidgetsRPN.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -294,6 +295,7 @@
 		EF38FD71291FF56400EA4BD9 /* ProjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
+		EF67932C29BF96A900ED1451 /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		EF6B8298292412CA00A5D69C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 				EFF0E2632920EDD300854E5F /* TrailersView.swift */,
 				EFF0E2652920EDF300854E5F /* ImageSizedView.swift */,
 				EF04E67C29AD491C003C0420 /* CircularImageView.swift */,
+				EF67932C29BF96A900ED1451 /* StarsView.swift */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -1146,6 +1149,7 @@
 				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
 				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
 				EF78F5EF29956D1700CA9028 /* OtherWidgets.intentdefinition in Sources */,
+				EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */,
 				EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */,
 				EFF0E27D2921080600854E5F /* ProjectType.swift in Sources */,
 				EFF0E2832921082A00854E5F /* Actor.swift in Sources */,
