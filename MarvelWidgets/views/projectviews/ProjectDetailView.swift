@@ -63,7 +63,9 @@ struct ProjectDetailView: View {
                     }
                     
                     if let quote = viewModel.project.attributes.quote, let quoteCaption = viewModel.project.attributes.quoteCaption {
-                        QuoteView(quote: quote, quoteCaption: quoteCaption)
+                        VStack(alignment: .leading) {
+                            QuoteView(quote: quote, quoteCaption: quoteCaption)
+                        }
                     }
                     
                     if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
@@ -292,15 +294,19 @@ struct QuoteView: View {
             
             VStack(alignment: .leading) {
                 Text(quote)
-                    .font(.title)
-                    .bold()
+                    .frame(maxHeight: 40)
+                    .font(.system(size: 50))
+                    .minimumScaleFactor(0.01)
                     .lineLimit(2)
+                    .bold()
                 
                 Text(quoteCaption)
                     .font(.caption)
                     .italic()
             }
-        }
+            
+            Spacer()
+        }.padding()
     }
 }
 
