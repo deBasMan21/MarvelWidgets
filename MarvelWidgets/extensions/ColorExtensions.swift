@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let foregroundColor: Color = Color("ForegroundColor")
-    static let backgroundColor: Color = Color("BackgroundColor")
+    static let foregroundColor: Color = Color("CustomForegroundColor")
+    static let backgroundColor: Color = Color("CustomBackgroundColor")
     static let accentGray: Color = Color("customGray")
     
     func withAlphaComponent(_ alpha: CGFloat) -> Color {

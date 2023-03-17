@@ -51,8 +51,6 @@ extension ActorListPageView {
                 }
                 return false
             }
-            
-            print(birthdayActors)
         }
     }
 }

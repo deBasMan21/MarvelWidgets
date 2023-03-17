@@ -40,6 +40,12 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func toOriginalFormattedString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        return formatter.string(from: self)
+    }
+    
     func calculateAge() -> Int {
         let now = Date()
         let calendar = Calendar.current

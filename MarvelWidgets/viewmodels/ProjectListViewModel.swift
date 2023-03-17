@@ -108,6 +108,26 @@ extension ProjectListView {
                 orderedProjects = projects.sorted(by: { $0.attributes.releaseDate ?? "3000-12-12" > $1.attributes.releaseDate ?? "3000-12-12" })
             case .releaseDateDESC:
                 orderedProjects = projects.sorted(by: { $0.attributes.releaseDate ?? "3000-12-12" < $1.attributes.releaseDate ?? "3000-12-12" })
+            case .ratingASC:
+                orderedProjects = projects.sorted(by: {
+                    let rating0 = $0.attributes.rating ?? 0
+                    let rating1 = $1.attributes.rating ?? 0
+                    if rating0 == rating1 {
+                        return $0.attributes.voteCount ?? 0 < $1.attributes.voteCount ?? 0
+                    } else {
+                        return rating0 < rating1
+                    }
+                })
+            case .ratingDESC:
+                orderedProjects = projects.sorted(by: {
+                    let rating0 = $0.attributes.rating ?? 0
+                    let rating1 = $1.attributes.rating ?? 0
+                    if rating0 == rating1 {
+                        return $0.attributes.voteCount ?? 0 > $1.attributes.voteCount ?? 0
+                    } else {
+                        return rating0 > rating1
+                    }
+                })
             }
             return orderedProjects
         }
@@ -153,9 +173,11 @@ extension ProjectListView {
     }
     
     enum OrderType: String, CaseIterable {
-        case nameASC = "Name A-Z"
-        case nameDESC = "Name Z-A"
+        case nameASC = "Name (A-Z)"
+        case nameDESC = "Name (Z-A)"
         case releaseDateASC = "Release date (new-old)"
         case releaseDateDESC = "Release date (old-new)"
+        case ratingASC = "Rating (low-high)"
+        case ratingDESC = "Rating (high-low)"
     }
 }

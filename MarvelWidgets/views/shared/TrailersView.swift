@@ -27,11 +27,14 @@ struct TrailersView: View {
                         Text(trailer.trailerName)
                             .bold()
                             .foregroundColor(.accentColor)
+                        
+                        Spacer()
                     }.tabItem {
                         Text("Poster")
                     }
                 }
             }.tabViewStyle(.page(indexDisplayMode: .always))
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .frame(height: 250)
         }.padding()
     }

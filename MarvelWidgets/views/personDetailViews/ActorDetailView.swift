@@ -51,7 +51,9 @@ struct ActorDetailView: View {
                                 .padding()
                             
                             LazyVGrid(columns: columns, spacing: 15){
-                                ForEach(mcuProjects, id: \.uuid) { project in
+                                ForEach(mcuProjects.sorted(by: {
+                                    $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
+                                }), id: \.uuid) { project in
                                     VStack {
                                         NavigationLink {
                                             ProjectDetailView(

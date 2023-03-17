@@ -25,6 +25,8 @@
 		EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */; };
+		EF238A9F29B26AC200C3FC9C /* ConcentricOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = EF238A9E29B26AC200C3FC9C /* ConcentricOnboarding */; };
+		EF238AA229B26B9A00C3FC9C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238AA129B26B9A00C3FC9C /* OnboardingView.swift */; };
 		EF28E7F729A6988E00B7C845 /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
 		EF28E7F829A6996300B7C845 /* WidgetProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE69E4A29A69568002345FF /* WidgetProjectService.swift */; };
 		EF28E7F929A6996400B7C845 /* WidgetProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE69E4A29A69568002345FF /* WidgetProjectService.swift */; };
@@ -48,6 +50,7 @@
 		EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
 		EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
+		EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67932C29BF96A900ED1451 /* StarsView.swift */; };
 		EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82C529258B9300A5D69C /* NotificationService.swift */; };
 		EF6B82CA29258B9300A5D69C /* MCUWidgetsRPN.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF6B82C329258B9300A5D69C /* MCUWidgetsRPN.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -137,6 +140,25 @@
 		EFE69E4329A69367002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
 		EFE69E4729A693B8002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
 		EFE69E4829A693B8002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
+		EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC029BE225A00437A6E /* NotificationService.swift */; };
+		EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
+		EFF04BC629BE2FFD00437A6E /* OnboardingPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */; };
+		EFF04BC829BE302400437A6E /* OnboardingPageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC729BE302400437A6E /* OnboardingPageOneView.swift */; };
+		EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC929BE303F00437A6E /* OnboardingPageTwoView.swift */; };
+		EFF04BCC29BE305600437A6E /* OnboardingPageThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BCB29BE305600437A6E /* OnboardingPageThreeView.swift */; };
+		EFF04BCE29BE306D00437A6E /* OnboardingPageFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BCD29BE306D00437A6E /* OnboardingPageFourView.swift */; };
+		EFF04BD129BE309400437A6E /* CircularRedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD029BE309400437A6E /* CircularRedButtonStyle.swift */; };
+		EFF04BD329BE30C600437A6E /* RedChipText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD229BE30C600437A6E /* RedChipText.swift */; };
+		EFF04BD529BE527100437A6E /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD429BE527100437A6E /* NotificationView.swift */; };
+		EFF04BD729BE529400437A6E /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD629BE529400437A6E /* Placeholders.swift */; };
+		EFF04BD929BE554000437A6E /* OnboardingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD829BE554000437A6E /* OnboardingOverlayView.swift */; };
+		EFF04BDF29BE557A00437A6E /* OnboardingPageOneHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BDE29BE557A00437A6E /* OnboardingPageOneHeader.swift */; };
+		EFF04BE129BE559300437A6E /* OnboardingPageTwoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BE029BE559300437A6E /* OnboardingPageTwoHeader.swift */; };
+		EFF04BE329BE55A900437A6E /* OnboardingPageThreeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BE229BE55A900437A6E /* OnboardingPageThreeHeader.swift */; };
+		EFF04BE529BE55C000437A6E /* OnboardingPageFourHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BE429BE55C000437A6E /* OnboardingPageFourHeader.swift */; };
+		EFF04BE829BE6A1A00437A6E /* OnboardingPageFiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BE729BE6A1A00437A6E /* OnboardingPageFiveView.swift */; };
+		EFF04BEA29BE6A2E00437A6E /* OnboardingPageFiveHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BE929BE6A2E00437A6E /* OnboardingPageFiveHeader.swift */; };
+		EFF04BEC29BE710A00437A6E /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BEB29BE710A00437A6E /* AppIcon.swift */; };
 		EFF0E25C292065B900854E5F /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E25B292065B900854E5F /* SwiftUIPager */; };
 		EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E25D2920ED6400854E5F /* SeasonView.swift */; };
 		EFF0E2602920ED8200854E5F /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E25F2920ED8200854E5F /* SeasonDetailView.swift */; };
@@ -268,10 +290,12 @@
 		EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHelper.swift; sourceTree = "<group>"; };
 		EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
 		EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
+		EF238AA129B26B9A00C3FC9C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageType.swift; sourceTree = "<group>"; };
 		EF38FD71291FF56400EA4BD9 /* ProjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
+		EF67932C29BF96A900ED1451 /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		EF6B8298292412CA00A5D69C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
@@ -330,6 +354,25 @@
 		EFD9565D29AAA5B6009D5EDD /* SmallWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetProvider.swift; sourceTree = "<group>"; };
 		EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingProjectEntry.swift; sourceTree = "<group>"; };
 		EFE69E4A29A69568002345FF /* WidgetProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProjectService.swift; sourceTree = "<group>"; };
+		EFF04BC029BE225A00437A6E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		EFF04BC229BE229F00437A6E /* NotificationTopics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTopics.swift; sourceTree = "<group>"; };
+		EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageContainer.swift; sourceTree = "<group>"; };
+		EFF04BC729BE302400437A6E /* OnboardingPageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageOneView.swift; sourceTree = "<group>"; };
+		EFF04BC929BE303F00437A6E /* OnboardingPageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageTwoView.swift; sourceTree = "<group>"; };
+		EFF04BCB29BE305600437A6E /* OnboardingPageThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageThreeView.swift; sourceTree = "<group>"; };
+		EFF04BCD29BE306D00437A6E /* OnboardingPageFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageFourView.swift; sourceTree = "<group>"; };
+		EFF04BD029BE309400437A6E /* CircularRedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularRedButtonStyle.swift; sourceTree = "<group>"; };
+		EFF04BD229BE30C600437A6E /* RedChipText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedChipText.swift; sourceTree = "<group>"; };
+		EFF04BD429BE527100437A6E /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		EFF04BD629BE529400437A6E /* Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholders.swift; sourceTree = "<group>"; };
+		EFF04BD829BE554000437A6E /* OnboardingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOverlayView.swift; sourceTree = "<group>"; };
+		EFF04BDE29BE557A00437A6E /* OnboardingPageOneHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageOneHeader.swift; sourceTree = "<group>"; };
+		EFF04BE029BE559300437A6E /* OnboardingPageTwoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageTwoHeader.swift; sourceTree = "<group>"; };
+		EFF04BE229BE55A900437A6E /* OnboardingPageThreeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageThreeHeader.swift; sourceTree = "<group>"; };
+		EFF04BE429BE55C000437A6E /* OnboardingPageFourHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageFourHeader.swift; sourceTree = "<group>"; };
+		EFF04BE729BE6A1A00437A6E /* OnboardingPageFiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageFiveView.swift; sourceTree = "<group>"; };
+		EFF04BE929BE6A2E00437A6E /* OnboardingPageFiveHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageFiveHeader.swift; sourceTree = "<group>"; };
+		EFF04BEB29BE710A00437A6E /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		EFF0E25D2920ED6400854E5F /* SeasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonView.swift; sourceTree = "<group>"; };
 		EFF0E25F2920ED8200854E5F /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
 		EFF0E2612920EDB100854E5F /* FullscreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenImageView.swift; sourceTree = "<group>"; };
@@ -391,6 +434,7 @@
 				EFF0E25C292065B900854E5F /* SwiftUIPager in Frameworks */,
 				EFF0E2D929240D4900854E5F /* FirebaseCrashlytics in Frameworks */,
 				EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */,
+				EF238A9F29B26AC200C3FC9C /* ConcentricOnboarding in Frameworks */,
 				EF04E67B29AD24C4003C0420 /* SwiftUINavigationHeader in Frameworks */,
 				EF04E68029AD5014003C0420 /* Algorithms in Frameworks */,
 				EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */,
@@ -412,6 +456,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF238AA029B26B1A00C3FC9C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */,
+				EFF04BC429BE2FEC00437A6E /* Pages */,
+				EF238AA129B26B9A00C3FC9C /* OnboardingView.swift */,
+				EFF04BD429BE527100437A6E /* NotificationView.swift */,
+				EFF04BD829BE554000437A6E /* OnboardingOverlayView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		EF6B82C429258B9300A5D69C /* MCUWidgetsRPN */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +543,7 @@
 			children = (
 				EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */,
 				EF4D265628A4512600B7BCEE /* Config.swift */,
+				EFF04BD629BE529400437A6E /* Placeholders.swift */,
 			);
 			path = values;
 			sourceTree = "<group>";
@@ -529,13 +586,14 @@
 				EFF0E2C52924062C00854E5F /* GoogleService-Info.plist */,
 				EFCA5D9B28A41C850004AAC7 /* MarvelWidgets.entitlements */,
 				EFCA5D7B28A3F5100004AAC7 /* Info.plist */,
-				EFCA5D8A28A3FEF10004AAC7 /* helpers */,
-				EFCA5D7428A3EF9D0004AAC7 /* extensions */,
-				EFCE382128A3DE0200B4CC0D /* viewmodels */,
-				EFCE382028A3DDFD00B4CC0D /* views */,
 				EFCE381F28A3DDF800B4CC0D /* domain */,
-				EFCA5DA528A43E190004AAC7 /* values */,
+				EFCA5D7428A3EF9D0004AAC7 /* extensions */,
+				EFCA5D8A28A3FEF10004AAC7 /* helpers */,
 				EFCE381C28A3DD3200B4CC0D /* services */,
+				EFF04BCF29BE308900437A6E /* styles */,
+				EFCA5DA528A43E190004AAC7 /* values */,
+				EFCE382028A3DDFD00B4CC0D /* views */,
+				EFCE382128A3DE0200B4CC0D /* viewmodels */,
 				EFCE380E28A3D7A700B4CC0D /* MarvelWidgetsApp.swift */,
 				EFCE381028A3D7A700B4CC0D /* ContentView.swift */,
 				EFCE381228A3D7AE00B4CC0D /* Assets.xcassets */,
@@ -561,6 +619,7 @@
 				EFCE384328A3E33900B4CC0D /* generic */,
 				EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */,
 				EF6B82D7292D4F9000A5D69C /* PersonService.swift */,
+				EFF04BC029BE225A00437A6E /* NotificationService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -590,6 +649,8 @@
 				EFF0E2942921089400854E5F /* Season.swift */,
 				EFF0E2962921089F00854E5F /* Episode.swift */,
 				EF6B83542933A17000A5D69C /* PersonSortKeys.swift */,
+				EFF04BC229BE229F00437A6E /* NotificationTopics.swift */,
+				EFF04BEB29BE710A00437A6E /* AppIcon.swift */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -597,6 +658,7 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EF238AA029B26B1A00C3FC9C /* Onboarding */,
 				EF6B82D4292D4E8200A5D69C /* personListViews */,
 				EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */,
 				EFF0E2C02922B77E00854E5F /* personDetailViews */,
@@ -681,6 +743,72 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		EFF04BC429BE2FEC00437A6E /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BE629BE6A0800437A6E /* pageFive */,
+				EFF04BDD29BE556400437A6E /* pageFour */,
+				EFF04BDC29BE555F00437A6E /* pageThree */,
+				EFF04BDB29BE555B00437A6E /* pageTwo */,
+				EFF04BDA29BE555400437A6E /* pageOne */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		EFF04BCF29BE308900437A6E /* styles */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BD029BE309400437A6E /* CircularRedButtonStyle.swift */,
+				EFF04BD229BE30C600437A6E /* RedChipText.swift */,
+			);
+			path = styles;
+			sourceTree = "<group>";
+		};
+		EFF04BDA29BE555400437A6E /* pageOne */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BC729BE302400437A6E /* OnboardingPageOneView.swift */,
+				EFF04BDE29BE557A00437A6E /* OnboardingPageOneHeader.swift */,
+			);
+			path = pageOne;
+			sourceTree = "<group>";
+		};
+		EFF04BDB29BE555B00437A6E /* pageTwo */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BC929BE303F00437A6E /* OnboardingPageTwoView.swift */,
+				EFF04BE029BE559300437A6E /* OnboardingPageTwoHeader.swift */,
+			);
+			path = pageTwo;
+			sourceTree = "<group>";
+		};
+		EFF04BDC29BE555F00437A6E /* pageThree */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BCB29BE305600437A6E /* OnboardingPageThreeView.swift */,
+				EFF04BE229BE55A900437A6E /* OnboardingPageThreeHeader.swift */,
+			);
+			path = pageThree;
+			sourceTree = "<group>";
+		};
+		EFF04BDD29BE556400437A6E /* pageFour */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BCD29BE306D00437A6E /* OnboardingPageFourView.swift */,
+				EFF04BE429BE55C000437A6E /* OnboardingPageFourHeader.swift */,
+			);
+			path = pageFour;
+			sourceTree = "<group>";
+		};
+		EFF04BE629BE6A0800437A6E /* pageFive */ = {
+			isa = PBXGroup;
+			children = (
+				EFF04BE729BE6A1A00437A6E /* OnboardingPageFiveView.swift */,
+				EFF04BE929BE6A2E00437A6E /* OnboardingPageFiveHeader.swift */,
+			);
+			path = pageFive;
+			sourceTree = "<group>";
+		};
 		EFF0E26D2920EEC200854E5F /* seasonViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +826,7 @@
 				EFF0E2632920EDD300854E5F /* TrailersView.swift */,
 				EFF0E2652920EDF300854E5F /* ImageSizedView.swift */,
 				EF04E67C29AD491C003C0420 /* CircularImageView.swift */,
+				EF67932C29BF96A900ED1451 /* StarsView.swift */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -796,6 +925,7 @@
 				EF6B8343293233A300A5D69C /* DataCache */,
 				EF04E67A29AD24C4003C0420 /* SwiftUINavigationHeader */,
 				EF04E67F29AD5014003C0420 /* Algorithms */,
+				EF238A9E29B26AC200C3FC9C /* ConcentricOnboarding */,
 			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
@@ -861,6 +991,7 @@
 				EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */,
 				EF04E67929AD24C4003C0420 /* XCRemoteSwiftPackageReference "SwiftUINavigationHeader" */,
 				EF04E67E29AD5014003C0420 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				EF238A9D29B26AC200C3FC9C /* XCRemoteSwiftPackageReference "ConcentricOnboarding" */,
 			);
 			productRefGroup = EFCE380C28A3D7A700B4CC0D /* Products */;
 			projectDirPath = "";
@@ -988,42 +1119,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF04BEA29BE6A2E00437A6E /* OnboardingPageFiveHeader.swift in Sources */,
 				EFF0E271292107B500854E5F /* ListResponseWrapper.swift in Sources */,
 				EFF0E2972921089F00854E5F /* Episode.swift in Sources */,
 				EFD8D75F28A7AC8D00CA8DAC /* SaveService.swift in Sources */,
 				EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
+				EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */,
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
 				EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */,
 				EFF0E27F2921081200854E5F /* Actors.swift in Sources */,
 				EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */,
 				EFF0E26A2920EE3500854E5F /* ActorListView.swift in Sources */,
 				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
+				EFF04BC629BE2FFD00437A6E /* OnboardingPageContainer.swift in Sources */,
 				EFF0E28F2921087300854E5F /* RelatedProjectWrapper.swift in Sources */,
 				EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */,
 				EFD9565E29AAA5B6009D5EDD /* SmallWidgetProvider.swift in Sources */,
+				EFF04BC829BE302400437A6E /* OnboardingPageOneView.swift in Sources */,
+				EF238AA229B26B9A00C3FC9C /* OnboardingView.swift in Sources */,
 				EFF0E2932921088900854E5F /* Trailer.swift in Sources */,
 				EFF0E2602920ED8200854E5F /* SeasonDetailView.swift in Sources */,
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
+				EFF04BD129BE309400437A6E /* CircularRedButtonStyle.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 				EF78F5C42993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
 				EF6B83532933A0D200A5D69C /* DirectorListPageViewModel.swift in Sources */,
+				EFF04BE129BE559300437A6E /* OnboardingPageTwoHeader.swift in Sources */,
 				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
 				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
 				EF78F5EF29956D1700CA9028 /* OtherWidgets.intentdefinition in Sources */,
+				EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */,
 				EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */,
 				EFF0E27D2921080600854E5F /* ProjectType.swift in Sources */,
 				EFF0E2832921082A00854E5F /* Actor.swift in Sources */,
+				EFF04BD329BE30C600437A6E /* RedChipText.swift in Sources */,
 				EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
 				EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
+				EFF04BCE29BE306D00437A6E /* OnboardingPageFourView.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
+				EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
 				EF6B83572933A1B400A5D69C /* ActorListPageViewModel.swift in Sources */,
 				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFF0E2642920EDD300854E5F /* TrailersView.swift in Sources */,
 				EFF0E26C2920EE5400854E5F /* DirectorListView.swift in Sources */,
+				EFF04BE329BE55A900437A6E /* OnboardingPageThreeHeader.swift in Sources */,
 				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EF6B82DA292D577500A5D69C /* ActorListPageView.swift in Sources */,
 				EF04E67D29AD491C003C0420 /* CircularImageView.swift in Sources */,
@@ -1042,6 +1185,8 @@
 				EF178C4328AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
+				EFF04BEC29BE710A00437A6E /* AppIcon.swift in Sources */,
+				EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */,
 				EF0377DF299D2BDB0058C2FF /* ColorExtensions.swift in Sources */,
 				EF28E7FC29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EFF0E2952921089400854E5F /* Season.swift in Sources */,
@@ -1051,8 +1196,10 @@
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
+				EFF04BDF29BE557A00437A6E /* OnboardingPageOneHeader.swift in Sources */,
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
+				EFF04BD929BE554000437A6E /* OnboardingOverlayView.swift in Sources */,
 				EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */,
 				EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */,
@@ -1065,8 +1212,13 @@
 				EFF0E2D329240B7B00854E5F /* AppDelegate.swift in Sources */,
 				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
 				EF78F62429959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */,
+				EFF04BCC29BE305600437A6E /* OnboardingPageThreeView.swift in Sources */,
 				EF28E7FA29A6998600B7C845 /* WidgetProjectService.swift in Sources */,
+				EFF04BD729BE529400437A6E /* Placeholders.swift in Sources */,
 				EF6B82D1292AAC1D00A5D69C /* InstagramView.swift in Sources */,
+				EFF04BE529BE55C000437A6E /* OnboardingPageFourHeader.swift in Sources */,
+				EFF04BE829BE6A1A00437A6E /* OnboardingPageFiveView.swift in Sources */,
+				EFF04BD529BE527100437A6E /* NotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1376,8 +1528,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = AppIcon1;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
@@ -1413,8 +1567,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = AppIcon1;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
@@ -1571,6 +1727,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		EF238A9D29B26AC200C3FC9C /* XCRemoteSwiftPackageReference "ConcentricOnboarding" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ConcentricOnboarding.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
@@ -1615,6 +1779,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF04E67E29AD5014003C0420 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		EF238A9E29B26AC200C3FC9C /* ConcentricOnboarding */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF238A9D29B26AC200C3FC9C /* XCRemoteSwiftPackageReference "ConcentricOnboarding" */;
+			productName = ConcentricOnboarding;
 		};
 		EF6B8343293233A300A5D69C /* DataCache */ = {
 			isa = XCSwiftPackageProductDependency;

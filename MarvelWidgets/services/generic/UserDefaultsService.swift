@@ -17,6 +17,8 @@ class UserDefaultsService {
         static let showNewsTabKey = "showNewsTab"
         static let showActorsAndDirectorsKey = "showActorsAndDirectors"
         static let disableCaching = "disableCaching"
+        static let seenOnboarding = "seenOnboarding"
+        static let alwaysShowOnboarding = "alwaysShowOnboarding"
     }
     
     var subscribeTopics: [String] {
@@ -37,6 +39,21 @@ class UserDefaultsService {
     var disableCaching: Bool {
         get {
             defs.bool(forKey: UserDefaultsKeys.disableCaching)
+        }
+    }
+    
+    var seenOnboarding: Bool {
+        get {
+            defs.bool(forKey: UserDefaultsKeys.seenOnboarding)
+        }
+        set(value) {
+            defs.set(value, forKey: UserDefaultsKeys.seenOnboarding)
+        }
+    }
+    
+    var alwaysShowOnboarding: Bool {
+        get {
+            defs.bool(forKey: UserDefaultsKeys.alwaysShowOnboarding)
         }
     }
 }

@@ -23,3 +23,9 @@ extension String {
         return "$\(string)"
     }
 }
+
+extension Int {
+    func toMoney() -> String {
+        return "\(self)".toMoney()
+    }
+}

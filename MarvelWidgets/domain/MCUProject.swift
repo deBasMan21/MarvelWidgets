@@ -22,18 +22,19 @@ struct MCUProject: Codable, Comparable {
     
     let title: String
     let releaseDate: String?
-    let postCreditScenes, duration: Int?
+    let postCreditScenes, duration, voteCount, awardsNominated, awardsWon, productionBudget: Int?
     let phase: Phase?
     let saga: Saga?
     let overview: String?
     let type: ProjectType
-    let boxOffice, createdAt, updatedAt, disneyPlusUrl: String?
+    let boxOffice, createdAt, updatedAt, disneyPlusUrl, categories, quote, quoteCaption: String?
     let directors: Directors?
     let actors: Actors?
     let relatedProjects: RelatedProjects?
     let trailers: [Trailer]?
     let posters: [Poster]?
     let seasons: [Season]?
+    let rating: Double?
  
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -51,5 +52,13 @@ struct MCUProject: Codable, Comparable {
         case posters = "Posters"
         case seasons = "Seasons"
         case disneyPlusUrl = "DisneyPlusUrl"
+        case rating = "Rating"
+        case voteCount = "VoteCount"
+        case categories = "Categories"
+        case awardsNominated = "AwardsNominated"
+        case awardsWon = "Awardswon"
+        case quote = "Quote"
+        case quoteCaption = "QuoteCaption"
+        case productionBudget = "ProductionBudget"
     }
 }
