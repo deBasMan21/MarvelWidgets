@@ -10,7 +10,7 @@ import SwiftUI
 import Intents
 
 struct Provider: IntentTimelineProvider {
-    let emptyProject = ProjectWrapper(id: -1, attributes: MCUProject(title: "", releaseDate: nil, postCreditScenes: nil, duration: nil, voteCount: nil, awardsNominated: nil, awardsWon: nil, productionBudget: nil, phase: .unkown, saga: .infinitySaga, overview: nil, type: .special, boxOffice: nil, createdAt: nil, updatedAt: nil, disneyPlusUrl: nil, categories: nil, quote: nil, quoteCaption: nil, directors: nil, actors: nil, relatedProjects: nil, trailers: nil, posters: nil, seasons: nil, rating: nil))
+    let emptyProject = ProjectWrapper(id: -1, attributes: MCUProject(title: "", releaseDate: nil, postCreditScenes: nil, duration: nil, voteCount: nil, awardsNominated: nil, awardsWon: nil, productionBudget: nil, phase: .unkown, saga: .infinitySaga, overview: nil, type: .special, boxOffice: nil, createdAt: nil, updatedAt: nil, disneyPlusUrl: nil, categories: nil, quote: nil, quoteCaption: nil, directors: nil, actors: nil, relatedProjects: nil, trailers: nil, posters: nil, seasons: nil, rating: nil, reviewTitle: nil, reviewSummary: nil, reviewCopyright: nil))
     
     func placeholder(in context: Context) -> SimpleEntry {
         return SimpleEntry(date: Date(), configuration: ConfigurationIntent(), upcomingProject: emptyProject, nextProject: emptyProject, image: Image("secret wars"), nextImage: Image("secret wars"))

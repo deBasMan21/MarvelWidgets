@@ -35,6 +35,7 @@ struct MCUProject: Codable, Comparable {
     let posters: [Poster]?
     let seasons: [Season]?
     let rating: Double?
+    let reviewTitle, reviewSummary, reviewCopyright: String?
  
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -60,5 +61,6 @@ struct MCUProject: Codable, Comparable {
         case quote = "Quote"
         case quoteCaption = "QuoteCaption"
         case productionBudget = "ProductionBudget"
+        case reviewTitle, reviewSummary, reviewCopyright
     }
 }

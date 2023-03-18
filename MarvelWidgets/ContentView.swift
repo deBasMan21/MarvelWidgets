@@ -93,7 +93,10 @@ struct ContentView: View {
                                         trailers: nil,
                                         posters: nil,
                                         seasons: nil,
-                                        rating: nil
+                                        rating: nil,
+                                        reviewTitle: nil,
+                                        reviewSummary: nil,
+                                        reviewCopyright: nil
                                     )
                                 )
                             ),

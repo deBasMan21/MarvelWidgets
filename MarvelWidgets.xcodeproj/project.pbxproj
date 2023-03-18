@@ -88,6 +88,12 @@
 		EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
+		EFBE482129C6213A0036185E /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482029C6213A0036185E /* RatingView.swift */; };
+		EFBE482329C621550036185E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482229C621550036185E /* ReviewView.swift */; };
+		EFBE482529C6216E0036185E /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482429C6216E0036185E /* TableRowView.swift */; };
+		EFBE482729C621820036185E /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482629C621820036185E /* QuoteView.swift */; };
+		EFBE482929C621990036185E /* ProjectInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482829C621990036185E /* ProjectInformationView.swift */; };
+		EFBE482B29C621BE0036185E /* RelatedProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482A29C621BE0036185E /* RelatedProjectsView.swift */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
 		EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
@@ -318,6 +324,12 @@
 		EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = OtherWidgets.intentdefinition; sourceTree = "<group>"; };
 		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
+		EFBE482029C6213A0036185E /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		EFBE482229C621550036185E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		EFBE482429C6216E0036185E /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
+		EFBE482629C621820036185E /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
+		EFBE482829C621990036185E /* ProjectInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInformationView.swift; sourceTree = "<group>"; };
+		EFBE482A29C621BE0036185E /* RelatedProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedProjectsView.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -827,6 +839,12 @@
 				EFF0E2652920EDF300854E5F /* ImageSizedView.swift */,
 				EF04E67C29AD491C003C0420 /* CircularImageView.swift */,
 				EF67932C29BF96A900ED1451 /* StarsView.swift */,
+				EFBE482029C6213A0036185E /* RatingView.swift */,
+				EFBE482229C621550036185E /* ReviewView.swift */,
+				EFBE482429C6216E0036185E /* TableRowView.swift */,
+				EFBE482629C621820036185E /* QuoteView.swift */,
+				EFBE482829C621990036185E /* ProjectInformationView.swift */,
+				EFBE482A29C621BE0036185E /* RelatedProjectsView.swift */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -1123,10 +1141,13 @@
 				EFF0E271292107B500854E5F /* ListResponseWrapper.swift in Sources */,
 				EFF0E2972921089F00854E5F /* Episode.swift in Sources */,
 				EFD8D75F28A7AC8D00CA8DAC /* SaveService.swift in Sources */,
+				EFBE482529C6216E0036185E /* TableRowView.swift in Sources */,
 				EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */,
+				EFBE482129C6213A0036185E /* RatingView.swift in Sources */,
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
 				EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */,
+				EFBE482B29C621BE0036185E /* RelatedProjectsView.swift in Sources */,
 				EFF0E27F2921081200854E5F /* Actors.swift in Sources */,
 				EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */,
 				EFF0E26A2920EE3500854E5F /* ActorListView.swift in Sources */,
@@ -1163,6 +1184,7 @@
 				EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
 				EF6B83572933A1B400A5D69C /* ActorListPageViewModel.swift in Sources */,
+				EFBE482929C621990036185E /* ProjectInformationView.swift in Sources */,
 				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFF0E2642920EDD300854E5F /* TrailersView.swift in Sources */,
 				EFF0E26C2920EE5400854E5F /* DirectorListView.swift in Sources */,
@@ -1200,6 +1222,7 @@
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
 				EFF04BD929BE554000437A6E /* OnboardingOverlayView.swift in Sources */,
+				EFBE482329C621550036185E /* ReviewView.swift in Sources */,
 				EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */,
 				EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */,
@@ -1215,6 +1238,7 @@
 				EFF04BCC29BE305600437A6E /* OnboardingPageThreeView.swift in Sources */,
 				EF28E7FA29A6998600B7C845 /* WidgetProjectService.swift in Sources */,
 				EFF04BD729BE529400437A6E /* Placeholders.swift in Sources */,
+				EFBE482729C621820036185E /* QuoteView.swift in Sources */,
 				EF6B82D1292AAC1D00A5D69C /* InstagramView.swift in Sources */,
 				EFF04BE529BE55C000437A6E /* OnboardingPageFourHeader.swift in Sources */,
 				EFF04BE829BE6A1A00437A6E /* OnboardingPageFiveView.swift in Sources */,
