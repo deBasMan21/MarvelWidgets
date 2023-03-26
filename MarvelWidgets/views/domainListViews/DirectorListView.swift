@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIPager
 import Kingfisher
 
 struct DirectorListView: View {

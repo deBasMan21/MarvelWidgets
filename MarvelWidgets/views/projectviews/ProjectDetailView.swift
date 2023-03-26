@@ -7,12 +7,13 @@
 
 import SwiftUI
 import Kingfisher
-import SwiftUIPager
 import SwiftUINavigationHeader
+import FirebaseRemoteConfig
 
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
     @Binding var showLoader: Bool
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
@@ -68,8 +69,9 @@ struct ProjectDetailView: View {
                         }
                         
                         if let reviewTitle = viewModel.project.attributes.reviewTitle,
-                            let reviewSummary = viewModel.project.attributes.reviewSummary,
-                            let reviewCopyright = viewModel.project.attributes.reviewCopyright {
+                           let reviewSummary = viewModel.project.attributes.reviewSummary,
+                           let reviewCopyright = viewModel.project.attributes.reviewCopyright,
+                           remoteConfig.showReview() {
                             ReviewView(
                                 reviewTitle: reviewTitle,
                                 reviewSummary: reviewSummary,

@@ -7,13 +7,10 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIPager
 import Kingfisher
 
 struct TrailersView: View {
     @State var trailers: [Trailer]
-    
-    @State var trailersIndex: Page = .first()
     
     var body: some View {
         VStack {

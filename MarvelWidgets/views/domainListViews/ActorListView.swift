@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIPager
 
 struct ActorListView: View {
     @State var actors: [ActorsWrapper]

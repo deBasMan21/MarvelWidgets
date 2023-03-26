@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftUIPager
 
 struct SeasonView: View {
     @State var seasons: [Season]

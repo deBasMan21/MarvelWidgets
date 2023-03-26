@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import FirebaseRemoteConfig
 
 struct ContentView: View {
     @State var showSheet: Bool = false
@@ -18,12 +19,16 @@ struct ContentView: View {
     @State var showOnboarding: Bool = {
         !UserDefaultsService.standard.seenOnboarding || UserDefaultsService.standard.alwaysShowOnboarding
     }()
+    @State var remoteConfig: RemoteConfigWrapper = RemoteConfigWrapper()
     
     var body: some View {
         ZStack {
             if showOnboarding {
                 OnboardingView(showOnboarding: $showOnboarding)
                     .zIndex(1)
+                    .onDisappear {
+                        UserDefaultsService.standard.seenOnboarding = true
+                    }
             }
             
             TabView {
@@ -61,6 +66,25 @@ struct ContentView: View {
                 let tabBarAppearance = UITabBarAppearance()
                 tabBarAppearance.configureWithDefaultBackground()
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                
+                // Setup fb remote config
+                let settings = RemoteConfigSettings()
+                settings.minimumFetchInterval = 0
+                
+                let remoteConfig = RemoteConfig.remoteConfig()
+                remoteConfig.configSettings = settings
+                remoteConfig.setDefaults(fromPlist: "remote_config_defaults")
+                remoteConfig.fetchAndActivate()
+                
+                remoteConfig.addOnConfigUpdateListener(remoteConfigUpdateCompletion: { update, error in
+                    guard update != nil, error == nil else {
+                        return
+                    }
+                    
+                    remoteConfig.activate()
+                })
+                
+                self.remoteConfig.remoteConfig = remoteConfig
             }.onOpenURL(perform: { url in
                 if url.scheme == "mcuwidgets", url.host == "project", let id = Int(url.lastPathComponent) {
                         self.detailView = ProjectDetailView(
@@ -148,5 +172,22 @@ struct ContentView: View {
                     .transition(.opacity)
             }
         }.navigationBarState(.compact, displayMode: .automatic)
+            .environmentObject(remoteConfig)
+    }
+}
+
+class RemoteConfigWrapper: ObservableObject {
+    @Published var remoteConfig: RemoteConfig? = nil
+    
+    init() {}
+    
+    func showReview() -> Bool {
+        guard let remoteConfig = remoteConfig else { return false }
+        let res = remoteConfig.configValue(forKey: RemoteConfigKey.showReview.rawValue)
+        return res.boolValue
+    }
+    
+    private enum RemoteConfigKey: String {
+        case showReview = "showReview"
     }
 }
