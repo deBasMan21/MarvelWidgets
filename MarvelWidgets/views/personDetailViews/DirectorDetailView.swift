@@ -42,40 +42,43 @@ struct DirectorDetailView: View {
                             .multilineTextAlignment(.center)
                     }
                     
-                    if let mcuProjectsTmp = director.attributes.mcuProjects?.data, let relatedProjects = director.attributes.relatedProjects?.data, let mcuProjects = mcuProjectsTmp + relatedProjects, mcuProjects.count > 0 {
-                        VStack {
-                            Text("Directed projects")
-                                .font(Font.largeTitle)
-                                .padding()
-                            
-                            LazyVGrid(columns: columns, spacing: 15) {
-                                ForEach(mcuProjects.sorted(by: {
-                                    $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
-                                }), id: \.uuid) { project in
-                                    NavigationLink {
-                                        ProjectDetailView(
-                                            viewModel: ProjectDetailViewModel(
-                                                project: project
-                                            ),
-                                            showLoader: $showLoader
-                                        )
-                                    } label: {
-                                        VStack {
-                                            ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
-                                            
-                                            Text(project.attributes.title)
-                                                .font(Font.headline.bold())
-                                            
-                                            Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
-                                                .font(Font.body.italic())
-                                                .foregroundColor(Color(uiColor: UIColor.label))
-                                            
-                                            Spacer()
+                    if let mcuProjectsTmp = director.attributes.mcuProjects?.data, let relatedProjects = director.attributes.relatedProjects?.data {
+                        let mcuProjects = mcuProjectsTmp + relatedProjects
+                        if mcuProjects.count > 0 {
+                            VStack {
+                                Text("Directed projects")
+                                    .font(Font.largeTitle)
+                                    .padding()
+                                
+                                LazyVGrid(columns: columns, spacing: 15) {
+                                    ForEach(mcuProjects.sorted(by: {
+                                        $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
+                                    }), id: \.uuid) { project in
+                                        NavigationLink {
+                                            ProjectDetailView(
+                                                viewModel: ProjectDetailViewModel(
+                                                    project: project
+                                                ),
+                                                showLoader: $showLoader
+                                            )
+                                        } label: {
+                                            VStack {
+                                                ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
+                                                
+                                                Text(project.attributes.title)
+                                                    .font(Font.headline.bold())
+                                                
+                                                Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                                    .font(Font.body.italic())
+                                                    .foregroundColor(Color(uiColor: UIColor.label))
+                                                
+                                                Spacer()
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        }.padding()
+                            }.padding()
+                        }
                     }
                 }.offset(x: 0, y: -50)
             }
