@@ -21,7 +21,7 @@ struct SmallWidgetUpcomingSmall: View {
                 VStack {
                     Spacer()
                     
-                    if let showTitle = UserDefaults(suiteName: UserDefaultValues.suiteName)!.bool(forKey: UserDefaultValues.smallWidgetShowText), showTitle {
+                    if let showTitle = UserDefaults(suiteName: UserDefaultValues.suiteName)?.bool(forKey: UserDefaultValues.smallWidgetShowText), showTitle {
                         Text(upcomingProject.attributes.title)
                             .multilineTextAlignment(.center)
                             .shadow(color: .black, radius: 5)
