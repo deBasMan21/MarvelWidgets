@@ -19,6 +19,13 @@ extension String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         let intFromString = Int(self) ?? -1
-        return formatter.string(from: NSNumber(value: intFromString)) ?? ""
+        let string = formatter.string(from: NSNumber(value: intFromString)) ?? ""
+        return "$\(string)"
+    }
+}
+
+extension Int {
+    func toMoney() -> String {
+        return "\(self)".toMoney()
     }
 }

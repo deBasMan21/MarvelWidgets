@@ -3,11 +3,12 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## User settings
-xcuserdata/
+MarvelWidgets.xcodeproj/xcuserdata/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
 *.xccheckout
+xcschememanagement.plist
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 build/
@@ -88,3 +89,9 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+
+# temp for fastlane
+fastlane
+Gemfile
+Gemfile.lock

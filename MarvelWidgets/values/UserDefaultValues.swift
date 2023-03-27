@@ -8,13 +8,12 @@
 import Foundation
 
 struct UserDefaultValues {
-    static let suiteName = "group.marvelwidgets"
+    static let suiteName = "group.mcuwidgets"
     
     static let defaultWidgetType = "all"
     static let smallWidgetShowText = "smallWidgetShowText"
+    static let specificSelectedProject = "specificProject"
+    static let specificSelectedProjectTitle = "specificProjectTitle"
     
     static let savedProjectIds = "savedProjectIds"
-    
-    static let cachedMovies = "cachedMovies"
-    static let cachedSeries = "cachedSeries"
 }

@@ -7,52 +7,212 @@
 
 import SwiftUI
 import WidgetKit
+import FirebaseRemoteConfig
 
 struct ContentView: View {
-    @State var movies: [Movie] = []
-    @State var series: [Serie] = []
-    @State var urlClickedProject: [String: Bool] = [:]
-    @State var selectedIndex: Int = 0
-    @State var shouldStopReload = false
+    @State var showSheet: Bool = false
+    @State var showLoader = false
+    
+    @State var showView = false
+    
+    @State var detailView: ProjectDetailView?
+    @State var showOnboarding: Bool = {
+        !UserDefaultsService.standard.seenOnboarding || UserDefaultsService.standard.alwaysShowOnboarding
+    }()
+    @State var remoteConfig: RemoteConfigWrapper = RemoteConfigWrapper()
     
     var body: some View {
-        TabView(selection: $selectedIndex) {
-            ProjectListView(activeProject: $urlClickedProject, type: .all, shouldStopReload: $shouldStopReload)
-                .tabItem{
-                    Label("All", systemImage: "list.dash")
-                }.tag(0)
+        ZStack {
+            if showOnboarding {
+                OnboardingView(showOnboarding: $showOnboarding)
+                    .zIndex(1)
+                    .onDisappear {
+                        UserDefaultsService.standard.seenOnboarding = true
+                    }
+            }
             
-            ProjectListView(activeProject: $urlClickedProject, type: .movies, shouldStopReload: $shouldStopReload)
-                .tabItem{
-                    Label("Movies", systemImage: "film")
-                }.tag(1)
-            
-            ProjectListView(activeProject: $urlClickedProject, type: .series, shouldStopReload: $shouldStopReload)
-                .tabItem{
-                    Label("Series", systemImage: "tv")
-                }.tag(2)
-            
-            ProjectListView(activeProject: $urlClickedProject, type: .saved, shouldStopReload: $shouldStopReload)
-                .tabItem{
-                    Label("Saved", systemImage: "bookmark.fill")
-                }.tag(3)
-            
-            WidgetSettingsView()
-                .tabItem{
-                    Label("Instellingen", systemImage: "gearshape")
-                }.tag(4)
-        }.onOpenURL(perform: { url in
-            Task {
-                await MainActor.run {
-                    selectedIndex = 0
-                    if url.scheme == "marvelwidgets" {
-                        if url.host == "project" {
-                            shouldStopReload = true
-                            urlClickedProject[url.lastPathComponent] = true
+            TabView {
+                NavigationView {
+                    ProjectListView(pageType: .mcu, showLoader: $showLoader).navigationBarState(.compact, displayMode: .automatic)
+                }.tabItem{
+                    Label("MCU", systemImage: "list.dash")
+                }
+                
+                NavigationView {
+                    ProjectListView(pageType: .other, showLoader: $showLoader)
+                }.tabItem{
+                    Label("Related", systemImage: "film")
+                }
+                
+                NavigationView {
+                    ActorListPageView(showLoader: $showLoader)
+                }.tabItem {
+                    Label("Actors", systemImage: "person.fill")
+                }
+                
+                NavigationView {
+                    DirectorListPageView(showLoader: $showLoader)
+                }.tabItem {
+                    Label("Directors", systemImage: "megaphone")
+                }
+                
+                NavigationView {
+                    WidgetSettingsView()
+                }.tabItem {
+                    Label("Settings", systemImage: "gearshape")
+                }
+            }.onAppear {
+                // Fix to always show the tabbar background
+                let tabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.configureWithDefaultBackground()
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+                
+                // Setup fb remote config
+                let settings = RemoteConfigSettings()
+                settings.minimumFetchInterval = 0
+                
+                let remoteConfig = RemoteConfig.remoteConfig()
+                remoteConfig.configSettings = settings
+                remoteConfig.setDefaults(fromPlist: "remote_config_defaults")
+                remoteConfig.fetchAndActivate()
+                
+                remoteConfig.addOnConfigUpdateListener(remoteConfigUpdateCompletion: { update, error in
+                    guard update != nil, error == nil else {
+                        return
+                    }
+                    
+                    remoteConfig.activate(completion: { succes, error in
+                        guard error == nil else { return }
+                        self.remoteConfig.updateValues()
+                    })
+                })
+                
+                self.remoteConfig.remoteConfig = remoteConfig
+            }.onOpenURL(perform: { url in
+                if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link", let id = Int(url.lastPathComponent) {
+                    
+                    self.detailView = ProjectDetailView(
+                        viewModel: ProjectDetailViewModel(
+                            project: ProjectWrapper(
+                                id: id,
+                                attributes: MCUProject(
+                                    title: "Loading...",
+                                    releaseDate: nil,
+                                    postCreditScenes: nil,
+                                    duration: nil,
+                                    voteCount: nil,
+                                    awardsNominated: nil,
+                                    awardsWon: nil,
+                                    productionBudget: nil,
+                                    phase: .unkown,
+                                    saga: .infinitySaga,
+                                    overview: nil,
+                                    type: .special,
+                                    boxOffice: nil,
+                                    createdAt: nil,
+                                    updatedAt: nil,
+                                    disneyPlusUrl: nil,
+                                    categories: nil,
+                                    quote: nil,
+                                    quoteCaption: nil,
+                                    directors: nil,
+                                    actors: nil,
+                                    relatedProjects: nil,
+                                    trailers: nil,
+                                    posters: nil,
+                                    seasons: nil,
+                                    rating: nil,
+                                    reviewTitle: nil,
+                                    reviewSummary: nil,
+                                    reviewCopyright: nil
+                                )
+                            )
+                        ),
+                        showLoader: $showLoader
+                    )
+                    
+                    self.showSheet = true
+                }
+            }).disabled(showLoader)
+                .sheet(isPresented: $showSheet) {
+                    VStack {
+                        if showView {
+                            NavigationView {
+                                detailView
+                                    .navigationBarItems(leading:
+                                        Button("Close", action: {
+                                            showSheet = false
+                                        })
+                                    )
+                            }
+                        } else {
+                            ProgressView()
+                                .onAppear {
+                                    Task {
+                                        try? await Task.sleep(nanoseconds: 1000000000)
+                                        showView = true
+                                    }
+                                }
                         }
                     }
                 }
+            if showLoader {
+                VStack {
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        
+                        ProgressView()
+                            .padding(10)
+                            .background(Color.accentColor)
+                            .cornerRadius(10)
+                        
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                }.background(.black.opacity(0.7))
+                    .transition(.opacity)
             }
-        })
+        }.navigationBarState(.compact, displayMode: .automatic)
+            .environmentObject(remoteConfig)
+    }
+}
+
+class RemoteConfigWrapper: ObservableObject {
+    var remoteConfig: RemoteConfig? = nil {
+        didSet {
+            updateValues()
+        }
+    }
+    
+    @Published var showReview: Bool = false
+    @Published var showShare: Bool = false
+    
+    init() {
+        updateValues()
+    }
+    
+    func updateValues() {
+        Task {
+            await MainActor.run {
+                withAnimation {
+                    self.showReview = getProperty(property: .showReview)
+                    self.showShare = getProperty(property: .showShare)
+                }
+            }
+        }
+    }
+    
+    private func getProperty(property: RemoteConfigKey) -> Bool {
+        guard let remoteConfig = remoteConfig else { return false }
+        let res = remoteConfig.configValue(forKey: property.rawValue)
+        return res.boolValue
+    }
+    
+    private enum RemoteConfigKey: String {
+        case showReview = "showReview"
+        case showShare = "showShare"
     }
 }

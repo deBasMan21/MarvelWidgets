@@ -21,4 +21,13 @@ class ImageHelper {
     static func downloadImage(from link: String) -> Image {
         return downloadImage(from: URL(string: link)!)
     }
+    
+    static func downloadImageData(from link: String) -> Data {
+        let data = try? Data(contentsOf: URL(string: link)!)
+        if let data = data {
+            return data
+        } else {
+            return Data()
+        }
+    }
 }

@@ -7,135 +7,148 @@
 
 import SwiftUI
 import Kingfisher
+import SwiftUINavigationHeader
+import FirebaseRemoteConfig
 
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
-    @Binding var shouldStopReload: Bool
+    @Binding var showLoader: Bool
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     var body: some View {
-        ScrollView {
-            VStack{
-                HStack(alignment: .top) {
-                    KFImage(URL(string: viewModel.project.coverURL)!)
+        NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
+            if let posterUrl = viewModel.posterURL, !posterUrl.isEmpty {
+                NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
+                    KFImage(URL(string: posterUrl)!)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, alignment: .center)
-                        .cornerRadius(12)
-                        .padding(.trailing, 20)
+                        .scaledToFill()
+                        .gesture(DragGesture().onEnded { value in
+                            viewModel.swipeImage(direction: viewModel.detectDirection(value: value))
+                        })
+                }
+            }
+        }, content: {
+                VStack {
+                    ProjectInformationView(
+                        project: $viewModel.project,
+                        posterIndex: $viewModel.posterIndex,
+                        showCalendarAppointment: $viewModel.showCalendarAppointment,
+                        showLoader: $showLoader
+                    )
                     
-                    VStack(alignment: .leading, spacing: 10) {
+                    if let overview = viewModel.project.attributes.overview {
+                        Text(overview)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                    }
+                    
+                    if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
+                        SeasonView(seasons: seasons, seriesTitle: viewModel.project.attributes.title)
+                            .padding()
+                    }
+                    
+                    if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
+                        ActorListView(
+                            actors: actors.data,
+                            showLoader: $showLoader
+                        ).padding()
+                    }
+                    
+                    if let quote = viewModel.project.attributes.quote, let quoteCaption = viewModel.project.attributes.quoteCaption {
                         VStack(alignment: .leading) {
-                            Text("**Director**")
-                            if let director = viewModel.project.directedBy, !director.isEmpty {
-                                Text(viewModel.project.directedBy!)
-                            } else {
-                                Text("No director confirmed")
-                            }
-                        }
-                        
-                        VStack(alignment: .leading) {
-                            Text("**Release date**")
-                            Text(viewModel.project.releaseDate ?? "No release date set")
-                        }
-                        
-                        if let project = viewModel.project as? Movie {
-                            VStack(alignment: .leading) {
-                                Text("**Duration**")
-                                Text("\(project.duration) minutes")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Post credit scenes**")
-                                Text("\(project.postCreditScenes)")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Box office**")
-                                Text("€\(project.boxOffice.toMoney()),- ")
-                            }
-                        } else if let project = viewModel.project as? Serie {
-                            VStack(alignment: .leading) {
-                                Text("**Episodes**")
-                                Text("\(project.numberEpisodes)")
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text("**Seasons**")
-                                Text("\(project.numberSeasons) seasons")
-                            }
-                        }
-                        
-                        VStack(alignment: .leading) {
-                            Text("**Phase \(viewModel.project.phase)**")
-                        }
-                        
-                        VStack(alignment: .leading) {
-                            Text("**\(viewModel.project.saga?.rawValue ?? "Unkown saga")**")
+                            QuoteView(quote: quote, quoteCaption: quoteCaption)
                         }
                     }
                     
-                    Spacer()
-                }
-                
-                if let overview = viewModel.project.overview {
-                    Text("Overview")
-                        .font(Font.largeTitle)
-                        .padding()
+                    VStack(spacing: 30) {
+                        if let rating = viewModel.project.attributes.rating {
+                            RatingView(
+                                rating: rating,
+                                voteCount: viewModel.project.attributes.voteCount ?? 0
+                            )
+                        }
+                        
+                        if let reviewTitle = viewModel.project.attributes.reviewTitle,
+                           let reviewSummary = viewModel.project.attributes.reviewSummary,
+                           let reviewCopyright = viewModel.project.attributes.reviewCopyright,
+                           remoteConfig.showReview {
+                            ReviewView(
+                                reviewTitle: reviewTitle,
+                                reviewSummary: reviewSummary,
+                                reviewCopyright: reviewCopyright
+                            ).padding(.horizontal)
+                                .padding(.bottom)
+                        }
+                    }
                     
-                    Text(overview)
-                        .multilineTextAlignment(.center)
-                }
-                
-                if let url = viewModel.project.trailerURL {
-                    Text("Trailer")
-                        .font(Font.largeTitle)
-                        .padding()
+                    if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
+                        TrailersView(trailers: trailers)
+                    }
                     
-                    VideoView(videoURL: url)
-                        .frame(height: 200)
-                        .cornerRadius(12)
-                }
-                
-                if let relatedProjects = viewModel.movie?.relatedMovies {
-                    Text("Related projects")
-                        .font(Font.largeTitle)
-                        .padding()
-                    
-                    VStack(spacing: 15){
-                        ForEach(relatedProjects, id: \.id) { movie in
-                            NavigationLink {
-                                ProjectDetailView(viewModel: ProjectDetailViewModel(project: movie), shouldStopReload: $shouldStopReload)
-                            } label: {
-                                VStack{
-                                    Text(movie.title)
-                                        .font(Font.headline.bold())
+                    if viewModel.tableViewContent.count > 0 {
+                        VStack {
+                            ForEach(viewModel.tableViewContent, id: \.0) { tuple in
+                                VStack {
+                                    AnyView(tuple.1)
                                     
-                                    Text(movie.releaseDate ?? "Unknown releasedate")
-                                        .font(Font.body.italic())
-                                        .foregroundColor(Color(uiColor: UIColor.label))
+                                    if tuple.0 < viewModel.tableViewContent.count - 1 {
+                                        Divider()
+                                    }
                                 }
                             }
-                        }
+                        }.padding(10)
+                            .background(Color.accentGray)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                    }
+                    
+                    if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {
+                        RelatedProjectsView(relatedProjects: relatedProjects, showLoader: $showLoader)
+                    }
+                    
+                    if viewModel.showBottomLoader {
+                        ProgressView()
+                            .padding()
+                    }
+                }.offset(x: 0, y: -60)
+        }, toolbar: { state in
+            HeaderToolbarItem(barState: state, content: {
+                VStack {
+                    if viewModel.project.attributes.disneyPlusUrl != nil {
+                        Image(systemName: "play.fill")
+                    } else {
+                        EmptyView()
+                    }
+                }.onTapGesture {
+                    if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
+                        UIApplication.shared.open(URL(string: dpUrl)!)
                     }
                 }
-                
-            }.padding(20)
-        }.navigationTitle(viewModel.project.title)
-            .onAppear{
-                shouldStopReload = false
-                if viewModel.project is Movie {
-                    Task {
-                        await viewModel.getMovieDetails()
-                    }
-                }
-                viewModel.setIsSavedIcon(for: viewModel.project)
+            })
+            
+            if remoteConfig.showShare {
+                HeaderToolbarItem(barState: state, content: {
+                    ShareLink(
+                        item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.id)")!,
+                        subject: Text("Subject"),
+                        message: Text("Message"),
+                        preview: SharePreview(
+                            viewModel.project.attributes.title,
+                            image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
+                        )
+                    )
+                })
             }
-            .navigationBarItems(trailing: Button(action: {
-                viewModel.toggleSaveProject(viewModel.project)
-                }, label: {
-                    Image(systemName: viewModel.bookmarkString)
-                }
-              )
-            )
+        }).baseTintColor(Color("AccentColor"))
+            .headerHeight({ _ in 500 })
+            .alert(isPresented: $viewModel.showCalendarAppointment, content: {
+                Alert(title: Text("Calendar"),
+                      message: Text("Do you want to add this project to your calendar?"),
+                      primaryButton: .default(Text("Yes")) {
+                            viewModel.createEventinTheCalendar()
+                      },
+                      secondaryButton: .cancel()
+                )
+            })
     }
 }

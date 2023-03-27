@@ -57,13 +57,13 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Saved projects</string>
+					<string>Only Specials</string>
 					<key>INEnumValueDisplayNameID</key>
-					<string>eIQ8zV</string>
+					<string>84qpop</string>
 					<key>INEnumValueIndex</key>
-					<integer>4</integer>
+					<integer>5</integer>
 					<key>INEnumValueName</key>
-					<string>saved</string>
+					<string>special</string>
 				</dict>
 			</array>
 		</dict>
@@ -116,11 +116,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>88xZPY</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21F79</string>
+	<string>21G83</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13F100</string>
+	<string>14B47b</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.4.1</string>
+	<string>14.1</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -227,50 +227,6 @@
 					<integer>6</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
-				</dict>
-				<dict>
-					<key>INIntentParameterConfigurable</key>
-					<true/>
-					<key>INIntentParameterDisplayName</key>
-					<string>Shows text</string>
-					<key>INIntentParameterDisplayNameID</key>
-					<string>hQkLvN</string>
-					<key>INIntentParameterDisplayPriority</key>
-					<integer>3</integer>
-					<key>INIntentParameterMetadata</key>
-					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<true/>
-						<key>INIntentParameterMetadataFalseDisplayName</key>
-						<string>false</string>
-						<key>INIntentParameterMetadataFalseDisplayNameID</key>
-						<string>BNIsKL</string>
-						<key>INIntentParameterMetadataTrueDisplayName</key>
-						<string>true</string>
-						<key>INIntentParameterMetadataTrueDisplayNameID</key>
-						<string>z2NlZI</string>
-					</dict>
-					<key>INIntentParameterName</key>
-					<string>ShowTitle</string>
-					<key>INIntentParameterPromptDialogs</key>
-					<array>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Configuration</string>
-						</dict>
-						<dict>
-							<key>INIntentParameterPromptDialogCustom</key>
-							<true/>
-							<key>INIntentParameterPromptDialogType</key>
-							<string>Primary</string>
-						</dict>
-					</array>
-					<key>INIntentParameterTag</key>
-					<integer>9</integer>
-					<key>INIntentParameterType</key>
-					<string>Boolean</string>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
