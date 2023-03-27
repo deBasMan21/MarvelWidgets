@@ -81,53 +81,57 @@ struct ContentView: View {
                         return
                     }
                     
-                    remoteConfig.activate()
+                    remoteConfig.activate(completion: { succes, error in
+                        guard error == nil else { return }
+                        self.remoteConfig.updateValues()
+                    })
                 })
                 
                 self.remoteConfig.remoteConfig = remoteConfig
             }.onOpenURL(perform: { url in
-                if url.scheme == "mcuwidgets", url.host == "project", let id = Int(url.lastPathComponent) {
-                        self.detailView = ProjectDetailView(
-                            viewModel: ProjectDetailViewModel(
-                                project: ProjectWrapper(
-                                    id: id,
-                                    attributes: MCUProject(
-                                        title: "Loading...",
-                                        releaseDate: nil,
-                                        postCreditScenes: nil,
-                                        duration: nil,
-                                        voteCount: nil,
-                                        awardsNominated: nil,
-                                        awardsWon: nil,
-                                        productionBudget: nil,
-                                        phase: .unkown,
-                                        saga: .infinitySaga,
-                                        overview: nil,
-                                        type: .special,
-                                        boxOffice: nil,
-                                        createdAt: nil,
-                                        updatedAt: nil,
-                                        disneyPlusUrl: nil,
-                                        categories: nil,
-                                        quote: nil,
-                                        quoteCaption: nil,
-                                        directors: nil,
-                                        actors: nil,
-                                        relatedProjects: nil,
-                                        trailers: nil,
-                                        posters: nil,
-                                        seasons: nil,
-                                        rating: nil,
-                                        reviewTitle: nil,
-                                        reviewSummary: nil,
-                                        reviewCopyright: nil
-                                    )
+                if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link", let id = Int(url.lastPathComponent) {
+                    
+                    self.detailView = ProjectDetailView(
+                        viewModel: ProjectDetailViewModel(
+                            project: ProjectWrapper(
+                                id: id,
+                                attributes: MCUProject(
+                                    title: "Loading...",
+                                    releaseDate: nil,
+                                    postCreditScenes: nil,
+                                    duration: nil,
+                                    voteCount: nil,
+                                    awardsNominated: nil,
+                                    awardsWon: nil,
+                                    productionBudget: nil,
+                                    phase: .unkown,
+                                    saga: .infinitySaga,
+                                    overview: nil,
+                                    type: .special,
+                                    boxOffice: nil,
+                                    createdAt: nil,
+                                    updatedAt: nil,
+                                    disneyPlusUrl: nil,
+                                    categories: nil,
+                                    quote: nil,
+                                    quoteCaption: nil,
+                                    directors: nil,
+                                    actors: nil,
+                                    relatedProjects: nil,
+                                    trailers: nil,
+                                    posters: nil,
+                                    seasons: nil,
+                                    rating: nil,
+                                    reviewTitle: nil,
+                                    reviewSummary: nil,
+                                    reviewCopyright: nil
                                 )
-                            ),
-                            showLoader: $showLoader
-                        )
-                        
-                        self.showSheet = true
+                            )
+                        ),
+                        showLoader: $showLoader
+                    )
+                    
+                    self.showSheet = true
                 }
             }).disabled(showLoader)
                 .sheet(isPresented: $showSheet) {
@@ -177,17 +181,38 @@ struct ContentView: View {
 }
 
 class RemoteConfigWrapper: ObservableObject {
-    @Published var remoteConfig: RemoteConfig? = nil
+    var remoteConfig: RemoteConfig? = nil {
+        didSet {
+            updateValues()
+        }
+    }
     
-    init() {}
+    @Published var showReview: Bool = false
+    @Published var showShare: Bool = false
     
-    func showReview() -> Bool {
+    init() {
+        updateValues()
+    }
+    
+    func updateValues() {
+        Task {
+            await MainActor.run {
+                withAnimation {
+                    self.showReview = getProperty(property: .showReview)
+                    self.showShare = getProperty(property: .showShare)
+                }
+            }
+        }
+    }
+    
+    private func getProperty(property: RemoteConfigKey) -> Bool {
         guard let remoteConfig = remoteConfig else { return false }
-        let res = remoteConfig.configValue(forKey: RemoteConfigKey.showReview.rawValue)
+        let res = remoteConfig.configValue(forKey: property.rawValue)
         return res.boolValue
     }
     
     private enum RemoteConfigKey: String {
         case showReview = "showReview"
+        case showShare = "showShare"
     }
 }

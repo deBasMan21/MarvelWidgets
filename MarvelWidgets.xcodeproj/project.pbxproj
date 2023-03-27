@@ -42,6 +42,7 @@
 		EF4D265828A4512900B7BCEE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* Config.swift */; };
 		EF4D265928A4512A00B7BCEE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* Config.swift */; };
 		EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
+		EF521C0E29D2176D0037B658 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */; };
 		EF578F3828A45632006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
 		EF578F3928A45633006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
 		EF578F3A28A45721006272AA /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382428A3E0A700B4CC0D /* LogService.swift */; };
@@ -448,6 +449,7 @@
 				EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */,
 				EF04E67B29AD24C4003C0420 /* SwiftUINavigationHeader in Frameworks */,
 				EFF35E2329D0AD0200FA8EAE /* FirebaseRemoteConfig in Frameworks */,
+				EF521C0E29D2176D0037B658 /* FirebaseDynamicLinks in Frameworks */,
 				EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */,
 				EFF0E2D729240D4900854E5F /* FirebaseAnalytics in Frameworks */,
 				EF6B8344293233A300A5D69C /* DataCache in Frameworks */,
@@ -941,6 +943,7 @@
 				EF04E67A29AD24C4003C0420 /* SwiftUINavigationHeader */,
 				EFF35E2229D0AD0200FA8EAE /* FirebaseRemoteConfig */,
 				EFF35E2429D0AD0200FA8EAE /* FirebaseRemoteConfigSwift */,
+				EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */,
 			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
@@ -1561,6 +1564,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MCU widgets";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "We want to add projects to you calendar";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1600,6 +1604,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "MCU widgets";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "We want to add projects to you calendar";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1770,6 +1775,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF04E67929AD24C4003C0420 /* XCRemoteSwiftPackageReference "SwiftUINavigationHeader" */;
 			productName = SwiftUINavigationHeader;
+		};
+		EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDynamicLinks;
 		};
 		EF6B8343293233A300A5D69C /* DataCache */ = {
 			isa = XCSwiftPackageProductDependency;

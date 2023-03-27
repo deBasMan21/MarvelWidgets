@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import UserNotifications
 import Firebase
+import FirebaseDynamicLinks
 import FirebaseMessaging
 import FirebaseRemoteConfig
 

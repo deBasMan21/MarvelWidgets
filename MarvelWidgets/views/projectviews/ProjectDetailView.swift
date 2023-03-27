@@ -71,7 +71,7 @@ struct ProjectDetailView: View {
                         if let reviewTitle = viewModel.project.attributes.reviewTitle,
                            let reviewSummary = viewModel.project.attributes.reviewSummary,
                            let reviewCopyright = viewModel.project.attributes.reviewCopyright,
-                           remoteConfig.showReview() {
+                           remoteConfig.showReview {
                             ReviewView(
                                 reviewTitle: reviewTitle,
                                 reviewSummary: reviewSummary,
@@ -125,6 +125,20 @@ struct ProjectDetailView: View {
                     }
                 }
             })
+            
+            if remoteConfig.showShare {
+                HeaderToolbarItem(barState: state, content: {
+                    ShareLink(
+                        item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.id)")!,
+                        subject: Text("Subject"),
+                        message: Text("Message"),
+                        preview: SharePreview(
+                            viewModel.project.attributes.title,
+                            image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
+                        )
+                    )
+                })
+            }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
             .alert(isPresented: $viewModel.showCalendarAppointment, content: {
