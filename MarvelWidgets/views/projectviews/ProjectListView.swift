@@ -141,26 +141,11 @@ struct ProjectListView: View {
                                         showLoader: $showLoader
                                     )
                                 } label: {
-                                    ZStack {
-                                        ImageSizedView(url: item.attributes.posters?.first?.posterURL ?? "", showGradient: true)
-                                        
-                                        VStack {
-                                            Spacer()
-                                            
-                                            VStack {
-                                                Text(item.attributes.title)
-                                                    .font(Font.headline.bold())
-                                                    .multilineTextAlignment(.center)
-                                                    .lineLimit(2)
-                                                
-                                                Text(item.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
-                                                    .font(Font.body.italic())
-
-                                            }
-                                        }.padding(.horizontal, 20)
-                                            .padding(.bottom)
-                                    }.foregroundColor(.white)
-                                        .shadow(color: Color(uiColor: UIColor.white.withAlphaComponent(0.3)), radius: 5)
+                                    PosterListViewItem(
+                                        posterUrl: item.attributes.posters?.first?.posterURL ?? "",
+                                        title: item.attributes.title,
+                                        subTitle: item.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate",
+                                        showGradient: true)
                                 }.id(item.id)
                             }
                         }
@@ -221,5 +206,35 @@ struct ProjectListView: View {
                     .foregroundColor(.accentColor)
                     .navigationBarState(.compact, displayMode: .automatic)
             }
+    }
+}
+
+struct PosterListViewItem: View {
+    @State var posterUrl: String
+    @State var title: String
+    @State var subTitle: String
+    @State var showGradient: Bool = true
+    
+    var body: some View {
+        ZStack {
+            ImageSizedView(url: posterUrl, showGradient: showGradient)
+            
+            VStack {
+                Spacer()
+                
+                VStack {
+                    Text(title)
+                        .font(Font.headline.bold())
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                    
+                    Text(subTitle)
+                        .font(Font.body.italic())
+
+                }
+            }.padding(.horizontal, 20)
+                .padding(.bottom)
+        }.foregroundColor(.white)
+            .shadow(color: Color(uiColor: UIColor.white.withAlphaComponent(0.3)), radius: 5)
     }
 }

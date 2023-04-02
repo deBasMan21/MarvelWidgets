@@ -12,6 +12,7 @@ import SwiftUINavigationHeader
 
 struct DirectorDetailView: View {
     @State var director: DirectorsWrapper
+    @State var projects: [ProjectWrapper] = []
     @Binding var showLoader: Bool
     let columns = [
         GridItem(.flexible()),
@@ -42,47 +43,67 @@ struct DirectorDetailView: View {
                             .multilineTextAlignment(.center)
                     }
                     
-                    if let mcuProjectsTmp = director.attributes.mcuProjects?.data, let relatedProjects = director.attributes.relatedProjects?.data {
-                        let mcuProjects = mcuProjectsTmp + relatedProjects
-                        if mcuProjects.count > 0 {
-                            VStack {
-                                Text("Directed projects")
-                                    .font(Font.largeTitle)
-                                    .padding()
-                                
-                                LazyVGrid(columns: columns, spacing: 15) {
-                                    ForEach(mcuProjects.sorted(by: {
-                                        $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
-                                    }), id: \.uuid) { project in
-                                        NavigationLink {
-                                            ProjectDetailView(
-                                                viewModel: ProjectDetailViewModel(
-                                                    project: project
-                                                ),
-                                                showLoader: $showLoader
-                                            )
-                                        } label: {
-                                            VStack {
-                                                ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
-                                                
-                                                Text(project.attributes.title)
-                                                    .font(Font.headline.bold())
-                                                
-                                                Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
-                                                    .font(Font.body.italic())
-                                                    .foregroundColor(Color(uiColor: UIColor.label))
-                                                
-                                                Spacer()
-                                            }
+                    
+                    if projects.count > 0 {
+                        VStack {
+                            Text("Directed projects")
+                                .font(Font.largeTitle)
+                                .padding()
+                            
+                            LazyVGrid(columns: columns, spacing: 15) {
+                                ForEach(projects.sorted(by: {
+                                    $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
+                                }), id: \.uuid) { project in
+                                    NavigationLink {
+                                        ProjectDetailView(
+                                            viewModel: ProjectDetailViewModel(
+                                                project: project
+                                            ),
+                                            showLoader: $showLoader
+                                        )
+                                    } label: {
+                                        VStack {
+                                            ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
+                                            
+                                            Text(project.attributes.title)
+                                                .font(Font.headline.bold())
+                                            
+                                            Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                                .font(Font.body.italic())
+                                                .foregroundColor(Color(uiColor: UIColor.label))
+                                            
+                                            Spacer()
                                         }
                                     }
                                 }
-                            }.padding()
-                        }
+                            }
+                        }.padding()
                     }
                 }.offset(x: 0, y: -50)
             }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
+            .onAppear {
+                Task {
+                    if let populatedDirector = await ProjectService.getDirectorById(id: director.id) {
+                        await MainActor.run {
+                            withAnimation {
+                                director = populatedDirector
+                                
+                                var projectsList: [ProjectWrapper] = []
+                                if let mcuProjects = populatedDirector.attributes.mcuProjects {
+                                    projectsList += mcuProjects.data
+                                }
+                                
+                                if let relatedProjects = populatedDirector.attributes.relatedProjects {
+                                    projectsList += relatedProjects.data
+                                }
+                                
+                                self.projects = projectsList
+                            }
+                        }
+                    }
+                }
+            }
     }
 }

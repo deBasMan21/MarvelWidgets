@@ -25,16 +25,18 @@ struct ActorListPageView: View {
                 Image(systemName: "arrow.up.arrow.down")
             })
             
+            Text("**\(viewModel.actors.count)** Actors")
+            
             ScrollView {
                 VStack {
                     LazyVGrid(columns: viewModel.columns, spacing: 20) {
                         ForEach(viewModel.actors) { actorObj in
                             NavigationLink(destination: ActorDetailView(actor: actorObj, showLoader: $showLoader)) {
-                                VStack {
-                                    ImageSizedView(url: actorObj.attributes.imageURL ?? "")
-                                    
-                                    Text("\(actorObj.attributes.firstName) \(actorObj.attributes.lastName)")
-                                }
+                                PosterListViewItem(
+                                    posterUrl: actorObj.attributes.imageURL ?? "",
+                                    title: "\(actorObj.attributes.firstName) \(actorObj.attributes.lastName)",
+                                    subTitle: actorObj.attributes.character
+                                )
                             }
                         }
                     }

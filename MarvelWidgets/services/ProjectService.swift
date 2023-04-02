@@ -36,10 +36,11 @@ class ProjectService {
     }
     
     enum UrlPopulateComponents: String {
-        case populateDeep = "populate=deep&pagination[pageSize]=100"
-        case populateNormal = "populate=%2A&pagination[pageSize]=100"
-        case populateNone = "populate[0]=Posters&pagination[pageSize]=100"
-        case populatePersonPosters = "pagination[pageSize]=100&populate[0]=related_projects&populate[1]=related_projects.Posters&populate=*&populate[2]=mcu_projects&populate[3]=mcu_projects.Posters"
+        case populateDeep = "populate=deep"
+        case populateNormal = "populate=%2A"
+        case populateNone = "populate[0]=Posters"
+        case populatePersonPosters = "populate[0]=related_projects&populate[1]=related_projects.Posters&populate=*&populate[2]=mcu_projects&populate[3]=mcu_projects.Posters"
+        case populateNormalWithRelatedPosters = "populate[0]=related_projects.Posters&populate[1]=Posters&populate[2]=Trailers&populate[3]=actors&populate[4]=directors&populate[5]=Seasons&populate[6]=Seasons.Episodes"
     }
     
     static func getAll(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
@@ -107,27 +108,10 @@ class ProjectService {
         }
     }
     
-    static func getById(_ id: Int, populate: UrlPopulateComponents = .populateDeep, force: Bool = false) async -> ProjectWrapper? {
+    static func getById(_ id: Int, populate: UrlPopulateComponents = .populateNormalWithRelatedPosters, force: Bool = false) async -> ProjectWrapper? {
         let url = "\(baseUrl)/mcu-projects/\(id)?\(populate.rawValue)"
         do {
-            let cachedResult: SingleResponseWrapper? = CachingService.getFromCache(key: CachingService.CachingKeys.project(id: "\(id)").getString())
-            
-            if let cachedResult = cachedResult, !force {
-                Task {
-                    let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                    
-                    CachingService.saveToCache(result: result, key: CachingService.CachingKeys.project(id: "\(id)").getString())
-                }
-                
-                return cachedResult.data
-            } else {
-                let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                
-                CachingService.saveToCache(result: result, key: CachingService.CachingKeys.project(id: "\(id)").getString())
-                
-                return result?.data
-            }
-            
+            return try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)?.data
         } catch let error {
             LogService.log(error.localizedDescription, in: self)
             return nil
@@ -160,34 +144,17 @@ class ProjectService {
         }
     }
     
-    static func getOtherById(_ id: Int, populate: UrlPopulateComponents = .populateDeep, force: Bool = false) async -> ProjectWrapper? {
+    static func getOtherById(_ id: Int, populate: UrlPopulateComponents = .populateNormalWithRelatedPosters, force: Bool = false) async -> ProjectWrapper? {
         let url = "\(baseUrl)/related-projects/\(id)?\(populate.rawValue)"
         do {
-            let cachedResult: SingleResponseWrapper? = CachingService.getFromCache(key: CachingService.CachingKeys.otherProject(id: "\(id)").getString())
-            
-            if let cachedResult = cachedResult, !force {
-                Task {
-                    let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                    
-                    CachingService.saveToCache(result: result, key: CachingService.CachingKeys.otherProject(id: "\(id)").getString())
-                }
-                
-                return cachedResult.data
-            } else {
-                let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                
-                CachingService.saveToCache(result: result, key: CachingService.CachingKeys.otherProject(id: "\(id)").getString())
-                
-                return result?.data
-            }
-            
+            return try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)?.data
         } catch let error {
             LogService.log(error.localizedDescription, in: self)
             return nil
         }
     }
     
-    static func getDirectors(populate: UrlPopulateComponents = .populatePersonPosters, force: Bool = false) async -> [DirectorsWrapper] {
+    static func getDirectors(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [DirectorsWrapper] {
         let url = "\(baseUrl)/directors?\(populate.rawValue)"
         do {
             let cachedResult: Directors? = CachingService.getFromCache(key: CachingService.CachingKeys.directors.getString())
@@ -213,7 +180,7 @@ class ProjectService {
         }
     }
     
-    static func getActors(populate: UrlPopulateComponents = .populatePersonPosters, force: Bool = false) async -> [ActorsWrapper] {
+    static func getActors(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ActorsWrapper] {
         let url = "\(baseUrl)/actors?\(populate.rawValue)"
         do {
             let cachedResult: Actors? = CachingService.getFromCache(key: CachingService.CachingKeys.actors.getString())
@@ -236,6 +203,26 @@ class ProjectService {
         } catch let error {
             LogService.log(error.localizedDescription, in: self)
             return []
+        }
+    }
+    
+    static func getActorById(id: Int, force: Bool = false) async -> ActorsWrapper? {
+        let url = "\(baseUrl)/actors/\(id)?\(UrlPopulateComponents.populatePersonPosters.rawValue)"
+        do {
+            return try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleActor.self, auth: apiKey)?.data
+        } catch let error {
+            LogService.log(error.localizedDescription, in: self)
+            return nil
+        }
+    }
+    
+    static func getDirectorById(id: Int, force: Bool = false) async -> DirectorsWrapper? {
+        let url = "\(baseUrl)/directors/\(id)?\(UrlPopulateComponents.populatePersonPosters.rawValue)"
+        do {
+            return try await APIService.apiCall(url: url, body: nil, method: "GET", as: SignleDirector.self, auth: apiKey)?.data
+        } catch let error {
+            LogService.log(error.localizedDescription, in: self)
+            return nil
         }
     }
 }

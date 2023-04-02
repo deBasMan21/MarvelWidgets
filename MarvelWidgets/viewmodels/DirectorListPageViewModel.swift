@@ -36,10 +36,6 @@ extension DirectorListPageView {
                 directors = directors.sorted(by: {
                     "\($0.attributes.firstName) \($0.attributes.lastName)" > "\($1.attributes.firstName) \($1.attributes.lastName)"
                 })
-            case .projects:
-                directors = directors.sorted(by: {
-                    $0.attributes.mcuProjects?.data.count ?? 0 > $1.attributes.mcuProjects?.data.count ?? 0
-                })
             }
         }
         
