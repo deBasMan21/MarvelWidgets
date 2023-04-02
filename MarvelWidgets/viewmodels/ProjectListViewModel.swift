@@ -34,7 +34,11 @@ extension ProjectListView {
         @Published var closestDateId: Int = -1
         @Published var showScroll: Bool = false
         @Published var forceClose: Bool = false
-        @Published var orderType: OrderType = .releaseDateASC
+        @Published var orderType: OrderType = .releaseDateASC {
+            didSet {
+                orderProjects()
+            }
+        }
         @Published var selectedFilters: [Phase] = [] {
             didSet {
                 filterProjects()
@@ -87,8 +91,10 @@ extension ProjectListView {
                         projects = await ProjectService.getAllOther(force: force)
                     }
                     
-                    allProjects = orderProjects(projects, by: orderType)
+                    allProjects = projects
+                    
                     filterProjects()
+                    orderProjects()
                     
                     closestDateId = projects.getClosest()
                     showScroll = true
@@ -96,9 +102,13 @@ extension ProjectListView {
             }
         }
         
-        func orderProjects(_ projects: [ProjectWrapper], by orderType: OrderType) -> [ProjectWrapper] {
-            var orderedProjects: [ProjectWrapper]
-            self.orderType = orderType
+        func orderProjects() {
+            projects = orderProjects(projects: projects)
+        }
+        
+        func orderProjects(projects: [ProjectWrapper]) -> [ProjectWrapper] {
+            var orderedProjects: [ProjectWrapper] = projects
+            
             switch orderType {
             case .nameASC:
                 orderedProjects = projects.sorted(by: { $0.attributes.title < $1.attributes.title})
@@ -129,13 +139,8 @@ extension ProjectListView {
                     }
                 })
             }
+            
             return orderedProjects
-        }
-        
-        func orderProjects(by orderType: OrderType) {
-            withAnimation {
-                projects = orderProjects(projects, by: orderType)
-            }
         }
         
         func refresh(force: Bool = false) async {
@@ -143,23 +148,25 @@ extension ProjectListView {
         }
         
         func filterProjects() {
+            var projects = allProjects.filter {
+                guard let projDate = $0.attributes.releaseDate?.toDate() else { return true }
+                return projDate >= afterDate && projDate <= beforeDate
+            }
+            
+            if selectedFilters.count > 0 {
+                projects = projects.filter { selectedFilters.contains($0.attributes.phase ?? .unkown) }
+            }
+            
+            if selectedTypes.count > 0 {
+                projects = projects.filter { selectedTypes.contains($0.attributes.type) }
+            }
+            
+            if !searchQuery.isEmpty {
+                projects = projects.filter { $0.attributes.title.contains(searchQuery) }
+            }
+            
             withAnimation {
-                projects = allProjects.filter {
-                    guard let projDate = $0.attributes.releaseDate?.toDate() else { return true }
-                    return projDate >= afterDate && projDate <= beforeDate
-                }
-                
-                if selectedFilters.count > 0 {
-                    projects = projects.filter { selectedFilters.contains($0.attributes.phase ?? .unkown) }
-                }
-                
-                if selectedTypes.count > 0 {
-                    projects = projects.filter { selectedTypes.contains($0.attributes.type) }
-                }
-                
-                if !searchQuery.isEmpty {
-                    projects = projects.filter { $0.attributes.title.contains(searchQuery) }
-                }
+                self.projects = orderProjects(projects: projects)
             }
             
             updateScrollButton()

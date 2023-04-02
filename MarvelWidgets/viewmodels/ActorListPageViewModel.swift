@@ -10,10 +10,21 @@ import SwiftUI
 
 extension ActorListPageView {
     class ViewModel: ObservableObject {
-        @Published var orderType: SortKeys = .nameASC
+        @Published var orderType: SortKeys = .nameASC {
+            didSet {
+                orderActors()
+            }
+        }
         @Published var birthdayActors: [ActorsWrapper] = []
         @Published var actors: [ActorsWrapper] = []
+        @Published var filteredActors: [ActorsWrapper] = []
+        @Published var filterSearchQuery: String = "" {
+            didSet {
+                filter()
+            }
+        }
         @Published var showBirthdays: Bool = true
+        
         let columns = [
                 GridItem(.flexible()),
                 GridItem(.flexible())
@@ -21,20 +32,19 @@ extension ActorListPageView {
         
         func getActors() async {
             actors = await ProjectService.getActors()
-            sortActors(by: orderType)
+            orderActors()
             updateBirthdayActors()
-            print("debug: actorcount \(actors.count)")
+            filter()
         }
         
-        func sortActors(by type: SortKeys) {
-            orderType = type
-            switch type {
+        func orderActors() {
+            switch orderType {
             case .nameASC:
-                actors = actors.sorted(by: {
+                filteredActors = filteredActors.sorted(by: {
                     "\($0.attributes.firstName) \($0.attributes.lastName)" < "\($1.attributes.firstName) \($1.attributes.lastName)"
                 })
             case .nameDESC:
-                actors = actors.sorted(by: {
+                filteredActors = filteredActors.sorted(by: {
                     "\($0.attributes.firstName) \($0.attributes.lastName)" > "\($1.attributes.firstName) \($1.attributes.lastName)"
                 })
             }
@@ -49,5 +59,84 @@ extension ActorListPageView {
                 return false
             }
         }
+        
+        func filter() {
+            var filteredActors = self.actors
+            if !filterSearchQuery.isEmpty {
+                filteredActors = filteredActors.filter {
+                    let name = "\($0.attributes.firstName) \($0.attributes.lastName)"
+                    return $0.attributes.character.contains(filterSearchQuery) || name.contains(filterSearchQuery)
+                }
+            }
+            
+            self.filteredActors = filteredActors
+            orderActors()
+        }
+    }
+}
+
+protocol Person {
+    var id: Int { get }
+    var firstName: String { get }
+    var lastName: String { get }
+    var dateOfBirth: String { get }
+    var projects: [ProjectWrapper] { get }
+    var imageUrl: URL? { get }
+    
+    func getSubtitle() -> String
+    func getSearchString() -> String
+}
+
+class DirectorPerson: Person {
+    var id: Int
+    var firstName: String
+    var lastName: String
+    var dateOfBirth: String
+    var projects: [ProjectWrapper]
+    var imageUrl: URL?
+    
+    init(id: Int, firstName: String, lastName: String, dateOfBirth: String, projects: [ProjectWrapper]?, imageUrl: URL?) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.dateOfBirth = dateOfBirth
+        self.projects = projects ?? []
+        self.imageUrl = imageUrl
+    }
+    
+    func getSubtitle() -> String {
+        dateOfBirth
+    }
+    
+    func getSearchString() -> String {
+        firstName + " " + lastName
+    }
+}
+
+class ActorPerson: Person {
+    var id: Int
+    var firstName: String
+    var lastName: String
+    var role: String
+    var dateOfBirth: String
+    var projects: [ProjectWrapper]
+    var imageUrl: URL?
+    
+    init(id: Int, firstName: String, lastName: String, role: String, dateOfBirth: String, projects: [ProjectWrapper]?, imageUrl: URL?) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.role = role
+        self.dateOfBirth = dateOfBirth
+        self.projects = projects ?? []
+        self.imageUrl = imageUrl
+    }
+    
+    func getSubtitle() -> String {
+        role
+    }
+    
+    func getSearchString() -> String {
+        firstName + " " + lastName + " " + role
     }
 }

@@ -14,23 +14,18 @@ struct ActorListPageView: View {
     
     var body: some View {
         VStack {
-            Menu(content: {
-                ForEach(SortKeys.allCases, id: \.self){ item in
-                    Button(item.rawValue, action: {
-                        viewModel.sortActors(by: item)
-                    })
-                }
-            }, label: {
-                Text("Order by: **\(String(describing: viewModel.orderType.rawValue))**")
-                Image(systemName: "arrow.up.arrow.down")
-            })
+            VStack(spacing: 20) {
+                SearchFilterView(searchQuery: $viewModel.filterSearchQuery)
+                
+                OrderFilterView(orderType: $viewModel.orderType)
+            }.padding()
             
-            Text("**\(viewModel.actors.count)** Actors")
+            Text("**\(viewModel.filteredActors.count)** Actors")
             
             ScrollView {
                 VStack {
                     LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                        ForEach(viewModel.actors) { actorObj in
+                        ForEach(viewModel.filteredActors) { actorObj in
                             NavigationLink(destination: ActorDetailView(actor: actorObj, showLoader: $showLoader)) {
                                 PosterListViewItem(
                                     posterUrl: actorObj.attributes.imageURL ?? "",

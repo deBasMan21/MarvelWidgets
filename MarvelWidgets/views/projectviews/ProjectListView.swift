@@ -17,19 +17,7 @@ struct ProjectListView: View {
         VStack{
             if viewModel.showFilters {
                 VStack(spacing: 20) {
-                    HStack {
-                        TextField("Search", text: $viewModel.searchQuery)
-                            .padding(10)
-                        
-                        Image(systemName: viewModel.searchQuery.isEmpty ? "magnifyingglass" : "xmark")
-                            .padding(.trailing, 10)
-                            .onTapGesture {
-                                viewModel.searchQuery = ""
-                            }
-                    }.overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.accentColor, lineWidth: 2)
-                    )
+                    SearchFilterView(searchQuery: $viewModel.searchQuery)
                     
                     HStack {
                         Text("Type: ")
@@ -101,28 +89,29 @@ struct ProjectListView: View {
 //                                    }
 //                    }
                     
+                    OrderFilterView(orderType: $viewModel.orderType)
                     
-                    HStack {
-                        Text("Order by:")
-                        
-                        Spacer()
-                        
-                        Menu(content: {
-                            ForEach(OrderType.allCases, id: \.self){ item in
-                                Button(item.rawValue, action: {
-                                    viewModel.orderProjects(by: item)
-                                })
-                            }
-                        }, label: {
-                            HStack {
-                                Text("\(String(describing: viewModel.orderType.rawValue))")
-                            }.foregroundColor(Color.foregroundColor)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 7)
-                                .background(Color.accentGray)
-                                .cornerRadius(8)
-                        })
-                    }
+//                    HStack {
+//                        Text("Order by:")
+//
+//                        Spacer()
+//
+//                        Menu(content: {
+//                            ForEach(OrderType.allCases, id: \.self){ item in
+//                                Button(item.rawValue, action: {
+//                                    viewModel.orderType = item
+//                                })
+//                            }
+//                        }, label: {
+//                            HStack {
+//                                Text("\(String(describing: viewModel.orderType.rawValue))")
+//                            }.foregroundColor(Color.foregroundColor)
+//                                .padding(.horizontal, 10)
+//                                .padding(.vertical, 7)
+//                                .background(Color.accentGray)
+//                                .cornerRadius(8)
+//                        })
+//                    }
                 }.padding()
             }
             
@@ -236,5 +225,56 @@ struct PosterListViewItem: View {
                 .padding(.bottom)
         }.foregroundColor(.white)
             .shadow(color: Color(uiColor: UIColor.white.withAlphaComponent(0.3)), radius: 5)
+    }
+}
+
+struct SearchFilterView: View {
+    @Binding var searchQuery: String
+    
+    var body: some View {
+        HStack {
+            TextField("Search", text: $searchQuery)
+                .padding(10)
+            
+            Image(systemName: searchQuery.isEmpty ? "magnifyingglass" : "xmark")
+                .padding(.trailing, 10)
+                .onTapGesture {
+                    searchQuery = ""
+                }
+        }.overlay(
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(Color.accentColor, lineWidth: 2)
+        )
+    }
+}
+
+struct OrderFilterView<T: RawRepresentable & CaseIterable>: View where T.RawValue == String {
+    @Binding var orderType: T
+    
+    var body: some View {
+        HStack {
+            Text("Order by:")
+            
+            Spacer()
+            
+            Menu(content: {
+                let allCases = T.allCases as? [T]
+                if let allCases {
+                    ForEach(allCases, id: \.self.rawValue){ (item: T) in
+                        Button(item.rawValue, action: {
+                            orderType = item
+                        })
+                    }
+                }
+            }, label: {
+                HStack {
+                    Text("\(String(describing: orderType.rawValue))")
+                }.foregroundColor(Color.foregroundColor)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 7)
+                    .background(Color.accentGray)
+                    .cornerRadius(8)
+            })
+        }
     }
 }
