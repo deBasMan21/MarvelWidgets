@@ -111,24 +111,7 @@ class ProjectService {
     static func getById(_ id: Int, populate: UrlPopulateComponents = .populateNormalWithRelatedPosters, force: Bool = false) async -> ProjectWrapper? {
         let url = "\(baseUrl)/mcu-projects/\(id)?\(populate.rawValue)"
         do {
-            let cachedResult: SingleResponseWrapper? = CachingService.getFromCache(key: CachingService.CachingKeys.project(id: "\(id)").getString())
-            
-            if let cachedResult = cachedResult, !force {
-                Task {
-                    let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                    
-                    CachingService.saveToCache(result: result, key: CachingService.CachingKeys.project(id: "\(id)").getString())
-                }
-                
-                return cachedResult.data
-            } else {
-                let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                
-                CachingService.saveToCache(result: result, key: CachingService.CachingKeys.project(id: "\(id)").getString())
-                
-                return result?.data
-            }
-            
+            return try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)?.data
         } catch let error {
             LogService.log(error.localizedDescription, in: self)
             return nil
@@ -161,27 +144,10 @@ class ProjectService {
         }
     }
     
-    static func getOtherById(_ id: Int, populate: UrlPopulateComponents = .populateDeep, force: Bool = false) async -> ProjectWrapper? {
+    static func getOtherById(_ id: Int, populate: UrlPopulateComponents = .populateNormalWithRelatedPosters, force: Bool = false) async -> ProjectWrapper? {
         let url = "\(baseUrl)/related-projects/\(id)?\(populate.rawValue)"
         do {
-            let cachedResult: SingleResponseWrapper? = CachingService.getFromCache(key: CachingService.CachingKeys.otherProject(id: "\(id)").getString())
-            
-            if let cachedResult = cachedResult, !force {
-                Task {
-                    let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                    
-                    CachingService.saveToCache(result: result, key: CachingService.CachingKeys.otherProject(id: "\(id)").getString())
-                }
-                
-                return cachedResult.data
-            } else {
-                let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)
-                
-                CachingService.saveToCache(result: result, key: CachingService.CachingKeys.otherProject(id: "\(id)").getString())
-                
-                return result?.data
-            }
-            
+            return try await APIService.apiCall(url: url, body: nil, method: "GET", as: SingleResponseWrapper.self, auth: apiKey)?.data
         } catch let error {
             LogService.log(error.localizedDescription, in: self)
             return nil
