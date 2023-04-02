@@ -11,7 +11,7 @@ import SwiftUI
 
 class ProjectService {
     private static let baseUrl = "https://serverbuijsen.nl/api"
-    private static let apiKey = "Bearer 3845c5d0fb08c257c2b4ac20b926763beda3a63b7cbb1c3f5c4df0851300934b77ffb693d8819a4e274f0006554990f3d6354bc43abd65ad218a0d42bb71fc670a5f0a16a631a21efd62bd236dcf876d00e655facc2467fb76181f748395a9481de2890a79c6a909eba44f3df2aecf5ae7830dd1bb83b162372bb4961971eb64"
+    private static let apiKey = "Bearer 8e39720ae2960eacb4fe19ea26f7974b7e02d642ad4bb7f7f4efc406f245477a0561c35ad1683acebdcd74f06c3ecb6ee29c1c4e53a487578d836458b159c3107a5858ecd91f2f75622d5d9b4f70690c5fab9d7835fc9fba8b78482abc5bd52bd1e77d94b8d066300bd09e4707e11fdd645d7b75dca7cf34874aa9f48e491d54"
     
     enum UrlFilterComponents: String {
         case filterMovie = "filters[type][$eq]=Movie"

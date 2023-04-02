@@ -130,8 +130,8 @@ struct ProjectDetailView: View {
                 HeaderToolbarItem(barState: state, content: {
                     ShareLink(
                         item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.id)")!,
-                        subject: Text("Subject"),
-                        message: Text("Message"),
+                        subject: Text(viewModel.project.attributes.title),
+                        message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: https://mcuwidgets.page.link/\(viewModel.project.id)"),
                         preview: SharePreview(
                             viewModel.project.attributes.title,
                             image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
