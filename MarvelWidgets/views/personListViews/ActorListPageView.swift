@@ -25,12 +25,12 @@ struct ActorListPageView: View {
             ScrollView {
                 VStack {
                     LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                        ForEach(viewModel.filteredActors) { actorObj in
-                            NavigationLink(destination: ActorDetailView(actor: actorObj, showLoader: $showLoader)) {
+                        ForEach(viewModel.filteredActors, id: \.id) { actorObj in
+                            NavigationLink(destination: actorObj.getDestinationView(showLoader: $showLoader)) {
                                 PosterListViewItem(
-                                    posterUrl: actorObj.attributes.imageURL ?? "",
-                                    title: "\(actorObj.attributes.firstName) \(actorObj.attributes.lastName)",
-                                    subTitle: actorObj.attributes.character
+                                    posterUrl: actorObj.imageUrl?.absoluteString ?? "",
+                                    title: "\(actorObj.firstName) \(actorObj.lastName)",
+                                    subTitle: actorObj.getSubtitle()
                                 )
                             }
                         }
@@ -45,13 +45,13 @@ struct ActorListPageView: View {
                     GeometryReader { geometry in
                         ScrollView(.horizontal) {
                             HStack {
-                                ForEach(viewModel.birthdayActors) { actor in
-                                    NavigationLink(destination: ActorDetailView(actor: actor, showLoader: $showLoader)) {
+                                ForEach(viewModel.birthdayActors, id: \.id) { actor in
+                                    NavigationLink(destination: actor.getDestinationView(showLoader: $showLoader)) {
                                         VStack {
-                                            Text("\(actor.attributes.firstName) \(actor.attributes.lastName) (\(actor.attributes.dateOfBirth?.toDate()?.calculateAge() ?? 0))")
+                                            Text("\(actor.firstName) \(actor.lastName) (\(actor.dateOfBirth?.toDate()?.calculateAge() ?? 0))")
                                                 .bold()
                                             
-                                            Text("\(actor.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "")")
+                                            Text("\(actor.dateOfBirth?.toDate()?.toFormattedString() ?? "")")
                                                 .foregroundColor(.white)
                                         }.padding()
                                             .background(Color.accentGray)
