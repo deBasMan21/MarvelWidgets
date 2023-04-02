@@ -10,3 +10,7 @@ import Foundation
 struct Directors: Codable {
     let data: [DirectorsWrapper]
 }
+
+struct SignleDirector: Codable {
+    let data: DirectorsWrapper
+}

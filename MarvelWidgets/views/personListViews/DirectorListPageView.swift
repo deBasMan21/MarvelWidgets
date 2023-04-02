@@ -25,16 +25,14 @@ struct DirectorListPageView: View {
                 Image(systemName: "arrow.up.arrow.down")
             })
             
+            Text("**\(viewModel.directors.count)** Directors")
+            
             ScrollView {
                 VStack {
                     LazyVGrid(columns: viewModel.columns, spacing: 20) {
                         ForEach(viewModel.directors) { director in
                             NavigationLink(destination: DirectorDetailView(director: director, showLoader: $showLoader)) {
-                                VStack {
-                                    ImageSizedView(url: director.attributes.imageURL ?? "")
-                                    
-                                    Text("\(director.attributes.firstName) \(director.attributes.lastName)")
-                                }
+                                PosterListViewItem(posterUrl: director.attributes.imageURL ?? "", title: "\(director.attributes.firstName) \(director.attributes.lastName)", subTitle: director.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "")
                             }
                         }
                     }

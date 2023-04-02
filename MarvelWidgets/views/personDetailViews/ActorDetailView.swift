@@ -12,6 +12,7 @@ import SwiftUINavigationHeader
 
 struct ActorDetailView: View {
     @State var actor: ActorsWrapper
+    @State var projects: [ProjectWrapper] = []
     @Binding var showLoader: Bool
     let columns = [
         GridItem(.flexible()),
@@ -44,16 +45,14 @@ struct ActorDetailView: View {
                         Text(actor.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
                     }
                         
-                    if let mcuProjectsTmp = actor.attributes.mcuProjects?.data, let relatedProjects = actor.attributes.relatedProjects?.data {
-                        let mcuProjects = mcuProjectsTmp + relatedProjects
-                        if mcuProjects.count > 0 {
+                    if projects.count > 0 {
                             VStack(alignment: .center) {
                                 Text("Played in")
                                     .font(Font.largeTitle)
                                     .padding()
                                 
                                 LazyVGrid(columns: columns, spacing: 15){
-                                    ForEach(mcuProjects.sorted(by: {
+                                    ForEach(projects.sorted(by: {
                                         $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
                                     }), id: \.uuid) { project in
                                         VStack {
@@ -83,8 +82,28 @@ struct ActorDetailView: View {
                                 }
                             }.padding()
                         }
-                    }
                 }.offset(x: 0, y: -50)
+            }.onAppear {
+                Task {
+                    if let populatedActor = await ProjectService.getActorById(id: actor.id) {
+                        await MainActor.run {
+                            withAnimation {
+                                self.actor = populatedActor
+                                
+                                var projectsList: [ProjectWrapper] = []
+                                if let mcuProjects = populatedActor.attributes.mcuProjects {
+                                    projectsList += mcuProjects.data
+                                }
+                                    
+                                if let relatedProjects = populatedActor.attributes.relatedProjects {
+                                    projectsList += relatedProjects.data
+                                }
+                                
+                                self.projects = projectsList
+                            }
+                        }
+                    }
+                }
             }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })

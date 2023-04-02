@@ -23,6 +23,7 @@ extension ActorListPageView {
             actors = await ProjectService.getActors()
             sortActors(by: orderType)
             updateBirthdayActors()
+            print("debug: actorcount \(actors.count)")
         }
         
         func sortActors(by type: SortKeys) {
@@ -35,10 +36,6 @@ extension ActorListPageView {
             case .nameDESC:
                 actors = actors.sorted(by: {
                     "\($0.attributes.firstName) \($0.attributes.lastName)" > "\($1.attributes.firstName) \($1.attributes.lastName)"
-                })
-            case .projects:
-                actors = actors.sorted(by: {
-                    $0.attributes.mcuProjects?.data.count ?? 0 > $1.attributes.mcuProjects?.data.count ?? 0
                 })
             }
         }
