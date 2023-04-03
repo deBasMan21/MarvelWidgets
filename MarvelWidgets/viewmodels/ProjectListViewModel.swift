@@ -24,17 +24,16 @@ extension ProjectListView {
         }
         @Published var typeFilters: [ProjectType] = []
         @Published var showFilters: Bool = false
-        private var allProjects: [ProjectWrapper] = [] {
-            didSet {
-                afterDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min() ?? Date.now
-                beforeDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max() ?? Date.now
-            }
-        }
+        private var allProjects: [ProjectWrapper] = []
         @Published var projects: [ProjectWrapper] = []
         @Published var closestDateId: Int = -1
         @Published var showScroll: Bool = false
         @Published var forceClose: Bool = false
-        @Published var orderType: OrderType = .releaseDateASC
+        @Published var orderType: OrderType = .releaseDateASC {
+            didSet {
+                orderProjects()
+            }
+        }
         @Published var selectedFilters: [Phase] = [] {
             didSet {
                 filterProjects()
@@ -87,8 +86,11 @@ extension ProjectListView {
                         projects = await ProjectService.getAllOther(force: force)
                     }
                     
-                    allProjects = orderProjects(projects, by: orderType)
+                    allProjects = projects
+                    
                     filterProjects()
+                    orderProjects()
+                    setReleaseDates()
                     
                     closestDateId = projects.getClosest()
                     showScroll = true
@@ -96,9 +98,18 @@ extension ProjectListView {
             }
         }
         
-        func orderProjects(_ projects: [ProjectWrapper], by orderType: OrderType) -> [ProjectWrapper] {
-            var orderedProjects: [ProjectWrapper]
-            self.orderType = orderType
+        func setReleaseDates() {
+            afterDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min()?.addingTimeInterval(-60 * 60 * 24) ?? Date.now
+            beforeDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max()?.addingTimeInterval(60 * 60 * 24) ?? Date.now
+        }
+        
+        func orderProjects() {
+            projects = orderProjects(projects: projects)
+        }
+        
+        func orderProjects(projects: [ProjectWrapper]) -> [ProjectWrapper] {
+            var orderedProjects: [ProjectWrapper] = projects
+            
             switch orderType {
             case .nameASC:
                 orderedProjects = projects.sorted(by: { $0.attributes.title < $1.attributes.title})
@@ -129,13 +140,8 @@ extension ProjectListView {
                     }
                 })
             }
+            
             return orderedProjects
-        }
-        
-        func orderProjects(by orderType: OrderType) {
-            withAnimation {
-                projects = orderProjects(projects, by: orderType)
-            }
         }
         
         func refresh(force: Bool = false) async {
@@ -143,23 +149,33 @@ extension ProjectListView {
         }
         
         func filterProjects() {
+            var projects = allProjects.filter {
+                guard let projDate = $0.attributes.releaseDate?.toDate() else { return true }
+                return projDate >= afterDate && projDate <= beforeDate
+            }
+            
+            if selectedFilters.count > 0 {
+                projects = projects.filter { selectedFilters.contains($0.attributes.phase ?? .unkown) }
+            }
+            
+            if selectedTypes.count > 0 {
+                projects = projects.filter { selectedTypes.contains($0.attributes.type) }
+            }
+            
+            if !searchQuery.isEmpty {
+                projects = projects.filter { $0.attributes.title.contains(searchQuery) }
+            }
+            
+            projects = projects.filter {
+                $0.attributes.releaseDate ?? "" > afterDate.toOriginalFormattedString()
+            }
+            
+            projects = projects.filter {
+                $0.attributes.releaseDate ?? "" < beforeDate.toOriginalFormattedString()
+            }
+            
             withAnimation {
-                projects = allProjects.filter {
-                    guard let projDate = $0.attributes.releaseDate?.toDate() else { return true }
-                    return projDate >= afterDate && projDate <= beforeDate
-                }
-                
-                if selectedFilters.count > 0 {
-                    projects = projects.filter { selectedFilters.contains($0.attributes.phase ?? .unkown) }
-                }
-                
-                if selectedTypes.count > 0 {
-                    projects = projects.filter { selectedTypes.contains($0.attributes.type) }
-                }
-                
-                if !searchQuery.isEmpty {
-                    projects = projects.filter { $0.attributes.title.contains(searchQuery) }
-                }
+                self.projects = orderProjects(projects: projects)
             }
             
             updateScrollButton()
@@ -169,6 +185,13 @@ extension ProjectListView {
             withAnimation {
                 forceClose = pageType != .mcu || selectedTypes.count != 0 || selectedFilters.count != 0 || !searchQuery.isEmpty
             }
+        }
+        
+        func resetFilters() {
+            selectedFilters = []
+            selectedTypes = []
+            orderType = .releaseDateASC
+            setReleaseDates()
         }
     }
     

@@ -45,13 +45,13 @@ struct ContentView: View {
                 }
                 
                 NavigationView {
-                    ActorListPageView(showLoader: $showLoader)
+                    PersonListPageView(type: .actor, showLoader: $showLoader)
                 }.tabItem {
                     Label("Actors", systemImage: "person.fill")
                 }
                 
                 NavigationView {
-                    DirectorListPageView(showLoader: $showLoader)
+                    PersonListPageView(type: .director, showLoader: $showLoader)
                 }.tabItem {
                     Label("Directors", systemImage: "megaphone")
                 }

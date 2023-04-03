@@ -25,8 +25,9 @@ struct ActorListView: View {
                         ForEach(actors) { actor in
                             VStack {
                                 if let imageUrl = actor.attributes.imageURL {
-                                    NavigationLink(destination: ActorDetailView(
-                                            actor: actor,
+                                    NavigationLink(
+                                        destination: PersonDetailView(
+                                            person: actor.person,
                                             showLoader: $showLoader
                                         ),
                                         isActive: binding(

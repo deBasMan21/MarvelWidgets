@@ -96,7 +96,7 @@ struct ProjectInformationView: View {
                 
                 if let directors = project.attributes.directors, directors.data.count > 0 {
                     ForEach(directors.data) { director in
-                        NavigationLink(destination: DirectorDetailView(director: director, showLoader: $showLoader)) {
+                        NavigationLink(destination: PersonDetailView(person: director.person, showLoader: $showLoader)) {
                             HStack {
                                 KFImage(URL(string: director.attributes.imageURL ?? "")!)
                                     .resizable()
