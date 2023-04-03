@@ -84,39 +84,53 @@ struct PersonListPageView: View {
             .sheet(isPresented: $showSheet, content: {
                 NavigationView {
                     VStack {
-                        ScrollView {
-                            VStack {
-                                LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                                    ForEach(viewModel.birthdayPersons, id: \.id) { actorObj in
-                                        VStack {
-                                            NavigationLink(destination: PersonDetailView(
-                                                person: actorObj,
-                                                showLoader: $showLoader
-                                            ), isActive: binding(for: "\(actorObj.id)")) {
-                                                EmptyView()
-                                            }.onAppear {
-                                                withAnimation {
-                                                    sheetHeight = .medium
+                        Text("Today's birthday")
+                            .font(.largeTitle)
+                            .bold()
+                        
+                        if viewModel.birthdayPersons.count > 0 {
+                            ScrollView {
+                                VStack {
+                                    LazyVGrid(columns: viewModel.columns, spacing: 20) {
+                                        ForEach(viewModel.birthdayPersons, id: \.id) { actorObj in
+                                            VStack {
+                                                NavigationLink(destination: PersonDetailView(
+                                                    person: actorObj,
+                                                    showLoader: $showLoader
+                                                ), isActive: binding(for: "\(actorObj.id)")) {
+                                                    EmptyView()
+                                                }.onAppear {
+                                                    withAnimation {
+                                                        sheetHeight = .medium
+                                                    }
                                                 }
+                                                
+                                                Button(action: {
+                                                    sheetHeight = .large
+                                                    Task {
+                                                        personDetailId["\(actorObj.id)"] = true
+                                                    }
+                                                }, label: {
+                                                    PosterListViewItem(
+                                                        posterUrl: actorObj.imageUrl?.absoluteString ?? "",
+                                                        title: "\(actorObj.firstName) \(actorObj.lastName)",
+                                                        subTitle: "\(actorObj.dateOfBirth?.toDate()?.calculateAge() ?? 0) Years old"
+                                                    )
+                                                })
                                             }
-                                            
-                                            Button(action: {
-                                                sheetHeight = .large
-                                                Task {
-                                                    personDetailId["\(actorObj.id)"] = true
-                                                }
-                                            }, label: {
-                                                PosterListViewItem(
-                                                    posterUrl: actorObj.imageUrl?.absoluteString ?? "",
-                                                    title: "\(actorObj.firstName) \(actorObj.lastName)",
-                                                    subTitle: "\(actorObj.dateOfBirth?.toDate()?.calculateAge() ?? 0) Years old"
-                                                )
-                                            })
                                         }
                                     }
                                 }
                             }
-                        }.navigationTitle("Today's birthday")
+                        } else {
+                            Spacer()
+                            
+                            Text("Oh no! It's nobodies birthday today, come back tomorrow.")
+                                .font(.headline)
+                                .multilineTextAlignment(.center)
+                        }
+                        
+                        Spacer()
                     }.padding()
                 }.presentationDetents([.medium, .large], selection: $sheetHeight)
                     .presentationDragIndicator(.visible)
