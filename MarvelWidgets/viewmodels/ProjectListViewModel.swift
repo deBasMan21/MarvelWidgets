@@ -24,12 +24,7 @@ extension ProjectListView {
         }
         @Published var typeFilters: [ProjectType] = []
         @Published var showFilters: Bool = false
-        private var allProjects: [ProjectWrapper] = [] {
-            didSet {
-                afterDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min() ?? Date.now
-                beforeDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max() ?? Date.now
-            }
-        }
+        private var allProjects: [ProjectWrapper] = []
         @Published var projects: [ProjectWrapper] = []
         @Published var closestDateId: Int = -1
         @Published var showScroll: Bool = false
@@ -95,11 +90,17 @@ extension ProjectListView {
                     
                     filterProjects()
                     orderProjects()
+                    setReleaseDates()
                     
                     closestDateId = projects.getClosest()
                     showScroll = true
                 }
             }
+        }
+        
+        func setReleaseDates() {
+            afterDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min()?.addingTimeInterval(-60 * 60 * 24) ?? Date.now
+            beforeDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max()?.addingTimeInterval(60 * 60 * 24) ?? Date.now
         }
         
         func orderProjects() {
@@ -165,6 +166,14 @@ extension ProjectListView {
                 projects = projects.filter { $0.attributes.title.contains(searchQuery) }
             }
             
+            projects = projects.filter {
+                $0.attributes.releaseDate ?? "" > afterDate.toOriginalFormattedString()
+            }
+            
+            projects = projects.filter {
+                $0.attributes.releaseDate ?? "" < beforeDate.toOriginalFormattedString()
+            }
+            
             withAnimation {
                 self.projects = orderProjects(projects: projects)
             }
@@ -176,6 +185,13 @@ extension ProjectListView {
             withAnimation {
                 forceClose = pageType != .mcu || selectedTypes.count != 0 || selectedFilters.count != 0 || !searchQuery.isEmpty
             }
+        }
+        
+        func resetFilters() {
+            selectedFilters = []
+            selectedTypes = []
+            orderType = .releaseDateASC
+            setReleaseDates()
         }
     }
     

@@ -22,15 +22,26 @@ struct PersonListPageView: View {
     
     var body: some View {
         VStack {
-            if viewModel.showFilters {
-                VStack(spacing: 20) {
-                    SearchFilterView(searchQuery: $viewModel.filterSearchQuery)
-                    
-                    OrderFilterView(orderType: $viewModel.orderType)
-                }.padding()
-            }
-            
             Text("**\(viewModel.filteredPersons.count)** \(viewModel.personType.rawValue)")
+                .sheet(isPresented: $viewModel.showFilters) {
+                    AutoSizingSheet(spacing: 20, padding: true) {
+                        Text("Filters and Sorting")
+                            .font(.largeTitle)
+                            .bold()
+                        
+                        DateFilter(date: $viewModel.filterAfterDate, title: "Born after:")
+                        
+                        DateFilter(date: $viewModel.filterBeforeDate, title: "Born before:")
+                        
+                        OrderFilterView(orderType: $viewModel.orderType)
+                        
+                        Button(action: {
+                            viewModel.resetFilters()
+                        }, label: {
+                            Text("Reset")
+                        })
+                    }
+                }
             
             ZStack {
                 ScrollView {
@@ -47,30 +58,23 @@ struct PersonListPageView: View {
                             }
                         }
                     }
-                }
+                }.searchable(text: $viewModel.filterSearchQuery)
                 
-                if viewModel.birthdayPersons.count > 0 && viewModel.showBirthdays {
-                    FloatingActionButtonOverlay(
-                        buttons: [
-                            ("birthday.cake", {
-                                withAnimation {
-                                    sheetHeight = .medium
-                                    showSheet = true
-                                }
-                            }),
-                            ("line.3.horizontal.decrease", {
-                                withAnimation {
-                                    viewModel.showFilters.toggle()
-                                }
-                            }),
-                            ("magnifyingglass", {
-                                withAnimation {
-                                    viewModel.showFilters.toggle()
-                                }
-                            })
-                        ]
-                    )
-                }
+                FloatingActionButtonOverlay(
+                    buttons: [
+                        ("birthday.cake", {
+                            withAnimation {
+                                sheetHeight = .medium
+                                showSheet = true
+                            }
+                        }),
+                        ("line.3.horizontal.decrease", {
+                            withAnimation {
+                                viewModel.showFilters = true
+                            }
+                        })
+                    ]
+                )
             }
         }.onAppear {
             Task {

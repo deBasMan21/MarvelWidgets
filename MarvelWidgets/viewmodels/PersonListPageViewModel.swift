@@ -26,6 +26,16 @@ extension PersonListPageView {
                 orderPersons()
             }
         }
+        @Published var filterBeforeDate: Date = Date.now {
+            didSet {
+                filter()
+            }
+        }
+        @Published var filterAfterDate: Date = Date.now {
+            didSet {
+                filter()
+            }
+        }
         
         init(personType: PersonType) {
             self.personType = personType
@@ -40,7 +50,23 @@ extension PersonListPageView {
             persons = await personType.getPersons()
             orderPersons()
             updateBirthdayPersons()
+            setBirthdates()
             filter()
+        }
+        
+        func resetFilters() {
+            setBirthdates()
+            orderType = .nameASC
+        }
+        
+        func setBirthdates() {
+            filterBeforeDate = persons.sorted(by: {
+                $0.dateOfBirth ?? "" >= $1.dateOfBirth ?? ""
+            }).first?.dateOfBirth?.toDate()?.addingTimeInterval(60 * 60 * 24) ?? Date.now
+            
+            filterAfterDate = persons.sorted(by: {
+                $0.dateOfBirth ?? "" <= $1.dateOfBirth ?? ""
+            }).first?.dateOfBirth?.toDate()?.addingTimeInterval(-60 * 60 * 24) ?? Date.now
         }
         
         func orderPersons() {
@@ -78,6 +104,14 @@ extension PersonListPageView {
             var filteredPersons = self.persons
             if !filterSearchQuery.isEmpty {
                 filteredPersons = filteredPersons.filter { $0.getSearchString().contains(filterSearchQuery) }
+            }
+            
+            filteredPersons = filteredPersons.filter {
+                $0.dateOfBirth ?? "" > filterAfterDate.toOriginalFormattedString()
+            }
+            
+            filteredPersons = filteredPersons.filter {
+                $0.dateOfBirth ?? "" < filterBeforeDate.toOriginalFormattedString()
             }
             
             self.filteredPersons = filteredPersons

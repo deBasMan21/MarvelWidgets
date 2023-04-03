@@ -8,6 +8,38 @@
 import Foundation
 import SwiftUI
 
+struct AutoSizingSheet<Content: View>: View {
+    @State var spacing: Int
+    @State var padding: Bool
+    var content: () -> Content
+    
+    @State var size: CGSize = .zero
+    
+    init(spacing: Int = 0, padding: Bool = false, @ViewBuilder _ content: @escaping () -> Content) {
+        self.padding = padding
+        self.spacing = spacing
+        self.content = content
+    }
+    
+    var body: some View {
+        GeometryReader { geometryProxy in
+            VStack {
+                content()
+            }.background(
+                GeometryReader { geometryProxy in
+                    Color.clear
+                        .onAppear {
+                            size = CGSize(width: 0, height: geometryProxy.size.height)
+                        }
+                }
+            ).if(padding) { view in
+                view.padding()
+            }
+        }.presentationDragIndicator(.visible)
+            .presentationDetents([.height(size.height + 50)])
+    }
+}
+
 struct ProjectListView: View {
     @State var pageType: ListPageType
     @StateObject var viewModel = ProjectListViewModel()
@@ -15,65 +47,34 @@ struct ProjectListView: View {
     
     var body: some View {
         VStack{
-            if viewModel.showFilters {
-                VStack(spacing: 20) {
-                    SearchFilterView(searchQuery: $viewModel.searchQuery)
-                    
-                    HStack {
-                        Text("Type: ")
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
-                                ForEach(viewModel.typeFilters, id: \.rawValue) { type in
-                                    Text(type.toString())
-                                        .padding(.horizontal, 10)
-                                        .padding(.vertical, 7)
-                                        .background(viewModel.selectedTypes.contains(type) ? Color.accentColor : Color.accentGray)
-                                        .cornerRadius(8)
-                                        .onTapGesture {
-                                            if viewModel.selectedTypes.contains(type),
-                                               let index = viewModel.selectedTypes.firstIndex(of: type) {
-                                                viewModel.selectedTypes.remove(at: index)
-                                            } else {
-                                                viewModel.selectedTypes.append(type)
-                                            }
-                                        }
-                                }
-                            }
-                        }
-                    }
-                    
-                    if viewModel.pageType == .mcu {
-                        HStack {
-                            Text("Phase: ")
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 10) {
-                                    ForEach(Phase.allCases, id: \.rawValue) { phase in
-                                        Text(phase.rawValue)
-                                            .padding(.horizontal, 10)
-                                            .padding(.vertical, 7)
-                                            .background(viewModel.selectedFilters.contains(phase) ? Color.accentColor : Color.accentGray)
-                                            .cornerRadius(8)
-                                            .onTapGesture {
-                                                if viewModel.selectedFilters.contains(phase),
-                                                   let index = viewModel.selectedFilters.firstIndex(of: phase) {
-                                                    viewModel.selectedFilters.remove(at: index)
-                                                } else {
-                                                    viewModel.selectedFilters.append(phase)
-                                                }
-                                            }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
-                    OrderFilterView(orderType: $viewModel.orderType)
-                }.padding()
-            }
-            
             Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
+                .sheet(isPresented: $viewModel.showFilters) {
+                    AutoSizingSheet(spacing: 20, padding: true) {
+                        Text("Filters and Sorting")
+                            .font(.largeTitle)
+                            .bold()
+                            .padding()
+                        
+                        TypeFilter(typeFilters: $viewModel.typeFilters, selectedTypes: $viewModel.selectedTypes)
+                        
+                        if viewModel.pageType == .mcu {
+                            PhaseFilter(selectedFilters: $viewModel.selectedFilters)
+                        }
+                        
+                        // Date filters
+                        DateFilter(date: $viewModel.afterDate, title: "After:")
+                        
+                        DateFilter(date: $viewModel.beforeDate, title: "Before:")
+                        
+                        OrderFilterView(orderType: $viewModel.orderType)
+                        
+                        Button(action: {
+                            viewModel.resetFilters()
+                        }, label: {
+                            Text("Reset")
+                        })
+                    }
+                }
             
             ScrollViewReader { reader in
                 ZStack {
@@ -96,38 +97,33 @@ struct ProjectListView: View {
                                 }.id(item.id)
                             }
                         }
-                    }.refreshable {
-                        await viewModel.refresh(force: true)
-                    }.simultaneousGesture(
-                        DragGesture().onChanged({ _ in
-                            withAnimation {
-                                viewModel.showScroll = true
-                            }
-                        }))
-                    
-                    if viewModel.showScroll && !viewModel.forceClose {
-                        FloatingActionButtonOverlay(
-                            buttons: [
-                                ("calendar.badge.clock", {
-                                     withAnimation {
-                                         reader.scrollTo(viewModel.closestDateId, anchor: .top)
-                                         viewModel.showScroll = false
-                                     }
-                                }),
-                                ("line.3.horizontal.decrease", {
-                                    withAnimation {
-                                        viewModel.showFilters.toggle()
-                                    }
-                                }),
-                                ("magnifyingglass", {
-                                    withAnimation {
-                                        viewModel.showFilters.toggle()
-                                    }
-                                })
-                            ]
-                            
+                    }.searchable(text: $viewModel.searchQuery)
+                        .refreshable {
+                            await viewModel.refresh(force: true)
+                        }.simultaneousGesture(
+                            DragGesture().onChanged({ _ in
+                                withAnimation {
+                                    viewModel.showScroll = true
+                                }
+                            })
                         )
-                    }
+                    
+                    FloatingActionButtonOverlay(
+                        buttons: [
+                            ("calendar.badge.clock", {
+                                withAnimation {
+                                    reader.scrollTo(viewModel.closestDateId, anchor: .top)
+                                    viewModel.showScroll = false
+                                }
+                            }),
+                            ("line.3.horizontal.decrease", {
+                                withAnimation {
+                                    viewModel.showFilters.toggle()
+                                }
+                            })
+                        ]
+                        
+                    )
                 }
             }
         }.navigationBarState(.compact, displayMode: .automatic)
@@ -139,9 +135,6 @@ struct ProjectListView: View {
                     showLoader = false
                 }
             }.navigationTitle(viewModel.navigationTitle)
-                .toolbar {
-                    FilterToolbarButton(showFilters: $viewModel.showFilters)
-                }
     }
 }
 
@@ -220,32 +213,12 @@ struct PosterListViewItem: View {
                     
                     Text(subTitle)
                         .font(Font.body.italic())
-
+                    
                 }
             }.padding(.horizontal, 20)
                 .padding(.bottom)
         }.foregroundColor(.white)
             .shadow(color: Color(uiColor: UIColor.white.withAlphaComponent(0.3)), radius: 5)
-    }
-}
-
-struct SearchFilterView: View {
-    @Binding var searchQuery: String
-    
-    var body: some View {
-        HStack {
-            TextField("Search", text: $searchQuery)
-                .padding(10)
-            
-            Image(systemName: searchQuery.isEmpty ? "magnifyingglass" : "xmark")
-                .padding(.trailing, 10)
-                .onTapGesture {
-                    searchQuery = ""
-                }
-        }.overlay(
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(Color.accentColor, lineWidth: 2)
-        )
     }
 }
 
@@ -270,10 +243,10 @@ struct OrderFilterView<T: RawRepresentable & CaseIterable>: View where T.RawValu
             }, label: {
                 HStack {
                     Text("\(String(describing: orderType.rawValue))")
-                }.foregroundColor(Color.foregroundColor)
+                }.foregroundColor(Color.white)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 7)
-                    .background(Color.accentGray)
+                    .background(Color.filterGray)
                     .cornerRadius(8)
             })
         }
@@ -298,4 +271,83 @@ struct FilterToolbarButton: View {
             .foregroundColor(.accentColor)
             .navigationBarState(.compact, displayMode: .automatic)
     }
+}
+
+
+
+struct TypeFilter: View {
+    @Binding var typeFilters: [ProjectType]
+    @Binding var selectedTypes: [ProjectType]
+    
+    var body: some View {
+        HStack {
+            Text("Type: ")
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(typeFilters, id: \.rawValue) { type in
+                        Text(type.toString())
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 7)
+                            .background(selectedTypes.contains(type) ? Color.accentColor : Color.filterGray)
+                            .cornerRadius(8)
+                            .onTapGesture {
+                                if selectedTypes.contains(type),
+                                   let index = selectedTypes.firstIndex(of: type) {
+                                    selectedTypes.remove(at: index)
+                                } else {
+                                    selectedTypes.append(type)
+                                }
+                            }
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct PhaseFilter: View {
+    @Binding var selectedFilters: [Phase]
+    
+    var body: some View {
+        HStack {
+            Text("Phase: ")
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(Phase.allCases, id: \.rawValue) { phase in
+                        Text(phase.rawValue)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 7)
+                            .background(selectedFilters.contains(phase) ? Color.accentColor : Color.filterGray)
+                            .cornerRadius(8)
+                            .onTapGesture {
+                                if selectedFilters.contains(phase),
+                                   let index = selectedFilters.firstIndex(of: phase) {
+                                    selectedFilters.remove(at: index)
+                                } else {
+                                    selectedFilters.append(phase)
+                                }
+                            }
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct DateFilter: View {
+    @Binding var date: Date
+    @State var title: String
+    
+    var body: some View {
+        DatePicker(selection: $date, displayedComponents: .date, label: {
+            Text(title)
+        })
+    }
+}
+
+struct SizePreferenceKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) { value = nextValue() }
 }
