@@ -8,51 +8,64 @@
 import Foundation
 import SwiftUI
 
-extension ActorListPageView {
+extension PersonListPageView {
     class ViewModel: ObservableObject {
-        @Published var orderType: SortKeys = .nameASC {
-            didSet {
-                orderActors()
-            }
-        }
-        @Published var birthdayActors: [any Person] = []
-        @Published var actors: [any Person] = []
-        @Published var filteredActors: [any Person] = []
+        @Published var personType: PersonType
+        @Published var birthdayPersons: [any Person] = []
+        @Published var persons: [any Person] = []
+        @Published var filteredPersons: [any Person] = []
+        @Published var showFilters: Bool = false
+        @Published var showBirthdays: Bool = true
         @Published var filterSearchQuery: String = "" {
             didSet {
                 filter()
             }
         }
-        @Published var showBirthdays: Bool = true
+        @Published var orderType: SortKeys = .nameASC {
+            didSet {
+                orderPersons()
+            }
+        }
+        
+        init(personType: PersonType) {
+            self.personType = personType
+        }
         
         let columns = [
                 GridItem(.flexible()),
                 GridItem(.flexible())
             ]
         
-        func getActors() async {
-            actors = await ProjectService.getDirectors().compactMap { DirectorPerson($0) }
-//            actors = await ProjectService.getActors().compactMap { ActorPerson($0) }
-            orderActors()
-            updateBirthdayActors()
+        func getPersons() async {
+            persons = await personType.getPersons()
+            orderPersons()
+            updateBirthdayPersons()
             filter()
         }
         
-        func orderActors() {
+        func orderPersons() {
             switch orderType {
             case .nameASC:
-                filteredActors = filteredActors.sorted(by: {
+                filteredPersons = filteredPersons.sorted(by: {
                     "\($0.firstName) \($0.lastName)" < "\($1.firstName) \($1.lastName)"
                 })
             case .nameDESC:
-                filteredActors = filteredActors.sorted(by: {
+                filteredPersons = filteredPersons.sorted(by: {
                     "\($0.firstName) \($0.lastName)" > "\($1.firstName) \($1.lastName)"
+                })
+            case .dateOfBirthASC:
+                filteredPersons = filteredPersons.sorted(by: {
+                    $0.dateOfBirth ?? "" > $1.dateOfBirth ?? ""
+                })
+            case .dateOfBirthDESC:
+                filteredPersons = filteredPersons.sorted(by: {
+                    $0.dateOfBirth ?? "" < $1.dateOfBirth ?? ""
                 })
             }
         }
         
-        func updateBirthdayActors() {
-            birthdayActors = actors.filter {
+        func updateBirthdayPersons() {
+            birthdayPersons = persons.filter {
                 if let components = $0.dateOfBirth?.toDate()?.get(.day, .month) {
                     let nowComponents = Date.now.get(.day, .month)
                     return nowComponents.day == components.day && nowComponents.month == components.month
@@ -62,18 +75,18 @@ extension ActorListPageView {
         }
         
         func filter() {
-            var filteredActors = self.actors
+            var filteredPersons = self.persons
             if !filterSearchQuery.isEmpty {
-                filteredActors = filteredActors.filter { $0.getSearchString().contains(filterSearchQuery) }
+                filteredPersons = filteredPersons.filter { $0.getSearchString().contains(filterSearchQuery) }
             }
             
-            self.filteredActors = filteredActors
-            orderActors()
+            self.filteredPersons = filteredPersons
+            orderPersons()
         }
     }
 }
 
-protocol Person: Identifiable {
+protocol Person {
     var id: Int { get }
     var firstName: String { get }
     var lastName: String { get }
@@ -83,7 +96,8 @@ protocol Person: Identifiable {
     
     func getSubtitle() -> String
     func getSearchString() -> String
-    func getDestinationView(showLoader: Binding<Bool>) -> AnyView
+    func getProjectsTitle() -> String
+    func getPopulated() async -> (any Person)?
 }
 
 class DirectorPerson: Person {
@@ -116,8 +130,12 @@ class DirectorPerson: Person {
         firstName + " " + lastName
     }
     
-    func getDestinationView(showLoader: Binding<Bool>) -> AnyView {
-        AnyView(DirectorDetailView(director: director, showLoader: showLoader))
+    func getProjectsTitle() -> String {
+        "Directed"
+    }
+    
+    func getPopulated() async -> (any Person)? {
+        await ProjectService.getDirectorById(id: self.id)?.person
     }
 }
 
@@ -152,7 +170,41 @@ class ActorPerson: Person {
         firstName + " " + lastName + " " + role
     }
     
-    func getDestinationView(showLoader: Binding<Bool>) -> AnyView {
-        AnyView(ActorDetailView(actor: actor, showLoader: showLoader))
+    func getProjectsTitle() -> String {
+        "Played in"
+    }
+    
+    func getPopulated() async -> (any Person)? {
+        await ProjectService.getActorById(id: self.id)?.person
+    }
+}
+
+enum PersonType: String {
+    case actor = "Actors"
+    case director = "Directors"
+    
+    func getPersons() async -> [any Person] {
+        switch self {
+        case .actor:
+            return await ProjectService.getActors().compactMap { $0.person }
+        case .director:
+            return await ProjectService.getDirectors().compactMap { $0.person }
+        }
+    }
+}
+
+extension ActorsWrapper {
+    var person: any Person {
+        get {
+            ActorPerson(self)
+        }
+    }
+}
+
+extension DirectorsWrapper {
+    var person: any Person {
+        get {
+            DirectorPerson(self)
+        }
     }
 }

@@ -68,50 +68,8 @@ struct ProjectListView: View {
                             }
                         }
                     }
-                    // Date filters work but filters get too big with them
-//                    HStack {
-//                        Text("After date:")
-//
-//                        Spacer()
-//
-//                        DatePicker(selection: $viewModel.afterDate, displayedComponents: .date) {
-//                                        Text("")
-//                                    }
-//                    }
-//
-//                    HStack {
-//                        Text("Before date:")
-//
-//                        Spacer()
-//
-//                        DatePicker(selection: $viewModel.beforeDate, displayedComponents: .date) {
-//                                        Text("")
-//                                    }
-//                    }
                     
                     OrderFilterView(orderType: $viewModel.orderType)
-                    
-//                    HStack {
-//                        Text("Order by:")
-//
-//                        Spacer()
-//
-//                        Menu(content: {
-//                            ForEach(OrderType.allCases, id: \.self){ item in
-//                                Button(item.rawValue, action: {
-//                                    viewModel.orderType = item
-//                                })
-//                            }
-//                        }, label: {
-//                            HStack {
-//                                Text("\(String(describing: viewModel.orderType.rawValue))")
-//                            }.foregroundColor(Color.foregroundColor)
-//                                .padding(.horizontal, 10)
-//                                .padding(.vertical, 7)
-//                                .background(Color.accentGray)
-//                                .cornerRadius(8)
-//                        })
-//                    }
                 }.padding()
             }
             
@@ -148,26 +106,27 @@ struct ProjectListView: View {
                         }))
                     
                     if viewModel.showScroll && !viewModel.forceClose {
-                        VStack {
-                            Spacer()
-                            
-                            HStack {
-                                Spacer()
-                                
-                                Image(systemName: "calendar.badge.clock")
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 50, height: 50)
-                                    .background(Color.accentColor)
-                                    .clipShape(Circle())
-                                    .padding(20)
-                                    .onTapGesture {
-                                        withAnimation {
-                                            reader.scrollTo(viewModel.closestDateId, anchor: .top)
-                                            viewModel.showScroll = false
-                                        }
+                        FloatingActionButtonOverlay(
+                            buttons: [
+                                ("calendar.badge.clock", {
+                                     withAnimation {
+                                         reader.scrollTo(viewModel.closestDateId, anchor: .top)
+                                         viewModel.showScroll = false
+                                     }
+                                }),
+                                ("line.3.horizontal.decrease", {
+                                    withAnimation {
+                                        viewModel.showFilters.toggle()
                                     }
-                            }
-                        }
+                                }),
+                                ("magnifyingglass", {
+                                    withAnimation {
+                                        viewModel.showFilters.toggle()
+                                    }
+                                })
+                            ]
+                            
+                        )
                     }
                 }
             }
@@ -180,21 +139,63 @@ struct ProjectListView: View {
                     showLoader = false
                 }
             }.navigationTitle(viewModel.navigationTitle)
-            .toolbar {
-                Button {
-                    withAnimation {
-                        viewModel.showFilters.toggle()
+                .toolbar {
+                    FilterToolbarButton(showFilters: $viewModel.showFilters)
+                }
+    }
+}
+
+struct FloatingActionButtonOverlay: View {
+    @State var buttons: [(String, () -> Void)]
+    
+    @State var showAll: Bool = false
+    @State var spacing: CGFloat = 20.0
+    
+    func getTransition(_ leadingIndex: Int, _ trailingIndex: Int) -> AnyTransition {
+        .asymmetric(
+            insertion: .opacity.animation(.spring().delay(0.1 * Double(leadingIndex))),
+            removal: .opacity.animation(.spring().delay(0.1 * Double(trailingIndex)))
+        )
+    }
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                VStack(spacing: spacing) {
+                    Spacer()
+                    
+                    if showAll {
+                        ForEach(Array(buttons.enumerated()), id: \.1.0) { button in
+                            Image(systemName: button.1.0)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 50, height: 50)
+                                .background(Color.accentColor)
+                                .clipShape(Circle())
+                                .onTapGesture {
+                                    button.1.1()
+                                }
+                                .transition(getTransition(buttons.count - 1 - button.0, button.0))
+                        }
                     }
-                } label: {
-                    HStack {
-                        Text("Filters")
-                        Image(systemName: viewModel.showFilters ? "xmark" : "line.3.horizontal.decrease")
-                            .frame(width: 24, height: 24)
-                    }
-                }.tint(.accentColor)
-                    .foregroundColor(.accentColor)
-                    .navigationBarState(.compact, displayMode: .automatic)
+                    
+                    Image(systemName: showAll ? "xmark" : "ellipsis")
+                        .multilineTextAlignment(.center)
+                        .frame(width: 50, height: 50)
+                        .background(Color.accentColor)
+                        .clipShape(Circle())
+                        .onTapGesture {
+                            withAnimation {
+                                showAll.toggle()
+                            }
+                        }
+                }
+                .padding(20)
             }
+        }
     }
 }
 
@@ -276,5 +277,25 @@ struct OrderFilterView<T: RawRepresentable & CaseIterable>: View where T.RawValu
                     .cornerRadius(8)
             })
         }
+    }
+}
+
+struct FilterToolbarButton: View {
+    @Binding var showFilters: Bool
+    
+    var body: some View {
+        Button {
+            withAnimation {
+                showFilters.toggle()
+            }
+        } label: {
+            HStack {
+                Text("Filters")
+                Image(systemName: showFilters ? "xmark" : "line.3.horizontal.decrease")
+                    .frame(width: 24, height: 24)
+            }
+        }.tint(.accentColor)
+            .foregroundColor(.accentColor)
+            .navigationBarState(.compact, displayMode: .automatic)
     }
 }

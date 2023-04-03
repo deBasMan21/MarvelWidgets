@@ -17,7 +17,7 @@ class ProjectService {
         case filterMovie = "filters[type][$eq]=Movie"
         case filterSerie = "filters[type][$eq]=Serie"
         case filterSpecial = "filters[type][$eq]=Special"
-        case firstUpcoming = "populate[0]=Posters&sort[0]=ReleaseDate:asc&filters[ReleaseDate][$gt]=2023-02-25&pagination[pageSize]=2"
+        case firstUpcoming = "populate[0]=Posters&populate[1]=directors&sort[0]=ReleaseDate:asc&filters[ReleaseDate][$gt]=2023-02-25&pagination[pageSize]=2"
         
         case emptyFilter = "filters[type][$eq]="
         

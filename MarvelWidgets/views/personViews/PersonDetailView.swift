@@ -10,10 +10,11 @@ import SwiftUI
 import Kingfisher
 import SwiftUINavigationHeader
 
-struct ActorDetailView: View {
-    @State var actor: ActorsWrapper
-    @State var projects: [ProjectWrapper] = []
+struct PersonDetailView: View {
+    @State var person: any Person
     @Binding var showLoader: Bool
+    
+    @State var projects: [ProjectWrapper] = []
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -21,7 +22,7 @@ struct ActorDetailView: View {
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .top, header: {
-            if let posterUrl = actor.attributes.imageURL {
+            if let posterUrl = person.imageUrl?.absoluteString {
                 NavigationLink(destination: FullscreenImageView(url: posterUrl)) {
                     KFImage(URL(string: posterUrl)!)
                         .resizable()
@@ -32,22 +33,24 @@ struct ActorDetailView: View {
             VStack {
                 ScrollView {
                     VStack {
-                        Text("\(actor.attributes.firstName) \(actor.attributes.lastName)")
+                        Text("\(person.firstName) \(person.lastName)")
                             .font(Font.largeTitle)
                             .bold()
                             .multilineTextAlignment(.center)
                         
-                        Text(actor.attributes.character)
+                        Text(person.getSubtitle())
                             .font(Font.subheadline)
                             .bold()
                             .multilineTextAlignment(.center)
                         
-                        Text(actor.attributes.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
+                        if let actor = person as? ActorPerson {
+                            Text(actor.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
+                        }
                     }
                         
                     if projects.count > 0 {
                             VStack(alignment: .center) {
-                                Text("Played in")
+                                Text(person.getProjectsTitle())
                                     .font(Font.largeTitle)
                                     .padding()
                                 
@@ -85,21 +88,11 @@ struct ActorDetailView: View {
                 }.offset(x: 0, y: -50)
             }.onAppear {
                 Task {
-                    if let populatedActor = await ProjectService.getActorById(id: actor.id) {
+                    if let person = await person.getPopulated() {
                         await MainActor.run {
                             withAnimation {
-                                self.actor = populatedActor
-                                
-                                var projectsList: [ProjectWrapper] = []
-                                if let mcuProjects = populatedActor.attributes.mcuProjects {
-                                    projectsList += mcuProjects.data
-                                }
-                                    
-                                if let relatedProjects = populatedActor.attributes.relatedProjects {
-                                    projectsList += relatedProjects.data
-                                }
-                                
-                                self.projects = projectsList
+                                self.person = person
+                                self.projects = person.projects
                             }
                         }
                     }
