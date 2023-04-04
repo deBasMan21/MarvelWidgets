@@ -62,16 +62,20 @@ struct PersonListPageView: View {
                 
                 FloatingActionButtonOverlay(
                     buttons: [
-                        ("birthday.cake", {
+                        OptionCircleButton(imageName: "birthday.cake", clickEvent: {
                             withAnimation {
                                 sheetHeight = .medium
                                 showSheet = true
                             }
+                        }, getFunction: { function in
+                            function(viewModel.birthdayPersons.count > 0, viewModel.birthdayPersons.count)
                         }),
-                        ("line.3.horizontal.decrease", {
+                        OptionCircleButton(imageName: "line.3.horizontal.decrease", clickEvent: {
                             withAnimation {
                                 viewModel.showFilters = true
                             }
+                        }, getFunction: { function in
+                            viewModel.filterCallback = function
                         })
                     ]
                 )

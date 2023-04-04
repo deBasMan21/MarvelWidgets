@@ -104,22 +104,27 @@ struct ProjectListView: View {
                             DragGesture().onChanged({ _ in
                                 withAnimation {
                                     viewModel.showScroll = true
+                                    viewModel.scrollCallback(true, 0)
                                 }
                             })
                         )
                     
                     FloatingActionButtonOverlay(
                         buttons: [
-                            ("calendar.badge.clock", {
+                            OptionCircleButton(imageName: "calendar.badge.clock", clickEvent: {
                                 withAnimation {
                                     reader.scrollTo(viewModel.closestDateId, anchor: .top)
-                                    viewModel.showScroll = false
+                                    viewModel.scrollCallback(false, 0)
                                 }
+                            }, getFunction: { function in
+                                viewModel.scrollCallback = function
                             }),
-                            ("line.3.horizontal.decrease", {
+                            OptionCircleButton(imageName: "line.3.horizontal.decrease", clickEvent: {
                                 withAnimation {
                                     viewModel.showFilters.toggle()
                                 }
+                            }, getFunction: { function in
+                                viewModel.filterCallback = function
                             })
                         ]
                         
@@ -139,7 +144,7 @@ struct ProjectListView: View {
 }
 
 struct FloatingActionButtonOverlay: View {
-    @State var buttons: [(String, () -> Void)]
+    @State var buttons: [OptionCircleButton]
     
     @State var showAll: Bool = false
     @State var spacing: CGFloat = 20.0
@@ -162,15 +167,8 @@ struct FloatingActionButtonOverlay: View {
                     Spacer()
                     
                     if showAll {
-                        ForEach(Array(buttons.enumerated()), id: \.1.0) { button in
-                            Image(systemName: button.1.0)
-                                .multilineTextAlignment(.center)
-                                .frame(width: 50, height: 50)
-                                .background(Color.accentColor)
-                                .clipShape(Circle())
-                                .onTapGesture {
-                                    button.1.1()
-                                }
+                        ForEach(Array(buttons.enumerated()), id: \.offset) { button in
+                            button.1
                                 .transition(getTransition(buttons.count - 1 - button.0, button.0))
                         }
                     }
@@ -189,6 +187,44 @@ struct FloatingActionButtonOverlay: View {
                 .padding(20)
             }
         }
+    }
+}
+
+struct OptionCircleButton: View {
+    @State var visible: Bool = true
+    @State var count: Int = 0
+    @State var imageName: String
+    var clickEvent: () -> Void
+    var getFunction: (@escaping (Bool, Int) -> Void) -> Void
+    
+    var body: some View {
+        Image(systemName: imageName)
+            .multilineTextAlignment(.center)
+            .frame(width: 50, height: 50)
+            .background(Color.accentColor)
+            .clipShape(Circle())
+            .if(count > 0) { view in
+                view.overlay {
+                    Text("\(count)")
+                        .bold()
+                        .padding(10)
+                        .background(Color.accentColor)
+                        .clipShape(Circle())
+                        .offset(x: 20, y: 20)
+                }
+            }
+            .if(!visible) { view in
+                view.hidden()
+            }.onTapGesture {
+                clickEvent()
+            }.onAppear {
+                getFunction(update)
+            }
+    }
+    
+    func update(visible: Bool, count: Int) {
+        self.visible = visible
+        self.count = count
     }
 }
 

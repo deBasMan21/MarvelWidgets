@@ -37,6 +37,10 @@ extension PersonListPageView {
             }
         }
         
+        var filterCallback: (Bool, Int) -> Void = { _, _ in }
+        private var minimumBeforeDate: Date = Date.now
+        private var maximumAfterDate: Date = Date.now
+        
         init(personType: PersonType) {
             self.personType = personType
         }
@@ -50,7 +54,7 @@ extension PersonListPageView {
             persons = await personType.getPersons()
             orderPersons()
             updateBirthdayPersons()
-            setBirthdates()
+            setBirthdates(save: true)
             filter()
         }
         
@@ -59,7 +63,7 @@ extension PersonListPageView {
             orderType = .nameASC
         }
         
-        func setBirthdates() {
+        func setBirthdates(save: Bool = false) {
             filterBeforeDate = persons.sorted(by: {
                 $0.dateOfBirth ?? "" >= $1.dateOfBirth ?? ""
             }).first?.dateOfBirth?.toDate()?.addingTimeInterval(60 * 60 * 24) ?? Date.now
@@ -67,6 +71,11 @@ extension PersonListPageView {
             filterAfterDate = persons.sorted(by: {
                 $0.dateOfBirth ?? "" <= $1.dateOfBirth ?? ""
             }).first?.dateOfBirth?.toDate()?.addingTimeInterval(-60 * 60 * 24) ?? Date.now
+            
+            if save {
+                minimumBeforeDate = filterBeforeDate
+                maximumAfterDate = filterAfterDate
+            }
         }
         
         func orderPersons() {
@@ -116,6 +125,14 @@ extension PersonListPageView {
             
             self.filteredPersons = filteredPersons
             orderPersons()
+            filterCallback(true, getFilterCount())
+        }
+        
+        func getFilterCount() -> Int {
+            var count = 0
+            count += maximumAfterDate == filterAfterDate ? 0 : 1
+            count += minimumBeforeDate == filterBeforeDate ? 0 : 1
+            return count
         }
     }
 }
