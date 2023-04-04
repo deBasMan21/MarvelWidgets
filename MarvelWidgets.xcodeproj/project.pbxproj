@@ -86,6 +86,14 @@
 		EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
+		EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */; };
+		EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E429DCB53200586017 /* TypeFilter.swift */; };
+		EFB503E729DCB55200586017 /* PhaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E629DCB55200586017 /* PhaseFilter.swift */; };
+		EFB503E929DCB56700586017 /* DateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E829DCB56700586017 /* DateFilter.swift */; };
+		EFB503EB29DCB57E00586017 /* OrderFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503EA29DCB57E00586017 /* OrderFilterView.swift */; };
+		EFB503ED29DCB59300586017 /* PosterListViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503EC29DCB59300586017 /* PosterListViewItem.swift */; };
+		EFB503F029DCB5BA00586017 /* OptionCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503EF29DCB5BA00586017 /* OptionCircleButton.swift */; };
+		EFB503F229DCB5D000586017 /* FloatingActionButtonOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503F129DCB5D000586017 /* FloatingActionButtonOverlay.swift */; };
 		EFBE482129C6213A0036185E /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482029C6213A0036185E /* RatingView.swift */; };
 		EFBE482329C621550036185E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482229C621550036185E /* ReviewView.swift */; };
 		EFBE482529C6216E0036185E /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482429C6216E0036185E /* TableRowView.swift */; };
@@ -322,6 +330,14 @@
 		EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = OtherWidgets.intentdefinition; sourceTree = "<group>"; };
 		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
+		EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingSheet.swift; sourceTree = "<group>"; };
+		EFB503E429DCB53200586017 /* TypeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFilter.swift; sourceTree = "<group>"; };
+		EFB503E629DCB55200586017 /* PhaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseFilter.swift; sourceTree = "<group>"; };
+		EFB503E829DCB56700586017 /* DateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFilter.swift; sourceTree = "<group>"; };
+		EFB503EA29DCB57E00586017 /* OrderFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFilterView.swift; sourceTree = "<group>"; };
+		EFB503EC29DCB59300586017 /* PosterListViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewItem.swift; sourceTree = "<group>"; };
+		EFB503EF29DCB5BA00586017 /* OptionCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCircleButton.swift; sourceTree = "<group>"; };
+		EFB503F129DCB5D000586017 /* FloatingActionButtonOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButtonOverlay.swift; sourceTree = "<group>"; };
 		EFBE482029C6213A0036185E /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EFBE482229C621550036185E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		EFBE482429C6216E0036185E /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
@@ -511,6 +527,26 @@
 				EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */,
 			);
 			path = HomeScreenWidgets;
+			sourceTree = "<group>";
+		};
+		EFB503E329DCB51B00586017 /* filters */ = {
+			isa = PBXGroup;
+			children = (
+				EFB503E429DCB53200586017 /* TypeFilter.swift */,
+				EFB503E629DCB55200586017 /* PhaseFilter.swift */,
+				EFB503E829DCB56700586017 /* DateFilter.swift */,
+				EFB503EA29DCB57E00586017 /* OrderFilterView.swift */,
+			);
+			path = filters;
+			sourceTree = "<group>";
+		};
+		EFB503EE29DCB5A800586017 /* options */ = {
+			isa = PBXGroup;
+			children = (
+				EFB503EF29DCB5BA00586017 /* OptionCircleButton.swift */,
+				EFB503F129DCB5D000586017 /* FloatingActionButtonOverlay.swift */,
+			);
+			path = options;
 			sourceTree = "<group>";
 		};
 		EFCA5D7428A3EF9D0004AAC7 /* extensions */ = {
@@ -826,6 +862,8 @@
 		EFF0E26E2920EECB00854E5F /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				EFB503EE29DCB5A800586017 /* options */,
+				EFB503E329DCB51B00586017 /* filters */,
 				EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */,
 				EFF0E2612920EDB100854E5F /* FullscreenImageView.swift */,
 				EFF0E2632920EDD300854E5F /* TrailersView.swift */,
@@ -839,6 +877,8 @@
 				EFBE482829C621990036185E /* ProjectInformationView.swift */,
 				EFBE482A29C621BE0036185E /* RelatedProjectsView.swift */,
 				EF26F68929DA110300E1A74D /* ZoomableScrollView.swift */,
+				EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */,
+				EFB503EC29DCB59300586017 /* PosterListViewItem.swift */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -1150,6 +1190,7 @@
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
 				EFF04BE129BE559300437A6E /* OnboardingPageTwoHeader.swift in Sources */,
 				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
+				EFB503EB29DCB57E00586017 /* OrderFilterView.swift in Sources */,
 				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
 				EF78F5EF29956D1700CA9028 /* OtherWidgets.intentdefinition in Sources */,
 				EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */,
@@ -1162,8 +1203,10 @@
 				EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
 				EFF04BCE29BE306D00437A6E /* OnboardingPageFourView.swift in Sources */,
+				EFB503F029DCB5BA00586017 /* OptionCircleButton.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */,
+				EFB503E729DCB55200586017 /* PhaseFilter.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* Config.swift in Sources */,
 				EF6B83572933A1B400A5D69C /* PersonListPageViewModel.swift in Sources */,
 				EFBE482929C621990036185E /* ProjectInformationView.swift in Sources */,
@@ -1175,7 +1218,9 @@
 				EF04E67D29AD491C003C0420 /* CircularImageView.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
+				EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */,
 				EFF0E2C22922B79200854E5F /* PersonDetailView.swift in Sources */,
+				EFB503ED29DCB59300586017 /* PosterListViewItem.swift in Sources */,
 				EFD9566229AAA5E1009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFF0E279292107EB00854E5F /* Phase.swift in Sources */,
 				EF178C4C28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
@@ -1185,6 +1230,7 @@
 				EFF0E27B292107F500854E5F /* Saga.swift in Sources */,
 				EF178C4328AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
+				EFB503E929DCB56700586017 /* DateFilter.swift in Sources */,
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
 				EFF04BEC29BE710A00437A6E /* AppIcon.swift in Sources */,
 				EF26F68A29DA110300E1A74D /* ZoomableScrollView.swift in Sources */,
@@ -1192,11 +1238,13 @@
 				EF0377DF299D2BDB0058C2FF /* ColorExtensions.swift in Sources */,
 				EF28E7FC29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EFF0E2952921089400854E5F /* Season.swift in Sources */,
+				EFB503F229DCB5D000586017 /* FloatingActionButtonOverlay.swift in Sources */,
 				EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */,
 				EFF0E2892921084F00854E5F /* Director.swift in Sources */,
 				EFF0E2622920EDB100854E5F /* FullscreenImageView.swift in Sources */,
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
+				EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFF04BDF29BE557A00437A6E /* OnboardingPageOneHeader.swift in Sources */,
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
