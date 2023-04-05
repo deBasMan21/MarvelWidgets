@@ -94,6 +94,8 @@
 		EFB503ED29DCB59300586017 /* PosterListViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503EC29DCB59300586017 /* PosterListViewItem.swift */; };
 		EFB503F029DCB5BA00586017 /* OptionCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503EF29DCB5BA00586017 /* OptionCircleButton.swift */; };
 		EFB503F229DCB5D000586017 /* FloatingActionButtonOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503F129DCB5D000586017 /* FloatingActionButtonOverlay.swift */; };
+		EFB503FB29DD80AA00586017 /* ViewExtensions+tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503FA29DD80AA00586017 /* ViewExtensions+tabbar.swift */; };
+		EFB503FE29DD8B7900586017 /* ScrollViewListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503FD29DD8B7900586017 /* ScrollViewListener.swift */; };
 		EFBE482129C6213A0036185E /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482029C6213A0036185E /* RatingView.swift */; };
 		EFBE482329C621550036185E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482229C621550036185E /* ReviewView.swift */; };
 		EFBE482529C6216E0036185E /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482429C6216E0036185E /* TableRowView.swift */; };
@@ -338,6 +340,8 @@
 		EFB503EC29DCB59300586017 /* PosterListViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewItem.swift; sourceTree = "<group>"; };
 		EFB503EF29DCB5BA00586017 /* OptionCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCircleButton.swift; sourceTree = "<group>"; };
 		EFB503F129DCB5D000586017 /* FloatingActionButtonOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingActionButtonOverlay.swift; sourceTree = "<group>"; };
+		EFB503FA29DD80AA00586017 /* ViewExtensions+tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewExtensions+tabbar.swift"; sourceTree = "<group>"; };
+		EFB503FD29DD8B7900586017 /* ScrollViewListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewListener.swift; sourceTree = "<group>"; };
 		EFBE482029C6213A0036185E /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EFBE482229C621550036185E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		EFBE482429C6216E0036185E /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
@@ -549,6 +553,14 @@
 			path = options;
 			sourceTree = "<group>";
 		};
+		EFB503FC29DD8B6800586017 /* scrollviewListener */ = {
+			isa = PBXGroup;
+			children = (
+				EFB503FD29DD8B7900586017 /* ScrollViewListener.swift */,
+			);
+			path = scrollviewListener;
+			sourceTree = "<group>";
+		};
 		EFCA5D7428A3EF9D0004AAC7 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +570,7 @@
 				EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */,
 				EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */,
 				EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */,
+				EFB503FA29DD80AA00586017 /* ViewExtensions+tabbar.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -862,6 +875,7 @@
 		EFF0E26E2920EECB00854E5F /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				EFB503FC29DD8B6800586017 /* scrollviewListener */,
 				EFB503EE29DCB5A800586017 /* options */,
 				EFB503E329DCB51B00586017 /* filters */,
 				EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */,
@@ -1183,6 +1197,7 @@
 				EFF04BC829BE302400437A6E /* OnboardingPageOneView.swift in Sources */,
 				EF238AA229B26B9A00C3FC9C /* OnboardingView.swift in Sources */,
 				EFF0E2932921088900854E5F /* Trailer.swift in Sources */,
+				EFB503FB29DD80AA00586017 /* ViewExtensions+tabbar.swift in Sources */,
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
 				EFF04BD129BE309400437A6E /* CircularRedButtonStyle.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
@@ -1247,6 +1262,7 @@
 				EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFF04BDF29BE557A00437A6E /* OnboardingPageOneHeader.swift in Sources */,
+				EFB503FE29DD8B7900586017 /* ScrollViewListener.swift in Sources */,
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
 				EFF04BD929BE554000437A6E /* OnboardingOverlayView.swift in Sources */,

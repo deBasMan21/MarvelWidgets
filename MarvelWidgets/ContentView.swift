@@ -189,6 +189,7 @@ class RemoteConfigWrapper: ObservableObject {
     
     @Published var showReview: Bool = false
     @Published var showShare: Bool = false
+    @Published var hideTabbar: Bool = false
     
     init() {
         updateValues()
@@ -200,6 +201,7 @@ class RemoteConfigWrapper: ObservableObject {
                 withAnimation {
                     self.showReview = getProperty(property: .showReview)
                     self.showShare = getProperty(property: .showShare)
+                    self.hideTabbar = getProperty(property: .showTabbar)
                 }
             }
         }
@@ -211,8 +213,9 @@ class RemoteConfigWrapper: ObservableObject {
         return res.boolValue
     }
     
-    private enum RemoteConfigKey: String {
+    private enum RemoteConfigKey: String, CaseIterable {
         case showReview = "showReview"
         case showShare = "showShare"
+        case showTabbar = "hideTabbar"
     }
 }

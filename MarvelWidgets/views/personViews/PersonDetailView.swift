@@ -13,7 +13,9 @@ import SwiftUINavigationHeader
 struct PersonDetailView: View {
     @State var person: any Person
     @Binding var showLoader: Bool
+    var onDisappearCallback: () -> Void = { }
     
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     @State var projects: [ProjectWrapper] = []
     let columns = [
         GridItem(.flexible()),
@@ -97,8 +99,11 @@ struct PersonDetailView: View {
                         }
                     }
                 }
+            }.onDisappear {
+                onDisappearCallback()
             }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
+            .hiddenTabBar(featureFlag: remoteConfig.hideTabbar)
     }
 }

@@ -12,6 +12,7 @@ import FirebaseMessaging
 
 struct WidgetSettingsView: View {
     @StateObject var viewModel = WidgetSettingsViewModel()
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     var body: some View {
         VStack {
@@ -96,5 +97,6 @@ struct WidgetSettingsView: View {
             Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
                 .padding()
         }.navigationTitle("Settings")
+            .showTabBar(featureFlag: remoteConfig.hideTabbar)
     }
 }

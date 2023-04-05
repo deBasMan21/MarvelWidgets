@@ -12,6 +12,11 @@ struct ProjectListView: View {
     @State var pageType: ListPageType
     @StateObject var viewModel = ProjectListViewModel()
     @Binding var showLoader: Bool
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
+    
+    @State private var scrollViewHeight: CGFloat = 0
+    @State private var proportion: CGFloat = 0
+    @State private var proportionName: String = "scroll"
     
     var body: some View {
         VStack{
@@ -64,7 +69,7 @@ struct ProjectListView: View {
                                         showGradient: true)
                                 }.id(item.id)
                             }
-                        }
+                        }.modifier(ScrollReadVStackModifier(scrollViewHeight: $scrollViewHeight, proportion: $proportion, proportionName: proportionName))
                     }.searchable(text: $viewModel.searchQuery)
                         .refreshable {
                             await viewModel.refresh(force: true)
@@ -95,10 +100,11 @@ struct ProjectListView: View {
                                 viewModel.filterCallback = function
                             })
                         ]
-                        
                     )
                 }
-            }
+            }.modifier(ScrollReadScrollViewModifier(scrollViewHeight: $scrollViewHeight, proportionName: proportionName))
+            
+            ProgressView(value: proportion, total: 1)
         }.navigationBarState(.compact, displayMode: .automatic)
             .onAppear{
                 showLoader = true
@@ -108,5 +114,6 @@ struct ProjectListView: View {
                     showLoader = false
                 }
             }.navigationTitle(viewModel.navigationTitle)
+            .showTabBar(featureFlag: remoteConfig.hideTabbar)
     }
 }

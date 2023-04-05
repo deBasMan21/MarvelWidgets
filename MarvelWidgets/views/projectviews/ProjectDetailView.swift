@@ -149,6 +149,6 @@ struct ProjectDetailView: View {
                       },
                       secondaryButton: .cancel()
                 )
-            })
+            }).hiddenTabBar(featureFlag: remoteConfig.hideTabbar)
     }
 }

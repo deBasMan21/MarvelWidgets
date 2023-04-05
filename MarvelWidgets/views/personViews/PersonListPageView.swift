@@ -11,9 +11,15 @@ import SwiftUI
 struct PersonListPageView: View {
     @Binding var showLoader: Bool
     @StateObject var viewModel: ViewModel
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     @State var showSheet: Bool = false
     @State var sheetHeight: PresentationDetent = .medium
     @State var personDetailId: [String: Bool] = [:]
+    @State var detents: Set<PresentationDetent> = [.medium]
+    
+    @State private var scrollViewHeight: CGFloat = 0
+    @State private var proportion: CGFloat = 0
+    @State private var proportionName: String = "scroll"
     
     init(type: PersonType, showLoader: Binding<Bool>) {
         self._viewModel = StateObject(wrappedValue: ViewModel(personType: type))
@@ -57,7 +63,8 @@ struct PersonListPageView: View {
                                 }
                             }
                         }
-                    }
+                    }.modifier(ScrollReadVStackModifier(scrollViewHeight: $scrollViewHeight, proportion: $proportion, proportionName: proportionName)
+                    )
                 }.searchable(text: $viewModel.filterSearchQuery)
                 
                 FloatingActionButtonOverlay(
@@ -79,7 +86,9 @@ struct PersonListPageView: View {
                         })
                     ]
                 )
-            }
+            }.modifier(ScrollReadScrollViewModifier(scrollViewHeight: $scrollViewHeight, proportionName: proportionName))
+            
+            ProgressView(value: proportion, total: 1)
         }.onAppear {
             Task {
                 await viewModel.getPersons()
@@ -100,17 +109,40 @@ struct PersonListPageView: View {
                                             VStack {
                                                 NavigationLink(destination: PersonDetailView(
                                                     person: actorObj,
-                                                    showLoader: $showLoader
+                                                    showLoader: $showLoader,
+                                                    onDisappearCallback: {
+                                                        withAnimation {
+                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                                                                self.detents.remove(.large)
+                                                            })
+                                                        }
+                                                    }
                                                 ), isActive: binding(for: "\(actorObj.id)")) {
                                                     EmptyView()
                                                 }.onAppear {
                                                     withAnimation {
+                                                        detents.insert(.medium)
                                                         sheetHeight = .medium
+                                                    }
+                                                }.onDisappear {
+                                                    withAnimation {
+                                                        detents.insert(.large)
+                                                        sheetHeight = .large
+                                                        
+                                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                                                            self.detents.remove(.medium)
+                                                        })
                                                     }
                                                 }
                                                 
                                                 Button(action: {
+                                                    detents.insert(.large)
                                                     sheetHeight = .large
+                                                    
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                                                        self.detents.remove(.medium)
+                                                    })
+                                                    
                                                     Task {
                                                         personDetailId["\(actorObj.id)"] = true
                                                     }
@@ -136,9 +168,9 @@ struct PersonListPageView: View {
                         
                         Spacer()
                     }.padding()
-                }.presentationDetents([.medium, .large], selection: $sheetHeight)
+                }.presentationDetents(detents, selection: $sheetHeight)
                     .presentationDragIndicator(.visible)
-            })
+            }).showTabBar(featureFlag: remoteConfig.hideTabbar)
     }
     
     private func binding(for key: String) -> Binding<Bool> {
