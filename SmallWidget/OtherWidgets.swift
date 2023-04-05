@@ -22,7 +22,7 @@ struct Provider: IntentTimelineProvider {
     func getProject(type: String, id: Int) async -> ProjectWrapper? {
         switch type {
         case "mcu": return await ProjectService.getById(id)
-        case "other": return await ProjectService.getOtherById(id)
+        case "other": return await ProjectService.getOtherById(id, force: true)
         default: return nil
         }
     }
@@ -41,6 +41,8 @@ struct Provider: IntentTimelineProvider {
                 
                 if let type = type, let id = id, let id = Int(id) {
                     proj = await getProject(type: String(type), id: id)
+                } else {
+                    proj = Placeholders.emptyProject
                 }
             } else {
                 proj = Placeholders.emptyProject

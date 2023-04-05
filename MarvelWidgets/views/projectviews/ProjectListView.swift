@@ -60,8 +60,9 @@ struct ProjectListView: View {
                                     PosterListViewItem(
                                         posterUrl: item.attributes.posters?.first?.posterURL ?? "",
                                         title: item.attributes.title,
-                                        subTitle: item.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate",
-                                        showGradient: true)
+                                        subTitle: item.attributes.getReleaseDateString(),
+                                        showGradient: true
+                                    )
                                 }.id(item.id)
                             }
                         }.modifier(ScrollReadVStackModifier(scrollViewHeight: $viewModel.scrollViewHeight, proportion: $viewModel.proportion, proportionName: viewModel.proportionName))

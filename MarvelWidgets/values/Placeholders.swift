@@ -15,6 +15,7 @@ class Placeholders {
         attributes: MCUProject(
             title: "Black panther: Wakanda Forever",
             releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).toOriginalFormattedString(),
+            releaseDateStringOverride: nil,
             postCreditScenes: nil,
             duration: nil,
             voteCount: nil,
@@ -67,6 +68,7 @@ class Placeholders {
         attributes: MCUProject(
             title: "Ant-Man and the Wasp: Quantumania",
             releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).toOriginalFormattedString(),
+            releaseDateStringOverride: nil,
             postCreditScenes: nil,
             duration: nil,
             voteCount: nil,
@@ -118,6 +120,7 @@ class Placeholders {
         attributes: MCUProject(
             title: "",
             releaseDate: nil,
+            releaseDateStringOverride: nil,
             postCreditScenes: nil,
             duration: nil,
             voteCount: nil,

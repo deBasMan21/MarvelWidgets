@@ -70,7 +70,7 @@ struct ProjectInformationView: View {
                             .bold()
                             .foregroundColor(Color.accentColor)
                         
-                        Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "No release date set")
+                        Text(project.attributes.getReleaseDateString())
                     }
                 }.onTapGesture {
                     showCalendarAppointment = true

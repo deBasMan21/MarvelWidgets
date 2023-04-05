@@ -42,14 +42,14 @@ struct SmallWidgetUpcomingMedium: View {
             }
             
             Spacer()
-        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.attributes.type.getUrlTypeString())/\(upcomingProject.id)")!)
+        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.attributes.type.getUrlTypeString())/\(upcomingProject.id)"))
     }
     
     func getReleaseDateString(upcomingProject: ProjectWrapper) -> String {
         if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-            return "\(upcomingProject.attributes.releaseDate!) (\(difference) days)"
+            return "\(upcomingProject.attributes.getReleaseDateString()) (\(difference) days)"
         } else {
-            return upcomingProject.attributes.releaseDate?.toDate()?.toFormattedString() ?? "No releasedate"
+            return upcomingProject.attributes.getReleaseDateString()
         }
     }
 

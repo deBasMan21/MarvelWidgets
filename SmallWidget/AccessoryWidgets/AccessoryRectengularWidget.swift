@@ -26,7 +26,7 @@ struct AccessoryRectengularWidget: View {
                 Text(project.attributes.title)
                     .multilineTextAlignment(.center)
                 
-                Text(project.attributes.releaseDate ?? "No release date yet")
+                Text(project.attributes.getReleaseDateString())
                     .font(.system(size: 10))
                     .lineLimit(1)
             }

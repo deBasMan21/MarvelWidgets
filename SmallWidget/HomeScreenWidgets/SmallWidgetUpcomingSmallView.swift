@@ -17,6 +17,7 @@ struct SmallWidgetUpcomingSmall: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
+            
             HStack {
                 VStack {
                     Spacer()

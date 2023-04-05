@@ -98,6 +98,7 @@ struct ContentView: View {
                                 attributes: MCUProject(
                                     title: "Loading...",
                                     releaseDate: nil,
+                                    releaseDateStringOverride: nil,
                                     postCreditScenes: nil,
                                     duration: nil,
                                     voteCount: nil,

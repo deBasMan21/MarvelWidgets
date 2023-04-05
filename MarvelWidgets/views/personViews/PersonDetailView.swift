@@ -75,7 +75,7 @@ struct PersonDetailView: View {
                                                     Text(project.attributes.title)
                                                         .font(Font.headline.bold())
                                                     
-                                                    Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                                    Text(project.attributes.getReleaseDateString())
                                                         .font(Font.body.italic())
                                                         .foregroundColor(Color(uiColor: UIColor.label))
                                                 }

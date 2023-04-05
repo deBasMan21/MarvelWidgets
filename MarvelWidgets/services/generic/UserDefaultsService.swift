@@ -19,6 +19,27 @@ class UserDefaultsService {
         static let disableCaching = "disableCaching"
         static let seenOnboarding = "seenOnboarding"
         static let alwaysShowOnboarding = "alwaysShowOnboarding"
+        static let baseUrl = "baseUrl"
+        static let token = "token"
+        static let useConfig = "useConfig"
+    }
+    
+    var useConfig: Bool {
+        get {
+            defs.bool(forKey: UserDefaultsKeys.useConfig)
+        }
+    }
+    
+    var baseUrl: String {
+        get {
+            defs.string(forKey: UserDefaultsKeys.baseUrl) ?? ""
+        }
+    }
+    
+    var token: String {
+        get {
+            defs.string(forKey: UserDefaultsKeys.token) ?? ""
+        }
     }
     
     var subscribeTopics: [String] {
