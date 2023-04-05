@@ -19,10 +19,8 @@
 	<false/>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>WidgetMediumConfiguratIntent</string>
-		<string>WidgetSmallConfigurationIntent</string>
-		<string>WidgetTypeConfigurationIntent</string>
-		<string>WidgetViewConfigurationIntent</string>
+		<string>SpecificWidgetIntent</string>
+		<string>UpcomingWidgetIntent</string>
 	</array>
 </dict>
 </plist>

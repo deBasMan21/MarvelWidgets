@@ -11,7 +11,7 @@ import Intents
 
 struct UpcomingProjectEntry: TimelineEntry {
     let date: Date
-    let configuration: WidgetTypeConfigurationIntent
+    let configuration: UpcomingWidgetIntent
     let upcomingProject: ProjectWrapper?
     let nextProject: ProjectWrapper?
     let image: Image

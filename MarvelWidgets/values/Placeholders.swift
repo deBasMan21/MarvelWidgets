@@ -15,6 +15,7 @@ class Placeholders {
         attributes: MCUProject(
             title: "Black panther: Wakanda Forever",
             releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).toOriginalFormattedString(),
+            releaseDateStringOverride: nil,
             postCreditScenes: nil,
             duration: nil,
             voteCount: nil,
@@ -67,6 +68,7 @@ class Placeholders {
         attributes: MCUProject(
             title: "Ant-Man and the Wasp: Quantumania",
             releaseDate: Date.now.addingTimeInterval(60 * 60 * 24 * 2).toOriginalFormattedString(),
+            releaseDateStringOverride: nil,
             postCreditScenes: nil,
             duration: nil,
             voteCount: nil,
@@ -101,6 +103,42 @@ class Placeholders {
                     )
                 ]
             ),
+            actors: nil,
+            relatedProjects: nil,
+            trailers: nil,
+            posters: nil,
+            seasons: nil,
+            rating: nil,
+            reviewTitle: nil,
+            reviewSummary: nil,
+            reviewCopyright: nil
+        )
+    )
+    
+    static let emptyProject = ProjectWrapper(
+        id: -1,
+        attributes: MCUProject(
+            title: "",
+            releaseDate: nil,
+            releaseDateStringOverride: nil,
+            postCreditScenes: nil,
+            duration: nil,
+            voteCount: nil,
+            awardsNominated: nil,
+            awardsWon: nil,
+            productionBudget: nil,
+            phase: .unkown,
+            saga: .infinitySaga,
+            overview: nil,
+            type: .special,
+            boxOffice: nil,
+            createdAt: nil,
+            updatedAt: nil,
+            disneyPlusUrl: nil,
+            categories: nil,
+            quote: nil,
+            quoteCaption: nil,
+            directors: nil,
             actors: nil,
             relatedProjects: nil,
             trailers: nil,

@@ -12,7 +12,7 @@ import FirebaseRemoteConfig
 
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
-    @Binding var showLoader: Bool
+    @State var inSheet: Bool
     @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     var body: some View {
@@ -32,8 +32,7 @@ struct ProjectDetailView: View {
                     ProjectInformationView(
                         project: $viewModel.project,
                         posterIndex: $viewModel.posterIndex,
-                        showCalendarAppointment: $viewModel.showCalendarAppointment,
-                        showLoader: $showLoader
+                        showCalendarAppointment: $viewModel.showCalendarAppointment
                     )
                     
                     if let overview = viewModel.project.attributes.overview {
@@ -49,8 +48,7 @@ struct ProjectDetailView: View {
                     
                     if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
                         ActorListView(
-                            actors: actors.data,
-                            showLoader: $showLoader
+                            actors: actors.data
                         ).padding()
                     }
                     
@@ -103,7 +101,7 @@ struct ProjectDetailView: View {
                     }
                     
                     if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {
-                        RelatedProjectsView(relatedProjects: relatedProjects, showLoader: $showLoader)
+                        RelatedProjectsView(relatedProjects: relatedProjects)
                     }
                     
                     if viewModel.showBottomLoader {
@@ -129,7 +127,7 @@ struct ProjectDetailView: View {
             if remoteConfig.showShare {
                 HeaderToolbarItem(barState: state, content: {
                     ShareLink(
-                        item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.id)")!,
+                        item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.attributes.type.getUrlTypeString())/\(viewModel.project.id)")!,
                         subject: Text(viewModel.project.attributes.title),
                         message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: https://mcuwidgets.page.link/\(viewModel.project.id)"),
                         preview: SharePreview(
@@ -149,6 +147,6 @@ struct ProjectDetailView: View {
                       },
                       secondaryButton: .cancel()
                 )
-            })
+            }).hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
     }
 }

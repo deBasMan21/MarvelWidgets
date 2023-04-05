@@ -10,47 +10,12 @@ import SwiftUI
 import Intents
 
 struct SmallWidgetProvider: IntentTimelineProvider {
-    let emptyProject = ProjectWrapper(
-        id: -1,
-        attributes: MCUProject(
-            title: "",
-            releaseDate: nil,
-            postCreditScenes: nil,
-            duration: nil,
-            voteCount: nil,
-            awardsNominated: nil,
-            awardsWon: nil,
-            productionBudget: nil,
-            phase: .unkown,
-            saga: .infinitySaga,
-            overview: nil,
-            type: .special,
-            boxOffice: nil,
-            createdAt: nil,
-            updatedAt: nil,
-            disneyPlusUrl: nil,
-            categories: nil,
-            quote: nil,
-            quoteCaption: nil,
-            directors: nil,
-            actors: nil,
-            relatedProjects: nil,
-            trailers: nil,
-            posters: nil,
-            seasons: nil,
-            rating: nil,
-            reviewTitle: nil,
-            reviewSummary: nil,
-            reviewCopyright: nil
-        )
-    )
-    
     var projectEntry: UpcomingProjectEntry {
         return UpcomingProjectEntry(
             date: Date(),
-            configuration: WidgetTypeConfigurationIntent(),
-            upcomingProject: emptyProject,
-            nextProject: emptyProject,
+            configuration: UpcomingWidgetIntent(),
+            upcomingProject: Placeholders.emptyProject,
+            nextProject: Placeholders.emptyProject,
             image: Image("secret wars"),
             nextImage: Image("secret wars")
         )
@@ -60,11 +25,11 @@ struct SmallWidgetProvider: IntentTimelineProvider {
         projectEntry
     }
 
-    func getSnapshot(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
+    func getSnapshot(for configuration: UpcomingWidgetIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
         completion(projectEntry)
     }
 
-    func getTimeline(for configuration: WidgetTypeConfigurationIntent, in context: Context, completion: @escaping (Timeline<UpcomingProjectEntry>) -> ()) {
+    func getTimeline(for configuration: UpcomingWidgetIntent, in context: Context, completion: @escaping (Timeline<UpcomingProjectEntry>) -> ()) {
         Task {
             var entries: [UpcomingProjectEntry] = []
             var upcomingProjects : [ProjectWrapper] = []

@@ -36,6 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults(suiteName: UserDefaultValues.suiteName)!.set(true, forKey: UserDefaultValues.smallWidgetShowText)
         }
         
+        if UserDefaultsService.standard.useConfig,
+            !UserDefaultsService.standard.token.isEmpty,
+            !UserDefaultsService.standard.baseUrl.isEmpty {
+            ProjectService.config = DebugConfig()
+        }
+        
         return true
     }
     

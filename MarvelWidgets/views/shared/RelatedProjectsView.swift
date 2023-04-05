@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RelatedProjectsView: View {
     @State var relatedProjects: RelatedProjects
-    @Binding var showLoader: Bool
     
     var body: some View {
         VStack {
@@ -28,7 +27,7 @@ struct RelatedProjectsView: View {
                                 viewModel: ProjectDetailViewModel(
                                     project: project
                                 ),
-                                showLoader: $showLoader
+                                inSheet: false
                             )
                         } label: {
                             VStack{
@@ -37,7 +36,7 @@ struct RelatedProjectsView: View {
                                 Text(project.attributes.title)
                                     .font(Font.headline.bold())
                                 
-                                Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                Text(project.attributes.getReleaseDateString())
                                     .font(Font.body.italic())
                                     .foregroundColor(Color(uiColor: UIColor.label))
                             }.frame(width: 150)

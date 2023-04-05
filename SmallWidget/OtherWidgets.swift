@@ -10,24 +10,42 @@ import SwiftUI
 import Intents
 
 struct Provider: IntentTimelineProvider {
-    let emptyProject = ProjectWrapper(id: -1, attributes: MCUProject(title: "", releaseDate: nil, postCreditScenes: nil, duration: nil, voteCount: nil, awardsNominated: nil, awardsWon: nil, productionBudget: nil, phase: .unkown, saga: .infinitySaga, overview: nil, type: .special, boxOffice: nil, createdAt: nil, updatedAt: nil, disneyPlusUrl: nil, categories: nil, quote: nil, quoteCaption: nil, directors: nil, actors: nil, relatedProjects: nil, trailers: nil, posters: nil, seasons: nil, rating: nil, reviewTitle: nil, reviewSummary: nil, reviewCopyright: nil))
-    
     func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(date: Date(), configuration: ConfigurationIntent(), upcomingProject: emptyProject, nextProject: emptyProject, image: Image("secret wars"), nextImage: Image("secret wars"))
+        return SimpleEntry(date: Date(), configuration: SpecificWidgetIntent(), upcomingProject: Placeholders.emptyProject, nextProject: Placeholders.emptyProject, image: Image("secret wars"), nextImage: Image("secret wars"))
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, upcomingProject: emptyProject, nextProject: emptyProject, image: Image("secret wars"), nextImage: Image("secret wars"))
+    func getSnapshot(for configuration: SpecificWidgetIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        let entry = SimpleEntry(date: Date(), configuration: configuration, upcomingProject: Placeholders.emptyProject, nextProject: Placeholders.emptyProject, image: Image("secret wars"), nextImage: Image("secret wars"))
         completion(entry)
     }
+    
+    func getProject(type: String, id: Int) async -> ProjectWrapper? {
+        switch type {
+        case "mcu": return await ProjectService.getById(id)
+        case "other": return await ProjectService.getOtherById(id, force: true)
+        default: return nil
+        }
+    }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: SpecificWidgetIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         Task {
-            let specificId = UserDefaults(suiteName: UserDefaultValues.suiteName)!.string(forKey: UserDefaultValues.specificSelectedProject) ?? ""
-            
             var proj: ProjectWrapper? = nil
-            if !specificId.isEmpty, let idAsInt = Int(specificId) {
-                proj = await ProjectService.getById(idAsInt, populate: .populateNormal)
+            let projects = configuration.selectedProjects ?? []
+            
+            if projects.count > 0 {
+                let project = projects.randomElement()
+                
+                let idParts = project?.identifier?.split(separator: "-")
+                let id = idParts?.last
+                let type = idParts?.first
+                
+                if let type = type, let id = id, let id = Int(id) {
+                    proj = await getProject(type: String(type), id: id)
+                } else {
+                    proj = Placeholders.emptyProject
+                }
+            } else {
+                proj = Placeholders.emptyProject
             }
             
             var image: Image = Image("AppIcon")
@@ -44,7 +62,7 @@ struct Provider: IntentTimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
+    let configuration: SpecificWidgetIntent
     let upcomingProject: ProjectWrapper?
     let nextProject: ProjectWrapper?
     let image: Image
@@ -75,11 +93,11 @@ struct OtherWidgets: Widget {
     let kind: String = "OtherWidgets"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: SpecificWidgetIntent.self, provider: Provider()) { entry in
             OtherWidgetsEntryView(entry: entry)
         }
-        .configurationDisplayName("Specific MCU Project")
-        .description("This widget shows the specific project that is selected in the settings of the app. To change this go to more -> settings and choose another project.")
+        .configurationDisplayName("Specific Projects")
+        .description("This widget shows a random project from the list you can select when editing this widget.")
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

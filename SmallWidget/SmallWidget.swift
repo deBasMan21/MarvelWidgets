@@ -48,7 +48,7 @@ struct SmallWidget: Widget {
     let kind: String = "SmallWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: WidgetTypeConfigurationIntent.self, provider: SmallWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: UpcomingWidgetIntent.self, provider: SmallWidgetProvider()) { entry in
             SmallWidgetUpcoming(entry: entry)
         }
         .configurationDisplayName("Any MCU Project")

@@ -10,6 +10,12 @@ import SwiftUI
 
 extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
+        var filterCallback: (Bool, Int) -> Void = { _, _ in }
+        var scrollCallback: (Bool, Int) -> Void = { _, _ in }
+        
+        @Published var scrollViewHeight: CGFloat = 0
+        @Published var proportion: CGFloat = 0
+        @Published var proportionName: String = "scroll"
         @Published var pageType: ListPageType = .mcu {
             didSet {
                 switch pageType {
@@ -61,6 +67,9 @@ extension ProjectListView {
             }
         }
         
+        private var minimalBeforeDate: Date = Date.now
+        private var maximalAfterDate: Date = Date.now
+        
         let columns = [
             GridItem(.flexible()),
             GridItem(.flexible())
@@ -90,7 +99,7 @@ extension ProjectListView {
                     
                     filterProjects()
                     orderProjects()
-                    setReleaseDates()
+                    setReleaseDates(save: true)
                     
                     closestDateId = projects.getClosest()
                     showScroll = true
@@ -98,9 +107,14 @@ extension ProjectListView {
             }
         }
         
-        func setReleaseDates() {
+        func setReleaseDates(save: Bool = false) {
             afterDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min()?.addingTimeInterval(-60 * 60 * 24) ?? Date.now
             beforeDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max()?.addingTimeInterval(60 * 60 * 24) ?? Date.now
+            
+            if save {
+                minimalBeforeDate = beforeDate
+                maximalAfterDate = afterDate
+            }
         }
         
         func orderProjects() {
@@ -179,12 +193,22 @@ extension ProjectListView {
             }
             
             updateScrollButton()
+            filterCallback(true, getFilterCount())
+        }
+        
+        func getFilterCount() -> Int {
+            var count: Int = selectedFilters.count + selectedTypes.count
+            count += minimalBeforeDate == beforeDate ? 0 : 1
+            count += maximalAfterDate == afterDate ? 0 : 1
+            return count
         }
         
         func updateScrollButton() {
             withAnimation {
                 forceClose = pageType != .mcu || selectedTypes.count != 0 || selectedFilters.count != 0 || !searchQuery.isEmpty
             }
+            
+            scrollCallback(!forceClose, 0)
         }
         
         func resetFilters() {

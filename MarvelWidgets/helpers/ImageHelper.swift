@@ -14,20 +14,27 @@ class ImageHelper {
         if let data = data, let uiImage = UIImage(data: data) {
             return Image(uiImage: uiImage)
         } else {
-            return Image(uiImage: UIImage())
+            return Image("secret wars")
         }
     }
     
     static func downloadImage(from link: String) -> Image {
-        return downloadImage(from: URL(string: link)!)
+        if let url = URL(string: link) {
+            return downloadImage(from: url)
+        } else {
+            return Image("secret wars")
+        }
+        
     }
     
     static func downloadImageData(from link: String) -> Data {
-        let data = try? Data(contentsOf: URL(string: link)!)
-        if let data = data {
-            return data
-        } else {
-            return Data()
+        if let url = URL(string: link) {
+            let data = try? Data(contentsOf: url)
+            if let data = data {
+                return data
+            }
         }
+        
+        return Data()
     }
 }

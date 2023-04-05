@@ -12,6 +12,7 @@ import FirebaseMessaging
 
 struct WidgetSettingsView: View {
     @StateObject var viewModel = WidgetSettingsViewModel()
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     var body: some View {
         VStack {
@@ -53,48 +54,23 @@ struct WidgetSettingsView: View {
                         })
                     }
                     
-                    Divider()
-                    
-                    VStack {
-                        Text("Specific widget settings")
-                            .font(Font.title2.bold())
-                            .foregroundColor(.accentColor)
+                    #if DEBUG
+                        Divider()
                         
-                        Text("A specific widget is a widget that only shows the movie that is selected here. This will not affect any other widget.")
-                            .multilineTextAlignment(.center)
-                            .padding(.bottom)
-                        
-                        Menu(content: {
-                            ForEach(viewModel.projects, id: \.id){ item in
-                                Button(item.attributes.title, action: {
-                                    viewModel.setSpecificProject(to: item.id, with: item.attributes.title)
-                                })
-                            }
+                        Button(action: {
+                            WidgetCenter.shared.reloadAllTimelines()
                         }, label: {
-                            HStack {
-                                Text("Selected:")
-                                
-                                Spacer()
-                                
-                                Text("**\(viewModel.selectedProjectTitle ?? "None")**")
-                                    .foregroundColor(.accentColor)
-                                
-                                Image(systemName: "arrow.up.arrow.down")
-                            }.foregroundColor(Color(uiColor: UIColor.label))
+                            Text("Reload widgets")
                         })
-        
-                        WidgetPreviewView(project: $viewModel.selectedProjectObject)
-                            .padding()
-                    }
+                    #endif
                     
                     Spacer()
-                    
-                    
                 }.padding()
             }
             
             Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
                 .padding()
         }.navigationTitle("Settings")
+            .showTabBar(featureFlag: remoteConfig.hideTabbar)
     }
 }

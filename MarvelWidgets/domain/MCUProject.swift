@@ -22,6 +22,7 @@ struct MCUProject: Codable, Comparable {
     
     let title: String
     let releaseDate: String?
+    let releaseDateStringOverride: String?
     let postCreditScenes, duration, voteCount, awardsNominated, awardsWon, productionBudget: Int?
     let phase: Phase?
     let saga: Saga?
@@ -40,6 +41,7 @@ struct MCUProject: Codable, Comparable {
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case releaseDate = "ReleaseDate"
+        case releaseDateStringOverride = "ReleaseDateNameOverride"
         case postCreditScenes = "PostCreditScenes"
         case duration = "Duration"
         case phase = "Phase"
@@ -62,5 +64,15 @@ struct MCUProject: Codable, Comparable {
         case quoteCaption = "QuoteCaption"
         case productionBudget = "ProductionBudget"
         case reviewTitle, reviewSummary, reviewCopyright
+    }
+    
+    func getReleaseDateString() -> String {
+        if let releaseDateStringOverride = releaseDateStringOverride {
+            return releaseDateStringOverride
+        } else if let releaseDate = releaseDate, let dateObj = releaseDate.toDate() {
+            return dateObj.toFormattedString()
+        } else {
+            return "Unkown release date"
+        }
     }
 }

@@ -12,8 +12,10 @@ import SwiftUINavigationHeader
 
 struct PersonDetailView: View {
     @State var person: any Person
-    @Binding var showLoader: Bool
+    var onDisappearCallback: () -> Void = { }
+    @State var inSheet: Bool = false
     
+    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     @State var projects: [ProjectWrapper] = []
     let columns = [
         GridItem(.flexible()),
@@ -64,7 +66,7 @@ struct PersonDetailView: View {
                                                     viewModel: ProjectDetailViewModel(
                                                         project: project
                                                     ),
-                                                    showLoader: $showLoader
+                                                    inSheet: inSheet
                                                 )
                                             } label: {
                                                 VStack{
@@ -73,7 +75,7 @@ struct PersonDetailView: View {
                                                     Text(project.attributes.title)
                                                         .font(Font.headline.bold())
                                                     
-                                                    Text(project.attributes.releaseDate?.toDate()?.toFormattedString() ?? "Unknown releasedate")
+                                                    Text(project.attributes.getReleaseDateString())
                                                         .font(Font.body.italic())
                                                         .foregroundColor(Color(uiColor: UIColor.label))
                                                 }
@@ -97,8 +99,11 @@ struct PersonDetailView: View {
                         }
                     }
                 }
+            }.onDisappear {
+                onDisappearCallback()
             }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
+            .hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
     }
 }
