@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Introspect
 
 extension UIApplication {
     var key: UIWindow? {
@@ -60,11 +59,19 @@ struct ShowTabBar: ViewModifier {
     }
 }
 struct HiddenTabBar: ViewModifier {
+    @State var inSheet: Bool
+    
+    init(inSheet: Bool) {
+        self.inSheet = inSheet
+    }
+    
     func body(content: Content) -> some View {
         return content.padding(.zero).onAppear {
             TabBarModifier.hideTabBar()
         }.onDisappear {
-            TabBarModifier.showTabBar()
+            if inSheet {
+                TabBarModifier.showTabBar()
+            }
         }
     }
 }
@@ -76,9 +83,9 @@ extension View {
         })
     }
 
-    func hiddenTabBar(featureFlag: Bool) -> some View {
+    func hiddenTabBar(featureFlag: Bool, inSheet: Bool = false) -> some View {
         self.if(featureFlag, transform: { view in
-            view.modifier(HiddenTabBar())
+            view.modifier(HiddenTabBar(inSheet: inSheet))
         })
     }
 }

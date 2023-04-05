@@ -112,4 +112,39 @@ class Placeholders {
             reviewCopyright: nil
         )
     )
+    
+    static let emptyProject = ProjectWrapper(
+        id: -1,
+        attributes: MCUProject(
+            title: "",
+            releaseDate: nil,
+            postCreditScenes: nil,
+            duration: nil,
+            voteCount: nil,
+            awardsNominated: nil,
+            awardsWon: nil,
+            productionBudget: nil,
+            phase: .unkown,
+            saga: .infinitySaga,
+            overview: nil,
+            type: .special,
+            boxOffice: nil,
+            createdAt: nil,
+            updatedAt: nil,
+            disneyPlusUrl: nil,
+            categories: nil,
+            quote: nil,
+            quoteCaption: nil,
+            directors: nil,
+            actors: nil,
+            relatedProjects: nil,
+            trailers: nil,
+            posters: nil,
+            seasons: nil,
+            rating: nil,
+            reviewTitle: nil,
+            reviewSummary: nil,
+            reviewCopyright: nil
+        )
+    )
 }

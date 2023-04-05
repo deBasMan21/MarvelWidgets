@@ -13,7 +13,6 @@ struct ProjectInformationView: View {
     @Binding var project: ProjectWrapper
     @Binding var posterIndex: Int
     @Binding var showCalendarAppointment: Bool
-    @Binding var showLoader: Bool
     
     let columns = [
         GridItem(.flexible()),
@@ -96,7 +95,7 @@ struct ProjectInformationView: View {
                 
                 if let directors = project.attributes.directors, directors.data.count > 0 {
                     ForEach(directors.data) { director in
-                        NavigationLink(destination: PersonDetailView(person: director.person, showLoader: $showLoader)) {
+                        NavigationLink(destination: PersonDetailView(person: director.person)) {
                             HStack {
                                 KFImage(URL(string: director.attributes.imageURL ?? "")!)
                                     .resizable()

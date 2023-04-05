@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ProjectType: String, Codable {
+enum ProjectType: String, Codable, CaseIterable {
     case movie = "Movie"
     case serie = "Serie"
     case special = "Special"
@@ -41,6 +41,13 @@ enum ProjectType: String, Codable {
             return "star.circle.fill"
         default:
             return "film.circle.fill"
+        }
+    }
+    
+    func getUrlTypeString() -> String {
+        switch self {
+        case .movie, .serie, .special: return "mcu"
+        case .defenders, .fox, .marvelOther, .marvelTelevision, .sony: return "other"
         }
     }
 }

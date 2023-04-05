@@ -10,6 +10,15 @@ import SwiftUI
 
 extension PersonListPageView {
     class ViewModel: ObservableObject {
+        @Published var showSheet: Bool = false
+        @Published var sheetHeight: PresentationDetent = .medium
+        @Published var personDetailId: [String: Bool] = [:]
+        @Published var detents: Set<PresentationDetent> = [.medium]
+        
+        @Published var scrollViewHeight: CGFloat = 0
+        @Published var proportion: CGFloat = 0
+        @Published var proportionName: String = "scroll"
+        
         @Published var personType: PersonType
         @Published var birthdayPersons: [any Person] = []
         @Published var persons: [any Person] = []

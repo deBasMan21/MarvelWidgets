@@ -13,6 +13,9 @@ extension ProjectListView {
         var filterCallback: (Bool, Int) -> Void = { _, _ in }
         var scrollCallback: (Bool, Int) -> Void = { _, _ in }
         
+        @Published var scrollViewHeight: CGFloat = 0
+        @Published var proportion: CGFloat = 0
+        @Published var proportionName: String = "scroll"
         @Published var pageType: ListPageType = .mcu {
             didSet {
                 switch pageType {

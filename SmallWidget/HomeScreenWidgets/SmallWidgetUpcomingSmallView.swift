@@ -39,6 +39,6 @@ struct SmallWidgetUpcomingSmall: View {
                     }
                 }.padding()
             }
-        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.id)")!)
+        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.attributes.type.getUrlTypeString())/\(upcomingProject.id)")!)
     }
 }

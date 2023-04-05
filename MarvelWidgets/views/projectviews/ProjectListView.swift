@@ -11,12 +11,7 @@ import SwiftUI
 struct ProjectListView: View {
     @State var pageType: ListPageType
     @StateObject var viewModel = ProjectListViewModel()
-    @Binding var showLoader: Bool
     @EnvironmentObject var remoteConfig: RemoteConfigWrapper
-    
-    @State private var scrollViewHeight: CGFloat = 0
-    @State private var proportion: CGFloat = 0
-    @State private var proportionName: String = "scroll"
     
     var body: some View {
         VStack{
@@ -59,7 +54,7 @@ struct ProjectListView: View {
                                         viewModel: ProjectDetailViewModel(
                                             project: item
                                         ),
-                                        showLoader: $showLoader
+                                        inSheet: false
                                     )
                                 } label: {
                                     PosterListViewItem(
@@ -69,7 +64,7 @@ struct ProjectListView: View {
                                         showGradient: true)
                                 }.id(item.id)
                             }
-                        }.modifier(ScrollReadVStackModifier(scrollViewHeight: $scrollViewHeight, proportion: $proportion, proportionName: proportionName))
+                        }.modifier(ScrollReadVStackModifier(scrollViewHeight: $viewModel.scrollViewHeight, proportion: $viewModel.proportion, proportionName: viewModel.proportionName))
                     }.searchable(text: $viewModel.searchQuery)
                         .refreshable {
                             await viewModel.refresh(force: true)
@@ -102,16 +97,14 @@ struct ProjectListView: View {
                         ]
                     )
                 }
-            }.modifier(ScrollReadScrollViewModifier(scrollViewHeight: $scrollViewHeight, proportionName: proportionName))
+            }.modifier(ScrollReadScrollViewModifier(scrollViewHeight: $viewModel.scrollViewHeight, proportionName: viewModel.proportionName))
             
-            ProgressView(value: proportion, total: 1)
+            ProgressView(value: viewModel.proportion, total: 1)
         }.navigationBarState(.compact, displayMode: .automatic)
             .onAppear{
-                showLoader = true
                 Task{
                     viewModel.pageType = pageType
                     await viewModel.fetchProjects()
-                    showLoader = false
                 }
             }.navigationTitle(viewModel.navigationTitle)
             .showTabBar(featureFlag: remoteConfig.hideTabbar)

@@ -12,12 +12,8 @@ import FirebaseRemoteConfig
 
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
-    @Binding var showLoader: Bool
+    @State var inSheet: Bool
     @EnvironmentObject var remoteConfig: RemoteConfigWrapper
-    
-    @State private var scrollViewHeight: CGFloat = 0
-    @State private var proportion: CGFloat = 0
-    @State private var proportionName: String = "scroll"
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
@@ -36,8 +32,7 @@ struct ProjectDetailView: View {
                     ProjectInformationView(
                         project: $viewModel.project,
                         posterIndex: $viewModel.posterIndex,
-                        showCalendarAppointment: $viewModel.showCalendarAppointment,
-                        showLoader: $showLoader
+                        showCalendarAppointment: $viewModel.showCalendarAppointment
                     )
                     
                     if let overview = viewModel.project.attributes.overview {
@@ -53,8 +48,7 @@ struct ProjectDetailView: View {
                     
                     if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
                         ActorListView(
-                            actors: actors.data,
-                            showLoader: $showLoader
+                            actors: actors.data
                         ).padding()
                     }
                     
@@ -107,7 +101,7 @@ struct ProjectDetailView: View {
                     }
                     
                     if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {
-                        RelatedProjectsView(relatedProjects: relatedProjects, showLoader: $showLoader)
+                        RelatedProjectsView(relatedProjects: relatedProjects)
                     }
                     
                     if viewModel.showBottomLoader {
@@ -115,7 +109,6 @@ struct ProjectDetailView: View {
                             .padding()
                     }
                 }.offset(x: 0, y: -60)
-                    .modifier(ScrollReadVStackModifier(scrollViewHeight: $scrollViewHeight, proportion: $proportion, proportionName: proportionName))
         }, toolbar: { state in
             HeaderToolbarItem(barState: state, content: {
                 VStack {
@@ -134,7 +127,7 @@ struct ProjectDetailView: View {
             if remoteConfig.showShare {
                 HeaderToolbarItem(barState: state, content: {
                     ShareLink(
-                        item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.id)")!,
+                        item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.attributes.type.getUrlTypeString())/\(viewModel.project.id)")!,
                         subject: Text(viewModel.project.attributes.title),
                         message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: https://mcuwidgets.page.link/\(viewModel.project.id)"),
                         preview: SharePreview(
@@ -154,53 +147,6 @@ struct ProjectDetailView: View {
                       },
                       secondaryButton: .cancel()
                 )
-            }).hiddenTabBar(featureFlag: remoteConfig.hideTabbar)
-            .modifier(ScrollReadScrollViewModifier(scrollViewHeight: $scrollViewHeight, proportionName: proportionName))
-            .overlay(
-                VStack {
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-
-                        CircularProgressView(progress: $proportion)
-                            .frame(width: 50, height: 50)
-                            .background(Color.backgroundColor)
-                            .overlay(
-                                Text("\(Int(proportion * 100))%")
-                            )
-                            .clipShape(Circle())
-                            .offset(y: 75)
-                            .padding()
-                    }
-                }
-            )
-    }
-}
-
-struct CircularProgressView: View {
-    @Binding var progress: CGFloat
-    
-    var body: some View {
-        ZStack {
-            Circle()
-                .stroke(
-                    Color.accentColor.opacity(0.5),
-                    lineWidth: 5
-                )
-            Circle()
-                .trim(from: 0, to: progress)
-                .stroke(
-                    Color.accentColor,
-                    style: StrokeStyle(
-                        lineWidth: 5,
-                        lineCap: .round
-                    )
-                )
-                .rotationEffect(.degrees(-90))
-                // 1
-                .animation(.easeOut, value: progress)
-
-        }
+            }).hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
     }
 }

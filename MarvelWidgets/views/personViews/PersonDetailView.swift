@@ -12,8 +12,8 @@ import SwiftUINavigationHeader
 
 struct PersonDetailView: View {
     @State var person: any Person
-    @Binding var showLoader: Bool
     var onDisappearCallback: () -> Void = { }
+    @State var inSheet: Bool = false
     
     @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     @State var projects: [ProjectWrapper] = []
@@ -66,7 +66,7 @@ struct PersonDetailView: View {
                                                     viewModel: ProjectDetailViewModel(
                                                         project: project
                                                     ),
-                                                    showLoader: $showLoader
+                                                    inSheet: inSheet
                                                 )
                                             } label: {
                                                 VStack{
@@ -104,6 +104,6 @@ struct PersonDetailView: View {
             }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
-            .hiddenTabBar(featureFlag: remoteConfig.hideTabbar)
+            .hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
     }
 }

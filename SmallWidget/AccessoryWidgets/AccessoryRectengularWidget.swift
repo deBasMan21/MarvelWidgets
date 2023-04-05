@@ -30,7 +30,7 @@ struct AccessoryRectengularWidget: View {
                     .font(.system(size: 10))
                     .lineLimit(1)
             }
-        }.widgetURL(URL(string: "mcuwidgets://project/\(project.id)")!)
+        }.widgetURL(URL(string: "mcuwidgets://project/\(project.attributes.type.getUrlTypeString())/\(project.id)")!)
     }
     
     func getReleaseDateString(upcomingProject: ProjectWrapper) -> String? {

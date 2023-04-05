@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ActorListView: View {
     @State var actors: [ActorsWrapper]
-    @Binding var showLoader: Bool
     
     @State var width: CGFloat = 150
     @State var height: CGFloat = 250
@@ -27,8 +26,7 @@ struct ActorListView: View {
                                 if let imageUrl = actor.attributes.imageURL {
                                     NavigationLink(
                                         destination: PersonDetailView(
-                                            person: actor.person,
-                                            showLoader: $showLoader
+                                            person: actor.person
                                         ),
                                         isActive: binding(
                                             for: imageUrl

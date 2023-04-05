@@ -36,14 +36,15 @@ class ProjectService {
     }
     
     enum UrlPopulateComponents: String {
+        case populateNone = ""
         case populateDeep = "populate=deep"
         case populateNormal = "populate=%2A"
-        case populateNone = "populate[0]=Posters"
+        case populatePosters = "populate[0]=Posters"
         case populatePersonPosters = "populate[0]=related_projects&populate[1]=related_projects.Posters&populate=*&populate[2]=mcu_projects&populate[3]=mcu_projects.Posters"
         case populateNormalWithRelatedPosters = "populate[0]=related_projects.Posters&populate[1]=Posters&populate[2]=Trailers&populate[3]=actors&populate[4]=directors&populate[5]=Seasons&populate[6]=Seasons.Episodes"
     }
     
-    static func getAll(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
+    static func getAll(populate: UrlPopulateComponents = .populatePosters, force: Bool = false) async -> [ProjectWrapper] {
         let url = "\(baseUrl)/mcu-projects?\(populate.rawValue)"
         do {
             let cachedResult: ListResponseWrapper? = CachingService.getFromCache(key: ListPageType.mcu.rawValue)
@@ -82,7 +83,7 @@ class ProjectService {
         }
     }
     
-    static func getByType(_ type: WidgetType, populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
+    static func getByType(_ type: WidgetType, populate: UrlPopulateComponents = .populatePosters, force: Bool = false) async -> [ProjectWrapper] {
         let url = "\(baseUrl)/mcu-projects?\(UrlFilterComponents.getFilterForType(type))&\(populate.rawValue)"
         do {
             let cachedResult: ListResponseWrapper? = CachingService.getFromCache(key: type.rawValue)
@@ -118,7 +119,7 @@ class ProjectService {
         }
     }
     
-    static func getAllOther(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ProjectWrapper] {
+    static func getAllOther(populate: UrlPopulateComponents = .populatePosters, force: Bool = false) async -> [ProjectWrapper] {
         let url = "\(baseUrl)/related-projects?\(populate.rawValue)"
         do {
             let cachedResult: ListResponseWrapper? = CachingService.getFromCache(key: ListPageType.other.rawValue)
@@ -154,7 +155,7 @@ class ProjectService {
         }
     }
     
-    static func getDirectors(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [DirectorsWrapper] {
+    static func getDirectors(populate: UrlPopulateComponents = .populatePosters, force: Bool = false) async -> [DirectorsWrapper] {
         let url = "\(baseUrl)/directors?\(populate.rawValue)"
         do {
             let cachedResult: Directors? = CachingService.getFromCache(key: CachingService.CachingKeys.directors.getString())
@@ -180,7 +181,7 @@ class ProjectService {
         }
     }
     
-    static func getActors(populate: UrlPopulateComponents = .populateNone, force: Bool = false) async -> [ActorsWrapper] {
+    static func getActors(populate: UrlPopulateComponents = .populatePosters, force: Bool = false) async -> [ActorsWrapper] {
         let url = "\(baseUrl)/actors?\(populate.rawValue)"
         do {
             let cachedResult: Actors? = CachingService.getFromCache(key: CachingService.CachingKeys.actors.getString())

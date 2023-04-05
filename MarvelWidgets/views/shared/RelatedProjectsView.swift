@@ -10,7 +10,6 @@ import SwiftUI
 
 struct RelatedProjectsView: View {
     @State var relatedProjects: RelatedProjects
-    @Binding var showLoader: Bool
     
     var body: some View {
         VStack {
@@ -28,7 +27,7 @@ struct RelatedProjectsView: View {
                                 viewModel: ProjectDetailViewModel(
                                     project: project
                                 ),
-                                showLoader: $showLoader
+                                inSheet: false
                             )
                         } label: {
                             VStack{

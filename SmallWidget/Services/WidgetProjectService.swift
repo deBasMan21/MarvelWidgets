@@ -10,7 +10,7 @@ import WidgetKit
 import Intents
 
 class WidgetProjectService {
-    static func upcomingProject(from allProjects: [ProjectWrapper], with configuration: WidgetTypeConfigurationIntent) -> UpcomingProjectEntry? {
+    static func upcomingProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent) -> UpcomingProjectEntry? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
@@ -76,7 +76,7 @@ class WidgetProjectService {
 //        }
     }
     
-    static func randomProject(from allProjects: [ProjectWrapper], with configuration: WidgetTypeConfigurationIntent) -> UpcomingProjectEntry{
+    static func randomProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent) -> UpcomingProjectEntry{
         let project = allProjects.randomElement()
         var nextProject = allProjects.randomElement()
         

@@ -11,7 +11,6 @@ import FirebaseRemoteConfig
 
 struct ContentView: View {
     @State var showSheet: Bool = false
-    @State var showLoader = false
     
     @State var showView = false
     
@@ -33,25 +32,25 @@ struct ContentView: View {
             
             TabView {
                 NavigationView {
-                    ProjectListView(pageType: .mcu, showLoader: $showLoader).navigationBarState(.compact, displayMode: .automatic)
+                    ProjectListView(pageType: .mcu).navigationBarState(.compact, displayMode: .automatic)
                 }.tabItem{
                     Label("MCU", systemImage: "list.dash")
                 }
                 
                 NavigationView {
-                    ProjectListView(pageType: .other, showLoader: $showLoader)
+                    ProjectListView(pageType: .other)
                 }.tabItem{
                     Label("Related", systemImage: "film")
                 }
                 
                 NavigationView {
-                    PersonListPageView(type: .actor, showLoader: $showLoader)
+                    PersonListPageView(type: .actor)
                 }.tabItem {
                     Label("Actors", systemImage: "person.fill")
                 }
                 
                 NavigationView {
-                    PersonListPageView(type: .director, showLoader: $showLoader)
+                    PersonListPageView(type: .director)
                 }.tabItem {
                     Label("Directors", systemImage: "megaphone")
                 }
@@ -89,7 +88,8 @@ struct ContentView: View {
                 
                 self.remoteConfig.remoteConfig = remoteConfig
             }.onOpenURL(perform: { url in
-                if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link", let id = Int(url.lastPathComponent) {
+                if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
+                    let id = Int(url.lastPathComponent) {
                     
                     self.detailView = ProjectDetailView(
                         viewModel: ProjectDetailViewModel(
@@ -107,7 +107,7 @@ struct ContentView: View {
                                     phase: .unkown,
                                     saga: .infinitySaga,
                                     overview: nil,
-                                    type: .special,
+                                    type: url.pathComponents[1] == "other" ? .sony : .special,
                                     boxOffice: nil,
                                     createdAt: nil,
                                     updatedAt: nil,
@@ -128,52 +128,32 @@ struct ContentView: View {
                                 )
                             )
                         ),
-                        showLoader: $showLoader
+                        inSheet: true
                     )
                     
                     self.showSheet = true
                 }
-            }).disabled(showLoader)
-                .sheet(isPresented: $showSheet) {
-                    VStack {
-                        if showView {
-                            NavigationView {
-                                detailView
-                                    .navigationBarItems(leading:
-                                        Button("Close", action: {
-                                            showSheet = false
-                                        })
-                                    )
-                            }
-                        } else {
-                            ProgressView()
-                                .onAppear {
-                                    Task {
-                                        try? await Task.sleep(nanoseconds: 1000000000)
-                                        showView = true
-                                    }
-                                }
+            }).sheet(isPresented: $showSheet) {
+                VStack {
+                    if showView {
+                        NavigationView {
+                            detailView
+                                .navigationBarItems(leading:
+                                    Button("Close", action: {
+                                        showSheet = false
+                                    })
+                                )
                         }
+                    } else {
+                        ProgressView()
+                            .onAppear {
+                                Task {
+                                    try? await Task.sleep(nanoseconds: 1000000000)
+                                    showView = true
+                                }
+                            }
                     }
                 }
-            if showLoader {
-                VStack {
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-                        
-                        ProgressView()
-                            .padding(10)
-                            .background(Color.accentColor)
-                            .cornerRadius(10)
-                        
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                }.background(.black.opacity(0.7))
-                    .transition(.opacity)
             }
         }.navigationBarState(.compact, displayMode: .automatic)
             .environmentObject(remoteConfig)

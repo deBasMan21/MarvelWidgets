@@ -42,7 +42,7 @@ struct SmallWidgetUpcomingMedium: View {
             }
             
             Spacer()
-        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.id)")!)
+        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.attributes.type.getUrlTypeString())/\(upcomingProject.id)")!)
     }
     
     func getReleaseDateString(upcomingProject: ProjectWrapper) -> String {

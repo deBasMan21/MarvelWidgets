@@ -23,6 +23,8 @@
 		EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
+		EF225DF829DDB05200577C91 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD629BE529400437A6E /* Placeholders.swift */; };
+		EF225DF929DDB05200577C91 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD629BE529400437A6E /* Placeholders.swift */; };
 		EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */; };
 		EF238AA229B26B9A00C3FC9C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238AA129B26B9A00C3FC9C /* OnboardingView.swift */; };
 		EF26F68A29DA110300E1A74D /* ZoomableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF26F68929DA110300E1A74D /* ZoomableScrollView.swift */; };
@@ -78,7 +80,6 @@
 		EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */; };
 		EF78F5C92993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */; };
 		EF78F5CA2993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */; };
-		EF78F5EF29956D1700CA9028 /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
 		EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F61F29959CF600CA9028 /* ViewExtensions.swift */; };
 		EF78F62129959CF600CA9028 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F61F29959CF600CA9028 /* ViewExtensions.swift */; };
 		EF78F62229959CF600CA9028 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F61F29959CF600CA9028 /* ViewExtensions.swift */; };
@@ -151,9 +152,6 @@
 		EFD9566329AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */; };
 		EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */; };
 		EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
-		EFE69E4329A69367002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
-		EFE69E4729A693B8002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
-		EFE69E4829A693B8002345FF /* OtherWidgets.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */; };
 		EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC029BE225A00437A6E /* NotificationService.swift */; };
 		EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
 		EFF04BC629BE2FFD00437A6E /* OnboardingPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */; };
@@ -329,7 +327,6 @@
 		EF78F5C32993BC7500CA9028 /* AccessoryInlineWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineWidget.swift; sourceTree = "<group>"; };
 		EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectengularWidget.swift; sourceTree = "<group>"; };
 		EF78F5E829956D1600CA9028 /* OtherWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherWidgets.swift; sourceTree = "<group>"; };
-		EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = OtherWidgets.intentdefinition; sourceTree = "<group>"; };
 		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
 		EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingSheet.swift; sourceTree = "<group>"; };
@@ -765,7 +762,6 @@
 				EFCE383628A3E22F00B4CC0D /* Info.plist */,
 				EFD8D76228A7F6A100CA8DAC /* MarvelWidgetBundle.swift */,
 				EF78F5E829956D1600CA9028 /* OtherWidgets.swift */,
-				EF78F5EA29956D1600CA9028 /* OtherWidgets.intentdefinition */,
 			);
 			path = SmallWidget;
 			sourceTree = "<group>";
@@ -1107,7 +1103,6 @@
 				EF6B834B2932956300A5D69C /* UserDefaultsService.swift in Sources */,
 				EF6B82CF29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift in Sources */,
 				EF28E7FF29A69EFF00B7C845 /* ListPageType.swift in Sources */,
-				EFE69E4829A693B8002345FF /* OtherWidgets.intentdefinition in Sources */,
 				EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1139,6 +1134,7 @@
 				EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */,
 				EFF0E2AD2921097200854E5F /* DirectorsWrapper.swift in Sources */,
+				EF225DF929DDB05200577C91 /* Placeholders.swift in Sources */,
 				EFF0E2B72921097200854E5F /* RelatedProjectWrapper.swift in Sources */,
 				EFF0E2BA2921097200854E5F /* ProjectWrapper.swift in Sources */,
 				EFD8D76B28A7F85C00CA8DAC /* ImageHelper.swift in Sources */,
@@ -1167,7 +1163,6 @@
 				EFF0E2B02921097200854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFF0E2B32921097200854E5F /* ActorsWrapper.swift in Sources */,
 				EF78F5CA2993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
-				EFE69E4729A693B8002345FF /* OtherWidgets.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1207,7 +1202,6 @@
 				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
 				EFB503EB29DCB57E00586017 /* OrderFilterView.swift in Sources */,
 				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
-				EF78F5EF29956D1700CA9028 /* OtherWidgets.intentdefinition in Sources */,
 				EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */,
 				EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */,
 				EFF0E27D2921080600854E5F /* ProjectType.swift in Sources */,
@@ -1316,6 +1310,7 @@
 				EFD9566329AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFF0E2A52921097100854E5F /* Episode.swift in Sources */,
 				EFD8D76028A7ACFD00CA8DAC /* SaveService.swift in Sources */,
+				EF225DF829DDB05200577C91 /* Placeholders.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
 				EFF0E2992921097100854E5F /* DirectorsWrapper.swift in Sources */,
 				EFF0E2A32921097100854E5F /* RelatedProjectWrapper.swift in Sources */,
@@ -1344,7 +1339,6 @@
 				EFF0E29C2921097100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFF0E29F2921097100854E5F /* ActorsWrapper.swift in Sources */,
 				EF78F5C92993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
-				EFE69E4329A69367002345FF /* OtherWidgets.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

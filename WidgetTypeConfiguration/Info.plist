@@ -12,10 +12,8 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>WidgetMediumConfiguratIntent</string>
-				<string>WidgetSmallConfigurationIntent</string>
-				<string>WidgetTypeConfigurationIntent</string>
-				<string>WidgetViewConfigurationIntent</string>
+				<string>SpecificWidgetIntent</string>
+				<string>UpcomingWidgetIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
