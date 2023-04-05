@@ -15,6 +15,10 @@ struct ProjectDetailView: View {
     @Binding var showLoader: Bool
     @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
+    @State private var scrollViewHeight: CGFloat = 0
+    @State private var proportion: CGFloat = 0
+    @State private var proportionName: String = "scroll"
+    
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
             if let posterUrl = viewModel.posterURL, !posterUrl.isEmpty {
@@ -111,6 +115,7 @@ struct ProjectDetailView: View {
                             .padding()
                     }
                 }.offset(x: 0, y: -60)
+                    .modifier(ScrollReadVStackModifier(scrollViewHeight: $scrollViewHeight, proportion: $proportion, proportionName: proportionName))
         }, toolbar: { state in
             HeaderToolbarItem(barState: state, content: {
                 VStack {
@@ -150,5 +155,52 @@ struct ProjectDetailView: View {
                       secondaryButton: .cancel()
                 )
             }).hiddenTabBar(featureFlag: remoteConfig.hideTabbar)
+            .modifier(ScrollReadScrollViewModifier(scrollViewHeight: $scrollViewHeight, proportionName: proportionName))
+            .overlay(
+                VStack {
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+
+                        CircularProgressView(progress: $proportion)
+                            .frame(width: 50, height: 50)
+                            .background(Color.backgroundColor)
+                            .overlay(
+                                Text("\(Int(proportion * 100))%")
+                            )
+                            .clipShape(Circle())
+                            .offset(y: 75)
+                            .padding()
+                    }
+                }
+            )
+    }
+}
+
+struct CircularProgressView: View {
+    @Binding var progress: CGFloat
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(
+                    Color.accentColor.opacity(0.5),
+                    lineWidth: 5
+                )
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(
+                    Color.accentColor,
+                    style: StrokeStyle(
+                        lineWidth: 5,
+                        lineCap: .round
+                    )
+                )
+                .rotationEffect(.degrees(-90))
+                // 1
+                .animation(.easeOut, value: progress)
+
+        }
     }
 }
