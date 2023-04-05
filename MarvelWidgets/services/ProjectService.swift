@@ -52,8 +52,6 @@ class ProjectService {
                 Task {
                     let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: config.apiKey)
                     
-                    print("debug: result \(result?.data)")
-                    
                     CachingService.saveToCache(result: result, key: ListPageType.mcu.rawValue)
                 }
                 
@@ -63,7 +61,6 @@ class ProjectService {
                 
                 CachingService.saveToCache(result: result, key: ListPageType.mcu.rawValue)
                 
-                print("debug: result \(result?.data)")
                 return result?.data ?? []
             }
         } catch let error {

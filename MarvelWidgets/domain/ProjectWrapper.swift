@@ -24,4 +24,8 @@ struct ProjectWrapper: Codable, Comparable {
         let encoder = JSONEncoder()
         return try? encoder.encode(self)
     }
+    
+    func getUrl() -> URL? {
+        URL(string: "https://mcuwidgets.page.link/\(attributes.type.getUrlTypeString())/\(id)")
+    }
 }

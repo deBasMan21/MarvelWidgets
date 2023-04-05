@@ -37,7 +37,7 @@ struct TabBarModifier {
     static func showTabBar() {
         UIApplication.shared.key?.allSubviews().forEach({ subView in
             if let view = subView as? UITabBar {
-                view.isHidden = false
+                view.setTabBarHidden(false)
             }
         })
     }
@@ -45,7 +45,7 @@ struct TabBarModifier {
     static func hideTabBar() {
         UIApplication.shared.key?.allSubviews().forEach({ subView in
             if let view = subView as? UITabBar {
-                view.isHidden = true
+                view.setTabBarHidden(true)
             }
         })
     }
@@ -84,8 +84,32 @@ extension View {
     }
 
     func hiddenTabBar(featureFlag: Bool, inSheet: Bool = false) -> some View {
-        self.if(featureFlag, transform: { view in
+        self.if(featureFlag && !inSheet, transform: { view in
             view.modifier(HiddenTabBar(inSheet: inSheet))
         })
+    }
+}
+
+extension UITabBar {
+    func setTabBarHidden(_ hidden: Bool, animated: Bool = true, duration: TimeInterval = 0.3) {
+        if self.isHidden != hidden {
+            if animated {
+                //Show the tabbar before the animation in case it has to appear
+                if self.isHidden {
+                    self.isHidden = hidden
+                }
+                
+                let factor: CGFloat = hidden ? 1 : -1
+                let y = self.frame.origin.y + (self.frame.size.height * factor)
+                UIView.animate(withDuration: duration, animations: {
+                    self.frame = CGRect(x: self.frame.origin.x, y: y, width: self.frame.width, height: self.frame.height)
+                }) { (bool) in
+                    //hide the tabbar after the animation in case ti has to be hidden
+                    if !(self.isHidden){
+                        self.isHidden = hidden
+                    }
+                }
+            }
+        }
     }
 }

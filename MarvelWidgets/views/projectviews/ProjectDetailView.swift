@@ -108,7 +108,7 @@ struct ProjectDetailView: View {
                         ProgressView()
                             .padding()
                     }
-                }.offset(x: 0, y: -60)
+                }.padding(.vertical, -60)
         }, toolbar: { state in
             HeaderToolbarItem(barState: state, content: {
                 VStack {
@@ -127,9 +127,9 @@ struct ProjectDetailView: View {
             if remoteConfig.showShare {
                 HeaderToolbarItem(barState: state, content: {
                     ShareLink(
-                        item: URL(string: "https://mcuwidgets.page.link/\(viewModel.project.attributes.type.getUrlTypeString())/\(viewModel.project.id)")!,
+                        item: viewModel.project.getUrl()!,
                         subject: Text(viewModel.project.attributes.title),
-                        message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: https://mcuwidgets.page.link/\(viewModel.project.id)"),
+                        message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: \(viewModel.project.getUrl()?.absoluteString ?? "Link is unavailable")"),
                         preview: SharePreview(
                             viewModel.project.attributes.title,
                             image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")

@@ -183,7 +183,7 @@ class DirectorPerson: Person {
     }
     
     func getSubtitle() -> String {
-        dateOfBirth ?? "No Date Of Birth"
+        dateOfBirth?.toDate()?.toFormattedString() ?? "No Date Of Birth"
     }
     
     func getSearchString() -> String {
