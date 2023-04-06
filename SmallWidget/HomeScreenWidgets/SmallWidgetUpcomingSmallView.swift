@@ -11,6 +11,7 @@ import SwiftUI
 struct SmallWidgetUpcomingSmall: View {
     let upcomingProject: ProjectWrapper
     let image: Image
+    let showText: Bool
     
     var body: some View {
         ZStack {
@@ -22,7 +23,7 @@ struct SmallWidgetUpcomingSmall: View {
                 VStack {
                     Spacer()
                     
-                    if let showTitle = UserDefaults(suiteName: UserDefaultValues.suiteName)?.bool(forKey: UserDefaultValues.smallWidgetShowText), showTitle {
+                    if showText {
                         Text(upcomingProject.attributes.title)
                             .multilineTextAlignment(.center)
                             .shadow(color: .black, radius: 5)
@@ -31,8 +32,8 @@ struct SmallWidgetUpcomingSmall: View {
                         
                         Spacer()
                         
-                        if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-                            Text("\(difference) dagen")
+                        if let string = upcomingProject.attributes.getDaysUntilRelease(withDaysString: true) {
+                            Text(string)
                                 .shadow(color: .black, radius: 5)
                                 .padding(.bottom, 30)
                                 .foregroundColor(.white)

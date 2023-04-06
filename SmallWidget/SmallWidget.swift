@@ -19,7 +19,7 @@ struct SmallWidgetUpcoming : View {
             case .systemMedium:
                 SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
             case .systemSmall:
-                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image)
+                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image, showText: entry.configuration.ShowText == 1)
             case .systemLarge:
                 if let nextProject = entry.nextProject, let nextImage = entry.nextImage {
                     VStack {

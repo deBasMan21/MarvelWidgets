@@ -12,7 +12,7 @@ struct AccessoryRectengularWidget: View {
     
     var body: some View {
         HStack {
-            if let dateFormatted = getReleaseDateString(upcomingProject: project) {
+            if let dateFormatted = project.attributes.getDaysUntilRelease(withDaysString: true) {
                 Text(dateFormatted)
                     .font(.system(size: 50))
                     .minimumScaleFactor(0.01)
@@ -31,13 +31,5 @@ struct AccessoryRectengularWidget: View {
                     .lineLimit(1)
             }
         }.widgetURL(URL(string: "mcuwidgets://project/\(project.attributes.type.getUrlTypeString())/\(project.id)")!)
-    }
-    
-    func getReleaseDateString(upcomingProject: ProjectWrapper) -> String? {
-        if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-            return "\(difference)"
-        } else {
-            return nil
-        }
     }
 }

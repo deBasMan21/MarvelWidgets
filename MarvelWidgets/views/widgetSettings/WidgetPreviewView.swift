@@ -19,7 +19,7 @@ struct WidgetPreviewView: View {
                 VStack(spacing: 20) {
                     VStack {
                         let widgetBounds = WidgetHelper.widgetSize(forFamily: .systemSmall)
-                        SmallWidgetUpcomingSmall(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""))
+                        SmallWidgetUpcomingSmall(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""), showText: true)
                             .frame(width: widgetBounds.width, height: widgetBounds.height)
                                 .cornerRadius(20)
                     }

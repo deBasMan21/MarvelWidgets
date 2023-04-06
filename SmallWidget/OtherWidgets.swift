@@ -41,11 +41,7 @@ struct Provider: IntentTimelineProvider {
                 
                 if let type = type, let id = id, let id = Int(id) {
                     proj = await getProject(type: String(type), id: id)
-                } else {
-                    proj = Placeholders.emptyProject
                 }
-            } else {
-                proj = Placeholders.emptyProject
             }
             
             var image: Image = Image("AppIcon")
@@ -79,12 +75,20 @@ struct OtherWidgetsEntryView : View {
             case .systemMedium:
                 SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
             case .systemSmall:
-                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image)
+                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image, showText: entry.configuration.ShowText == 1)
             default:
                 Text("Not implemented")
             }
         } else {
-            Text("No project \(entry.upcomingProject?.id ?? 1) \(entry.nextProject?.id ?? 1)")
+            VStack(spacing: 10) {
+                Text("Oh no! There is no project selected yet.")
+                    .foregroundColor(Color("AccentColor"))
+                    .bold()
+                    .multilineTextAlignment(.center)
+                
+                Text("Tap and hold this widget to select one or more projects. A random project from this list will be selected and shown.")
+                    .multilineTextAlignment(.center)
+            }
         }
     }
 }

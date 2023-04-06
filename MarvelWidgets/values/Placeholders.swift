@@ -118,7 +118,7 @@ class Placeholders {
     static let emptyProject = ProjectWrapper(
         id: -1,
         attributes: MCUProject(
-            title: "",
+            title: "Select projects in the settings of this widget",
             releaseDate: nil,
             releaseDateStringOverride: nil,
             postCreditScenes: nil,

@@ -42,18 +42,6 @@ struct WidgetSettingsView: View {
                         }
                     }
                     
-                    Divider()
-                    
-                    VStack {
-                        Text("Small widget settings")
-                            .font(Font.title2.bold())
-                            .foregroundColor(.accentColor)
-                        
-                        Toggle(isOn: $viewModel.showText, label: {
-                            Text("Show text on small widget:")
-                        })
-                    }
-                    
                     #if DEBUG
                         Divider()
                         

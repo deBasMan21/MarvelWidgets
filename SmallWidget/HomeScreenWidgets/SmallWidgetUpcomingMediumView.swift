@@ -28,7 +28,7 @@ struct SmallWidgetUpcomingMedium: View {
                     Text("Releasedate")
                         .font(Font.body.italic())
                     
-                    Text(getReleaseDateString(upcomingProject: upcomingProject))
+                    Text(upcomingProject.attributes.getReleaseDateString(withDayCount: true))
                         .fontWeight(.bold)
                 }
                 
@@ -43,14 +43,6 @@ struct SmallWidgetUpcomingMedium: View {
             
             Spacer()
         }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.attributes.type.getUrlTypeString())/\(upcomingProject.id)"))
-    }
-    
-    func getReleaseDateString(upcomingProject: ProjectWrapper) -> String {
-        if let difference = upcomingProject.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-            return "\(upcomingProject.attributes.getReleaseDateString()) (\(difference) days)"
-        } else {
-            return upcomingProject.attributes.getReleaseDateString()
-        }
     }
 
     func getDirectorString(upcomingProject: ProjectWrapper) -> String {

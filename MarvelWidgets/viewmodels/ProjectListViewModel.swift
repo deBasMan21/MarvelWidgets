@@ -84,6 +84,10 @@ extension ProjectListView {
             }
         }
         
+        init(pageType: ListPageType) {
+            self.pageType = pageType
+        }
+        
         func fetchProjects(force: Bool = false) async {
             _ = await MainActor.run {
                 Task {

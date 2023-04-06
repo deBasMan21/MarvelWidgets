@@ -19,7 +19,7 @@
 			<array>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Alle projecten</string>
+					<string>Unkown</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>D1qS3d</string>
 					<key>INEnumValueName</key>
@@ -133,7 +133,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>12</integer>
+			<integer>14</integer>
 			<key>INIntentName</key>
 			<string>UpcomingWidget</string>
 			<key>INIntentParameters</key>
@@ -151,6 +151,11 @@
 					<string>RandomOrNot</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
 					<string>88xZPY</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>upcoming</string>
+					</dict>
 					<key>INIntentParameterName</key>
 					<string>RandomOrNext</string>
 					<key>INIntentParameterPromptDialogs</key>
@@ -186,6 +191,11 @@
 					<string>WidgetTypeEnum</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
 					<string>88xZPY</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>all</string>
+					</dict>
 					<key>INIntentParameterName</key>
 					<string>WidgetType</string>
 					<key>INIntentParameterPromptDialogs</key>
@@ -228,6 +238,50 @@
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Show Text</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>UoOdUJ</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<true/>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>Hidden</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>zMBGbx</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>Visible</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>G41SMk</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>ShowText</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>14</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
 			</array>
 			<key>INIntentResponse</key>
 			<dict>
@@ -264,7 +318,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>3</integer>
+			<integer>5</integer>
 			<key>INIntentName</key>
 			<string>SpecificWidget</string>
 			<key>INIntentParameters</key>
@@ -308,6 +362,50 @@
 					<key>INIntentParameterType</key>
 					<string>Object</string>
 				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Show Text</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>HkSWuh</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<true/>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>Hidden</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>TAXb2b</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>Visible</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>ciPm19</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>ShowText</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>5</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
 			</array>
 			<key>INIntentResponse</key>
 			<dict>
@@ -343,7 +441,7 @@
 			<key>INTypeDisplayNameID</key>
 			<string>ubSzM6</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>102</integer>
+			<integer>103</integer>
 			<key>INTypeName</key>
 			<string>SelectableProject</string>
 			<key>INTypeProperties</key>
@@ -397,6 +495,20 @@
 					<integer>4</integer>
 					<key>INTypePropertyType</key>
 					<string>SpeakableString</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDisplayName</key>
+					<string>Sort Key</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>EOPV0A</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>5</integer>
+					<key>INTypePropertyName</key>
+					<string>sortKey</string>
+					<key>INTypePropertyTag</key>
+					<integer>103</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
 				</dict>
 			</array>
 		</dict>

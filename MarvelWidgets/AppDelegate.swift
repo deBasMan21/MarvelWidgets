@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UserDefaults.standard.string(forKey: "first") == nil {
             UserDefaults.standard.set("true", forKey: "first")
-            UserDefaults(suiteName: UserDefaultValues.suiteName)!.set(true, forKey: UserDefaultValues.smallWidgetShowText)
         }
         
         if UserDefaultsService.standard.useConfig,

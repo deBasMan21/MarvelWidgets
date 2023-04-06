@@ -12,12 +12,6 @@ import FirebaseMessaging
 
 extension WidgetSettingsView {
     class WidgetSettingsViewModel: ObservableObject {
-        @Published var showText: Bool = true {
-            didSet {
-                setShowText(to: showText)
-            }
-        }
-        
         @Published var projects: [ProjectWrapper] = []
         @Published var selectedProject: Int? = nil
         @Published var selectedProjectTitle: String? = nil
@@ -43,7 +37,6 @@ extension WidgetSettingsView {
         let notificationService = NotificationService()
         
         init() {
-            showText = userDefs.bool(forKey: UserDefaultValues.smallWidgetShowText)
             selectedProject = userDefs.integer(forKey: UserDefaultValues.specificSelectedProject)
             selectedProjectTitle = userDefs.string(forKey: UserDefaultValues.specificSelectedProjectTitle)
             
@@ -74,11 +67,6 @@ extension WidgetSettingsView {
                     }
                 }
             }
-            WidgetCenter.shared.reloadAllTimelines()
-        }
-        
-        func setShowText(to showText: Bool) {
-            userDefs.set(showText, forKey: UserDefaultValues.smallWidgetShowText)
             WidgetCenter.shared.reloadAllTimelines()
         }
         

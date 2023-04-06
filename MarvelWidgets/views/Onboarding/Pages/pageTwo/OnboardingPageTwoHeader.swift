@@ -20,7 +20,7 @@ struct OnboardingPageTwoHeader: View {
                 .shadow(color: Color.foregroundColor.withAlphaComponent(0.25), radius: 3)
             
             let widgetBoundsSmall = WidgetHelper.widgetSize(forFamily: .systemSmall)
-            SmallWidgetUpcomingSmall(upcomingProject: Placeholders.emptyMediumProject, image: Placeholders.mediumProjectImage)
+            SmallWidgetUpcomingSmall(upcomingProject: Placeholders.emptyMediumProject, image: Placeholders.mediumProjectImage, showText: true)
                 .frame(width: widgetBoundsSmall.width, height: widgetBoundsSmall.height)
                 .cornerRadius(20)
                 .offset(x: -100, y: -100)

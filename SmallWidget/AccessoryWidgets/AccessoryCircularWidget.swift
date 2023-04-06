@@ -15,7 +15,7 @@ struct AccessoryCircularWidget: View {
             Color.black
             
             VStack {
-                Text("\(project.attributes.releaseDate?.toDate()?.differenceInDays(from: Date.now) ?? 1)")
+                Text("\(project.attributes.getDaysUntilRelease(withDaysString: false) ?? "")")
                     .font(.system(size: 20))
                     .bold()
                 

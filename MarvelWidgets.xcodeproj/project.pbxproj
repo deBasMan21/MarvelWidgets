@@ -98,6 +98,7 @@
 		EF78F62429959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
+		EF84046429DEDC4400E8F969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF84046329DEDC4400E8F969 /* Assets.xcassets */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */; };
 		EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E429DCB53200586017 /* TypeFilter.swift */; };
@@ -344,6 +345,7 @@
 		EF78F5E829956D1600CA9028 /* OtherWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherWidgets.swift; sourceTree = "<group>"; };
 		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
+		EF84046329DEDC4400E8F969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingSheet.swift; sourceTree = "<group>"; };
 		EFB503E429DCB53200586017 /* TypeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFilter.swift; sourceTree = "<group>"; };
 		EFB503E629DCB55200586017 /* PhaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseFilter.swift; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 			children = (
 				EFCA5DB128A445B40004AAC7 /* IntentHandler.swift */,
 				EFCA5DB328A445B40004AAC7 /* Info.plist */,
+				EF84046329DEDC4400E8F969 /* Assets.xcassets */,
 			);
 			path = WidgetTypeConfiguration;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF35E2929D0AE7600FA8EAE /* remote_config_defaults.plist in Resources */,
+				EF84046429DEDC4400E8F969 /* Assets.xcassets in Resources */,
 				EFF0E2C82924062C00854E5F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
