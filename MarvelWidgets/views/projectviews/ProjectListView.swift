@@ -30,6 +30,8 @@ struct ProjectListView: View {
                         
                         if viewModel.pageType == .mcu {
                             PhaseFilter(selectedFilters: $viewModel.selectedFilters)
+                            
+                            CategoryFilterView(selectedCategories: $viewModel.selectedCategories)
                         }
                         
                         // Date filters

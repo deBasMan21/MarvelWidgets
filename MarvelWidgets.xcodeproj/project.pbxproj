@@ -22,12 +22,12 @@
 		EF0CA0BC29DDEEB200A2322A /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0CA0BA29DDEEB200A2322A /* DebugConfig.swift */; };
 		EF0CA0BD29DDEEB200A2322A /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0CA0BA29DDEEB200A2322A /* DebugConfig.swift */; };
 		EF0CA0BE29DDEEB200A2322A /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0CA0BA29DDEEB200A2322A /* DebugConfig.swift */; };
-		EF178C3F28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift */; };
-		EF178C4028AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift */; };
-		EF178C4128AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift */; };
-		EF178C4328AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */; };
-		EF178C4428AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */; };
-		EF178C4528AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */; };
+		EF178C3F28AE8CC3003B9B76 /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* MediumWidgetView.swift */; };
+		EF178C4028AE8CF2003B9B76 /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* MediumWidgetView.swift */; };
+		EF178C4128AE8CF2003B9B76 /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* MediumWidgetView.swift */; };
+		EF178C4328AE8D47003B9B76 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4228AE8D47003B9B76 /* SmallWidgetView.swift */; };
+		EF178C4428AE8D47003B9B76 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4228AE8D47003B9B76 /* SmallWidgetView.swift */; };
+		EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4228AE8D47003B9B76 /* SmallWidgetView.swift */; };
 		EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */; };
 		EF178C4C28AEC78D003B9B76 /* WidgetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */; };
 		EF178C4D28AEC78D003B9B76 /* WidgetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */; };
@@ -99,6 +99,18 @@
 		EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF84046429DEDC4400E8F969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF84046329DEDC4400E8F969 /* Assets.xcassets */; };
+		EF84046529DF521500E8F969 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */; };
+		EF84046729DF521700E8F969 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */; };
+		EF84046929DF574E00E8F969 /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84046829DF574E00E8F969 /* LargeWidgetView.swift */; };
+		EF84046A29DF574E00E8F969 /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84046829DF574E00E8F969 /* LargeWidgetView.swift */; };
+		EF84046B29DF574E00E8F969 /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84046829DF574E00E8F969 /* LargeWidgetView.swift */; };
+		EF84046C29DF5E0700E8F969 /* RedChipText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD229BE30C600437A6E /* RedChipText.swift */; };
+		EF84046D29DF5E0800E8F969 /* RedChipText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD229BE30C600437A6E /* RedChipText.swift */; };
+		EF84046E29DF5E1900E8F969 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */; };
+		EF84046F29DF5E1900E8F969 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */; };
+		EF84047129DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
+		EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
+		EF84047329DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */; };
 		EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E429DCB53200586017 /* TypeFilter.swift */; };
@@ -314,8 +326,8 @@
 		EF0CA0B029DDEE3D00A2322A /* ProductionConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionConfig.swift; sourceTree = "<group>"; };
 		EF0CA0B529DDEE4400A2322A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		EF0CA0BA29DDEEB200A2322A /* DebugConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugConfig.swift; sourceTree = "<group>"; };
-		EF178C3E28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetUpcomingMediumView.swift; sourceTree = "<group>"; };
-		EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetUpcomingSmallView.swift; sourceTree = "<group>"; };
+		EF178C3E28AE8CC3003B9B76 /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
+		EF178C4228AE8D47003B9B76 /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHelper.swift; sourceTree = "<group>"; };
 		EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
 		EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
@@ -346,6 +358,8 @@
 		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
 		EF84046329DEDC4400E8F969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF84046829DF574E00E8F969 /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
+		EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterView.swift; sourceTree = "<group>"; };
 		EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingSheet.swift; sourceTree = "<group>"; };
 		EFB503E429DCB53200586017 /* TypeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFilter.swift; sourceTree = "<group>"; };
 		EFB503E629DCB55200586017 /* PhaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseFilter.swift; sourceTree = "<group>"; };
@@ -551,8 +565,9 @@
 		EF78F61E2995798D00CA9028 /* HomeScreenWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				EF178C3E28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift */,
-				EF178C4228AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift */,
+				EF178C3E28AE8CC3003B9B76 /* MediumWidgetView.swift */,
+				EF178C4228AE8D47003B9B76 /* SmallWidgetView.swift */,
+				EF84046829DF574E00E8F969 /* LargeWidgetView.swift */,
 			);
 			path = HomeScreenWidgets;
 			sourceTree = "<group>";
@@ -564,6 +579,7 @@
 				EFB503E629DCB55200586017 /* PhaseFilter.swift */,
 				EFB503E829DCB56700586017 /* DateFilter.swift */,
 				EFB503EA29DCB57E00586017 /* OrderFilterView.swift */,
+				EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */,
 			);
 			path = filters;
 			sourceTree = "<group>";
@@ -1146,6 +1162,7 @@
 			files = (
 				EF178C4E28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
 				EFF0E2B52921097200854E5F /* Trailer.swift in Sources */,
+				EF84047329DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */,
 				EFF0E2AF2921097200854E5F /* Saga.swift in Sources */,
 				EF578F3A28A45721006272AA /* LogService.swift in Sources */,
 				EFD8D76A28A7F84C00CA8DAC /* APIService.swift in Sources */,
@@ -1153,16 +1170,19 @@
 				EFF0E2AC2921097200854E5F /* Actor.swift in Sources */,
 				EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */,
 				EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */,
-				EF178C4128AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
+				EF178C4128AE8CF2003B9B76 /* MediumWidgetView.swift in Sources */,
 				EF38FD74291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EF28E7F929A6996400B7C845 /* WidgetProjectService.swift in Sources */,
+				EF84046D29DF5E0800E8F969 /* RedChipText.swift in Sources */,
 				EFF0E2B82921097200854E5F /* Director.swift in Sources */,
 				EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF78F62229959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2AE2921097200854E5F /* Phase.swift in Sources */,
+				EF84046F29DF5E1900E8F969 /* TextExtension.swift in Sources */,
 				EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */,
 				EFF0E2B92921097200854E5F /* Episode.swift in Sources */,
 				EFD8D76128A7ACFD00CA8DAC /* SaveService.swift in Sources */,
+				EF84046B29DF574E00E8F969 /* LargeWidgetView.swift in Sources */,
 				EFD9566029AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */,
 				EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */,
@@ -1183,7 +1203,7 @@
 				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
 				EFF0E2B42921097200854E5F /* RelatedProject.swift in Sources */,
 				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
-				EF178C4528AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
+				EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EFF0E2BB2921097200854E5F /* Directors.swift in Sources */,
 				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
 				EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */,
@@ -1199,6 +1219,7 @@
 				EFF0E2B32921097200854E5F /* ActorsWrapper.swift in Sources */,
 				EF78F5CA2993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF0CA0B329DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
+				EF84046729DF521700E8F969 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,15 +1294,16 @@
 				EF178C4C28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
 				EFF0E275292107CE00854E5F /* ProjectWrapper.swift in Sources */,
 				EFF0E28D2921086600854E5F /* RelatedProjects.swift in Sources */,
-				EF178C3F28AE8CC3003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
+				EF178C3F28AE8CC3003B9B76 /* MediumWidgetView.swift in Sources */,
 				EFF0E27B292107F500854E5F /* Saga.swift in Sources */,
-				EF178C4328AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
+				EF178C4328AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
 				EFB503E929DCB56700586017 /* DateFilter.swift in Sources */,
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
 				EFF04BEC29BE710A00437A6E /* AppIcon.swift in Sources */,
 				EF26F68A29DA110300E1A74D /* ZoomableScrollView.swift in Sources */,
 				EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */,
+				EF84046929DF574E00E8F969 /* LargeWidgetView.swift in Sources */,
 				EF0377DF299D2BDB0058C2FF /* ColorExtensions.swift in Sources */,
 				EF28E7FC29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EFF0E2952921089400854E5F /* Season.swift in Sources */,
@@ -1297,6 +1319,7 @@
 				EFB503FE29DD8B7900586017 /* ScrollViewListener.swift in Sources */,
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
+				EF84047129DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */,
 				EFF04BD929BE554000437A6E /* OnboardingOverlayView.swift in Sources */,
 				EFBE482329C621550036185E /* ReviewView.swift in Sources */,
 				EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
@@ -1328,6 +1351,7 @@
 			files = (
 				EF178C4D28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
 				EFF0E2A12921097100854E5F /* Trailer.swift in Sources */,
+				EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */,
 				EFF0E29B2921097100854E5F /* Saga.swift in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EF4D265928A4512A00B7BCEE /* ConfigValues.swift in Sources */,
@@ -1336,15 +1360,18 @@
 				EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */,
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
 				EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */,
-				EF178C4028AE8CF2003B9B76 /* SmallWidgetUpcomingMediumView.swift in Sources */,
+				EF178C4028AE8CF2003B9B76 /* MediumWidgetView.swift in Sources */,
 				EF28E7F829A6996300B7C845 /* WidgetProjectService.swift in Sources */,
+				EF84046C29DF5E0700E8F969 /* RedChipText.swift in Sources */,
 				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
 				EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */,
 				EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF78F62129959CF600CA9028 /* ViewExtensions.swift in Sources */,
+				EF84046E29DF5E1900E8F969 /* TextExtension.swift in Sources */,
 				EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
 				EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */,
+				EF84046A29DF574E00E8F969 /* LargeWidgetView.swift in Sources */,
 				EFD9565F29AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */,
 				EFD9566329AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFF0E2A52921097100854E5F /* Episode.swift in Sources */,
@@ -1366,7 +1393,7 @@
 				EF578F3828A45632006272AA /* CachingService.swift in Sources */,
 				EFF0E2A02921097100854E5F /* RelatedProject.swift in Sources */,
 				EFF0E29D2921097100854E5F /* MCUProject.swift in Sources */,
-				EF178C4428AE8D47003B9B76 /* SmallWidgetUpcomingSmallView.swift in Sources */,
+				EF178C4428AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EFF0E2A72921097100854E5F /* Directors.swift in Sources */,
 				EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
 				EFF0E2A92921097100854E5F /* RelatedProjects.swift in Sources */,
@@ -1381,6 +1408,7 @@
 				EFF0E29F2921097100854E5F /* ActorsWrapper.swift in Sources */,
 				EF78F5C92993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF0CA0B229DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
+				EF84046529DF521500E8F969 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

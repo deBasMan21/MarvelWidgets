@@ -15,9 +15,7 @@ struct SmallWidgetProvider: IntentTimelineProvider {
             date: Date(),
             configuration: UpcomingWidgetIntent(),
             upcomingProject: Placeholders.emptyProject,
-            nextProject: Placeholders.emptyProject,
-            image: Image("secret wars"),
-            nextImage: Image("secret wars")
+            image: Image("secret wars")
         )
     }
     
@@ -50,14 +48,10 @@ struct SmallWidgetProvider: IntentTimelineProvider {
             default:
                 upcomingProjects = await ProjectService.getFirstUpcoming(for: widgetType)
                 
-                entries.append(
-                    WidgetProjectService.upcomingProject(from: upcomingProjects, with: configuration)
-                    ?? projectEntry
-                )
+                entries.append(WidgetProjectService.upcomingProject(from: upcomingProjects, with: configuration))
             }
             
-            let timeline = Timeline(entries: entries, policy: .atEnd)
-            completion(timeline)
+            completion(Timeline(entries: entries, policy: .atEnd))
         }
     }
 }

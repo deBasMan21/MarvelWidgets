@@ -79,7 +79,7 @@ struct MCUProject: Codable, Comparable {
         if withDayCount,
             releaseDateStringOverride == nil,
             let difference = getDaysUntilRelease(withDaysString: true) {
-            releaseDateString += " m(\(difference))"
+            releaseDateString += " (\(difference))"
         }
         
         return releaseDateString

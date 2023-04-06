@@ -12,7 +12,7 @@ struct AccessoryRectengularWidget: View {
     
     var body: some View {
         HStack {
-            if let dateFormatted = project.attributes.getDaysUntilRelease(withDaysString: true) {
+            if let dateFormatted = project.attributes.getDaysUntilRelease(withDaysString: false) {
                 Text(dateFormatted)
                     .font(.system(size: 50))
                     .minimumScaleFactor(0.01)
@@ -30,6 +30,6 @@ struct AccessoryRectengularWidget: View {
                     .font(.system(size: 10))
                     .lineLimit(1)
             }
-        }.widgetURL(URL(string: "mcuwidgets://project/\(project.attributes.type.getUrlTypeString())/\(project.id)")!)
+        }.widgetURL(project.getUrl())
     }
 }

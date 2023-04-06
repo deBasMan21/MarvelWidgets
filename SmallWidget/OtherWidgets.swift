@@ -73,9 +73,17 @@ struct OtherWidgetsEntryView : View {
         if let project = entry.upcomingProject {
             switch family {
             case .systemMedium:
-                SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
+                MediumWidgetView(upcomingProject: project, image: entry.image)
             case .systemSmall:
-                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image, showText: entry.configuration.ShowText == 1)
+                SmallWidgetView(upcomingProject: project, image: entry.image, showText: entry.configuration.ShowText == 1)
+            case .systemLarge:
+                LargeWidgetView(project: project, image: entry.image)
+            case .accessoryCircular:
+                AccessoryCircularWidget(project: project)
+            case .accessoryInline:
+                AccessoryInlineWidget(project: project)
+            case .accessoryRectangular:
+                AccessoryRectengularWidget(project: project)
             default:
                 Text("Not implemented")
             }
@@ -102,6 +110,6 @@ struct OtherWidgets: Widget {
         }
         .configurationDisplayName("Specific Projects")
         .description("This widget shows a random project from the list you can select when editing this widget.")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular, .accessoryInline, .accessoryRectangular])
     }
 }

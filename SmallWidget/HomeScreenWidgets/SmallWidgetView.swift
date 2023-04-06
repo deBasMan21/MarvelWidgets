@@ -8,21 +8,35 @@
 import Foundation
 import SwiftUI
 
-struct SmallWidgetUpcomingSmall: View {
+struct SmallWidgetView: View {
     let upcomingProject: ProjectWrapper
     let image: Image
     let showText: Bool
+    
+    let gradient = LinearGradient(
+            gradient: Gradient(stops: [
+                .init(color: Color("BackgroundColor").withAlphaComponent(0.75), location: 0),
+                .init(color: .clear, location: 0.2),
+                .init(color: .clear, location: 0.7),
+                .init(color: Color("BackgroundColor").withAlphaComponent(0.75), location: 1),
+            ]),
+            startPoint: .bottom,
+            endPoint: .top
+        )
     
     var body: some View {
         ZStack {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
+                .frame(width: WidgetHelper.widgetSize(forFamily: .systemSmall).width, height: WidgetHelper.widgetSize(forFamily: .systemSmall).height)
+                .clipped()
+                .if(showText) { view in
+                    view.overlay(gradient)
+                }
             
             HStack {
                 VStack {
-                    Spacer()
-                    
                     if showText {
                         Text(upcomingProject.attributes.title)
                             .multilineTextAlignment(.center)
@@ -35,12 +49,11 @@ struct SmallWidgetUpcomingSmall: View {
                         if let string = upcomingProject.attributes.getDaysUntilRelease(withDaysString: true) {
                             Text(string)
                                 .shadow(color: .black, radius: 5)
-                                .padding(.bottom, 30)
                                 .foregroundColor(.white)
                         }
                     }
-                }.padding()
-            }
-        }.widgetURL(URL(string: "mcuwidgets://project/\(upcomingProject.attributes.type.getUrlTypeString())/\(upcomingProject.id)")!)
+                }
+            }.padding(.vertical, 3)
+        }.widgetURL(upcomingProject.getUrl())
     }
 }

@@ -12,6 +12,6 @@ struct AccessoryInlineWidget: View {
     
     var body: some View {
         Text("\(project.attributes.getDaysUntilRelease(withDaysString: true) ?? "") - \(project.attributes.title)")
-            .widgetURL(URL(string: "mcuwidgets://project/\(project.attributes.type.getUrlTypeString())/\(project.id)")!)
+            .widgetURL(project.getUrl())
     }
 }
