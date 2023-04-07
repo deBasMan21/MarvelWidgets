@@ -13,7 +13,5 @@ struct UpcomingProjectEntry: TimelineEntry {
     let date: Date
     let configuration: UpcomingWidgetIntent
     let upcomingProject: ProjectWrapper?
-    let nextProject: ProjectWrapper?
     let image: Image
-    let nextImage: Image?
 }

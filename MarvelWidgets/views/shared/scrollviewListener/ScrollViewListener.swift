@@ -27,7 +27,9 @@ struct ScrollReadVStackModifier: ViewModifier {
                             value: proportion
                         )
                         .onPreferenceChange(ScrollProportion.self) { proportion in
-                            self.proportion = proportion
+                            withAnimation {
+                                self.proportion = proportion
+                            }
                         }
                 }
             )

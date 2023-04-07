@@ -13,7 +13,7 @@ struct RedChipText: ViewModifier {
         content
             .padding(2)
             .padding(.horizontal, 7)
-            .background(Color.accentColor.withAlphaComponent(0.2))
+            .background(Color("AccentColor").withAlphaComponent(0.2))
             .foregroundColor(.white)
             .cornerRadius(20)
     }

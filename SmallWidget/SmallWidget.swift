@@ -17,18 +17,11 @@ struct SmallWidgetUpcoming : View {
         if let project = entry.upcomingProject {
             switch family{
             case .systemMedium:
-                SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
+                MediumWidgetView(upcomingProject: project, image: entry.image)
             case .systemSmall:
-                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image)
+                SmallWidgetView(upcomingProject: project, image: entry.image, showText: entry.configuration.ShowText == 1)
             case .systemLarge:
-                if let nextProject = entry.nextProject, let nextImage = entry.nextImage {
-                    VStack {
-                        SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
-                        SmallWidgetUpcomingMedium(upcomingProject: nextProject, image: nextImage)
-                    }
-                } else {
-                    Text("No project")
-                }
+                LargeWidgetView(project: project, image: entry.image)
             case .accessoryCircular:
                 AccessoryCircularWidget(project: project)
             case .accessoryInline:

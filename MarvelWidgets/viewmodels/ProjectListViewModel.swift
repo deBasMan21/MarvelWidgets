@@ -35,6 +35,11 @@ extension ProjectListView {
         @Published var closestDateId: Int = -1
         @Published var showScroll: Bool = false
         @Published var forceClose: Bool = false
+        @Published var selectedCategories: [String] = [] {
+            didSet {
+                filterProjects()
+            }
+        }
         @Published var orderType: OrderType = .releaseDateASC {
             didSet {
                 orderProjects()
@@ -82,6 +87,10 @@ extension ProjectListView {
             case .other:
                 return "Marvel other"
             }
+        }
+        
+        init(pageType: ListPageType) {
+            self.pageType = pageType
         }
         
         func fetchProjects(force: Bool = false) async {
@@ -180,6 +189,13 @@ extension ProjectListView {
                 projects = projects.filter { $0.attributes.title.contains(searchQuery) }
             }
             
+            if selectedCategories.count > 0 {
+                projects = projects.filter {
+                    let categories = ($0.attributes.categories ?? "").split(separator: ", ").compactMap(String.init)
+                    return Set(categories).intersection(Set(selectedCategories)).count > 0
+                }
+            }
+            
             projects = projects.filter {
                 $0.attributes.releaseDate ?? "" > afterDate.toOriginalFormattedString()
             }
@@ -214,6 +230,7 @@ extension ProjectListView {
         func resetFilters() {
             selectedFilters = []
             selectedTypes = []
+            selectedCategories = []
             orderType = .releaseDateASC
             setReleaseDates()
         }

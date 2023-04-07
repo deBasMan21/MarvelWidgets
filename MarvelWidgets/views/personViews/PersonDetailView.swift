@@ -87,7 +87,7 @@ struct PersonDetailView: View {
                                 }
                             }.padding()
                         }
-                }.offset(x: 0, y: -50)
+                }.padding(.vertical, -50)
             }.onAppear {
                 Task {
                     if let person = await person.getPopulated() {

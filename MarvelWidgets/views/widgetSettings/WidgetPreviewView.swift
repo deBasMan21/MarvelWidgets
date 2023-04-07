@@ -19,14 +19,14 @@ struct WidgetPreviewView: View {
                 VStack(spacing: 20) {
                     VStack {
                         let widgetBounds = WidgetHelper.widgetSize(forFamily: .systemSmall)
-                        SmallWidgetUpcomingSmall(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""))
+                        SmallWidgetView(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""), showText: true)
                             .frame(width: widgetBounds.width, height: widgetBounds.height)
                                 .cornerRadius(20)
                     }
                     
                     VStack {
                         let widgetBounds = WidgetHelper.widgetSize(forFamily: .systemMedium)
-                        SmallWidgetUpcomingMedium(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""))
+                        MediumWidgetView(upcomingProject: project, image: ImageHelper.downloadImage(from: project.attributes.posters?.randomElement()?.posterURL ?? ""))
                             .frame(width: widgetBounds.width, height: widgetBounds.height)
                                 .background(Color(uiColor: UIColor.systemBackground))
                                 .cornerRadius(20)

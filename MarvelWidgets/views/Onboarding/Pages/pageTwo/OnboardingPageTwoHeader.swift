@@ -12,7 +12,7 @@ struct OnboardingPageTwoHeader: View {
     var body: some View {
         ZStack {
             let widgetBoundsMedium = WidgetHelper.widgetSize(forFamily: .systemMedium)
-            SmallWidgetUpcomingMedium(upcomingProject: Placeholders.emptySmallProject, image: Placeholders.smallProjectImage)
+            MediumWidgetView(upcomingProject: Placeholders.emptySmallProject, image: Placeholders.smallProjectImage)
                 .frame(width: widgetBoundsMedium.width, height: widgetBoundsMedium.height)
                 .background(Color(uiColor: UIColor.systemBackground))
                 .cornerRadius(20)
@@ -20,7 +20,7 @@ struct OnboardingPageTwoHeader: View {
                 .shadow(color: Color.foregroundColor.withAlphaComponent(0.25), radius: 3)
             
             let widgetBoundsSmall = WidgetHelper.widgetSize(forFamily: .systemSmall)
-            SmallWidgetUpcomingSmall(upcomingProject: Placeholders.emptyMediumProject, image: Placeholders.mediumProjectImage)
+            SmallWidgetView(upcomingProject: Placeholders.emptyMediumProject, image: Placeholders.mediumProjectImage, showText: true)
                 .frame(width: widgetBoundsSmall.width, height: widgetBoundsSmall.height)
                 .cornerRadius(20)
                 .offset(x: -100, y: -100)

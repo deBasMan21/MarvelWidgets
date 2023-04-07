@@ -9,9 +9,12 @@ import Foundation
 import SwiftUI
 
 struct ProjectListView: View {
-    @State var pageType: ListPageType
-    @StateObject var viewModel = ProjectListViewModel()
+    @StateObject var viewModel: ProjectListViewModel
     @EnvironmentObject var remoteConfig: RemoteConfigWrapper
+    
+    init(pageType: ListPageType) {
+        self._viewModel = StateObject(wrappedValue: ProjectListViewModel(pageType: pageType))
+    }
     
     var body: some View {
         VStack{
@@ -27,6 +30,8 @@ struct ProjectListView: View {
                         
                         if viewModel.pageType == .mcu {
                             PhaseFilter(selectedFilters: $viewModel.selectedFilters)
+                            
+                            CategoryFilterView(selectedCategories: $viewModel.selectedCategories)
                         }
                         
                         // Date filters
@@ -104,7 +109,6 @@ struct ProjectListView: View {
         }.navigationBarState(.compact, displayMode: .automatic)
             .onAppear{
                 Task{
-                    viewModel.pageType = pageType
                     await viewModel.fetchProjects()
                 }
             }.navigationTitle(viewModel.navigationTitle)

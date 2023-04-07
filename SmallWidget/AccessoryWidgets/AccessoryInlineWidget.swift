@@ -11,15 +11,7 @@ struct AccessoryInlineWidget: View {
     @State var project: ProjectWrapper
     
     var body: some View {
-        Text("\(getReleaseDateString(releaseDate: project.attributes.releaseDate ?? "")) - \(project.attributes.title)")
-            .widgetURL(URL(string: "mcuwidgets://project/\(project.attributes.type.getUrlTypeString())/\(project.id)")!)
-    }
-    
-    func getReleaseDateString(releaseDate: String) -> String {
-        if let difference = releaseDate.toDate()?.differenceInDays(from: Date.now), difference >= 0 {
-            return "\(difference) days"
-        } else {
-            return ""
-        }
+        Text("\(project.attributes.getDaysUntilRelease(withDaysString: true) ?? "") - \(project.attributes.title)")
+            .widgetURL(project.getUrl())
     }
 }

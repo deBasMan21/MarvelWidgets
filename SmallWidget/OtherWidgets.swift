@@ -41,11 +41,7 @@ struct Provider: IntentTimelineProvider {
                 
                 if let type = type, let id = id, let id = Int(id) {
                     proj = await getProject(type: String(type), id: id)
-                } else {
-                    proj = Placeholders.emptyProject
                 }
-            } else {
-                proj = Placeholders.emptyProject
             }
             
             var image: Image = Image("AppIcon")
@@ -77,14 +73,30 @@ struct OtherWidgetsEntryView : View {
         if let project = entry.upcomingProject {
             switch family {
             case .systemMedium:
-                SmallWidgetUpcomingMedium(upcomingProject: project, image: entry.image)
+                MediumWidgetView(upcomingProject: project, image: entry.image)
             case .systemSmall:
-                SmallWidgetUpcomingSmall(upcomingProject: project, image: entry.image)
+                SmallWidgetView(upcomingProject: project, image: entry.image, showText: entry.configuration.ShowText == 1)
+            case .systemLarge:
+                LargeWidgetView(project: project, image: entry.image)
+            case .accessoryCircular:
+                AccessoryCircularWidget(project: project)
+            case .accessoryInline:
+                AccessoryInlineWidget(project: project)
+            case .accessoryRectangular:
+                AccessoryRectengularWidget(project: project)
             default:
                 Text("Not implemented")
             }
         } else {
-            Text("No project \(entry.upcomingProject?.id ?? 1) \(entry.nextProject?.id ?? 1)")
+            VStack(spacing: 10) {
+                Text("Oh no! There is no project selected yet.")
+                    .foregroundColor(Color("AccentColor"))
+                    .bold()
+                    .multilineTextAlignment(.center)
+                
+                Text("Tap and hold this widget to select one or more projects. A random project from this list will be selected and shown.")
+                    .multilineTextAlignment(.center)
+            }
         }
     }
 }
@@ -98,6 +110,6 @@ struct OtherWidgets: Widget {
         }
         .configurationDisplayName("Specific Projects")
         .description("This widget shows a random project from the list you can select when editing this widget.")
-        .supportedFamilies([.systemSmall, .systemMedium])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryCircular, .accessoryInline, .accessoryRectangular])
     }
 }

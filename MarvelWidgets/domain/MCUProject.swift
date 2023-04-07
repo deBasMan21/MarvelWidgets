@@ -66,13 +66,33 @@ struct MCUProject: Codable, Comparable {
         case reviewTitle, reviewSummary, reviewCopyright
     }
     
-    func getReleaseDateString() -> String {
+    func getReleaseDateString(withDayCount: Bool = false) -> String {
+        var releaseDateString: String
         if let releaseDateStringOverride = releaseDateStringOverride {
-            return releaseDateStringOverride
+            releaseDateString = releaseDateStringOverride
         } else if let releaseDate = releaseDate, let dateObj = releaseDate.toDate() {
-            return dateObj.toFormattedString()
+            releaseDateString = dateObj.toFormattedString()
         } else {
-            return "Unkown release date"
+            releaseDateString = "Unkown release date"
         }
+        
+        if withDayCount,
+            releaseDateStringOverride == nil,
+            let difference = getDaysUntilRelease(withDaysString: true) {
+            releaseDateString += " (\(difference))"
+        }
+        
+        return releaseDateString
+    }
+    
+    func getDaysUntilRelease(withDaysString: Bool) -> String? {
+        if let difference = releaseDate?.toDate()?.differenceInDays(from: Date.now), difference > 0 {
+            if withDaysString {
+                return "\(difference) days"
+            } else {
+                return "\(difference)"
+            }
+        }
+        return nil
     }
 }

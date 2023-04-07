@@ -51,12 +51,6 @@ class UserDefaultsService {
         }
     }
     
-    var showOtherTabs: Bool {
-        get {
-            defs.bool(forKey: UserDefaultsKeys.showOtherTabsKey)
-        }
-    }
-    
     var disableCaching: Bool {
         get {
             defs.bool(forKey: UserDefaultsKeys.disableCaching)

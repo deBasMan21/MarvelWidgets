@@ -52,8 +52,6 @@ class ProjectService {
                 Task {
                     let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: config.apiKey)
                     
-                    print("debug: result \(result?.data)")
-                    
                     CachingService.saveToCache(result: result, key: ListPageType.mcu.rawValue)
                 }
                 
@@ -61,9 +59,14 @@ class ProjectService {
             } else {
                 let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: ListResponseWrapper.self, auth: config.apiKey)
                 
+                let allCategories = result?.data.compactMap { $0.attributes.categories }.compactMap { $0.split(separator: ",").compactMap { String($0).trimmingCharacters(in: .whitespacesAndNewlines) } }.flatMap(Array.init)
+                if let allCategories = allCategories {
+                    let set = Set(allCategories)
+                    print("debug: all categories \(set)")
+                }
+                
                 CachingService.saveToCache(result: result, key: ListPageType.mcu.rawValue)
                 
-                print("debug: result \(result?.data)")
                 return result?.data ?? []
             }
         } catch let error {
