@@ -150,4 +150,42 @@ class Placeholders {
             reviewCopyright: nil
         )
     )
+    
+    static func loadingProject(id: Int, type: ProjectType) -> ProjectWrapper {
+        ProjectWrapper(
+            id: id,
+            attributes: MCUProject(
+                title: "Loading...",
+                releaseDate: nil,
+                releaseDateStringOverride: nil,
+                postCreditScenes: nil,
+                duration: nil,
+                voteCount: nil,
+                awardsNominated: nil,
+                awardsWon: nil,
+                productionBudget: nil,
+                phase: .unkown,
+                saga: .infinitySaga,
+                overview: nil,
+                type: type,
+                boxOffice: nil,
+                createdAt: nil,
+                updatedAt: nil,
+                disneyPlusUrl: nil,
+                categories: nil,
+                quote: nil,
+                quoteCaption: nil,
+                directors: nil,
+                actors: nil,
+                relatedProjects: nil,
+                trailers: nil,
+                posters: nil,
+                seasons: nil,
+                rating: nil,
+                reviewTitle: nil,
+                reviewSummary: nil,
+                reviewCopyright: nil
+            )
+        )
+    }
 }

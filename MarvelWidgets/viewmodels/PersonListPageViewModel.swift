@@ -12,7 +12,6 @@ extension PersonListPageView {
     class ViewModel: ObservableObject {
         @Published var showSheet: Bool = false
         @Published var sheetHeight: PresentationDetent = .medium
-        @Published var personDetailId: [String: Bool] = [:]
         @Published var detents: Set<PresentationDetent> = [.medium]
         
         @Published var scrollViewHeight: CGFloat = 0
@@ -146,7 +145,7 @@ extension PersonListPageView {
     }
 }
 
-protocol Person {
+protocol Person: Hashable {
     var id: Int { get }
     var firstName: String { get }
     var lastName: String { get }
@@ -160,7 +159,18 @@ protocol Person {
     func getPopulated() async -> (any Person)?
 }
 
-class DirectorPerson: Person {
+class DirectorPerson: Person, Hashable {
+    static func == (lhs: DirectorPerson, rhs: DirectorPerson) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(firstName)
+        hasher.combine(lastName)
+        hasher.combine(dateOfBirth)
+    }
+    
     var id: Int
     var firstName: String
     var lastName: String
@@ -199,7 +209,18 @@ class DirectorPerson: Person {
     }
 }
 
-class ActorPerson: Person {
+class ActorPerson: Person, Hashable {
+    static func == (lhs: ActorPerson, rhs: ActorPerson) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(firstName)
+        hasher.combine(lastName)
+        hasher.combine(dateOfBirth)
+    }
+    
     var id: Int
     var firstName: String
     var lastName: String

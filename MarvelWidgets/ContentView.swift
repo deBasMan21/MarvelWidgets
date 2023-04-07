@@ -10,9 +10,8 @@ import WidgetKit
 import FirebaseRemoteConfig
 
 struct ContentView: View {
-    @State var showSheet: Bool = false
-    
     @State var showView = false
+    @State var projects = NavigationPath()
     
     @State var detailView: ProjectDetailView?
     @State var showOnboarding: Bool = {
@@ -31,8 +30,11 @@ struct ContentView: View {
             }
             
             TabView {
-                NavigationView {
-                    ProjectListView(pageType: .mcu).navigationBarState(.compact, displayMode: .automatic)
+                NavigationStack(path: $projects) {
+                    ProjectListView(pageType: .mcu)
+                        .navigationDestination(for: ProjectWrapper.self) { i in
+                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: i),  inSheet: false)
+                        }
                 }.tabItem{
                     Label("MCU", systemImage: "list.dash")
                 }
@@ -90,72 +92,9 @@ struct ContentView: View {
             }.onOpenURL(perform: { url in
                 if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
                     let id = Int(url.lastPathComponent) {
-                    
-                    self.detailView = ProjectDetailView(
-                        viewModel: ProjectDetailViewModel(
-                            project: ProjectWrapper(
-                                id: id,
-                                attributes: MCUProject(
-                                    title: "Loading...",
-                                    releaseDate: nil,
-                                    releaseDateStringOverride: nil,
-                                    postCreditScenes: nil,
-                                    duration: nil,
-                                    voteCount: nil,
-                                    awardsNominated: nil,
-                                    awardsWon: nil,
-                                    productionBudget: nil,
-                                    phase: .unkown,
-                                    saga: .infinitySaga,
-                                    overview: nil,
-                                    type: url.pathComponents[1] == "other" ? .sony : .special,
-                                    boxOffice: nil,
-                                    createdAt: nil,
-                                    updatedAt: nil,
-                                    disneyPlusUrl: nil,
-                                    categories: nil,
-                                    quote: nil,
-                                    quoteCaption: nil,
-                                    directors: nil,
-                                    actors: nil,
-                                    relatedProjects: nil,
-                                    trailers: nil,
-                                    posters: nil,
-                                    seasons: nil,
-                                    rating: nil,
-                                    reviewTitle: nil,
-                                    reviewSummary: nil,
-                                    reviewCopyright: nil
-                                )
-                            )
-                        ),
-                        inSheet: true
-                    )
-                    
-                    self.showSheet = true
+                    projects.append(Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special))
                 }
-            }).sheet(isPresented: $showSheet) {
-                VStack {
-                    if showView {
-                        NavigationView {
-                            detailView
-                                .navigationBarItems(leading:
-                                    Button("Close", action: {
-                                        showSheet = false
-                                    })
-                                )
-                        }
-                    } else {
-                        ProgressView()
-                            .onAppear {
-                                Task {
-                                    try? await Task.sleep(nanoseconds: 1000000000)
-                                    showView = true
-                                }
-                            }
-                    }
-                }
-            }
+            })
         }.navigationBarState(.compact, displayMode: .automatic)
             .environmentObject(remoteConfig)
     }

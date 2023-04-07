@@ -22,6 +22,7 @@ class UserDefaultsService {
         static let baseUrl = "baseUrl"
         static let token = "token"
         static let useConfig = "useConfig"
+        static let previousTabbarHeight = "previousTabbarHeight"
     }
     
     var useConfig: Bool {
@@ -69,6 +70,15 @@ class UserDefaultsService {
     var alwaysShowOnboarding: Bool {
         get {
             defs.bool(forKey: UserDefaultsKeys.alwaysShowOnboarding)
+        }
+    }
+    
+    var previousTabbarHeight: Int {
+        get {
+            defs.integer(forKey: UserDefaultsKeys.previousTabbarHeight)
+        }
+        set(value) {
+            defs.set(value, forKey: UserDefaultsKeys.previousTabbarHeight)
         }
     }
 }
