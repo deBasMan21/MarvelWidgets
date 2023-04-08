@@ -19,6 +19,8 @@ struct ContentView: View {
     }()
     @State var remoteConfig: RemoteConfigWrapper = RemoteConfigWrapper()
     
+    @State var openUrlHelper: OpenUrlWrapper?
+    
     var body: some View {
         ZStack {
             if showOnboarding {
@@ -68,6 +70,10 @@ struct ContentView: View {
                 tabBarAppearance.configureWithDefaultBackground()
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
                 
+                openUrlHelper = OpenUrlWrapper(callback: { proj in
+                    self.projects.append(proj)
+                })
+                
                 // Setup fb remote config
                 let settings = RemoteConfigSettings()
                 settings.minimumFetchInterval = 0
@@ -91,12 +97,34 @@ struct ContentView: View {
                 self.remoteConfig.remoteConfig = remoteConfig
             }.onOpenURL(perform: { url in
                 if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
-                    let id = Int(url.lastPathComponent) {
+                   let id = Int(url.lastPathComponent) {
                     projects.append(Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special))
                 }
             })
         }.navigationBarState(.compact, displayMode: .automatic)
             .environmentObject(remoteConfig)
+    }
+}
+
+class OpenUrlWrapper {
+    let callback: (ProjectWrapper) -> Void
+    
+    init(callback: @escaping (ProjectWrapper) -> Void) {
+        self.callback = callback
+        setupNotificationListener()
+    }
+    
+    func setupNotificationListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(openUrl(notification:)), name: Notification.Name(rawValue: "url"), object: nil)
+    }
+    
+    @objc func openUrl(notification: NSNotification) {
+        guard let url = notification.userInfo?["url"] as? String else { return }
+        guard let url = URL(string: url) else { return }
+        if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
+           let id = Int(url.lastPathComponent) {
+            callback(Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special))
+        }
     }
 }
 

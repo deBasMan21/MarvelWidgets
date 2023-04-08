@@ -40,6 +40,12 @@ struct WidgetSettingsView: View {
                         Toggle(isOn: $viewModel.notificationSpecial) {
                             Text("Special")
                         }
+                        
+                        #if DEBUG
+                            Toggle(isOn: $viewModel.notificationTesting) {
+                                Text("Testing")
+                            }
+                        #endif
                     }
                     
                     #if DEBUG

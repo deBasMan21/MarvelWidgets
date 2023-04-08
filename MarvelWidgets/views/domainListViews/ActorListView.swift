@@ -27,25 +27,23 @@ struct ActorListView: View {
                                     NavigationLink(
                                         destination: PersonDetailView(
                                             person: actor.person
-                                        ),
-                                        isActive: binding(
-                                            for: imageUrl
                                         )
                                     ) {
-                                        EmptyView()
+                                        VStack {
+                                            CircularImageView(imageUrl: imageUrl)
+                                            
+                                            Text("\(actor.attributes.firstName) \(actor.attributes.lastName)")
+                                                .bold()
+                                                .foregroundColor(.accentColor)
+                                            
+                                            if let birthDay = actor.attributes.dateOfBirth?.toDate()?.toFormattedString() {
+                                                Text("\(birthDay)")
+                                                    .foregroundColor(.foregroundColor)
+                                            }
+                                        }
                                     }
                                     
-                                    CircularImageView(imageUrl: imageUrl, onTapCallback: { url in
-                                        activeImageFullscreen[url] = true
-                                    })
                                     
-                                    Text("\(actor.attributes.firstName) \(actor.attributes.lastName)")
-                                        .bold()
-                                        .foregroundColor(.accentColor)
-                                    
-                                    if let birthDay = actor.attributes.dateOfBirth?.toDate()?.toFormattedString() {
-                                        Text("\(birthDay)")
-                                    }
                                 }
                             }.frame(width: 150)
                         }

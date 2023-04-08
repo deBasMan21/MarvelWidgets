@@ -56,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Message ID: \(messageID)")
         }
         
+        notifyView(userInfo: userInfo)
+        
         // Print full message.
         print(userInfo)
     }
@@ -77,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print full message.
         print(userInfo)
+        notifyView(userInfo: userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -119,6 +122,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // [END_EXCLUDE]
         // Print full message.
         print(userInfo)
+        notifyView(userInfo: userInfo)
         
         // Change this to your preferred presentation option
         completionHandler([[.badge, .sound]])
@@ -139,6 +143,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print full message.
         print(userInfo)
+        notifyView(userInfo: userInfo)
         
         completionHandler()
     }
@@ -161,4 +166,12 @@ extension AppDelegate: MessagingDelegate {
     }
     
     // [END refresh_token]
+}
+
+extension AppDelegate {
+    func notifyView(userInfo: [AnyHashable: Any]) {
+        if let url = userInfo["url"] {
+            NotificationCenter.default.post(name: Notification.Name("url"), object: nil, userInfo: ["url": url])
+        }
+    }
 }
