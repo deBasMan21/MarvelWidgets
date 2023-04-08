@@ -72,6 +72,7 @@ extension ProjectListView {
             }
         }
         
+        private var blockFilter: Bool = false
         private var minimalBeforeDate: Date = Date.now
         private var maximalAfterDate: Date = Date.now
         
@@ -162,6 +163,26 @@ extension ProjectListView {
                         return rating0 > rating1
                     }
                 })
+            case .rankingASC:
+                orderedProjects = projects.sorted(by: {
+                    let rating0 = $0.attributes.rankingCurrentRank ?? 10000
+                    let rating1 = $1.attributes.rankingCurrentRank ?? 10000
+                    if rating0 == rating1 {
+                        return $0.attributes.voteCount ?? 0 > $1.attributes.voteCount ?? 0
+                    } else {
+                        return rating0 > rating1
+                    }
+                })
+            case .rankingDESC:
+                orderedProjects = projects.sorted(by: {
+                    let rating0 = $0.attributes.rankingCurrentRank ?? 10000
+                    let rating1 = $1.attributes.rankingCurrentRank ?? 10000
+                    if rating0 == rating1 {
+                        return $0.attributes.getRankingChange() < $1.attributes.getRankingChange()
+                    } else {
+                        return rating0 < rating1
+                    }
+                })
             }
             
             return orderedProjects
@@ -172,6 +193,8 @@ extension ProjectListView {
         }
         
         func filterProjects() {
+            guard !blockFilter else { return }
+            
             var projects = allProjects.filter {
                 guard let projDate = $0.attributes.releaseDate?.toDate() else { return true }
                 return projDate >= afterDate && projDate <= beforeDate
@@ -228,11 +251,16 @@ extension ProjectListView {
         }
         
         func resetFilters() {
+            blockFilter = true
+            
             selectedFilters = []
             selectedTypes = []
             selectedCategories = []
             orderType = .releaseDateASC
             setReleaseDates()
+            
+            blockFilter = false
+            filterProjects()
         }
     }
     
@@ -243,5 +271,7 @@ extension ProjectListView {
         case releaseDateDESC = "Release date (old-new)"
         case ratingASC = "Rating (low-high)"
         case ratingDESC = "Rating (high-low)"
+        case rankingASC = "Current ranking (low-high)"
+        case rankingDESC = "Current ranking (high-low"
     }
 }

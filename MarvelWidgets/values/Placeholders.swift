@@ -58,7 +58,10 @@ class Placeholders {
             rating: nil,
             reviewTitle: nil,
             reviewSummary: nil,
-            reviewCopyright: nil
+            reviewCopyright: nil,
+            rankingDifference: nil,
+            rankingCurrentRank: nil,
+            rankingChangeDirection: nil
         )
     )
     
@@ -111,7 +114,10 @@ class Placeholders {
             rating: nil,
             reviewTitle: nil,
             reviewSummary: nil,
-            reviewCopyright: nil
+            reviewCopyright: nil,
+            rankingDifference: nil,
+            rankingCurrentRank: nil,
+            rankingChangeDirection: nil
         )
     )
     
@@ -147,7 +153,10 @@ class Placeholders {
             rating: nil,
             reviewTitle: nil,
             reviewSummary: nil,
-            reviewCopyright: nil
+            reviewCopyright: nil,
+            rankingDifference: nil,
+            rankingCurrentRank: nil,
+            rankingChangeDirection: nil
         )
     )
     
@@ -184,7 +193,10 @@ class Placeholders {
                 rating: nil,
                 reviewTitle: nil,
                 reviewSummary: nil,
-                reviewCopyright: nil
+                reviewCopyright: nil,
+                rankingDifference: nil,
+                rankingCurrentRank: nil,
+                rankingChangeDirection: nil
             )
         )
     }

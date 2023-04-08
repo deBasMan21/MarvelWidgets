@@ -115,6 +115,25 @@ struct ProjectInformationView: View {
                         }
                     }
                 }
+                
+                
+//                print("debug: \(viewModel.project.attributes.rankingCurrentRank) \(viewModel.project.attributes.rankingDifference) \(viewModel.project.attributes.rankingChangeDirection)")
+                if let currentRank = project.attributes.rankingCurrentRank, let rankingDifference = project.attributes.rankingDifference, let rankingChangeDirection = project.attributes.rankingChangeDirection {
+                    HStack {
+                        Image(systemName: rankingChangeDirection.toImage())
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 40, height: 40)
+                        
+                        VStack(alignment: .leading)  {
+                            Text("Ranking")
+                                .bold()
+                                .foregroundColor(Color.accentColor)
+                            
+                            Text("\(currentRank) (\(rankingChangeDirection.toCharacter())\(rankingDifference))")
+                        }
+                    }
+                }
             }
         }.padding(.horizontal, 20)
     }
