@@ -109,6 +109,15 @@ struct MCUProject: Codable, Comparable {
         case .flat: return 0
         }
     }
+    
+    func getRankingChangeString() -> String {
+        guard let rankingChangeDirection = rankingChangeDirection, let rankingCurrentRank = rankingCurrentRank, let rankingDifference = rankingDifference else { return "" }
+        
+        switch rankingChangeDirection {
+        case .flat: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter()))"
+        default: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter())\(rankingDifference))"
+        }
+    }
 }
 
 

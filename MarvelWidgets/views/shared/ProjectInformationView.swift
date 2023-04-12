@@ -116,9 +116,7 @@ struct ProjectInformationView: View {
                     }
                 }
                 
-                
-//                print("debug: \(viewModel.project.attributes.rankingCurrentRank) \(viewModel.project.attributes.rankingDifference) \(viewModel.project.attributes.rankingChangeDirection)")
-                if let currentRank = project.attributes.rankingCurrentRank, let rankingDifference = project.attributes.rankingDifference, let rankingChangeDirection = project.attributes.rankingChangeDirection {
+                if project.attributes.rankingCurrentRank != nil, project.attributes.rankingDifference != nil, let rankingChangeDirection = project.attributes.rankingChangeDirection {
                     HStack {
                         Image(systemName: rankingChangeDirection.toImage())
                             .resizable()
@@ -130,7 +128,7 @@ struct ProjectInformationView: View {
                                 .bold()
                                 .foregroundColor(Color.accentColor)
                             
-                            Text("\(currentRank) (\(rankingChangeDirection.toCharacter())\(rankingDifference))")
+                            Text(project.attributes.getRankingChangeString())
                         }
                     }
                 }
