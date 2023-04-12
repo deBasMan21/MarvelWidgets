@@ -44,8 +44,7 @@ class Placeholders {
                             updatedAt: "",
                             imageURL: nil,
                             dateOfBirth: "1986-05-23",
-                            mcuProjects: nil,
-                            relatedProjects: nil
+                            mcuProjects: nil
                         )
                     )
                 ]
@@ -61,7 +60,8 @@ class Placeholders {
             reviewCopyright: nil,
             rankingDifference: nil,
             rankingCurrentRank: nil,
-            rankingChangeDirection: nil
+            rankingChangeDirection: nil,
+            chronology: nil
         )
     )
     
@@ -100,8 +100,7 @@ class Placeholders {
                             updatedAt: "",
                             imageURL: nil,
                             dateOfBirth: "1964-07-03",
-                            mcuProjects: nil,
-                            relatedProjects: nil
+                            mcuProjects: nil
                         )
                     )
                 ]
@@ -117,7 +116,8 @@ class Placeholders {
             reviewCopyright: nil,
             rankingDifference: nil,
             rankingCurrentRank: nil,
-            rankingChangeDirection: nil
+            rankingChangeDirection: nil,
+            chronology: nil
         )
     )
     
@@ -156,7 +156,8 @@ class Placeholders {
             reviewCopyright: nil,
             rankingDifference: nil,
             rankingCurrentRank: nil,
-            rankingChangeDirection: nil
+            rankingChangeDirection: nil,
+            chronology: nil
         )
     )
     
@@ -196,7 +197,8 @@ class Placeholders {
                 reviewCopyright: nil,
                 rankingDifference: nil,
                 rankingCurrentRank: nil,
-                rankingChangeDirection: nil
+                rankingChangeDirection: nil,
+                chronology: nil
             )
         )
     }

@@ -8,6 +8,8 @@
 import Foundation
 
 protocol Config {
+    static var standard: Config { get }
+    
     var baseUrl: String { get }
     var apiKey: String { get }
 }

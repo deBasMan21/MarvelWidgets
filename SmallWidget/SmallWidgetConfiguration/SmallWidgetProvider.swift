@@ -40,7 +40,7 @@ struct SmallWidgetProvider: IntentTimelineProvider {
                 case .movies, .series, .special:
                     upcomingProjects.append(contentsOf: await ProjectService.getByType(widgetType, populate: .populateNormal))
                 case .all:
-                    upcomingProjects.append(contentsOf: await ProjectService.getAll(populate: .populateNormal))
+                    upcomingProjects.append(contentsOf: await ProjectService.getAll())
                 default: break
                 }
                 

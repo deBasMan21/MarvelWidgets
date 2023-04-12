@@ -8,6 +8,7 @@
 import SwiftUI
 import WidgetKit
 import FirebaseRemoteConfig
+import AlertToast
 
 struct ContentView: View {
     @State var showView = false
@@ -20,6 +21,8 @@ struct ContentView: View {
     @State var remoteConfig: RemoteConfigWrapper = RemoteConfigWrapper()
     
     @State var openUrlHelper: OpenUrlWrapper?
+    
+    @State var showAlert: Bool = false
     
     var body: some View {
         ZStack {
@@ -70,8 +73,12 @@ struct ContentView: View {
                 tabBarAppearance.configureWithDefaultBackground()
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
                 
-                openUrlHelper = OpenUrlWrapper(callback: { proj in
-                    self.projects.append(proj)
+                openUrlHelper = OpenUrlWrapper(callback: { inApp in
+                    if inApp {
+                        showAlert = true
+                    } else {
+                        self.projects.append(openUrlHelper?.lastProject)
+                    }
                 })
                 
                 // Setup fb remote config
@@ -103,13 +110,23 @@ struct ContentView: View {
             })
         }.navigationBarState(.compact, displayMode: .automatic)
             .environmentObject(remoteConfig)
+            .toast(isPresenting: $showAlert, duration: 10, tapToDismiss: true, alert: {
+                AlertToast(displayMode: .hud, type: .systemImage("bell", .accentColor), title: openUrlHelper?.lastTitle ?? "", subTitle: openUrlHelper?.lastBody)
+            }, onTap: {
+                if let project = openUrlHelper?.lastProject {
+                    projects.append(project)
+                }
+            })
     }
 }
 
 class OpenUrlWrapper {
-    let callback: (ProjectWrapper) -> Void
+    let callback: (Bool) -> Void
+    var lastTitle: String = ""
+    var lastBody: String?
+    var lastProject: ProjectWrapper?
     
-    init(callback: @escaping (ProjectWrapper) -> Void) {
+    init(callback: @escaping (Bool) -> Void) {
         self.callback = callback
         setupNotificationListener()
     }
@@ -119,11 +136,23 @@ class OpenUrlWrapper {
     }
     
     @objc func openUrl(notification: NSNotification) {
-        guard let url = notification.userInfo?["url"] as? String else { return }
-        guard let url = URL(string: url) else { return }
-        if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
-           let id = Int(url.lastPathComponent) {
-            callback(Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special))
+        let url = notification.userInfo?["url"] as? String
+        let inApp = notification.userInfo?["inApp"] as? Bool
+        let title = notification.userInfo?["title"] as? String
+        let body = notification.userInfo?["body"] as? String
+        
+        if let url = url,
+            let url = URL(string: url),
+            let inApp = inApp,
+            let title = title,
+            let id = Int(url.lastPathComponent),
+            ((url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link") {
+            
+            self.lastTitle = title
+            self.lastBody = body
+            self.lastProject = Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special)
+            
+            callback(inApp)
         }
     }
 }

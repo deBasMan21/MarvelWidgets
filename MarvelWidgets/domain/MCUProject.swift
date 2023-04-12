@@ -39,6 +39,7 @@ struct MCUProject: Codable, Comparable {
     let reviewTitle, reviewSummary, reviewCopyright: String?
     let rankingDifference, rankingCurrentRank: Int?
     let rankingChangeDirection: RankingChangeDirection?
+    let chronology: Int?
  
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -67,6 +68,7 @@ struct MCUProject: Codable, Comparable {
         case productionBudget = "ProductionBudget"
         case reviewTitle, reviewSummary, reviewCopyright
         case rankingDifference, rankingCurrentRank, rankingChangeDirection
+        case chronology
     }
     
     func getReleaseDateString(withDayCount: Bool = false) -> String {

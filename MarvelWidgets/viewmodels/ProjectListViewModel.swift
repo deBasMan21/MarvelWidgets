@@ -97,15 +97,7 @@ extension ProjectListView {
         func fetchProjects(force: Bool = false) async {
             _ = await MainActor.run {
                 Task {
-                    var projects: [ProjectWrapper] = []
-                    switch pageType {
-                    case .mcu:
-                        projects = await ProjectService.getAll(force: force)
-                    case .other:
-                        projects = await ProjectService.getAllOther(force: force)
-                    }
-                    
-                    allProjects = projects
+                    allProjects = await ProjectService.getAll(for: pageType, force: force)
                     
                     filterProjects()
                     orderProjects()
@@ -182,6 +174,10 @@ extension ProjectListView {
                     } else {
                         return rating0 < rating1
                     }
+                })
+            case .chronology:
+                orderedProjects = projects.sorted(by: {
+                    return $0.attributes.chronology ?? 10000 < $1.attributes.chronology ?? 10000
                 })
             }
             
@@ -273,5 +269,6 @@ extension ProjectListView {
         case ratingDESC = "Rating (high-low)"
         case rankingASC = "Current ranking (low-high)"
         case rankingDESC = "Current ranking (high-low"
+        case chronology = "Chronological"
     }
 }

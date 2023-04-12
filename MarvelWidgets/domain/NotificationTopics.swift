@@ -11,5 +11,6 @@ enum NotificationTopics: String, CaseIterable {
     case movie = "Movie"
     case serie = "Serie"
     case special = "Special"
+    case related = "Related"
     case testing = "Testing"
 }
