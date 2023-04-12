@@ -8,6 +8,8 @@
 import Foundation
 
 class DebugConfig: Config {
+    static let standard: Config = DebugConfig()
+    
     var baseUrl: String {
         UserDefaultsService.standard.baseUrl
     }

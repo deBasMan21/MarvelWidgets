@@ -20,11 +20,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getProject(type: String, id: Int) async -> ProjectWrapper? {
-        switch type {
-        case "mcu": return await ProjectService.getById(id)
-        case "other": return await ProjectService.getOtherById(id, force: true)
-        default: return nil
-        }
+        return await ProjectService.getById(id)
     }
 
     func getTimeline(for configuration: SpecificWidgetIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {

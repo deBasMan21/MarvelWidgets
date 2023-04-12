@@ -56,6 +56,7 @@ struct MediumWidgetView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 30, height: 30)
+                            .cornerRadius(5)
                             .padding(5)
                     }
                     

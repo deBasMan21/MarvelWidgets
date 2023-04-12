@@ -12,6 +12,8 @@ struct PersonListPageView: View {
     @StateObject var viewModel: ViewModel
     @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
+    @State var navigationPath = NavigationPath()
+    
     init(type: PersonType) {
         self._viewModel = StateObject(wrappedValue: ViewModel(personType: type))
     }
@@ -56,6 +58,9 @@ struct PersonListPageView: View {
                     }.modifier(ScrollReadVStackModifier(scrollViewHeight: $viewModel.scrollViewHeight, proportion: $viewModel.proportion, proportionName: viewModel.proportionName)
                     )
                 }.searchable(text: $viewModel.filterSearchQuery)
+                    .refreshable {
+                        await viewModel.getPersons()
+                    }
                 
                 FloatingActionButtonOverlay(
                     buttons: [
@@ -85,87 +90,81 @@ struct PersonListPageView: View {
             }
         }.navigationTitle(viewModel.personType.rawValue)
             .sheet(isPresented: $viewModel.showSheet, content: {
-                NavigationView {
+                getSheetView()
+            }).showTabBar(featureFlag: remoteConfig.hideTabbar)
+    }
+    
+    func getView(actorObj: any Person) -> some View {
+        PersonDetailView(
+            person: actorObj,
+            onDisappearCallback: {
+                withAnimation {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                        self.viewModel.detents.remove(.large)
+                    })
+                }
+            },
+            inSheet: true
+        )
+    }
+    
+    func getSheetView() -> some View {
+        NavigationStack(path: $navigationPath) {
+            VStack {
+                Text("Today's birthday")
+                    .font(.largeTitle)
+                    .bold()
+                
+                ScrollView {
                     VStack {
-                        Text("Today's birthday")
-                            .font(.largeTitle)
-                            .bold()
-                        
-                        if viewModel.birthdayPersons.count > 0 {
-                            ScrollView {
+                        LazyVGrid(columns: viewModel.columns, spacing: 20) {
+                            ForEach(viewModel.birthdayPersons, id: \.id) { actorObj in
                                 VStack {
-                                    LazyVGrid(columns: viewModel.columns, spacing: 20) {
-                                        ForEach(viewModel.birthdayPersons, id: \.id) { actorObj in
-                                            VStack {
-                                                NavigationLink(destination: PersonDetailView(
-                                                    person: actorObj,
-                                                    onDisappearCallback: {
-                                                        withAnimation {
-                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                                                                self.viewModel.detents.remove(.large)
-                                                            })
-                                                        }
-                                                    },
-                                                    inSheet: true
-                                                ), isActive: binding(for: "\(actorObj.id)")) {
-                                                    EmptyView()
-                                                }.onAppear {
-                                                    withAnimation {
-                                                        viewModel.detents.insert(.medium)
-                                                        viewModel.sheetHeight = .medium
-                                                    }
-                                                }.onDisappear {
-                                                    withAnimation {
-                                                        viewModel.detents.insert(.large)
-                                                        viewModel.sheetHeight = .large
-                                                        
-                                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                                                            self.viewModel.detents.remove(.medium)
-                                                        })
-                                                    }
-                                                }
-                                                
-                                                Button(action: {
-                                                    viewModel.detents.insert(.large)
-                                                    viewModel.sheetHeight = .large
-                                                    
-                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                                                        self.viewModel.detents.remove(.medium)
-                                                    })
-                                                    
-                                                    Task {
-                                                        viewModel.personDetailId["\(actorObj.id)"] = true
-                                                    }
-                                                }, label: {
-                                                    PosterListViewItem(
-                                                        posterUrl: actorObj.imageUrl?.absoluteString ?? "",
-                                                        title: "\(actorObj.firstName) \(actorObj.lastName)",
-                                                        subTitle: "\(actorObj.dateOfBirth?.toDate()?.calculateAge() ?? 0) Years old"
-                                                    )
-                                                })
-                                            }
+                                    Button(action: {
+                                        viewModel.detents.insert(.large)
+                                        viewModel.sheetHeight = .large
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                                            self.viewModel.detents.remove(.medium)
+                                        })
+                                        
+                                        Task {
+                                            navigationPath.append(actorObj)
+                                        }
+                                    }, label: {
+                                        PosterListViewItem(
+                                            posterUrl: actorObj.imageUrl?.absoluteString ?? "",
+                                            title: "\(actorObj.firstName) \(actorObj.lastName)",
+                                            subTitle: "\(actorObj.dateOfBirth?.toDate()?.calculateAge() ?? 0) Years old"
+                                        )
+                                    }).onAppear {
+                                        withAnimation {
+                                            viewModel.detents.insert(.medium)
+                                            viewModel.sheetHeight = .medium
+                                        }
+                                    }.onDisappear {
+                                        withAnimation {
+                                            viewModel.detents.insert(.large)
+                                            viewModel.sheetHeight = .large
+                                            
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                                                self.viewModel.detents.remove(.medium)
+                                            })
                                         }
                                     }
                                 }
                             }
-                        } else {
-                            Spacer()
-                            
-                            Text("Oh no! It's nobodies birthday today, come back tomorrow.")
-                                .font(.headline)
-                                .multilineTextAlignment(.center)
                         }
-                        
-                        Spacer()
-                    }.padding()
-                }.presentationDetents(viewModel.detents, selection: $viewModel.sheetHeight)
-                    .presentationDragIndicator(.visible)
-            }).showTabBar(featureFlag: remoteConfig.hideTabbar)
-    }
-    
-    private func binding(for key: String) -> Binding<Bool> {
-        return .init(
-            get: { self.viewModel.personDetailId[key, default: false] },
-            set: { self.viewModel.personDetailId[key] = $0 })
+                    }.navigationDestination(for: ActorPerson.self, destination: { actorObj in
+                        getView(actorObj: actorObj)
+                    }).navigationDestination(for: DirectorPerson.self, destination: { actorObj in
+                        getView(actorObj: actorObj)
+                    })
+                }
+                
+                Spacer()
+            }.padding()
+        }.presentationDetents(viewModel.detents, selection: $viewModel.sheetHeight)
+            .presentationDragIndicator(.visible)
     }
 }

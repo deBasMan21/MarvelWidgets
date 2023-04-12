@@ -35,12 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set("true", forKey: "first")
         }
         
-        if UserDefaultsService.standard.useConfig,
-            !UserDefaultsService.standard.token.isEmpty,
-            !UserDefaultsService.standard.baseUrl.isEmpty {
-            ProjectService.config = DebugConfig()
-        }
-        
         return true
     }
     
@@ -55,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        
+        notifyView(userInfo: userInfo, inApp: false)
         
         // Print full message.
         print(userInfo)
@@ -77,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print full message.
         print(userInfo)
+        notifyView(userInfo: userInfo, inApp: false)
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -119,6 +116,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // [END_EXCLUDE]
         // Print full message.
         print(userInfo)
+        notifyView(userInfo: userInfo, inApp: true)
         
         // Change this to your preferred presentation option
         completionHandler([[.badge, .sound]])
@@ -139,6 +137,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print full message.
         print(userInfo)
+        notifyView(userInfo: userInfo, inApp: false)
         
         completionHandler()
     }
@@ -161,4 +160,12 @@ extension AppDelegate: MessagingDelegate {
     }
     
     // [END refresh_token]
+}
+
+extension AppDelegate {
+    func notifyView(userInfo: [AnyHashable: Any], inApp: Bool) {
+        if let url = userInfo["url"], let aps = userInfo["aps"] as? [AnyHashable: Any], let alert = aps["alert"] as? [AnyHashable: Any], let title = alert["title"] {
+            NotificationCenter.default.post(name: Notification.Name("url"), object: nil, userInfo: ["url": url, "inApp": inApp, "title": title, "body": alert["body"] as Any])
+        }
+    }
 }

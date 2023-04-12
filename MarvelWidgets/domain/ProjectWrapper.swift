@@ -7,13 +7,17 @@
 
 import Foundation
 
-struct ProjectWrapper: Codable, Comparable {
+struct ProjectWrapper: Codable, Comparable, Hashable {
     static func < (lhs: ProjectWrapper, rhs: ProjectWrapper) -> Bool {
         lhs.attributes > rhs.attributes
     }
     
     static func == (lhs: ProjectWrapper, rhs: ProjectWrapper) -> Bool {
         lhs.attributes == rhs.attributes
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
     
     let uuid = UUID()

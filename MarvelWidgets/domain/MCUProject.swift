@@ -37,6 +37,9 @@ struct MCUProject: Codable, Comparable {
     let seasons: [Season]?
     let rating: Double?
     let reviewTitle, reviewSummary, reviewCopyright: String?
+    let rankingDifference, rankingCurrentRank: Int?
+    let rankingChangeDirection: RankingChangeDirection?
+    let chronology: Int?
  
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -64,6 +67,8 @@ struct MCUProject: Codable, Comparable {
         case quoteCaption = "QuoteCaption"
         case productionBudget = "ProductionBudget"
         case reviewTitle, reviewSummary, reviewCopyright
+        case rankingDifference, rankingCurrentRank, rankingChangeDirection
+        case chronology
     }
     
     func getReleaseDateString(withDayCount: Bool = false) -> String {
@@ -94,5 +99,50 @@ struct MCUProject: Codable, Comparable {
             }
         }
         return nil
+    }
+    
+    func getRankingChange() -> Int {
+        guard let rankingChangeDirection = rankingChangeDirection, let rankingDifference = rankingDifference else { return 0 }
+        switch rankingChangeDirection {
+        case .up: return rankingDifference
+        case .down: return -rankingDifference
+        case .flat: return 0
+        }
+    }
+    
+    func getRankingChangeString() -> String {
+        guard let rankingChangeDirection = rankingChangeDirection, let rankingCurrentRank = rankingCurrentRank, let rankingDifference = rankingDifference else { return "" }
+        
+        switch rankingChangeDirection {
+        case .flat: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter()))"
+        default: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter())\(rankingDifference))"
+        }
+    }
+}
+
+
+enum RankingChangeDirection: String, Codable {
+    case up = "UP"
+    case down = "DOWN"
+    case flat = "FLAT"
+    
+    func toString() -> String {
+        self.rawValue.lowercased().capitalized
+    }
+    
+    func toCharacter() -> String {
+        switch self {
+        case .up: return "↑"
+        case .down: return "↓"
+        case .flat: return "="
+        }
+    }
+    
+    func toImage() -> String {
+        switch self {
+        case .up: return "arrow.up.right.circle.fill"
+        case .down: return "arrow.down.left.circle.fill"
+        case .flat: return "equal.circle.fill"
+        }
     }
 }

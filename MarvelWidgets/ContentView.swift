@@ -8,17 +8,21 @@
 import SwiftUI
 import WidgetKit
 import FirebaseRemoteConfig
+import AlertToast
 
 struct ContentView: View {
-    @State var showSheet: Bool = false
-    
     @State var showView = false
+    @State var projects = NavigationPath()
     
     @State var detailView: ProjectDetailView?
     @State var showOnboarding: Bool = {
         !UserDefaultsService.standard.seenOnboarding || UserDefaultsService.standard.alwaysShowOnboarding
     }()
     @State var remoteConfig: RemoteConfigWrapper = RemoteConfigWrapper()
+    
+    @State var openUrlHelper: OpenUrlWrapper?
+    
+    @State var showAlert: Bool = false
     
     var body: some View {
         ZStack {
@@ -31,8 +35,11 @@ struct ContentView: View {
             }
             
             TabView {
-                NavigationView {
-                    ProjectListView(pageType: .mcu).navigationBarState(.compact, displayMode: .automatic)
+                NavigationStack(path: $projects) {
+                    ProjectListView(pageType: .mcu)
+                        .navigationDestination(for: ProjectWrapper.self) { i in
+                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: i),  inSheet: false)
+                        }
                 }.tabItem{
                     Label("MCU", systemImage: "list.dash")
                 }
@@ -66,6 +73,14 @@ struct ContentView: View {
                 tabBarAppearance.configureWithDefaultBackground()
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
                 
+                openUrlHelper = OpenUrlWrapper(callback: { inApp in
+                    if inApp {
+                        showAlert = true
+                    } else {
+                        self.projects.append(openUrlHelper?.lastProject)
+                    }
+                })
+                
                 // Setup fb remote config
                 let settings = RemoteConfigSettings()
                 settings.minimumFetchInterval = 0
@@ -89,75 +104,56 @@ struct ContentView: View {
                 self.remoteConfig.remoteConfig = remoteConfig
             }.onOpenURL(perform: { url in
                 if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
-                    let id = Int(url.lastPathComponent) {
-                    
-                    self.detailView = ProjectDetailView(
-                        viewModel: ProjectDetailViewModel(
-                            project: ProjectWrapper(
-                                id: id,
-                                attributes: MCUProject(
-                                    title: "Loading...",
-                                    releaseDate: nil,
-                                    releaseDateStringOverride: nil,
-                                    postCreditScenes: nil,
-                                    duration: nil,
-                                    voteCount: nil,
-                                    awardsNominated: nil,
-                                    awardsWon: nil,
-                                    productionBudget: nil,
-                                    phase: .unkown,
-                                    saga: .infinitySaga,
-                                    overview: nil,
-                                    type: url.pathComponents[1] == "other" ? .sony : .special,
-                                    boxOffice: nil,
-                                    createdAt: nil,
-                                    updatedAt: nil,
-                                    disneyPlusUrl: nil,
-                                    categories: nil,
-                                    quote: nil,
-                                    quoteCaption: nil,
-                                    directors: nil,
-                                    actors: nil,
-                                    relatedProjects: nil,
-                                    trailers: nil,
-                                    posters: nil,
-                                    seasons: nil,
-                                    rating: nil,
-                                    reviewTitle: nil,
-                                    reviewSummary: nil,
-                                    reviewCopyright: nil
-                                )
-                            )
-                        ),
-                        inSheet: true
-                    )
-                    
-                    self.showSheet = true
+                   let id = Int(url.lastPathComponent) {
+                    projects.append(Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special))
                 }
-            }).sheet(isPresented: $showSheet) {
-                VStack {
-                    if showView {
-                        NavigationView {
-                            detailView
-                                .navigationBarItems(leading:
-                                    Button("Close", action: {
-                                        showSheet = false
-                                    })
-                                )
-                        }
-                    } else {
-                        ProgressView()
-                            .onAppear {
-                                Task {
-                                    try? await Task.sleep(nanoseconds: 1000000000)
-                                    showView = true
-                                }
-                            }
-                    }
-                }
-            }
+            })
         }.navigationBarState(.compact, displayMode: .automatic)
             .environmentObject(remoteConfig)
+            .toast(isPresenting: $showAlert, duration: 10, tapToDismiss: true, alert: {
+                AlertToast(displayMode: .hud, type: .systemImage("bell", .accentColor), title: openUrlHelper?.lastTitle ?? "", subTitle: openUrlHelper?.lastBody)
+            }, onTap: {
+                if let project = openUrlHelper?.lastProject {
+                    projects.append(project)
+                }
+            })
+    }
+}
+
+class OpenUrlWrapper {
+    let callback: (Bool) -> Void
+    var lastTitle: String = ""
+    var lastBody: String?
+    var lastProject: ProjectWrapper?
+    
+    init(callback: @escaping (Bool) -> Void) {
+        self.callback = callback
+        setupNotificationListener()
+    }
+    
+    func setupNotificationListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(openUrl(notification:)), name: Notification.Name(rawValue: "url"), object: nil)
+    }
+    
+    @objc func openUrl(notification: NSNotification) {
+        let url = notification.userInfo?["url"] as? String
+        let inApp = notification.userInfo?["inApp"] as? Bool
+        let title = notification.userInfo?["title"] as? String
+        let body = notification.userInfo?["body"] as? String
+        
+        if let url = url,
+            let url = URL(string: url),
+            let inApp = inApp,
+            let title = title,
+            let id = Int(url.lastPathComponent),
+            ((url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link") {
+            
+            self.lastTitle = title
+            self.lastBody = body
+            self.lastProject = Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special)
+            
+            callback(inApp)
+        }
     }
 }
 

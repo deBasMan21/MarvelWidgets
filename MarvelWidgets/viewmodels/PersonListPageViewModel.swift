@@ -12,7 +12,6 @@ extension PersonListPageView {
     class ViewModel: ObservableObject {
         @Published var showSheet: Bool = false
         @Published var sheetHeight: PresentationDetent = .medium
-        @Published var personDetailId: [String: Bool] = [:]
         @Published var detents: Set<PresentationDetent> = [.medium]
         
         @Published var scrollViewHeight: CGFloat = 0
@@ -142,129 +141,6 @@ extension PersonListPageView {
             count += maximumAfterDate == filterAfterDate ? 0 : 1
             count += minimumBeforeDate == filterBeforeDate ? 0 : 1
             return count
-        }
-    }
-}
-
-protocol Person {
-    var id: Int { get }
-    var firstName: String { get }
-    var lastName: String { get }
-    var dateOfBirth: String? { get }
-    var projects: [ProjectWrapper] { get }
-    var imageUrl: URL? { get }
-    
-    func getSubtitle() -> String
-    func getSearchString() -> String
-    func getProjectsTitle() -> String
-    func getPopulated() async -> (any Person)?
-}
-
-class DirectorPerson: Person {
-    var id: Int
-    var firstName: String
-    var lastName: String
-    var dateOfBirth: String?
-    var projects: [ProjectWrapper]
-    var imageUrl: URL?
-    
-    private var director: DirectorsWrapper
-    
-    init(_ director: DirectorsWrapper) {
-        self.id = director.id
-        self.firstName = director.attributes.firstName
-        self.lastName = director.attributes.lastName
-        self.dateOfBirth = director.attributes.dateOfBirth
-        self.projects = director.attributes.mcuProjects?.data ?? []
-        self.projects += director.attributes.relatedProjects?.data ?? []
-        self.imageUrl = URL(string: director.attributes.imageURL ?? "")
-        
-        self.director = director
-    }
-    
-    func getSubtitle() -> String {
-        dateOfBirth?.toDate()?.toFormattedString() ?? "No Date Of Birth"
-    }
-    
-    func getSearchString() -> String {
-        firstName + " " + lastName
-    }
-    
-    func getProjectsTitle() -> String {
-        "Directed"
-    }
-    
-    func getPopulated() async -> (any Person)? {
-        await ProjectService.getDirectorById(id: self.id)?.person
-    }
-}
-
-class ActorPerson: Person {
-    var id: Int
-    var firstName: String
-    var lastName: String
-    var role: String
-    var dateOfBirth: String?
-    var projects: [ProjectWrapper]
-    var imageUrl: URL?
-    
-    private var actor: ActorsWrapper
-    
-    init(_ actor: ActorsWrapper) {
-        self.id = actor.id
-        self.firstName = actor.attributes.firstName
-        self.lastName = actor.attributes.lastName
-        self.role = actor.attributes.character
-        self.dateOfBirth = actor.attributes.dateOfBirth
-        self.projects = actor.attributes.mcuProjects?.data ?? []
-        self.projects += actor.attributes.relatedProjects?.data ?? []
-        self.imageUrl = URL(string: actor.attributes.imageURL ?? "")
-        self.actor = actor
-    }
-    
-    func getSubtitle() -> String {
-        role
-    }
-    
-    func getSearchString() -> String {
-        firstName + " " + lastName + " " + role
-    }
-    
-    func getProjectsTitle() -> String {
-        "Played in"
-    }
-    
-    func getPopulated() async -> (any Person)? {
-        await ProjectService.getActorById(id: self.id)?.person
-    }
-}
-
-enum PersonType: String {
-    case actor = "Actors"
-    case director = "Directors"
-    
-    func getPersons() async -> [any Person] {
-        switch self {
-        case .actor:
-            return await ProjectService.getActors().compactMap { $0.person }
-        case .director:
-            return await ProjectService.getDirectors().compactMap { $0.person }
-        }
-    }
-}
-
-extension ActorsWrapper {
-    var person: any Person {
-        get {
-            ActorPerson(self)
-        }
-    }
-}
-
-extension DirectorsWrapper {
-    var person: any Person {
-        get {
-            DirectorPerson(self)
         }
     }
 }

@@ -11,7 +11,6 @@ import Kingfisher
 
 struct CircularImageView: View {
     @State var imageUrl: String
-    @State var onTapCallback: (String) -> Void
     
     var body: some View {
         KFImage(URL(string: imageUrl)!)
@@ -19,8 +18,5 @@ struct CircularImageView: View {
             .aspectRatio(contentMode: .fill)
             .frame(width: 100, height: 100)
             .clipShape(Circle())
-            .onTapGesture {
-                onTapCallback(imageUrl)
-            }
     }
 }

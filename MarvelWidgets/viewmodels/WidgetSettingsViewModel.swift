@@ -32,6 +32,16 @@ extension WidgetSettingsView {
                 self.toggleTopic(.special)
             }
         }
+        @Published var notificationTesting: Bool {
+            didSet {
+                self.toggleTopic(.testing)
+            }
+        }
+        @Published var notificationRelated: Bool {
+            didSet {
+                self.toggleTopic(.related)
+            }
+        }
         
         let userDefs = UserDefaults(suiteName: UserDefaultValues.suiteName)!
         let notificationService = NotificationService()
@@ -43,6 +53,8 @@ extension WidgetSettingsView {
             notificationMovie = notificationService.isSubscribedTo(topic: .movie)
             notificationSerie = notificationService.isSubscribedTo(topic: .serie)
             notificationSpecial = notificationService.isSubscribedTo(topic: .special)
+            notificationRelated = notificationService.isSubscribedTo(topic: .related)
+            notificationTesting = notificationService.isSubscribedTo(topic: .testing)
             
             Task {
                 await MainActor.run {
@@ -79,5 +91,3 @@ extension WidgetSettingsView {
         }
     }
 }
-
-

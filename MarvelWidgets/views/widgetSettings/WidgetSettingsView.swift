@@ -30,16 +30,26 @@ struct WidgetSettingsView: View {
                         }
                         
                         Toggle(isOn: $viewModel.notificationMovie) {
-                            Text("Movie")
+                            Text("Marvel Movies")
                         }
                         
                         Toggle(isOn: $viewModel.notificationSerie) {
-                            Text("Serie")
+                            Text("Marvel Series")
                         }
                         
                         Toggle(isOn: $viewModel.notificationSpecial) {
-                            Text("Special")
+                            Text("Marvel Specials")
                         }
+                        
+                        Toggle(isOn: $viewModel.notificationRelated) {
+                            Text("Related projects (not MCU)")
+                        }
+                        
+                        #if DEBUG
+                            Toggle(isOn: $viewModel.notificationTesting) {
+                                Text("Testing")
+                            }
+                        #endif
                     }
                     
                     #if DEBUG

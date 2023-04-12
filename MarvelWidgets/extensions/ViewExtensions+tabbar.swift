@@ -93,6 +93,9 @@ extension View {
 extension UITabBar {
     func setTabBarHidden(_ hidden: Bool, animated: Bool = true, duration: TimeInterval = 0.3) {
         if self.isHidden != hidden {
+            if self.isHidden {
+                self.frame.origin.y = CGFloat(UserDefaultsService.standard.previousTabbarHeight)
+            }
             if animated {
                 //Show the tabbar before the animation in case it has to appear
                 if self.isHidden {
@@ -101,6 +104,7 @@ extension UITabBar {
                 
                 let factor: CGFloat = hidden ? 1 : -1
                 let y = self.frame.origin.y + (self.frame.size.height * factor)
+                UserDefaultsService.standard.previousTabbarHeight = Int(y)
                 UIView.animate(withDuration: duration, animations: {
                     self.frame = CGRect(x: self.frame.origin.x, y: y, width: self.frame.width, height: self.frame.height)
                 }) { (bool) in

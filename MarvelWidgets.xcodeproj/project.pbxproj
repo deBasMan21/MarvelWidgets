@@ -35,6 +35,9 @@
 		EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
+		EF1F065429E6B92D009CC97A /* UrlBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */; };
+		EF1F065629E6B93B009CC97A /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065529E6B93B009CC97A /* UrlBuilder.swift */; };
+		EF1F065829E6B947009CC97A /* UrlComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065729E6B947009CC97A /* UrlComponents.swift */; };
 		EF225DF829DDB05200577C91 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD629BE529400437A6E /* Placeholders.swift */; };
 		EF225DF929DDB05200577C91 /* Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD629BE529400437A6E /* Placeholders.swift */; };
 		EF238A9C29AE8D7300C3FC9C /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */; };
@@ -57,6 +60,17 @@
 		EF4D265828A4512900B7BCEE /* ConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* ConfigValues.swift */; };
 		EF4D265928A4512A00B7BCEE /* ConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265628A4512600B7BCEE /* ConfigValues.swift */; };
 		EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
+		EF50A51529E6BC64007518BF /* UrlComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065729E6B947009CC97A /* UrlComponents.swift */; };
+		EF50A51629E6BC64007518BF /* UrlComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065729E6B947009CC97A /* UrlComponents.swift */; };
+		EF50A51729E6BC79007518BF /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065529E6B93B009CC97A /* UrlBuilder.swift */; };
+		EF50A51829E6BC79007518BF /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065529E6B93B009CC97A /* UrlBuilder.swift */; };
+		EF50A51929E6BC7F007518BF /* UrlBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */; };
+		EF50A51A29E6BC80007518BF /* UrlBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */; };
+		EF50A51D29E700C6007518BF /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50A51C29E700C6007518BF /* Person.swift */; };
+		EF50A51F29E700D8007518BF /* DirectorPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50A51E29E700D8007518BF /* DirectorPerson.swift */; };
+		EF50A52129E700E9007518BF /* ActorPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50A52029E700E9007518BF /* ActorPerson.swift */; };
+		EF50A52329E7010F007518BF /* PersonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50A52229E7010F007518BF /* PersonType.swift */; };
+		EF50A52629E7026D007518BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = EF50A52529E7026D007518BF /* AlertToast */; };
 		EF521C0E29D2176D0037B658 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */; };
 		EF578F3828A45632006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
 		EF578F3928A45633006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
@@ -330,6 +344,9 @@
 		EF178C4228AE8D47003B9B76 /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHelper.swift; sourceTree = "<group>"; };
 		EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
+		EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlBuilderType.swift; sourceTree = "<group>"; };
+		EF1F065529E6B93B009CC97A /* UrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlBuilder.swift; sourceTree = "<group>"; };
+		EF1F065729E6B947009CC97A /* UrlComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlComponents.swift; sourceTree = "<group>"; };
 		EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		EF238AA129B26B9A00C3FC9C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EF26F68929DA110300E1A74D /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
@@ -337,6 +354,10 @@
 		EF38FD71291FF56400EA4BD9 /* ProjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* ConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigValues.swift; sourceTree = "<group>"; };
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
+		EF50A51C29E700C6007518BF /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		EF50A51E29E700D8007518BF /* DirectorPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorPerson.swift; sourceTree = "<group>"; };
+		EF50A52029E700E9007518BF /* ActorPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorPerson.swift; sourceTree = "<group>"; };
+		EF50A52229E7010F007518BF /* PersonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonType.swift; sourceTree = "<group>"; };
 		EF67932C29BF96A900ED1451 /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		EF6B8298292412CA00A5D69C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
@@ -489,6 +510,7 @@
 				EFF0E2D929240D4900854E5F /* FirebaseCrashlytics in Frameworks */,
 				EFF35E2529D0AD0200FA8EAE /* FirebaseRemoteConfigSwift in Frameworks */,
 				EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */,
+				EF50A52629E7026D007518BF /* AlertToast in Frameworks */,
 				EF04E67B29AD24C4003C0420 /* SwiftUINavigationHeader in Frameworks */,
 				EFF35E2329D0AD0200FA8EAE /* FirebaseRemoteConfig in Frameworks */,
 				EF521C0E29D2176D0037B658 /* FirebaseDynamicLinks in Frameworks */,
@@ -521,6 +543,16 @@
 			path = configs;
 			sourceTree = "<group>";
 		};
+		EF1F065229E6B91F009CC97A /* UrlBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */,
+				EF1F065529E6B93B009CC97A /* UrlBuilder.swift */,
+				EF1F065729E6B947009CC97A /* UrlComponents.swift */,
+			);
+			path = UrlBuilder;
+			sourceTree = "<group>";
+		};
 		EF238AA029B26B1A00C3FC9C /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +572,17 @@
 				EFF0E2C12922B79200854E5F /* PersonDetailView.swift */,
 			);
 			path = personViews;
+			sourceTree = "<group>";
+		};
+		EF50A51B29E700B9007518BF /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				EF50A51C29E700C6007518BF /* Person.swift */,
+				EF50A51E29E700D8007518BF /* DirectorPerson.swift */,
+				EF50A52029E700E9007518BF /* ActorPerson.swift */,
+				EF50A52229E7010F007518BF /* PersonType.swift */,
+			);
+			path = Person;
 			sourceTree = "<group>";
 		};
 		EF6B82C429258B9300A5D69C /* MCUWidgetsRPN */ = {
@@ -713,6 +756,7 @@
 		EFCE381C28A3DD3200B4CC0D /* services */ = {
 			isa = PBXGroup;
 			children = (
+				EF1F065229E6B91F009CC97A /* UrlBuilder */,
 				EF0CA0AF29DDEE2C00A2322A /* configs */,
 				EF38FD71291FF56400EA4BD9 /* ProjectService.swift */,
 				EFCE384328A3E33900B4CC0D /* generic */,
@@ -726,6 +770,7 @@
 		EFCE381F28A3DDF800B4CC0D /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				EF50A51B29E700B9007518BF /* Person */,
 				EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */,
 				EFF0E270292107B500854E5F /* ListResponseWrapper.swift */,
 				EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */,
@@ -1022,6 +1067,7 @@
 				EFF35E2229D0AD0200FA8EAE /* FirebaseRemoteConfig */,
 				EFF35E2429D0AD0200FA8EAE /* FirebaseRemoteConfigSwift */,
 				EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */,
+				EF50A52529E7026D007518BF /* AlertToast */,
 			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
@@ -1085,6 +1131,7 @@
 				EFF0E2C9292406EB00854E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */,
 				EF04E67929AD24C4003C0420 /* XCRemoteSwiftPackageReference "SwiftUINavigationHeader" */,
+				EF50A52429E7026D007518BF /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = EFCE380C28A3D7A700B4CC0D /* Products */;
 			projectDirPath = "";
@@ -1171,12 +1218,14 @@
 				EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */,
 				EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */,
 				EF178C4128AE8CF2003B9B76 /* MediumWidgetView.swift in Sources */,
+				EF50A51A29E6BC80007518BF /* UrlBuilderType.swift in Sources */,
 				EF38FD74291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EF28E7F929A6996400B7C845 /* WidgetProjectService.swift in Sources */,
 				EF84046D29DF5E0800E8F969 /* RedChipText.swift in Sources */,
 				EFF0E2B82921097200854E5F /* Director.swift in Sources */,
 				EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF78F62229959CF600CA9028 /* ViewExtensions.swift in Sources */,
+				EF50A51629E6BC64007518BF /* UrlComponents.swift in Sources */,
 				EFF0E2AE2921097200854E5F /* Phase.swift in Sources */,
 				EF84046F29DF5E1900E8F969 /* TextExtension.swift in Sources */,
 				EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */,
@@ -1202,6 +1251,7 @@
 				EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */,
 				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
 				EFF0E2B42921097200854E5F /* RelatedProject.swift in Sources */,
+				EF50A51829E6BC79007518BF /* UrlBuilder.swift in Sources */,
 				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
 				EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EFF0E2BB2921097200854E5F /* Directors.swift in Sources */,
@@ -1231,6 +1281,7 @@
 				EFF0E271292107B500854E5F /* ListResponseWrapper.swift in Sources */,
 				EFF0E2972921089F00854E5F /* Episode.swift in Sources */,
 				EFD8D75F28A7AC8D00CA8DAC /* SaveService.swift in Sources */,
+				EF50A52129E700E9007518BF /* ActorPerson.swift in Sources */,
 				EFBE482529C6216E0036185E /* TableRowView.swift in Sources */,
 				EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */,
@@ -1242,6 +1293,7 @@
 				EFFE152C28A5481D00DCF804 /* ProjectDetailView.swift in Sources */,
 				EFF0E26A2920EE3500854E5F /* ActorListView.swift in Sources */,
 				EFCA5DA428A43D360004AAC7 /* WidgetSettingsViewModel.swift in Sources */,
+				EF50A52329E7010F007518BF /* PersonType.swift in Sources */,
 				EFF04BC629BE2FFD00437A6E /* OnboardingPageContainer.swift in Sources */,
 				EFF0E28F2921087300854E5F /* RelatedProjectWrapper.swift in Sources */,
 				EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */,
@@ -1253,6 +1305,7 @@
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
 				EFF04BD129BE309400437A6E /* CircularRedButtonStyle.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
+				EF50A51F29E700D8007518BF /* DirectorPerson.swift in Sources */,
 				EF78F5C42993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
 				EFF04BE129BE559300437A6E /* OnboardingPageTwoHeader.swift in Sources */,
@@ -1266,7 +1319,9 @@
 				EFF04BD329BE30C600437A6E /* RedChipText.swift in Sources */,
 				EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
+				EF1F065429E6B92D009CC97A /* UrlBuilderType.swift in Sources */,
 				EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
+				EF1F065829E6B947009CC97A /* UrlComponents.swift in Sources */,
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
 				EFF04BCE29BE306D00437A6E /* OnboardingPageFourView.swift in Sources */,
 				EFB503F029DCB5BA00586017 /* OptionCircleButton.swift in Sources */,
@@ -1280,6 +1335,7 @@
 				EFFE153828A54C2400DCF804 /* ProjectListViewModel.swift in Sources */,
 				EFF0E2642920EDD300854E5F /* TrailersView.swift in Sources */,
 				EF0CA0BB29DDEEB200A2322A /* DebugConfig.swift in Sources */,
+				EF1F065629E6B93B009CC97A /* UrlBuilder.swift in Sources */,
 				EFF04BE329BE55A900437A6E /* OnboardingPageThreeHeader.swift in Sources */,
 				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EF6B82DA292D577500A5D69C /* PersonListPageView.swift in Sources */,
@@ -1340,6 +1396,7 @@
 				EF6B82D1292AAC1D00A5D69C /* InstagramView.swift in Sources */,
 				EFF04BE529BE55C000437A6E /* OnboardingPageFourHeader.swift in Sources */,
 				EF0CA0B129DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
+				EF50A51D29E700C6007518BF /* Person.swift in Sources */,
 				EFF04BE829BE6A1A00437A6E /* OnboardingPageFiveView.swift in Sources */,
 				EFF04BD529BE527100437A6E /* NotificationView.swift in Sources */,
 			);
@@ -1360,12 +1417,14 @@
 				EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */,
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
 				EF4D265428A44B0D00B7BCEE /* IntentHandler.swift in Sources */,
+				EF50A51929E6BC7F007518BF /* UrlBuilderType.swift in Sources */,
 				EF178C4028AE8CF2003B9B76 /* MediumWidgetView.swift in Sources */,
 				EF28E7F829A6996300B7C845 /* WidgetProjectService.swift in Sources */,
 				EF84046C29DF5E0700E8F969 /* RedChipText.swift in Sources */,
 				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
 				EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */,
 				EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
+				EF50A51529E6BC64007518BF /* UrlComponents.swift in Sources */,
 				EF78F62129959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EF84046E29DF5E1900E8F969 /* TextExtension.swift in Sources */,
 				EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */,
@@ -1391,6 +1450,7 @@
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
 				EFD8D77228A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EF578F3828A45632006272AA /* CachingService.swift in Sources */,
+				EF50A51729E6BC79007518BF /* UrlBuilder.swift in Sources */,
 				EFF0E2A02921097100854E5F /* RelatedProject.swift in Sources */,
 				EFF0E29D2921097100854E5F /* MCUProject.swift in Sources */,
 				EF178C4428AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
@@ -1852,6 +1912,14 @@
 				kind = branch;
 			};
 		};
+		EF50A52429E7026D007518BF /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
@@ -1883,6 +1951,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF04E67929AD24C4003C0420 /* XCRemoteSwiftPackageReference "SwiftUINavigationHeader" */;
 			productName = SwiftUINavigationHeader;
+		};
+		EF50A52529E7026D007518BF /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF50A52429E7026D007518BF /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */ = {
 			isa = XCSwiftPackageProductDependency;
