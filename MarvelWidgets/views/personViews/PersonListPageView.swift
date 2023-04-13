@@ -22,7 +22,7 @@ struct PersonListPageView: View {
         VStack {
             Text("**\(viewModel.filteredPersons.count)** \(viewModel.personType.rawValue)")
                 .sheet(isPresented: $viewModel.showFilters) {
-                    AutoSizingSheet(spacing: 20, padding: true) {
+                    AutoSizingSheet {
                         Text("Filters and Sorting")
                             .font(.largeTitle)
                             .bold()

@@ -71,6 +71,11 @@
 		EF50A52129E700E9007518BF /* ActorPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50A52029E700E9007518BF /* ActorPerson.swift */; };
 		EF50A52329E7010F007518BF /* PersonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF50A52229E7010F007518BF /* PersonType.swift */; };
 		EF50A52629E7026D007518BF /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = EF50A52529E7026D007518BF /* AlertToast */; };
+		EF50A52929E72CDC007518BF /* ScrollViewIfNeeded in Frameworks */ = {isa = PBXBuildFile; productRef = EF50A52829E72CDC007518BF /* ScrollViewIfNeeded */; };
+		EF50A52A29E7346B007518BF /* AutoSizingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */; };
+		EF50A52B29E7346C007518BF /* AutoSizingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */; };
+		EF50A52D29E73497007518BF /* ScrollViewIfNeeded in Frameworks */ = {isa = PBXBuildFile; productRef = EF50A52C29E73497007518BF /* ScrollViewIfNeeded */; };
+		EF50A52F29E7349F007518BF /* ScrollViewIfNeeded in Frameworks */ = {isa = PBXBuildFile; productRef = EF50A52E29E7349F007518BF /* ScrollViewIfNeeded */; };
 		EF521C0E29D2176D0037B658 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */; };
 		EF578F3828A45632006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
 		EF578F3928A45633006272AA /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
@@ -498,6 +503,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF50A52F29E7349F007518BF /* ScrollViewIfNeeded in Frameworks */,
 				EFCA5DAF28A445B40004AAC7 /* Intents.framework in Frameworks */,
 				EF6B83482932348300A5D69C /* DataCache in Frameworks */,
 			);
@@ -507,6 +513,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF50A52929E72CDC007518BF /* ScrollViewIfNeeded in Frameworks */,
 				EFF0E2D929240D4900854E5F /* FirebaseCrashlytics in Frameworks */,
 				EFF35E2529D0AD0200FA8EAE /* FirebaseRemoteConfigSwift in Frameworks */,
 				EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */,
@@ -524,6 +531,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF50A52D29E73497007518BF /* ScrollViewIfNeeded in Frameworks */,
 				EFCE382F28A3E22E00B4CC0D /* SwiftUI.framework in Frameworks */,
 				EFCE382D28A3E22E00B4CC0D /* WidgetKit.framework in Frameworks */,
 				EF6B83462932347C00A5D69C /* DataCache in Frameworks */,
@@ -1035,6 +1043,7 @@
 			name = WidgetTypeConfiguration;
 			packageProductDependencies = (
 				EF6B83472932348300A5D69C /* DataCache */,
+				EF50A52E29E7349F007518BF /* ScrollViewIfNeeded */,
 			);
 			productName = WidgetTypeConfiguration;
 			productReference = EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */;
@@ -1068,6 +1077,7 @@
 				EFF35E2429D0AD0200FA8EAE /* FirebaseRemoteConfigSwift */,
 				EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */,
 				EF50A52529E7026D007518BF /* AlertToast */,
+				EF50A52829E72CDC007518BF /* ScrollViewIfNeeded */,
 			);
 			productName = MarvelWidgets;
 			productReference = EFCE380B28A3D7A700B4CC0D /* MarvelWidgets.app */;
@@ -1088,6 +1098,7 @@
 			name = SmallWidgetExtension;
 			packageProductDependencies = (
 				EF6B83452932347C00A5D69C /* DataCache */,
+				EF50A52C29E73497007518BF /* ScrollViewIfNeeded */,
 			);
 			productName = SmallWidgetExtension;
 			productReference = EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */;
@@ -1132,6 +1143,7 @@
 				EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */,
 				EF04E67929AD24C4003C0420 /* XCRemoteSwiftPackageReference "SwiftUINavigationHeader" */,
 				EF50A52429E7026D007518BF /* XCRemoteSwiftPackageReference "AlertToast" */,
+				EF50A52729E72CDC007518BF /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */,
 			);
 			productRefGroup = EFCE380C28A3D7A700B4CC0D /* Products */;
 			projectDirPath = "";
@@ -1261,6 +1273,7 @@
 				EFF0E2B22921097200854E5F /* Actors.swift in Sources */,
 				EF6B834C2932956400A5D69C /* UserDefaultsService.swift in Sources */,
 				EF0CA0BD29DDEEB200A2322A /* DebugConfig.swift in Sources */,
+				EF50A52B29E7346C007518BF /* AutoSizingSheet.swift in Sources */,
 				EF28E7FE29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EFF0E2B62921097200854E5F /* Season.swift in Sources */,
 				EFF0E2BC2921097200854E5F /* Poster.swift in Sources */,
@@ -1460,6 +1473,7 @@
 				EFF0E29E2921097100854E5F /* Actors.swift in Sources */,
 				EF6B83492932956200A5D69C /* UserDefaultsService.swift in Sources */,
 				EF0CA0BC29DDEEB200A2322A /* DebugConfig.swift in Sources */,
+				EF50A52A29E7346B007518BF /* AutoSizingSheet.swift in Sources */,
 				EF28E7FD29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EFF0E2A22921097100854E5F /* Season.swift in Sources */,
 				EFF0E2A82921097100854E5F /* Poster.swift in Sources */,
@@ -1920,6 +1934,14 @@
 				kind = branch;
 			};
 		};
+		EF50A52729E72CDC007518BF /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/ScrollViewIfNeeded";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
@@ -1956,6 +1978,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF50A52429E7026D007518BF /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		EF50A52829E72CDC007518BF /* ScrollViewIfNeeded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF50A52729E72CDC007518BF /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */;
+			productName = ScrollViewIfNeeded;
+		};
+		EF50A52C29E73497007518BF /* ScrollViewIfNeeded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF50A52729E72CDC007518BF /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */;
+			productName = ScrollViewIfNeeded;
+		};
+		EF50A52E29E7349F007518BF /* ScrollViewIfNeeded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EF50A52729E72CDC007518BF /* XCRemoteSwiftPackageReference "ScrollViewIfNeeded" */;
+			productName = ScrollViewIfNeeded;
 		};
 		EF521C0D29D2176D0037B658 /* FirebaseDynamicLinks */ = {
 			isa = XCSwiftPackageProductDependency;

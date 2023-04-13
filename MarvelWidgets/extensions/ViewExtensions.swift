@@ -17,3 +17,13 @@ extension View {
         }
     }
 }
+
+extension View {
+    @ViewBuilder func autosizingSheet<Content: View>(showSheet: Binding<Bool>, content: @escaping () -> Content) -> some View {
+        self.sheet(isPresented: showSheet) {
+            AutoSizingSheet {
+                content()
+            }
+        }
+    }
+}

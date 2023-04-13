@@ -15,7 +15,6 @@ class ProjectDetailViewModel: ObservableObject {
             posterURL = project.attributes.posters?.first?.posterURL
         }
     }
-    @Published var showBottomLoader = true
     @Published var posterURL: String?
     @Published var posterIndex: Int = 0 {
         didSet {
@@ -78,12 +77,6 @@ class ProjectDetailViewModel: ObservableObject {
                 withAnimation {
                     self.project = populatedProject
                 }
-            }
-        }
-        
-        await MainActor.run {
-            withAnimation {
-                showBottomLoader = false
             }
         }
     }

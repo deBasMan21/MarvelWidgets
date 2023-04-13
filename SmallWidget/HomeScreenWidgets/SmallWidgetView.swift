@@ -15,10 +15,10 @@ struct SmallWidgetView: View {
     
     let gradient = LinearGradient(
             gradient: Gradient(stops: [
-                .init(color: Color("BackgroundColor").withAlphaComponent(0.75), location: 0),
+                .init(color: .black.withAlphaComponent(0.75), location: 0),
                 .init(color: .clear, location: 0.2),
                 .init(color: .clear, location: 0.7),
-                .init(color: Color("BackgroundColor").withAlphaComponent(0.75), location: 1),
+                .init(color: .black.withAlphaComponent(0.75), location: 1),
             ]),
             startPoint: .bottom,
             endPoint: .top

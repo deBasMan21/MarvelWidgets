@@ -7,51 +7,51 @@
 
 import Foundation
 import SwiftUI
+import ScrollViewIfNeeded
+import Kingfisher
 
 struct SeasonView: View {
     @State var seasons: [Season]
     @State var seriesTitle: String
     
-    @State var activeSeason: Int = 0
-    
     var body: some View {
         VStack {
-            Text("Seasons")
-                .font(.largeTitle)
-            
-            VStack(spacing: 20) {
-                ForEach(seasons) { season in
-                    VStack {
+            ForEach(seasons) { season in
+                if let project = season.seasonProject?.data {
+                    NavigationLink(destination: ProjectDetailView(viewModel: ProjectDetailViewModel(project: project), inSheet: false)) {
                         HStack {
-                            Image(systemName: "arrowtriangle.right")
-                                .rotationEffect(.degrees(activeSeason == season.id ? 90 : 0))
+                            KFImage(URL(string: season.imageUrl ?? ""))
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 100, height: 100)
+                                .cornerRadius(10)
+                                .padding(.trailing)
                             
-                            VStack {
-                                Text("Season \(season.seasonNumber)")
+                            VStack(alignment: .leading) {
+                                Text(project.attributes.title)
                                     .bold()
-                                    .foregroundColor(.accentColor)
+                                    .lineLimit(1)
                                 
-                                let episodesString = season.numberOfEpisodes != nil ? "\(season.numberOfEpisodes ?? 0) episodes" : "Coming soon"
-                                Text(episodesString)
+                                Text(project.attributes.getReleaseDateString())
+                                    .foregroundColor(Color.foregroundColor)
+                                
+                                Text("Season \(season.seasonNumber)")
+                                    .foregroundColor(Color.foregroundColor)
+                                
+                                Text("\(season.numberOfEpisodes ?? 0) episodes")
+                                    .foregroundColor(Color.foregroundColor)
                             }
-                        }
-                        
-                        if activeSeason == season.id {
-                            if let episodes = season.episodes, episodes.count > 0 {
-                                SeasonEpisodeListView(episodes: episodes)
-                            } else {
-                                Text("More season information coming soon")
-                                    .padding()
-                            }
-                        }
-                    }.onTapGesture {
-                        let activeSeasonIsTheSame = activeSeason == season.id
-                        
-                        withAnimation {
-                            activeSeason = activeSeasonIsTheSame ? 0 : season.id
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right.circle.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 30, height: 30)
                         }
                     }
                 }
+                
             }
         }
     }
@@ -76,7 +76,7 @@ struct SeasonEpisodeListView: View {
                             
                             Text(episode.episodeReleaseDate.toDate()?.toFormattedString() ?? "")
                                 .textStyle(RedChipText())
-
+                            
                             Text("\(episode.postCreditScenes) post credit scenes")
                                 .textStyle(RedChipText())
                         }
@@ -86,9 +86,52 @@ struct SeasonEpisodeListView: View {
                         .multilineTextAlignment(.center)
                     
                 }.padding()
-                    .background(Color.accentGray)
+                    .background(Color.filterGray)
                     .cornerRadius(10)
                     .padding()
+            }
+        }
+    }
+}
+
+struct SeasonEpisodeView: View {
+    @State var episodes: [Episode]
+    @State var showEpisodes: Bool = false
+    
+    var body: some View {
+        VStack {
+            Button(action: {
+                showEpisodes = true
+            }, label: {
+                HStack {
+                    Spacer()
+                    
+                    Text("Episodes (\(episodes.count))")
+                    
+                    Spacer()
+                }.padding()
+                    .overlay(
+                        HStack {
+                            Spacer()
+                            
+                            Image(systemName: "square.stack.fill")
+                        }.padding()
+                    )
+                    .background(
+                        LinearGradient(
+                            stops: [
+                                .init(color: Color.accentColor, location: 0.0),
+                                .init(color: Color.accentColor.withAlphaComponent(0.5), location: 1.0)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    ).foregroundColor(.white)
+                    .bold()
+                    .cornerRadius(10)
+                    .padding()
+            }).autosizingSheet(showSheet: $showEpisodes) {
+                SeasonEpisodeListView(episodes: episodes)
             }
         }
     }

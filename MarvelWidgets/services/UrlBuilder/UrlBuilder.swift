@@ -150,7 +150,7 @@ extension UrlBuilder {
     private func addProjectDetailPopulate() -> UrlBuilder {
         guard isProject() else { return self }
         addFilterParameter()
-        currentUrl += "populate[0]=related_projects.Posters&populate[1]=Posters&populate[2]=Trailers&populate[3]=actors&populate[4]=directors&populate[5]=Seasons&populate[6]=Seasons.Episodes"
+        currentUrl += "populate[0]=related_projects.Posters&populate[1]=Posters&populate[2]=Trailers&populate[3]=actors&populate[4]=directors&populate[5]=Seasons&populate[6]=Seasons.seasonProject&populate[7]=episodes"
         return self
     }
 }

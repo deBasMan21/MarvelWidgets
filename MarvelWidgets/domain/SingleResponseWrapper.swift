@@ -8,5 +8,5 @@
 import Foundation
 
 struct SingleResponseWrapper: Codable {
-    let data: ProjectWrapper
+    let data: ProjectWrapper?
 }
