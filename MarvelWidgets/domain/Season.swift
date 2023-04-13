@@ -8,20 +8,21 @@
 import Foundation
 
 struct Season: Codable, Identifiable, Equatable {
+    static func == (lhs: Season, rhs: Season) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let uuid = UUID()
     let id: Int
     let seasonNumber: Int
     let numberOfEpisodes: Int?
-    let episodes: [Episode]?
-    let seasonTrailers: [Trailer]?
-    let posters: [Poster]?
+    let seasonProject: SingleResponseWrapper?
+    let imageUrl: String?
  
     enum CodingKeys: String, CodingKey {
         case id
         case seasonNumber = "SeasonNumber"
         case numberOfEpisodes = "NumberOfEpisodes"
-        case episodes = "Episodes"
-        case seasonTrailers = "SeasonTrailers"
-        case posters = "Posters"
+        case seasonProject, imageUrl
     }
 }

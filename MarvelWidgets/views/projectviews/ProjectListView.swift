@@ -17,10 +17,10 @@ struct ProjectListView: View {
     }
     
     var body: some View {
-        VStack{
+        VStack {
             Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
                 .sheet(isPresented: $viewModel.showFilters) {
-                    AutoSizingSheet(spacing: 20, padding: true) {
+                    AutoSizingSheet {
                         Text("Filters and Sorting")
                             .font(.largeTitle)
                             .bold()

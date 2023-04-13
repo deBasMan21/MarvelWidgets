@@ -41,21 +41,25 @@ struct ProjectDetailView: View {
                             .padding()
                     }
                     
+                    if let episodes = viewModel.project.attributes.episodes, episodes.count > 0 {
+                        SeasonEpisodeView(episodes: episodes)
+                    }
+                    
                     if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
                         SeasonView(seasons: seasons, seriesTitle: viewModel.project.attributes.title)
                             .padding()
-                    }
-                    
-                    if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
-                        ActorListView(
-                            actors: actors.data
-                        ).padding()
                     }
                     
                     if let quote = viewModel.project.attributes.quote, let quoteCaption = viewModel.project.attributes.quoteCaption {
                         VStack(alignment: .leading) {
                             QuoteView(quote: quote, quoteCaption: quoteCaption)
                         }
+                    }
+                    
+                    if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
+                        ActorListView(
+                            actors: actors.data
+                        ).padding()
                     }
                     
                     VStack(spacing: 30) {
@@ -102,11 +106,6 @@ struct ProjectDetailView: View {
                     
                     if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {
                         RelatedProjectsView(relatedProjects: relatedProjects)
-                    }
-                    
-                    if viewModel.showBottomLoader {
-                        ProgressView()
-                            .padding()
                     }
                 }.padding(.vertical, -60)
         }, toolbar: { state in
