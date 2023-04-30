@@ -27,12 +27,15 @@ struct AutoSizingSheet<Content: View>: View {
                             GeometryReader { geo in
                                 Color.clear.onAppear {
                                     contentSize = geo.size
+                                    print("debug: size \(contentSize.height)")
                                 }
                             }
                         )
                 }
             }
         }.presentationDragIndicator(.visible)
-            .presentationDetents([.height(contentSize.height + 50)])
+            .if(contentSize.height > 0, transform: { view in
+                view.presentationDetents([.height(contentSize.height + 50)])
+            })
     }
 }

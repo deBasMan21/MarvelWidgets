@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import ScrollViewIfNeeded
 
 struct ProjectListView: View {
     @StateObject var viewModel: ProjectListViewModel
@@ -20,33 +21,36 @@ struct ProjectListView: View {
         VStack {
             Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
                 .sheet(isPresented: $viewModel.showFilters) {
-                    AutoSizingSheet {
-                        Text("Filters and Sorting")
-                            .font(.largeTitle)
-                            .bold()
-                            .padding()
-                        
-                        TypeFilter(typeFilters: $viewModel.typeFilters, selectedTypes: $viewModel.selectedTypes)
-                        
-                        if viewModel.pageType == .mcu {
-                            PhaseFilter(selectedFilters: $viewModel.selectedFilters)
+                    ScrollViewIfNeeded {
+                        VStack {
+                            Text("Filters and Sorting")
+                                .font(.largeTitle)
+                                .bold()
+                                .padding()
                             
-                            CategoryFilterView(selectedCategories: $viewModel.selectedCategories)
-                        }
-                        
-                        // Date filters
-                        DateFilter(date: $viewModel.afterDate, title: "After:")
-                        
-                        DateFilter(date: $viewModel.beforeDate, title: "Before:")
-                        
-                        OrderFilterView(orderType: $viewModel.orderType)
-                        
-                        Button(action: {
-                            viewModel.resetFilters()
-                        }, label: {
-                            Text("Reset")
-                        })
-                    }
+                            TypeFilter(typeFilters: $viewModel.typeFilters, selectedTypes: $viewModel.selectedTypes)
+                            
+                            if viewModel.pageType == .mcu {
+                                PhaseFilter(selectedFilters: $viewModel.selectedFilters)
+                                
+                                CategoryFilterView(selectedCategories: $viewModel.selectedCategories)
+                            }
+                            
+                            // Date filters
+                            DateFilter(date: $viewModel.afterDate, title: "After:")
+                            
+                            DateFilter(date: $viewModel.beforeDate, title: "Before:")
+                            
+                            OrderFilterView(orderType: $viewModel.orderType)
+                            
+                            Button(action: {
+                                viewModel.resetFilters()
+                            }, label: {
+                                Text("Reset")
+                            })
+                        }.padding(.horizontal)
+                    }.presentationDetents([.medium])
+                        .presentationDragIndicator(.visible)
                 }
             
             ScrollViewReader { reader in

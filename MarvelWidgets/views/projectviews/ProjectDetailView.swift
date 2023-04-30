@@ -107,7 +107,8 @@ struct ProjectDetailView: View {
                     if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {
                         RelatedProjectsView(relatedProjects: relatedProjects)
                     }
-                }.padding(.vertical, -60)
+                }.padding(.top, -60)
+                .padding(.bottom, -30)
         }, toolbar: { state in
             HeaderToolbarItem(barState: state, content: {
                 VStack {
@@ -117,8 +118,8 @@ struct ProjectDetailView: View {
                         EmptyView()
                     }
                 }.onTapGesture {
-                    if let dpUrl = viewModel.project.attributes.disneyPlusUrl {
-                        UIApplication.shared.open(URL(string: dpUrl)!)
+                    if let dpUrl = viewModel.project.attributes.disneyPlusUrl, let dpUrl = URL(string: dpUrl) {
+                        UIApplication.shared.open(dpUrl)
                     }
                 }
             })
