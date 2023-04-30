@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import ScrollViewIfNeeded
 
 struct PersonListPageView: View {
     @StateObject var viewModel: ViewModel
@@ -22,23 +23,27 @@ struct PersonListPageView: View {
         VStack {
             Text("**\(viewModel.filteredPersons.count)** \(viewModel.personType.rawValue)")
                 .sheet(isPresented: $viewModel.showFilters) {
-                    AutoSizingSheet {
-                        Text("Filters and Sorting")
-                            .font(.largeTitle)
-                            .bold()
-                        
-                        DateFilter(date: $viewModel.filterAfterDate, title: "Born after:")
-                        
-                        DateFilter(date: $viewModel.filterBeforeDate, title: "Born before:")
-                        
-                        OrderFilterView(orderType: $viewModel.orderType)
-                        
-                        Button(action: {
-                            viewModel.resetFilters()
-                        }, label: {
-                            Text("Reset")
-                        })
-                    }
+                    ScrollViewIfNeeded {
+                        VStack {
+                            Text("Filters and Sorting")
+                                .font(.largeTitle)
+                                .bold()
+                                .padding()
+                            
+                            DateFilter(date: $viewModel.filterAfterDate, title: "Born after:")
+                            
+                            DateFilter(date: $viewModel.filterBeforeDate, title: "Born before:")
+                            
+                            OrderFilterView(orderType: $viewModel.orderType)
+                            
+                            Button(action: {
+                                viewModel.resetFilters()
+                            }, label: {
+                                Text("Reset")
+                            })
+                        }.padding(.horizontal)
+                    }.presentationDetents([.medium])
+                        .presentationDragIndicator(.visible)
                 }
             
             ZStack {
