@@ -112,8 +112,10 @@ struct ProjectListView: View {
             ProgressView(value: viewModel.proportion, total: 1)
         }.navigationBarState(.compact, displayMode: .automatic)
             .onAppear{
-                Task{
-                    await viewModel.fetchProjects()
+                if viewModel.projects.count <= 0 {
+                    Task {
+                        await viewModel.fetchProjects()
+                    }
                 }
             }.navigationTitle(viewModel.navigationTitle)
             .showTabBar(featureFlag: remoteConfig.hideTabbar)
