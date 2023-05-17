@@ -95,28 +95,32 @@ extension ProjectListView {
         }
         
         func fetchProjects(force: Bool = false) async {
-            _ = await MainActor.run {
-                Task {
-                    allProjects = await ProjectService.getAll(for: pageType, force: force)
-                    
-                    filterProjects()
-                    orderProjects()
-                    setReleaseDates(save: true)
-                    
-                    closestDateId = projects.getClosest()
-                    showScroll = true
-                }
-            }
+            allProjects = await ProjectService.getAll(for: pageType, force: force)
+            
+            filterProjects()
+            orderProjects()
+            setReleaseDates(save: true)
+            
+            closestDateId = projects.getClosest()
+            showScroll = true
         }
         
         func setReleaseDates(save: Bool = false) {
-            afterDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min()?.addingTimeInterval(-60 * 60 * 24) ?? Date.now
-            beforeDate = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max()?.addingTimeInterval(60 * 60 * 24) ?? Date.now
-            
-            if save {
-                minimalBeforeDate = beforeDate
-                maximalAfterDate = afterDate
+            Task {
+                let afterDateList = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.min()?.addingTimeInterval(-60 * 60 * 24) ?? Date.now
+                let beforeDateList = allProjects.compactMap { $0.attributes.releaseDate?.toDate() }.max()?.addingTimeInterval(60 * 60 * 24) ?? Date.now
+                
+                await MainActor.run {
+                    afterDate = afterDateList
+                    beforeDate = beforeDateList
+                    
+                    if save {
+                        minimalBeforeDate = beforeDate
+                        maximalAfterDate = afterDate
+                    }
+                }
             }
+            
         }
         
         func orderProjects() {
