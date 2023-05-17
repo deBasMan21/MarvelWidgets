@@ -57,7 +57,13 @@ extension UrlBuilder {
     func addFirstUpcomingFilter() -> UrlBuilderType {
         guard isProject() else { return self }
         addFilterParameter()
-        currentUrl += "populate[0]=Posters&populate[1]=directors&sort[0]=ReleaseDate:asc&filters[ReleaseDate][$gt]=2023-02-25&pagination[pageSize]=2"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        let releaseDateFilter = dateFormatter.string(from: Date())
+        currentUrl += "populate[0]=Posters&populate[1]=directors&sort[0]=ReleaseDate:asc&filters[ReleaseDate][$gt]=\(releaseDateFilter)&pagination[pageSize]=2"
+        
         return self
     }
     
