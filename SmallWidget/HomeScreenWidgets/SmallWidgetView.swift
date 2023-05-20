@@ -15,10 +15,9 @@ struct SmallWidgetView: View {
     
     let gradient = LinearGradient(
             gradient: Gradient(stops: [
-                .init(color: .black.withAlphaComponent(0.75), location: 0),
-                .init(color: .clear, location: 0.2),
-                .init(color: .clear, location: 0.7),
-                .init(color: .black.withAlphaComponent(0.75), location: 1),
+                .init(color: .clear, location: 1),
+                .init(color: .clear, location: 0.5),
+                .init(color: .black.withAlphaComponent(0.9), location: 0),
             ]),
             startPoint: .bottom,
             endPoint: .top
@@ -36,24 +35,39 @@ struct SmallWidgetView: View {
                 }
             
             HStack {
-                VStack {
+                VStack(alignment: .leading) {
                     if showText {
-                        Text(upcomingProject.attributes.title)
-                            .multilineTextAlignment(.center)
-                            .shadow(color: .black, radius: 5)
-                            .font(Font.headline.weight(.bold))
-                            .foregroundColor(.white)
-                        
                         Spacer()
+                        
+                        Text(upcomingProject.attributes.title)
+                            .multilineTextAlignment(.leading)
+                            .shadow(color: .black, radius: 5)
+                            .bold()
+                            .foregroundColor(.white)
                         
                         if let string = upcomingProject.attributes.getDaysUntilRelease(withDaysString: true) {
                             Text(string)
                                 .shadow(color: .black, radius: 5)
-                                .foregroundColor(.white)
+                                .font(Font.system(size: 12))
+                                .foregroundColor(Color(uiColor: .lightGray))
                         }
                     }
                 }
             }.padding(.vertical, 3)
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Image("AppIconLarge")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
+                        .cornerRadius(5)
+                        .padding(7)
+                }
+                Spacer()
+            }
         }.widgetURL(upcomingProject.getUrl())
     }
 }

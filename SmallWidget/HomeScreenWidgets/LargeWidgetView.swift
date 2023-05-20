@@ -75,14 +75,14 @@ struct LargeWidgetView: View {
             .overlay(
                 VStack {
                     HStack {
+                        Spacer()
+                        
                         Image("AppIconLarge")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 30, height: 30)
                             .cornerRadius(5)
-                            .padding()
-                        
-                        Spacer()
+                            .padding(7)
                     }
                     
                     Spacer()

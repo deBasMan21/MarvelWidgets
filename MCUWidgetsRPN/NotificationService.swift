@@ -19,6 +19,8 @@ class NotificationService: UNNotificationServiceExtension {
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         
         if let bestAttemptContent = bestAttemptContent {
+            bestAttemptContent.categoryIdentifier = "myNotificationCategory"
+            
             if let imageUrl = bestAttemptContent.userInfo["gcm.notification.imageUrl"] as? String {
                 downloadImage(from: imageUrl) { image in
                     if let attachment = UNNotificationAttachment.create(identifier: "temporaryNotificationImage", image: image, options: [:]) {
@@ -63,6 +65,9 @@ class NotificationService: UNNotificationServiceExtension {
                 let data = data, error == nil,
                 let image = UIImage(data: data)
                 else { return }
+            
+            UserDefaults(suiteName: "group.mcuwidgets")!.set(data, forKey: "imageData")
+            UserDefaults(suiteName: "group.mcuwidgets")!.set("VALUE", forKey: "test")
             
             handler(image)
         }.resume()
