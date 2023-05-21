@@ -18,21 +18,26 @@ struct PosterListViewItem: View {
         ZStack {
             ImageSizedView(url: posterUrl, showGradient: showGradient)
             
-            VStack {
+            VStack(alignment: .leading) {
                 Spacer()
                 
-                VStack {
-                    Text(title)
-                        .font(Font.headline.bold())
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(title)
+                            .font(Font.headline.bold())
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2)
+                        
+                        Text(subTitle)
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(uiColor: .lightGray))
+                        
+                    }.padding(7)
                     
-                    Text(subTitle)
-                        .font(Font.body.italic())
-                    
+                    Spacer()
                 }
-            }.padding(.horizontal, 20)
-                .padding(.bottom)
+                
+            }.frame(width: 150, height: 250)
         }.foregroundColor(.white)
             .shadow(color: Color(uiColor: UIColor.white.withAlphaComponent(0.3)), radius: 5)
     }

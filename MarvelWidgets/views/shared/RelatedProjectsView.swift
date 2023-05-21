@@ -30,16 +30,11 @@ struct RelatedProjectsView: View {
                                 inSheet: false
                             )
                         } label: {
-                            VStack{
-                                ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
-                                
-                                Text(project.attributes.title)
-                                    .font(Font.headline.bold())
-                                
-                                Text(project.attributes.getReleaseDateString())
-                                    .font(Font.body.italic())
-                                    .foregroundColor(Color(uiColor: UIColor.label))
-                            }.frame(width: 150)
+                            PosterListViewItem(
+                                posterUrl: project.attributes.posters?.first?.posterURL ?? "",
+                                title: project.attributes.title,
+                                subTitle: project.attributes.getReleaseDateString()
+                            )
                         }
                     }
                 }
