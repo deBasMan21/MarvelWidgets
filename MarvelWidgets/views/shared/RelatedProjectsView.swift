@@ -15,7 +15,7 @@ struct RelatedProjectsView: View {
         VStack {
             Text("Related projects")
                 .font(Font.largeTitle)
-                .padding()
+                .padding(.bottom)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15){
@@ -39,6 +39,6 @@ struct RelatedProjectsView: View {
                     }
                 }
             }
-        }.padding(.horizontal)
+        }
     }
 }

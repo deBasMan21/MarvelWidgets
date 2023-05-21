@@ -11,7 +11,6 @@ import SwiftUI
 extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
         var filterCallback: (Bool, Int) -> Void = { _, _ in }
-        var scrollCallback: (Bool, Int) -> Void = { _, _ in }
         
         @Published var scrollViewHeight: CGFloat = 0
         @Published var proportion: CGFloat = 0
@@ -24,17 +23,12 @@ extension ProjectListView {
                 case .other:
                     typeFilters = [.defenders, .fox, .sony, .marvelTelevision, .marvelOther]
                 }
-                
-                updateScrollButton()
             }
         }
         @Published var typeFilters: [ProjectType] = []
         @Published var showFilters: Bool = false
         private var allProjects: [ProjectWrapper] = []
         @Published var projects: [ProjectWrapper] = []
-        @Published var closestDateId: Int = -1
-        @Published var showScroll: Bool = false
-        @Published var forceClose: Bool = false
         @Published var selectedCategories: [String] = [] {
             didSet {
                 filterProjects()
@@ -100,9 +94,6 @@ extension ProjectListView {
             filterProjects()
             orderProjects()
             setReleaseDates(save: true)
-            
-            closestDateId = projects.getClosest()
-            showScroll = true
         }
         
         func setReleaseDates(save: Bool = false) {
@@ -231,7 +222,6 @@ extension ProjectListView {
                 self.projects = orderProjects(projects: projects)
             }
             
-            updateScrollButton()
             filterCallback(true, getFilterCount())
         }
         
@@ -240,14 +230,6 @@ extension ProjectListView {
             count += minimalBeforeDate == beforeDate ? 0 : 1
             count += maximalAfterDate == afterDate ? 0 : 1
             return count
-        }
-        
-        func updateScrollButton() {
-            withAnimation {
-                forceClose = pageType != .mcu || selectedTypes.count != 0 || selectedFilters.count != 0 || !searchQuery.isEmpty
-            }
-            
-            scrollCallback(!forceClose, 0)
         }
         
         func resetFilters() {

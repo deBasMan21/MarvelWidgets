@@ -28,7 +28,7 @@ struct ProjectDetailView: View {
                 }
             }
         }, content: {
-                VStack {
+            VStack(spacing: 30) {
                     ProjectInformationView(
                         project: $viewModel.project,
                         posterIndex: $viewModel.posterIndex,
@@ -38,7 +38,6 @@ struct ProjectDetailView: View {
                     if let overview = viewModel.project.attributes.overview {
                         Text(overview)
                             .multilineTextAlignment(.center)
-                            .padding()
                     }
                     
                     if let episodes = viewModel.project.attributes.episodes, episodes.count > 0 {
@@ -47,7 +46,6 @@ struct ProjectDetailView: View {
                     
                     if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
                         SeasonView(seasons: seasons, seriesTitle: viewModel.project.attributes.title)
-                            .padding()
                     }
                     
                     if let quote = viewModel.project.attributes.quote, let quoteCaption = viewModel.project.attributes.quoteCaption {
@@ -59,7 +57,7 @@ struct ProjectDetailView: View {
                     if let actors = viewModel.project.attributes.actors, actors.data.count > 0 {
                         ActorListView(
                             actors: actors.data
-                        ).padding()
+                        )
                     }
                     
                     VStack(spacing: 30) {
@@ -98,10 +96,9 @@ struct ProjectDetailView: View {
                                     }
                                 }
                             }
-                        }.padding(10)
+                        }.padding()
                             .background(Color.accentGray)
                             .cornerRadius(10)
-                            .padding(.horizontal)
                     }
                     
                     if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {
@@ -109,6 +106,7 @@ struct ProjectDetailView: View {
                     }
                 }.padding(.top, -60)
                 .padding(.bottom, -30)
+                .padding(.horizontal, 20)
         }, toolbar: { state in
             HeaderToolbarItem(barState: state, content: {
                 VStack {

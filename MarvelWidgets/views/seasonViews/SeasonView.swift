@@ -129,7 +129,6 @@ struct SeasonEpisodeView: View {
                     ).foregroundColor(.white)
                     .bold()
                     .cornerRadius(10)
-                    .padding()
             }).autosizingSheet(showSheet: $showEpisodes) {
                 SeasonEpisodeListView(episodes: episodes)
             }

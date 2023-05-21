@@ -133,6 +133,6 @@ struct ProjectInformationView: View {
                     }
                 }
             }
-        }.padding(.horizontal, 20)
+        }
     }
 }
