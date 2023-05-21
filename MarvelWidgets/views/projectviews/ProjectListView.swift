@@ -78,25 +78,10 @@ struct ProjectListView: View {
                     }.searchable(text: $viewModel.searchQuery)
                         .refreshable {
                             await viewModel.refresh(force: true)
-                        }.simultaneousGesture(
-                            DragGesture().onChanged({ _ in
-                                withAnimation {
-                                    viewModel.showScroll = true
-                                    viewModel.scrollCallback(true, 0)
-                                }
-                            })
-                        )
+                        }
                     
                     FloatingActionButtonOverlay(
                         buttons: [
-                            OptionCircleButton(imageName: "calendar.badge.clock", clickEvent: {
-                                withAnimation {
-                                    reader.scrollTo(viewModel.closestDateId, anchor: .top)
-                                    viewModel.scrollCallback(false, 0)
-                                }
-                            }, getFunction: { function in
-                                viewModel.scrollCallback = function
-                            }),
                             OptionCircleButton(imageName: "line.3.horizontal.decrease", clickEvent: {
                                 withAnimation {
                                     viewModel.showFilters.toggle()

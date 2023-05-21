@@ -15,7 +15,7 @@ struct RelatedProjectsView: View {
         VStack {
             Text("Related projects")
                 .font(Font.largeTitle)
-                .padding()
+                .padding(.bottom)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15){
@@ -30,20 +30,15 @@ struct RelatedProjectsView: View {
                                 inSheet: false
                             )
                         } label: {
-                            VStack{
-                                ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
-                                
-                                Text(project.attributes.title)
-                                    .font(Font.headline.bold())
-                                
-                                Text(project.attributes.getReleaseDateString())
-                                    .font(Font.body.italic())
-                                    .foregroundColor(Color(uiColor: UIColor.label))
-                            }.frame(width: 150)
+                            PosterListViewItem(
+                                posterUrl: project.attributes.posters?.first?.posterURL ?? "",
+                                title: project.attributes.title,
+                                subTitle: project.attributes.getReleaseDateString()
+                            )
                         }
                     }
                 }
             }
-        }.padding(.horizontal)
+        }
     }
 }

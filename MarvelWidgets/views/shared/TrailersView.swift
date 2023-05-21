@@ -33,6 +33,6 @@ struct TrailersView: View {
             }.tabViewStyle(.page(indexDisplayMode: .always))
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .frame(height: 250)
-        }.padding()
+        }
     }
 }
