@@ -10,8 +10,8 @@ import Foundation
 class ProductionConfig: Config {
     static let standard: Config = ProductionConfig()
     
-    let baseUrl: String = "https://serverbuijsen.nl/api"
-    let apiKey: String = "Bearer 8e39720ae2960eacb4fe19ea26f7974b7e02d642ad4bb7f7f4efc406f245477a0561c35ad1683acebdcd74f06c3ecb6ee29c1c4e53a487578d836458b159c3107a5858ecd91f2f75622d5d9b4f70690c5fab9d7835fc9fba8b78482abc5bd52bd1e77d94b8d066300bd09e4707e11fdd645d7b75dca7cf34874aa9f48e491d54"
+    let baseUrl: String = "https://mcuwidgets.buijsenserver.nl/api"
+    let apiKey: String = "Bearer e0235424cceeafb84f5bef832e2501a63942138847f11a56c033c24147946d7b5fbfb786eadd0b83d890aabaf48aebb79b57a0d70dc9295f1622cb2ab5898ddbd790c4758cdcd5e41d9d1f70971deb803de0ba7386072feeaf25e0b2b13f70ed2409c8651067b586436f605a21ceb84ac65c487a7b4f0f9814ad42a32cf92208"
     
     init() { }
 }
