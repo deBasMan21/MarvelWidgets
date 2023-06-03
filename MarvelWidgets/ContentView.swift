@@ -63,7 +63,8 @@ struct ContentView: View {
                 }
                 
                 NavigationView {
-                    WidgetSettingsView()
+//                    WidgetSettingsView()
+                    SwipingView()
                 }.tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }

@@ -183,6 +183,7 @@
 		EF84047129DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF84047329DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
+		EF87794A2A2B447600FFBBB5 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8779492A2B447600FFBBB5 /* SwipingView.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */; };
 		EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E429DCB53200586017 /* TypeFilter.swift */; };
@@ -456,6 +457,7 @@
 		EF84046329DEDC4400E8F969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF84046829DF574E00E8F969 /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
 		EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterView.swift; sourceTree = "<group>"; };
+		EF8779492A2B447600FFBBB5 /* SwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingView.swift; sourceTree = "<group>"; };
 		EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSizingSheet.swift; sourceTree = "<group>"; };
 		EFB503E429DCB53200586017 /* TypeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFilter.swift; sourceTree = "<group>"; };
 		EFB503E629DCB55200586017 /* PhaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseFilter.swift; sourceTree = "<group>"; };
@@ -725,6 +727,14 @@
 			path = HomeScreenWidgets;
 			sourceTree = "<group>";
 		};
+		EF8779482A2B445B00FFBBB5 /* Recommendations */ = {
+			isa = PBXGroup;
+			children = (
+				EF8779492A2B447600FFBBB5 /* SwipingView.swift */,
+			);
+			path = Recommendations;
+			sourceTree = "<group>";
+		};
 		EFB503E329DCB51B00586017 /* filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,6 +925,7 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EF8779482A2B445B00FFBBB5 /* Recommendations */,
 				EF26F68B29DADC0F00E1A74D /* personViews */,
 				EF238AA029B26B1A00C3FC9C /* Onboarding */,
 				EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */,
@@ -1524,6 +1535,7 @@
 				EFF0E2832921082A00854E5F /* Actor.swift in Sources */,
 				EFF04BD329BE30C600437A6E /* RedChipText.swift in Sources */,
 				EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */,
+				EF87794A2A2B447600FFBBB5 /* SwipingView.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
 				EF1F065429E6B92D009CC97A /* UrlBuilderType.swift in Sources */,
 				EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
