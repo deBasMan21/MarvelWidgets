@@ -342,6 +342,9 @@
 		EFF0E2D729240D4900854E5F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E2D629240D4900854E5F /* FirebaseAnalytics */; };
 		EFF0E2D929240D4900854E5F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E2D829240D4900854E5F /* FirebaseCrashlytics */; };
 		EFF0E2DB29240D4900854E5F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = EFF0E2DA29240D4900854E5F /* FirebaseMessaging */; };
+		EFF20E102A2CAAB0004BCF58 /* ScrollingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF20E0F2A2CAAB0004BCF58 /* ScrollingVStack.swift */; };
+		EFF20E122A2CAB04004BCF58 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF20E112A2CAB04004BCF58 /* UIImageExtensions.swift */; };
+		EFF20E142A2CAE14004BCF58 /* String+averageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF20E132A2CAE14004BCF58 /* String+averageColor.swift */; };
 		EFF35E2329D0AD0200FA8EAE /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = EFF35E2229D0AD0200FA8EAE /* FirebaseRemoteConfig */; };
 		EFF35E2529D0AD0200FA8EAE /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EFF35E2429D0AD0200FA8EAE /* FirebaseRemoteConfigSwift */; };
 		EFF35E2729D0AE7600FA8EAE /* remote_config_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFF35E2629D0AE7500FA8EAE /* remote_config_defaults.plist */; };
@@ -557,6 +560,9 @@
 		EFF0E2C12922B79200854E5F /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		EFF0E2C52924062C00854E5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EFF0E2D229240B7B00854E5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EFF20E0F2A2CAAB0004BCF58 /* ScrollingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingVStack.swift; sourceTree = "<group>"; };
+		EFF20E112A2CAB04004BCF58 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		EFF20E132A2CAE14004BCF58 /* String+averageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+averageColor.swift"; sourceTree = "<group>"; };
 		EFF35E2629D0AE7500FA8EAE /* remote_config_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = remote_config_defaults.plist; sourceTree = "<group>"; };
 		EFFE152B28A5481C00DCF804 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		EFFE153528A54BE000DCF804 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
@@ -731,6 +737,7 @@
 			isa = PBXGroup;
 			children = (
 				EF8779492A2B447600FFBBB5 /* SwipingView.swift */,
+				EFF20E0F2A2CAAB0004BCF58 /* ScrollingVStack.swift */,
 			);
 			path = Recommendations;
 			sourceTree = "<group>";
@@ -774,6 +781,8 @@
 				EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */,
 				EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */,
 				EFB503FA29DD80AA00586017 /* ViewExtensions+tabbar.swift */,
+				EFF20E112A2CAB04004BCF58 /* UIImageExtensions.swift */,
+				EFF20E132A2CAE14004BCF58 /* String+averageColor.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1527,6 +1536,7 @@
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
 				EFF04BE129BE559300437A6E /* OnboardingPageTwoHeader.swift in Sources */,
 				EFF0E2912921087F00854E5F /* RelatedProject.swift in Sources */,
+				EFF20E102A2CAAB0004BCF58 /* ScrollingVStack.swift in Sources */,
 				EFB503EB29DCB57E00586017 /* OrderFilterView.swift in Sources */,
 				EFF0E28B2921085900854E5F /* Poster.swift in Sources */,
 				EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */,
@@ -1535,6 +1545,7 @@
 				EFF0E2832921082A00854E5F /* Actor.swift in Sources */,
 				EFF04BD329BE30C600437A6E /* RedChipText.swift in Sources */,
 				EF178C4A28AEACC5003B9B76 /* SmallWidget.swift in Sources */,
+				EFF20E122A2CAB04004BCF58 /* UIImageExtensions.swift in Sources */,
 				EF87794A2A2B447600FFBBB5 /* SwipingView.swift in Sources */,
 				EFCE382528A3E0A700B4CC0D /* LogService.swift in Sources */,
 				EF1F065429E6B92D009CC97A /* UrlBuilderType.swift in Sources */,
@@ -1588,6 +1599,7 @@
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
 				EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */,
+				EFF20E142A2CAE14004BCF58 /* String+averageColor.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFF04BDF29BE557A00437A6E /* OnboardingPageOneHeader.swift in Sources */,
 				EFB503FE29DD8B7900586017 /* ScrollViewListener.swift in Sources */,

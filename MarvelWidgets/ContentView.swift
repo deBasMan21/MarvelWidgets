@@ -23,6 +23,7 @@ struct ContentView: View {
     @State var openUrlHelper: OpenUrlWrapper?
     
     @State var showAlert: Bool = false
+    @State var activeTab: Int = 0
     
     var body: some View {
         ZStack {
@@ -34,7 +35,7 @@ struct ContentView: View {
                     }
             }
             
-            TabView {
+            TabView(selection: $activeTab) {
                 NavigationStack(path: $projects) {
                     ProjectListView(pageType: .mcu)
                         .navigationDestination(for: ProjectWrapper.self) { i in
@@ -42,32 +43,32 @@ struct ContentView: View {
                         }
                 }.tabItem{
                     Label("MCU", systemImage: "list.dash")
-                }
+                }.tag(0)
                 
                 NavigationView {
                     ProjectListView(pageType: .other)
                 }.tabItem{
                     Label("Related", systemImage: "film")
-                }
+                }.tag(1)
                 
                 NavigationView {
                     PersonListPageView(type: .actor)
                 }.tabItem {
                     Label("Actors", systemImage: "person.fill")
-                }
+                }.tag(2)
                 
                 NavigationView {
                     PersonListPageView(type: .director)
                 }.tabItem {
                     Label("Directors", systemImage: "megaphone")
-                }
+                }.tag(3)
                 
                 NavigationView {
 //                    WidgetSettingsView()
-                    SwipingView()
+                    SwipingParentView(activeTab: $activeTab)
                 }.tabItem {
                     Label("Settings", systemImage: "gearshape")
-                }
+                }.tag(4)
             }.onAppear {
                 // Fix to always show the tabbar background
                 let tabBarAppearance = UITabBarAppearance()
