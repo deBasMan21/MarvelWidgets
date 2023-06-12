@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProjectWrapper: Codable, Comparable, Hashable {
+struct ProjectWrapper: Codable, Comparable, Hashable, Identifiable {
     static func < (lhs: ProjectWrapper, rhs: ProjectWrapper) -> Bool {
         lhs.attributes > rhs.attributes
     }
