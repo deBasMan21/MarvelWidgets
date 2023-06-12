@@ -35,6 +35,8 @@
 		EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
+		EF185A5C2A377BC6002BF289 /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF185A5B2A377BC6002BF289 /* TrackingService.swift */; };
+		EF185A5E2A378185002BF289 /* RecommendationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF185A5D2A378185002BF289 /* RecommendationService.swift */; };
 		EF1BE4192A191BB50072CC26 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6B8298292412CA00A5D69C /* UserNotifications.framework */; };
 		EF1BE41A2A191BB50072CC26 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */; };
 		EF1BE41D2A191BB50072CC26 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1BE41C2A191BB50072CC26 /* NotificationViewController.swift */; };
@@ -414,6 +416,8 @@
 		EF178C4228AE8D47003B9B76 /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetHelper.swift; sourceTree = "<group>"; };
 		EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
+		EF185A5B2A377BC6002BF289 /* TrackingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingService.swift; sourceTree = "<group>"; };
+		EF185A5D2A378185002BF289 /* RecommendationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationService.swift; sourceTree = "<group>"; };
 		EF1BE4182A191BB50072CC26 /* McuWidgetsRPNContent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = McuWidgetsRPNContent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1BE41C2A191BB50072CC26 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		EF1BE41F2A191BB50072CC26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -895,6 +899,8 @@
 				EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */,
 				EF6B82D7292D4F9000A5D69C /* PersonService.swift */,
 				EFF04BC029BE225A00437A6E /* NotificationService.swift */,
+				EF185A5B2A377BC6002BF289 /* TrackingService.swift */,
+				EF185A5D2A378185002BF289 /* RecommendationService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -1531,6 +1537,7 @@
 				EFF0E277292107DE00854E5F /* MCUProject.swift in Sources */,
 				EFF04BD129BE309400437A6E /* CircularRedButtonStyle.swift in Sources */,
 				EFCA5DA728A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
+				EF185A5C2A377BC6002BF289 /* TrackingService.swift in Sources */,
 				EF50A51F29E700D8007518BF /* DirectorPerson.swift in Sources */,
 				EF78F5C42993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
 				EFCA5DA228A41E820004AAC7 /* WidgetSettingsView.swift in Sources */,
@@ -1626,6 +1633,7 @@
 				EF6B82D1292AAC1D00A5D69C /* InstagramView.swift in Sources */,
 				EFF04BE529BE55C000437A6E /* OnboardingPageFourHeader.swift in Sources */,
 				EF0CA0B129DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
+				EF185A5E2A378185002BF289 /* RecommendationService.swift in Sources */,
 				EF50A51D29E700C6007518BF /* Person.swift in Sources */,
 				EFF04BE829BE6A1A00437A6E /* OnboardingPageFiveView.swift in Sources */,
 				EFF04BD529BE527100437A6E /* NotificationView.swift in Sources */,

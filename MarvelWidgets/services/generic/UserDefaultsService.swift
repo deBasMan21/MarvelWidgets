@@ -23,6 +23,7 @@ class UserDefaultsService {
         static let token = "token"
         static let useConfig = "useConfig"
         static let previousTabbarHeight = "previousTabbarHeight"
+        static let trackingUrl = "trackingUrl"
     }
     
     var useConfig: Bool {
@@ -79,6 +80,15 @@ class UserDefaultsService {
         }
         set(value) {
             defs.set(value, forKey: UserDefaultsKeys.previousTabbarHeight)
+        }
+    }
+    
+    var trackingUrl: String {
+        get {
+            defs.string(forKey: UserDefaultsKeys.trackingUrl) ?? ""
+        }
+        set(value) {
+            defs.set(value, forKey: UserDefaultsKeys.trackingUrl)
         }
     }
 }

@@ -146,5 +146,8 @@ struct ProjectDetailView: View {
                       secondaryButton: .cancel()
                 )
             }).hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
+            .task {
+                await TrackingService.trackPage(page: TrackingPage(pageId: viewModel.project.id, pageType: .project))
+            }
     }
 }

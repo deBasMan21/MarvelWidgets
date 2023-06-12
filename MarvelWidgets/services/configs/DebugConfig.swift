@@ -17,5 +17,9 @@ class DebugConfig: Config {
         UserDefaultsService.standard.token
     }
     
+    var trackingUrl: String {
+        UserDefaultsService.standard.trackingUrl
+    }
+    
     init() { }
 }

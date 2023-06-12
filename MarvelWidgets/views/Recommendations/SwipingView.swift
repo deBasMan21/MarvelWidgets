@@ -29,18 +29,7 @@ struct SwipingParentView: View {
                 ProgressView()
             }
         }.task {
-            let projects = await ProjectService.getAll().compactMap { ProjectSwipingContent(project: $0) }
-            let relatedProjects = await ProjectService.getAll(for: .other).compactMap { ProjectSwipingContent(project: $0) }
-            let actors = await ProjectService.getActors().compactMap { PersonSwipingContent(person: $0.person) }
-            let directors = await ProjectService.getDirectors().compactMap { PersonSwipingContent(person: $0.person) }
-            
-            var combined: [any SwipingContent] = []
-            combined.append(contentsOf: directors)
-            combined.append(contentsOf: projects)
-            combined.append(contentsOf: relatedProjects)
-            combined.append(contentsOf: actors)
-            
-            self.projects = combined.shuffled()
+            self.projects = await RecommendationService.getRecommendations(page: 1)
         }
     }
     
@@ -58,17 +47,16 @@ struct SwipingParentView: View {
 }
 
 struct SwipingView: View {
-    @State var projects: [any SwipingContent]
     @State var currentProjects: [any SwipingContent]
     @State var index: Int
+    @State var pageIndex: Int = 1
     
     var navigateBackCallback: () -> Void
     
     init(projects: [any SwipingContent], navigateBackCallback: @escaping () -> Void) {
         self.navigateBackCallback = navigateBackCallback
-        self._projects = State(wrappedValue: projects.dropFirst(5).compactMap { $0 })
-        self._currentProjects = State(wrappedValue: projects.prefix(5).compactMap { $0 })
-        self._index = State(wrappedValue: 4)
+        self._currentProjects = State(wrappedValue: projects)
+        self._index = State(wrappedValue: projects.count - 1)
     }
     
     var body: some View {
@@ -142,34 +130,12 @@ struct SwipingView: View {
                 
                 Spacer()
             }.snappingScrollView(amount: currentProjects.count, height: UIScreen.main.bounds.height, activeIndex: $index, refreshCallback: {
-                currentProjects.append(
-                    PersonSwipingContent(
-                        person: ActorPerson(
-                            ActorsWrapper(
-                                id: 1,
-                                attributes: Actor(
-                                    firstName: "Firstname",
-                                    lastName: "Lastname",
-                                    character: "Character",
-                                    dateOfBirth: "",
-                                    createdAt: "",
-                                    updatedAt: "",
-                                    imageURL: "https://imglarger.com/Images/before-after/ai-image-enlarger-1-after-2.jpg",
-                                    mcuProjects: nil
-                                )
-                            )
-                        )
-                    )
-                )
-                
-                return 1
-            }, fetchNextCallback: {
-                if let newProject = projects.popLast() {
-                    currentProjects.append(newProject)
-                    return 1
-                }
-                
                 return 0
+            }, fetchNextCallback: {
+                pageIndex += 1
+                let result = await RecommendationService.getRecommendations(page: pageIndex)
+                currentProjects.append(contentsOf: result)
+                return result.count
             })
             
             VStack {

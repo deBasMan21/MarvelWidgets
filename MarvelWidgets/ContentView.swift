@@ -52,22 +52,21 @@ struct ContentView: View {
                 }.tag(1)
                 
                 NavigationView {
+                    SwipingParentView(activeTab: $activeTab)
+                }.tabItem {
+                    Label("Discover", systemImage: "star.fill")
+                }.tag(2)
+                
+                NavigationView {
                     PersonListPageView(type: .actor)
                 }.tabItem {
                     Label("Actors", systemImage: "person.fill")
-                }.tag(2)
+                }.tag(3)
                 
                 NavigationView {
                     PersonListPageView(type: .director)
                 }.tabItem {
                     Label("Directors", systemImage: "megaphone")
-                }.tag(3)
-                
-                NavigationView {
-//                    WidgetSettingsView()
-                    SwipingParentView(activeTab: $activeTab)
-                }.tabItem {
-                    Label("Settings", systemImage: "gearshape")
                 }.tag(4)
             }.onAppear {
                 // Fix to always show the tabbar background
