@@ -105,5 +105,9 @@ struct PersonDetailView: View {
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
             .hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
+            .task {
+                let type: Page = person is ActorPerson ? .actor : .director
+                await TrackingService.trackPage(page: TrackingPage(pageId: person.id, pageType: type))
+            }
     }
 }

@@ -12,4 +12,5 @@ protocol Config {
     
     var baseUrl: String { get }
     var apiKey: String { get }
+    var trackingUrl: String { get }
 }
