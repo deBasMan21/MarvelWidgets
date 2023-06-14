@@ -106,7 +106,7 @@ struct ContentView: View {
             }.onOpenURL(perform: { url in
                 if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
                    let id = Int(url.lastPathComponent) {
-                    projects.append(Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special))
+                    projects.append(Placeholders.loadingProject(id: id))
                 }
             })
         }.navigationBarState(.compact, displayMode: .automatic)
@@ -151,7 +151,7 @@ class OpenUrlWrapper {
             
             self.lastTitle = title
             self.lastBody = body
-            self.lastProject = Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special)
+            self.lastProject = Placeholders.loadingProject(id: id)
             
             callback(inApp)
         }

@@ -15,17 +15,8 @@ extension ProjectListView {
         @Published var scrollViewHeight: CGFloat = 0
         @Published var proportion: CGFloat = 0
         @Published var proportionName: String = "scroll"
-        @Published var pageType: ListPageType = .mcu {
-            didSet {
-                switch pageType {
-                case .mcu:
-                    typeFilters = [.movie, .serie, .special]
-                case .other:
-                    typeFilters = [.defenders, .fox, .sony, .marvelTelevision, .marvelOther]
-                }
-            }
-        }
-        @Published var typeFilters: [ProjectType] = []
+        @Published var pageType: ListPageType = .mcu
+        @Published var typeFilters: [ProjectType] = [.movie, .serie, .special]
         @Published var showFilters: Bool = false
         private var allProjects: [ProjectWrapper] = []
         @Published var projects: [ProjectWrapper] = []

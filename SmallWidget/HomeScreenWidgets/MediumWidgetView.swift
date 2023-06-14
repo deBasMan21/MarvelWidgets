@@ -30,7 +30,7 @@ struct MediumWidgetView: View {
                 
                 WidgetItemView(imageName: "calendar.circle.fill", title: "Releasedate", value: upcomingProject.attributes.getReleaseDateString(withDayCount: true))
                 
-                WidgetItemView(imageName: upcomingProject.attributes.type.imageString(), title: "Type", value: upcomingProject.attributes.type.toString())
+                WidgetItemView(imageName: upcomingProject.attributes.type.imageString(), title: "Type", value: upcomingProject.attributes.source.toString())
                 
                 WidgetItemView(imageName: "person.circle.fill", title: "Director", value: getDirectorString(upcomingProject: upcomingProject))
                 

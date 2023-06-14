@@ -28,6 +28,7 @@ struct MCUProject: Codable, Comparable {
     let saga: Saga?
     let overview: String?
     let type: ProjectType
+    let source: ProjectSource
     let boxOffice, createdAt, updatedAt, disneyPlusUrl, categories, quote, quoteCaption: String?
     let directors: Directors?
     let actors: Actors?
@@ -52,6 +53,7 @@ struct MCUProject: Codable, Comparable {
         case saga = "Saga"
         case overview = "Overview"
         case type = "Type"
+        case source = "Source"
         case boxOffice = "BoxOffice"
         case createdAt, updatedAt, directors, actors
         case relatedProjects = "related_projects"

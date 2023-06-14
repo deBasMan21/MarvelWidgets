@@ -30,6 +30,6 @@ struct ProjectWrapper: Codable, Comparable, Hashable, Identifiable {
     }
     
     func getUrl() -> URL? {
-        URL(string: "https://mcuwidgets.page.link/\(attributes.type.getUrlTypeString())/\(id)")
+        URL(string: "https://mcuwidgets.page.link/\(attributes.source.getUrlTypeString())/\(id)")
     }
 }

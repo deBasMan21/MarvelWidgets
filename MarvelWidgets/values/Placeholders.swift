@@ -26,6 +26,7 @@ class Placeholders {
             saga: .infinitySaga,
             overview: "",
             type: .movie,
+            source: .mcu,
             boxOffice: nil,
             createdAt: nil,
             updatedAt: nil,
@@ -83,6 +84,7 @@ class Placeholders {
             saga: .infinitySaga,
             overview: "",
             type: .movie,
+            source: .mcu,
             boxOffice: nil,
             createdAt: nil,
             updatedAt: nil,
@@ -139,6 +141,7 @@ class Placeholders {
             saga: .infinitySaga,
             overview: "",
             type: .special,
+            source: .mcu,
             boxOffice: nil,
             createdAt: nil,
             updatedAt: nil,
@@ -164,7 +167,7 @@ class Placeholders {
         )
     )
     
-    static func loadingProject(id: Int, type: ProjectType) -> ProjectWrapper {
+    static func loadingProject(id: Int) -> ProjectWrapper {
         ProjectWrapper(
             id: id,
             attributes: MCUProject(
@@ -180,7 +183,8 @@ class Placeholders {
                 phase: .unkown,
                 saga: .infinitySaga,
                 overview: "",
-                type: type,
+                type: .movie,
+                source: .mcu,
                 boxOffice: nil,
                 createdAt: nil,
                 updatedAt: nil,
