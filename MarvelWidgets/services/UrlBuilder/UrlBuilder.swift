@@ -88,14 +88,14 @@ extension UrlBuilder {
     func addMcuProjectFilter() -> UrlBuilderType {
         guard isProject() else { return self }
         addFilterParameter()
-        currentUrl += "filters[isMCUProject][$eq]=true"
+        currentUrl += "filters[Source][$eq]=MCU"
         return self
     }
     
     func addRelatedProjectFilter() -> UrlBuilderType {
         guard isProject() else { return self }
         addFilterParameter()
-        currentUrl += "filters[isMCUProject][$eq]=false"
+        currentUrl += "filters[Source][$ne]=MCU"
         return self
     }
     

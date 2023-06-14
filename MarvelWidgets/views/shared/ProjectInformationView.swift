@@ -76,6 +76,21 @@ struct ProjectInformationView: View {
                     showCalendarAppointment = true
                 }
                 
+                HStack {
+                    Image(systemName: "s.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 40, height: 40)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Source")
+                            .bold()
+                            .foregroundColor(Color.accentColor)
+                        
+                        Text(project.attributes.source.toString())
+                    }
+                }
+                
                 if let duration = project.attributes.duration {
                     HStack {
                         Image(systemName: "clock.fill")

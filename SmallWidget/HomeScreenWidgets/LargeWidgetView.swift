@@ -56,7 +56,7 @@ struct LargeWidgetView: View {
                     
                     WidgetItemView(imageName: "person.circle.fill", title: "Director", value: getDirectorString(upcomingProject: project))
                     
-                    WidgetItemView(imageName: project.attributes.type.imageString(), title: "Type", value: project.attributes.type.toString())
+                    WidgetItemView(imageName: project.attributes.type.imageString(), title: "Type", value: project.attributes.source.toString())
                     
                     if let date = project.attributes.getDaysUntilRelease(withDaysString: true) {
                         WidgetItemView(imageName: "clock.fill", title: "Releases in", value: date)

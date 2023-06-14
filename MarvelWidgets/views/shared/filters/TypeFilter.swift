@@ -19,7 +19,7 @@ struct TypeFilter: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(typeFilters, id: \.rawValue) { type in
-                        Text(type.toString())
+                        Text(type.rawValue)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 7)
                             .background(selectedTypes.contains(type) ? Color.accentColor : Color.filterGray)

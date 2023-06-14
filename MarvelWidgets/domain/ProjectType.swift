@@ -12,7 +12,20 @@ enum ProjectType: String, Codable, CaseIterable {
     case serie = "Serie"
     case special = "Special"
     
-    // Other types
+    func imageString() -> String {
+        switch self {
+        case .movie:
+            return "film.circle.fill"
+        case .serie:
+            return "tv.circle.fill"
+        case .special:
+            return "star.circle.fill"
+        }
+    }
+}
+
+enum ProjectSource: String, Codable, CaseIterable {
+    case mcu = "MCU"
     case sony = "Sony"
     case fox = "Fox"
     case marvelTelevision = "MarvelTelevision"
@@ -31,22 +44,9 @@ enum ProjectType: String, Codable, CaseIterable {
         }
     }
     
-    func imageString() -> String {
-        switch self {
-        case .movie:
-            return "film.circle.fill"
-        case .serie:
-            return "tv.circle.fill"
-        case .special:
-            return "star.circle.fill"
-        default:
-            return "film.circle.fill"
-        }
-    }
-    
     func getUrlTypeString() -> String {
         switch self {
-        case .movie, .serie, .special: return "mcu"
+        case .mcu: return "mcu"
         case .defenders, .fox, .marvelOther, .marvelTelevision, .sony: return "other"
         }
     }
