@@ -12,11 +12,10 @@ import SwiftUINavigationHeader
 
 struct PersonDetailView: View {
     @State var person: any Person
-    var onDisappearCallback: () -> Void = { }
-    @State var inSheet: Bool = false
     
-    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
+    @State var inSheet: Bool = false
     @State var projects: [ProjectWrapper] = []
+    var onDisappearCallback: () -> Void = { }
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -104,7 +103,7 @@ struct PersonDetailView: View {
             }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
-            .hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
+            .hiddenTabBar(inSheet: inSheet)
             .task {
                 let type: Page = person is ActorPerson ? .actor : .director
                 await TrackingService.trackPage(page: TrackingPage(pageId: person.id, pageType: type))

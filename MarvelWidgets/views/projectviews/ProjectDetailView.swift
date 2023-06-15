@@ -13,7 +13,6 @@ import FirebaseRemoteConfig
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
     @State var inSheet: Bool
-    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
@@ -41,7 +40,7 @@ struct ProjectDetailView: View {
                     }
                     
                     if let episodes = viewModel.project.attributes.episodes, episodes.count > 0 {
-                        SeasonEpisodeView(episodes: episodes)
+                        SeasonEpisodeView(episodes: episodes, source: viewModel.project.attributes.source)
                     }
                     
                     if let seasons = viewModel.project.attributes.seasons, seasons.count > 0 {
@@ -64,14 +63,14 @@ struct ProjectDetailView: View {
                         if let rating = viewModel.project.attributes.rating {
                             RatingView(
                                 rating: rating,
-                                voteCount: viewModel.project.attributes.voteCount ?? 0
+                                voteCount: viewModel.project.attributes.voteCount ?? 0,
+                                inSheet: inSheet
                             )
                         }
                         
                         if let reviewTitle = viewModel.project.attributes.reviewTitle,
                            let reviewSummary = viewModel.project.attributes.reviewSummary,
-                           let reviewCopyright = viewModel.project.attributes.reviewCopyright,
-                           remoteConfig.showReview {
+                           let reviewCopyright = viewModel.project.attributes.reviewCopyright {
                             ReviewView(
                                 reviewTitle: reviewTitle,
                                 reviewSummary: reviewSummary,
@@ -97,7 +96,7 @@ struct ProjectDetailView: View {
                                 }
                             }
                         }.padding()
-                            .background(Color.accentGray)
+                            .background(inSheet ? Color.black : Color.accentGray)
                             .cornerRadius(10)
                     }
                     
@@ -105,7 +104,7 @@ struct ProjectDetailView: View {
                         RelatedProjectsView(relatedProjects: relatedProjects)
                     }
                 }.padding(.top, -60)
-                .padding(.bottom, -30)
+                .padding(.bottom, inSheet ? 0 : -30)
                 .padding(.horizontal, 20)
         }, toolbar: { state in
             HeaderToolbarItem(barState: state, content: {
@@ -122,19 +121,17 @@ struct ProjectDetailView: View {
                 }
             })
             
-            if remoteConfig.showShare {
-                HeaderToolbarItem(barState: state, content: {
-                    ShareLink(
-                        item: viewModel.project.getUrl()!,
-                        subject: Text(viewModel.project.attributes.title),
-                        message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: \(viewModel.project.getUrl()?.absoluteString ?? "Link is unavailable")"),
-                        preview: SharePreview(
-                            viewModel.project.attributes.title,
-                            image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
-                        )
+            HeaderToolbarItem(barState: state, content: {
+                ShareLink(
+                    item: viewModel.project.getUrl()!,
+                    subject: Text(viewModel.project.attributes.title),
+                    message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: \(viewModel.project.getUrl()?.absoluteString ?? "Link is unavailable")"),
+                    preview: SharePreview(
+                        viewModel.project.attributes.title,
+                        image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
                     )
-                })
-            }
+                )
+            })
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in 500 })
             .alert(isPresented: $viewModel.showCalendarAppointment, content: {
@@ -145,7 +142,7 @@ struct ProjectDetailView: View {
                       },
                       secondaryButton: .cancel()
                 )
-            }).hiddenTabBar(featureFlag: remoteConfig.hideTabbar, inSheet: inSheet)
+            }).hiddenTabBar(inSheet: inSheet)
             .task {
                 await TrackingService.trackPage(page: TrackingPage(pageId: viewModel.project.id, pageType: .project))
             }
