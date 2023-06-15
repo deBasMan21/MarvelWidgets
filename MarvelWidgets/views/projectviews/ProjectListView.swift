@@ -11,7 +11,6 @@ import ScrollViewIfNeeded
 
 struct ProjectListView: View {
     @StateObject var viewModel: ProjectListViewModel
-    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     init(pageType: ListPageType) {
         self._viewModel = StateObject(wrappedValue: ProjectListViewModel(pageType: pageType))
@@ -103,6 +102,6 @@ struct ProjectListView: View {
                     }
                 }
             }.navigationTitle(viewModel.navigationTitle)
-            .showTabBar(featureFlag: remoteConfig.hideTabbar)
+            .showTabBar()
     }
 }

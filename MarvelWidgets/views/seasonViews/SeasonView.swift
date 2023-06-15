@@ -57,45 +57,68 @@ struct SeasonView: View {
     }
 }
 
-
 struct SeasonEpisodeListView: View {
     @State var episodes: [Episode]
+    @State var source: ProjectSource
     
     var body: some View {
-        VStack {
-            ForEach(episodes) { episode in
-                VStack {
-                    Text("\(episode.title) (Episode \(episode.episodeNumber))")
-                        .bold()
-                        .multilineTextAlignment(.center)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            Text("\(episode.duration) minutes")
-                                .textStyle(RedChipText())
-                            
-                            Text(episode.episodeReleaseDate.toDate()?.toFormattedString() ?? "")
-                                .textStyle(RedChipText())
-                            
-                            Text("\(episode.postCreditScenes) post credit scenes")
-                                .textStyle(RedChipText())
+        ScrollView {
+            VStack {
+                ForEach(episodes) { episode in
+                    VStack {
+                        NavigationLink(destination: ProjectDetailView(viewModel: ProjectDetailViewModel(project: episode.toProjectWrapper(source: source)), inSheet: true)) {
+                            HStack {
+                                KFImage(episode.getUrl())
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 100)
+                                    .cornerRadius(10)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("\(episode.title) (Episode \(episode.episodeNumber))")
+                                            .bold()
+                                            .multilineTextAlignment(.leading)
+                                        
+                                        Spacer()
+                                    }
+                                    
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        HStack {
+                                            if let duration = episode.duration {
+                                                Text("\(duration) minutes")
+                                                    .textStyle(RedChipText())
+                                            }
+                                            
+                                            if let dateString = episode.episodeReleaseDate?.toDate()?.toFormattedString() {
+                                                Text(dateString)
+                                                    .textStyle(RedChipText())
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.right.circle.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20)
+                                    .foregroundColor(Color.accentColor)
+                            }.foregroundColor(Color.foregroundColor)
                         }
-                    }
-                    
-                    Text(episode.episodeDescription)
-                        .multilineTextAlignment(.center)
-                    
-                }.padding()
-                    .background(Color.filterGray)
-                    .cornerRadius(10)
-                    .padding()
-            }
+                    }.padding()
+                        .background(Color.filterGray)
+                        .cornerRadius(10)
+                }
+            }.padding()
         }
     }
 }
 
 struct SeasonEpisodeView: View {
     @State var episodes: [Episode]
+    @State var source: ProjectSource
     @State var showEpisodes: Bool = false
     
     var body: some View {
@@ -130,7 +153,9 @@ struct SeasonEpisodeView: View {
                     .bold()
                     .cornerRadius(10)
             }).autosizingSheet(showSheet: $showEpisodes) {
-                SeasonEpisodeListView(episodes: episodes)
+                NavigationView {
+                    SeasonEpisodeListView(episodes: episodes, source: source)
+                }
             }
         }
     }

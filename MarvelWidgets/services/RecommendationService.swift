@@ -91,9 +91,10 @@ struct ProjectRecommendation: Codable {
     let categories: String
     let posterUrl: String
     let type: String
+    let source: String
     
     func toProjectSwipingContent() -> ProjectSwipingContent? {
-        guard let type = ProjectType(rawValue: type) else { return nil }
+        guard let type = ProjectType(rawValue: type), let source = ProjectSource(rawValue: source) else { return nil }
         
         return ProjectSwipingContent(
             project: ProjectWrapper(
@@ -112,6 +113,7 @@ struct ProjectRecommendation: Codable {
                     saga: nil,
                     overview: overview,
                     type: type,
+                    source: source,
                     boxOffice: nil,
                     createdAt: nil,
                     updatedAt: nil,

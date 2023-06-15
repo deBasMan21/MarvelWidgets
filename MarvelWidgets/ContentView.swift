@@ -13,17 +13,14 @@ import AlertToast
 struct ContentView: View {
     @State var showView = false
     @State var projects = NavigationPath()
-    
-    @State var detailView: ProjectDetailView?
+    @State var showAlert: Bool = false
+    @State var activeTab: Int = 0
     @State var showOnboarding: Bool = {
         !UserDefaultsService.standard.seenOnboarding || UserDefaultsService.standard.alwaysShowOnboarding
     }()
-    @State var remoteConfig: RemoteConfigWrapper = RemoteConfigWrapper()
     
+    @State var detailView: ProjectDetailView?
     @State var openUrlHelper: OpenUrlWrapper?
-    
-    @State var showAlert: Bool = false
-    @State var activeTab: Int = 0
     
     var body: some View {
         ZStack {
@@ -81,36 +78,13 @@ struct ContentView: View {
                         self.projects.append(openUrlHelper?.lastProject)
                     }
                 })
-                
-                // Setup fb remote config
-                let settings = RemoteConfigSettings()
-                settings.minimumFetchInterval = 0
-                
-                let remoteConfig = RemoteConfig.remoteConfig()
-                remoteConfig.configSettings = settings
-                remoteConfig.setDefaults(fromPlist: "remote_config_defaults")
-                remoteConfig.fetchAndActivate()
-                
-                remoteConfig.addOnConfigUpdateListener(remoteConfigUpdateCompletion: { update, error in
-                    guard update != nil, error == nil else {
-                        return
-                    }
-                    
-                    remoteConfig.activate(completion: { succes, error in
-                        guard error == nil else { return }
-                        self.remoteConfig.updateValues()
-                    })
-                })
-                
-                self.remoteConfig.remoteConfig = remoteConfig
             }.onOpenURL(perform: { url in
                 if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
                    let id = Int(url.lastPathComponent) {
-                    projects.append(Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special))
+                    projects.append(Placeholders.loadingProject(id: id))
                 }
             })
         }.navigationBarState(.compact, displayMode: .automatic)
-            .environmentObject(remoteConfig)
             .toast(isPresenting: $showAlert, duration: 10, tapToDismiss: true, alert: {
                 AlertToast(displayMode: .hud, type: .systemImage("bell", .accentColor), title: openUrlHelper?.lastTitle ?? "", subTitle: openUrlHelper?.lastBody)
             }, onTap: {
@@ -151,49 +125,9 @@ class OpenUrlWrapper {
             
             self.lastTitle = title
             self.lastBody = body
-            self.lastProject = Placeholders.loadingProject(id: id, type: url.pathComponents[1] == "other" ? .sony : .special)
+            self.lastProject = Placeholders.loadingProject(id: id)
             
             callback(inApp)
         }
-    }
-}
-
-class RemoteConfigWrapper: ObservableObject {
-    var remoteConfig: RemoteConfig? = nil {
-        didSet {
-            updateValues()
-        }
-    }
-    
-    @Published var showReview: Bool = false
-    @Published var showShare: Bool = false
-    @Published var hideTabbar: Bool = false
-    
-    init() {
-        updateValues()
-    }
-    
-    func updateValues() {
-        Task {
-            await MainActor.run {
-                withAnimation {
-                    self.showReview = getProperty(property: .showReview)
-                    self.showShare = getProperty(property: .showShare)
-                    self.hideTabbar = getProperty(property: .showTabbar)
-                }
-            }
-        }
-    }
-    
-    private func getProperty(property: RemoteConfigKey) -> Bool {
-        guard let remoteConfig = remoteConfig else { return false }
-        let res = remoteConfig.configValue(forKey: property.rawValue)
-        return res.boolValue
-    }
-    
-    private enum RemoteConfigKey: String, CaseIterable {
-        case showReview = "showReview"
-        case showShare = "showShare"
-        case showTabbar = "hideTabbar"
     }
 }

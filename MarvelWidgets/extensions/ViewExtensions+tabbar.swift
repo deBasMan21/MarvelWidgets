@@ -77,16 +77,12 @@ struct HiddenTabBar: ViewModifier {
 }
 
 extension View {
-    func showTabBar(featureFlag: Bool) -> some View {
-        self.if(featureFlag, transform: { view in
-            view.modifier(ShowTabBar())
-        })
+    func showTabBar() -> some View {
+        self.modifier(ShowTabBar())
     }
 
-    func hiddenTabBar(featureFlag: Bool, inSheet: Bool = false) -> some View {
-        self.if(featureFlag && !inSheet, transform: { view in
-            view.modifier(HiddenTabBar(inSheet: inSheet))
-        })
+    func hiddenTabBar(inSheet: Bool = false) -> some View {
+        self.modifier(HiddenTabBar(inSheet: inSheet))
     }
 }
 
