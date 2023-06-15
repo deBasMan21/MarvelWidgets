@@ -4,8 +4,6 @@
 <dict>
 	<key>hideTabbar</key>
 	<string>false</string>
-	<key>showShare</key>
-	<string>false</string>
 	<key>showReview</key>
 	<string>false</string>
 </dict>

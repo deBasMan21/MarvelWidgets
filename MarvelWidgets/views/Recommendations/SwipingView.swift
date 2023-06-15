@@ -19,9 +19,9 @@ struct SwipingParentView: View {
             if let projects = projects {
                 SwipingView(projects: projects, navigateBackCallback: backToHome)
                     .if(showTabBar) { view in
-                        view.showTabBar(featureFlag: true)
+                        view.showTabBar()
                     }.if(!showTabBar) { view in
-                        view.hiddenTabBar(featureFlag: true)
+                        view.hiddenTabBar()
                     }.onAppear {
                         showTabBar = false
                     }

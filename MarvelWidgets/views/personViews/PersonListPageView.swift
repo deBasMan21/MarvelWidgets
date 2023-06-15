@@ -11,7 +11,6 @@ import ScrollViewIfNeeded
 
 struct PersonListPageView: View {
     @StateObject var viewModel: ViewModel
-    @EnvironmentObject var remoteConfig: RemoteConfigWrapper
     
     @State var navigationPath = NavigationPath()
     
@@ -96,20 +95,20 @@ struct PersonListPageView: View {
         }.navigationTitle(viewModel.personType.rawValue)
             .sheet(isPresented: $viewModel.showSheet, content: {
                 getSheetView()
-            }).showTabBar(featureFlag: remoteConfig.hideTabbar)
+            }).showTabBar()
     }
     
     func getView(actorObj: any Person) -> some View {
         PersonDetailView(
             person: actorObj,
+            inSheet: true,
             onDisappearCallback: {
                 withAnimation {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
                         self.viewModel.detents.remove(.large)
                     })
                 }
-            },
-            inSheet: true
+            }
         )
     }
     
