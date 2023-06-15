@@ -12,13 +12,29 @@ struct OnboardingView: View {
     @Namespace var animation
     @Binding var showOnboarding: Bool
     @State var activePage: Int = 1
-    @State var pages: [(Int, any View, any View, SpacerPosition)] = [
-        (1, OnboardingPageOneView(), OnboardingPageOneHeader(), .middle),
-        (2, OnboardingPageTwoView(), OnboardingPageTwoHeader(), .middle),
-        (3, OnboardingPageThreeView(), OnboardingPageThreeHeader(), .middle),
-        (4, OnboardingPageFiveView(), OnboardingPageFiveHeader(), .middle),
-        (5, OnboardingPageFourView(), OnboardingPageFourHeader(), .none)
-    ]
+    @State var pages: [(Int, any View, any View, SpacerPosition)]
+    
+    init(showOnboarding: Binding<Bool>) {
+        self._showOnboarding = showOnboarding
+        
+        var pages: [(Int, any View, any View, SpacerPosition)] = [
+            (1, OnboardingPageOneView(), OnboardingPageOneHeader(), .middle),
+            (2, OnboardingPageTwoView(), OnboardingPageTwoHeader(), .middle),
+            (3, OnboardingPageThreeView(), OnboardingPageThreeHeader(), .middle)
+        ]
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            pages.append(
+                (4, OnboardingPageFiveView(), OnboardingPageFiveHeader(), .middle)
+            )
+        }
+        
+        pages.append(
+            (pages.count + 1, OnboardingPageFourView(), OnboardingPageFourHeader(), .none)
+        )
+        
+        self.pages = pages
+    }
     
     var body: some View {
         VStack {
