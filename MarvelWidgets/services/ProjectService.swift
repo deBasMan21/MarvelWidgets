@@ -140,7 +140,7 @@ extension ProjectService {
         do {
             let cachedResult: T? = CachingService.getFromCache(key: cachingKey.rawValue)
             
-            if let cachedResult = cachedResult, !force {
+            if let cachedResult = cachedResult, !force, cachingKey != .none {
                 Task {
                     let result = try await APIService.apiCall(url: url, body: nil, method: "GET", as: T.self, auth: config.apiKey)
                     
