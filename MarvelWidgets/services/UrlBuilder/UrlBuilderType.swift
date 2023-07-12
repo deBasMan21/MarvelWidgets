@@ -16,6 +16,7 @@ protocol UrlBuilderType {
     func addMcuOrRelatedFilter(type: ListPageType) -> UrlBuilderType
     func addMcuProjectFilter() -> UrlBuilderType
     func addRelatedProjectFilter() -> UrlBuilderType
+    func addSourceProjectFilter(type: ProjectSource?) -> UrlBuilderType
     
     func addPopulate(type: UrlPopulateComponents) -> UrlBuilderType
 }

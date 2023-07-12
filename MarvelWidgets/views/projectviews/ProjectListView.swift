@@ -27,12 +27,14 @@ struct ProjectListView: View {
                                 .bold()
                                 .padding()
                             
-                            TypeFilter(typeFilters: $viewModel.typeFilters, selectedTypes: $viewModel.selectedTypes)
+                            TypeFilter(title: "Type", values: ProjectType.allCases, selectedTypes: $viewModel.selectedTypes)
                             
                             if viewModel.pageType == .mcu {
                                 PhaseFilter(selectedFilters: $viewModel.selectedFilters)
                                 
                                 CategoryFilterView(selectedCategories: $viewModel.selectedCategories)
+                            } else {
+                                TypeFilter(title: "Source", values: ProjectSource.getRelatedTypes(), selectedTypes: $viewModel.selectedSources)
                             }
                             
                             // Date filters

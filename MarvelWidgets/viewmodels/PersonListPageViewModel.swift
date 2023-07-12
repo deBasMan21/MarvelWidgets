@@ -26,22 +26,30 @@ extension PersonListPageView {
         @Published var showBirthdays: Bool = true
         @Published var filterSearchQuery: String = "" {
             didSet {
-                filter()
+                Task {
+                    await filter()
+                }
             }
         }
         @Published var orderType: SortKeys = .nameASC {
             didSet {
-                orderPersons()
+                Task {
+                    await orderPersons()
+                }
             }
         }
         @Published var filterBeforeDate: Date = Date.now {
             didSet {
-                filter()
+                Task {
+                    await filter()
+                }
             }
         }
         @Published var filterAfterDate: Date = Date.now {
             didSet {
-                filter()
+                Task {
+                    await filter()
+                }
             }
         }
         
@@ -59,18 +67,23 @@ extension PersonListPageView {
             ]
         
         func getPersons() async {
-            persons = await personType.getPersons()
-            orderPersons()
-            updateBirthdayPersons()
-            setBirthdates(save: true)
-            filter()
+            let persons = await personType.getPersons()
+            await MainActor.run {
+                self.persons = persons
+            }
+            
+            await updateBirthdayPersons()
+            await setBirthdates(save: true)
+            await filter()
         }
         
-        func resetFilters() {
+        @MainActor
+        func resetFilters() async {
             setBirthdates()
             orderType = .nameASC
         }
         
+        @MainActor
         func setBirthdates(save: Bool = false) {
             filterBeforeDate = persons.sorted(by: {
                 $0.dateOfBirth ?? "" >= $1.dateOfBirth ?? ""
@@ -86,38 +99,50 @@ extension PersonListPageView {
             }
         }
         
-        func orderPersons() {
+        func orderPersons() async {
+            let orderedPersons = orderPersons(persons: filteredPersons)
+            await setPersons(persons: orderedPersons)
+        }
+        
+        func orderPersons(persons: [any Person]) -> [any Person] {
+            let filteredPersons: [any Person]
             switch orderType {
             case .nameASC:
-                filteredPersons = filteredPersons.sorted(by: {
+                filteredPersons = persons.sorted(by: {
                     "\($0.firstName) \($0.lastName)" < "\($1.firstName) \($1.lastName)"
                 })
             case .nameDESC:
-                filteredPersons = filteredPersons.sorted(by: {
+                filteredPersons = persons.sorted(by: {
                     "\($0.firstName) \($0.lastName)" > "\($1.firstName) \($1.lastName)"
                 })
             case .dateOfBirthASC:
-                filteredPersons = filteredPersons.sorted(by: {
+                filteredPersons = persons.sorted(by: {
                     $0.dateOfBirth ?? "" > $1.dateOfBirth ?? ""
                 })
             case .dateOfBirthDESC:
-                filteredPersons = filteredPersons.sorted(by: {
+                filteredPersons = persons.sorted(by: {
                     $0.dateOfBirth ?? "" < $1.dateOfBirth ?? ""
                 })
             }
+            
+            return filteredPersons
         }
         
-        func updateBirthdayPersons() {
-            birthdayPersons = persons.filter {
+        func updateBirthdayPersons() async {
+            let bdayPersons = persons.filter {
                 if let components = $0.dateOfBirth?.toDate()?.get(.day, .month) {
                     let nowComponents = Date.now.get(.day, .month)
                     return nowComponents.day == components.day && nowComponents.month == components.month
                 }
                 return false
             }
+            
+            await MainActor.run {
+                self.birthdayPersons = bdayPersons
+            }
         }
         
-        func filter() {
+        func filter() async {
             var filteredPersons = self.persons
             if !filterSearchQuery.isEmpty {
                 filteredPersons = filteredPersons.filter { $0.getSearchString().contains(filterSearchQuery) }
@@ -131,9 +156,18 @@ extension PersonListPageView {
                 $0.dateOfBirth ?? "" < filterBeforeDate.toOriginalFormattedString()
             }
             
-            self.filteredPersons = filteredPersons
-            orderPersons()
+            filteredPersons = orderPersons(persons: filteredPersons)
+            
+            await setPersons(persons: filteredPersons)
+
             filterCallback(true, getFilterCount())
+        }
+        
+        @MainActor
+        func setPersons(persons: [any Person]) {
+            withAnimation {
+                self.filteredPersons = persons
+            }
         }
         
         func getFilterCount() -> Int {

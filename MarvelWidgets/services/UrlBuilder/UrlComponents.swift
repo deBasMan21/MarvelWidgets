@@ -25,4 +25,5 @@ public enum UrlPopulateComponents {
     case populatePosters
     case populatePersonPosters
     case populateNormalWithRelatedPosters
+    case populateWidget
 }

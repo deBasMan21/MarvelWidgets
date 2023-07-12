@@ -16,44 +16,64 @@ extension ProjectListView {
         @Published var proportion: CGFloat = 0
         @Published var proportionName: String = "scroll"
         @Published var pageType: ListPageType = .mcu
-        @Published var typeFilters: [ProjectType] = [.movie, .serie, .special]
         @Published var showFilters: Bool = false
         private var allProjects: [ProjectWrapper] = []
         @Published var projects: [ProjectWrapper] = []
         @Published var selectedCategories: [String] = [] {
             didSet {
-                filterProjects()
+                Task {
+                    await filterProjects()
+                }
             }
         }
         @Published var orderType: OrderType = .releaseDateASC {
             didSet {
-                orderProjects()
+                Task {
+                    await orderProjects()
+                }
             }
         }
         @Published var selectedFilters: [Phase] = [] {
             didSet {
-                filterProjects()
+                Task {
+                    await filterProjects()
+                }
             }
         }
         @Published var selectedTypes: [ProjectType] = [] {
             didSet {
-                filterProjects()
+                Task {
+                    await filterProjects()
+                }
+            }
+        }
+        @Published var selectedSources: [ProjectSource] = [] {
+            didSet {
+                Task {
+                    await filterProjects()
+                }
             }
         }
         @Published var searchQuery: String = "" {
             didSet {
-                filterProjects()
+                Task {
+                    await filterProjects()
+                }
             }
         }
         @Published var beforeDate: Date = Date.now {
             didSet {
-                filterProjects()
+                Task {
+                    await filterProjects()
+                }
             }
         }
         
         @Published var afterDate: Date = Date.now {
             didSet {
-                filterProjects()
+                Task {
+                    await filterProjects()
+                }
             }
         }
         
@@ -82,8 +102,8 @@ extension ProjectListView {
         func fetchProjects(force: Bool = false) async {
             allProjects = await ProjectService.getAll(for: pageType, force: force)
             
-            filterProjects()
-            orderProjects()
+            await filterProjects()
+            await orderProjects()
             setReleaseDates(save: true)
         }
         
@@ -105,8 +125,9 @@ extension ProjectListView {
             
         }
         
+        @MainActor
         func orderProjects() {
-            projects = orderProjects(projects: projects)
+            setProjects(projects: orderProjects(projects: projects))
         }
         
         func orderProjects(projects: [ProjectWrapper]) -> [ProjectWrapper] {
@@ -174,7 +195,7 @@ extension ProjectListView {
             await fetchProjects(force: force)
         }
         
-        func filterProjects() {
+        func filterProjects() async {
             guard !blockFilter else { return }
             
             var projects = allProjects.filter {
@@ -188,6 +209,10 @@ extension ProjectListView {
             
             if selectedTypes.count > 0 {
                 projects = projects.filter { selectedTypes.contains($0.attributes.type) }
+            }
+            
+            if selectedSources.count > 0 {
+                projects = projects.filter { selectedSources.contains($0.attributes.source) }
             }
             
             if !searchQuery.isEmpty {
@@ -209,11 +234,16 @@ extension ProjectListView {
                 $0.attributes.releaseDate ?? "" < beforeDate.toOriginalFormattedString()
             }
             
+            await setProjects(projects: projects)
+            
+            filterCallback(true, getFilterCount())
+        }
+        
+        @MainActor
+        func setProjects(projects: [ProjectWrapper]) {
             withAnimation {
                 self.projects = orderProjects(projects: projects)
             }
-            
-            filterCallback(true, getFilterCount())
         }
         
         func getFilterCount() -> Int {
@@ -233,7 +263,10 @@ extension ProjectListView {
             setReleaseDates()
             
             blockFilter = false
-            filterProjects()
+            
+            Task {
+                await filterProjects()
+            }
         }
     }
     
