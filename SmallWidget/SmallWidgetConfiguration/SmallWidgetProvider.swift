@@ -33,22 +33,17 @@ struct SmallWidgetProvider: IntentTimelineProvider {
             var upcomingProjects : [ProjectWrapper] = []
             
             let widgetType: WidgetType = WidgetType.getFromIndex(configuration.WidgetType.rawValue)
+            let widgetSource: ProjectSource? = ProjectSource.fromWidgetEnum(configuration.Source.rawValue)
             
-            switch configuration.RandomOrNext.rawValue {
-            case 2:
-                switch widgetType {
-                case .movies, .series, .special:
-                    upcomingProjects.append(contentsOf: await ProjectService.getByType(widgetType, populate: .populateNormal))
-                case .all:
-                    upcomingProjects.append(contentsOf: await ProjectService.getAll())
-                default: break
-                }
+            switch configuration.RandomOrNext {
+            case .random:
+                upcomingProjects.append(contentsOf: await ProjectService.getByTypeAndSource(type: widgetType, source: widgetSource, populate: .populateWidget, force: true))
                 
-                entries.append(WidgetProjectService.randomProject(from: upcomingProjects, with: configuration))
+                entries.append(WidgetProjectService.randomProject(from: upcomingProjects, with: configuration, widgetFamily: context.family))
             default:
-                upcomingProjects = await ProjectService.getFirstUpcoming(for: widgetType)
+                upcomingProjects = await ProjectService.getFirstUpcoming(for: widgetType, source: widgetSource, populate: .populateWidget, force: true)
                 
-                entries.append(WidgetProjectService.upcomingProject(from: upcomingProjects, with: configuration))
+                entries.append(WidgetProjectService.upcomingProject(from: upcomingProjects, with: configuration, widgetFamily: context.family))
             }
             
             completion(Timeline(entries: entries, policy: .atEnd))

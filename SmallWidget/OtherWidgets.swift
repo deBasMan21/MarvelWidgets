@@ -20,7 +20,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getProject(type: String, id: Int) async -> ProjectWrapper? {
-        return await ProjectService.getById(id)
+        return await ProjectService.getById(id, populate: .populateWidget)
     }
 
     func getTimeline(for configuration: SpecificWidgetIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
@@ -42,7 +42,7 @@ struct Provider: IntentTimelineProvider {
             
             var image: Image = Image("AppIcon")
             if let proj = proj {
-                image = ImageHelper.downloadImage(from: proj.attributes.posters?.randomElement()?.posterURL ?? "")
+                image = ImageHelper.downloadImage(from: proj.attributes.posters?.randomElement()?.posterURL ?? "", widgetFamily: context.family)
             }
             
             let projEntry = SimpleEntry(date: Date.now, configuration: configuration, upcomingProject: proj, nextProject: nil, image: image, nextImage: nil)

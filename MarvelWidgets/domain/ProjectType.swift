@@ -50,4 +50,21 @@ enum ProjectSource: String, Codable, CaseIterable {
         case .defenders, .fox, .marvelOther, .marvelTelevision, .sony: return "other"
         }
     }
+    
+    static func fromWidgetEnum(_ widgetEnum: Int) -> ProjectSource? {
+        switch widgetEnum {
+        case 7: return .defenders
+        case 2: return .fox
+        case 6: return .marvelOther
+        case 5: return .marvelTelevision
+        case 4: return .mcu
+        case 3: return .sony
+        default: return nil
+        }
+    }
+    
+    static func getRelatedTypes() -> [ProjectSource] {
+        // Return everything but mcu (the first entry)
+        return Array(Self.allCases.dropFirst())
+    }
 }

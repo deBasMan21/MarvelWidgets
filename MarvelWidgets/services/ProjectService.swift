@@ -35,14 +35,15 @@ extension ProjectService {
         return result?.data ?? []
     }
     
-    static func getFirstUpcoming(for type: WidgetType) async -> [ProjectWrapper] {
+    static func getFirstUpcoming(for type: WidgetType, source: ProjectSource?, populate: UrlPopulateComponents = .populatePosters, force: Bool) async -> [ProjectWrapper] {
         let url = UrlBuilder(baseUrl: config.baseUrl, entity: .project)
-            .addMcuProjectFilter()
+            .addSourceProjectFilter(type: source)
             .addTypeFilter(type: type)
             .addFirstUpcomingFilter()
+            .addPopulate(type: populate)
             .getString()
         
-        let result: ListResponseWrapper? = await getPrivate(url: url, force: true, cachingKey: .none)
+        let result: ListResponseWrapper? = await getPrivate(url: url, force: force, cachingKey: .none)
         return result?.data ?? []
     }
     
@@ -53,7 +54,18 @@ extension ProjectService {
             .addPopulate(type: populate)
             .getString()
         
-        let result: ListResponseWrapper? = await getPrivate(url: url, force: true, cachingKey: .none)
+        let result: ListResponseWrapper? = await getPrivate(url: url, force: force, cachingKey: .none)
+        return result?.data ?? []
+    }
+    
+    static func getByTypeAndSource(type: WidgetType, source: ProjectSource?, populate: UrlPopulateComponents, force: Bool) async -> [ProjectWrapper] {
+        let url = UrlBuilder(baseUrl: config.baseUrl, entity: .project)
+            .addTypeFilter(type: type)
+            .addSourceProjectFilter(type: source)
+            .addPopulate(type: populate)
+            .getString()
+        
+        let result: ListResponseWrapper? = await getPrivate(url: url, force: force, cachingKey: .none)
         return result?.data ?? []
     }
     
@@ -63,7 +75,7 @@ extension ProjectService {
             .addPopulate(type: populate)
             .getString()
         
-        let result: SingleResponseWrapper? = await getPrivate(url: url, force: true, cachingKey: .none)
+        let result: SingleResponseWrapper? = await getPrivate(url: url, force: force, cachingKey: .none)
         return result?.data
     }
 }
