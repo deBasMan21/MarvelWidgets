@@ -36,7 +36,9 @@ struct PersonListPageView: View {
                             OrderFilterView(orderType: $viewModel.orderType)
                             
                             Button(action: {
-                                viewModel.resetFilters()
+                                Task {
+                                    await viewModel.resetFilters()
+                                }
                             }, label: {
                                 Text("Reset")
                             })

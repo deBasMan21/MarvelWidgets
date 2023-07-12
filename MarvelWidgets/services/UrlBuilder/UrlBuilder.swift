@@ -62,7 +62,7 @@ extension UrlBuilder {
         dateFormatter.dateFormat = "YYYY-MM-dd"
         
         let releaseDateFilter = dateFormatter.string(from: Date())
-        currentUrl += "populate[0]=Posters&populate[1]=directors&sort[0]=ReleaseDate:asc&filters[ReleaseDate][$gt]=\(releaseDateFilter)&pagination[pageSize]=2"
+        currentUrl += "sort[0]=ReleaseDate:asc&filters[ReleaseDate][$gt]=\(releaseDateFilter)&pagination[pageSize]=2"
         
         return self
     }
@@ -99,6 +99,13 @@ extension UrlBuilder {
         return self
     }
     
+    func addSourceProjectFilter(type: ProjectSource?) -> UrlBuilderType {
+        guard isProject(), let type = type else { return self }
+        addFilterParameter()
+        currentUrl += "filters[Source][$eq]=\(type.rawValue)"
+        return self
+    }
+    
     private func addMovieFilter() -> UrlBuilder {
         guard isProject() else { return self }
         addFilterParameter()
@@ -129,8 +136,15 @@ extension UrlBuilder {
         case .populatePosters: return addPostersPopulate()
         case .populatePersonPosters: return addPersonPostersPopulate()
         case .populateNormalWithRelatedPosters: return addProjectDetailPopulate()
+        case .populateWidget: return addWidgetPopulate()
         default: return self
         }
+    }
+    
+    private func addWidgetPopulate() -> UrlBuilder {
+        addFilterParameter()
+        currentUrl += "populate[0]=Posters&populate[1]=directors"
+        return self
     }
     
     private func addNormalPopulate() -> UrlBuilder {

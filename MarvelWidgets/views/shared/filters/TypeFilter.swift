@@ -8,17 +8,18 @@
 import Foundation
 import SwiftUI
 
-struct TypeFilter: View {
-    @Binding var typeFilters: [ProjectType]
-    @Binding var selectedTypes: [ProjectType]
+struct TypeFilter<T: RawRepresentable<String> & Equatable>: View {
+    @State var title: String
+    @State var values: [T]
+    @Binding var selectedTypes: [T]
     
     var body: some View {
         HStack {
-            Text("Type: ")
+            Text("\(title): ")
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(typeFilters, id: \.rawValue) { type in
+                    ForEach(values, id: \.rawValue) { type in
                         Text(type.rawValue)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 7)

@@ -71,8 +71,8 @@ class ProjectDetailViewModel: ObservableObject {
         self.tableViewContent = tableViewContent.enumerated().compactMap { ($0, $1) }
     }
     
-    func refresh(id: Int, force: Bool = false) async {
-        if let populatedProject = await ProjectService.getById(id, force: force) {
+    func refresh(id: Int) async {
+        if let populatedProject = await ProjectService.getById(id, force: true) {
             await MainActor.run {
                 withAnimation {
                     self.project = populatedProject

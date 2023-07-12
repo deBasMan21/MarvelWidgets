@@ -11,11 +11,12 @@ import Intents
 import SwiftUI
 
 class WidgetProjectService {
-    static func upcomingProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent) -> UpcomingProjectEntry {
+    static func upcomingProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent, widgetFamily: WidgetFamily) -> UpcomingProjectEntry {
         let smallestDateProject = allProjects.first
         
         let image = ImageHelper.downloadImage(
-            from: smallestDateProject?.attributes.posters?.randomElement()?.posterURL ?? ""
+            from: smallestDateProject?.attributes.posters?.randomElement()?.posterURL ?? "",
+            widgetFamily: widgetFamily
         )
         
         return UpcomingProjectEntry(
@@ -26,12 +27,13 @@ class WidgetProjectService {
         )
     }
     
-    static func randomProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent) -> UpcomingProjectEntry {
+    static func randomProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent, widgetFamily: WidgetFamily) -> UpcomingProjectEntry {
         let project = allProjects.randomElement()
         
         if let project = project {
             let image = ImageHelper.downloadImage(
-                from: project.attributes.posters?.randomElement()?.posterURL ?? ""
+                from: project.attributes.posters?.randomElement()?.posterURL ?? "",
+                widgetFamily: widgetFamily
             )
             
             return UpcomingProjectEntry(

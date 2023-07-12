@@ -110,13 +110,96 @@
 				</dict>
 			</array>
 		</dict>
+		<dict>
+			<key>INEnumDisplayName</key>
+			<string>Widget Source Enum</string>
+			<key>INEnumDisplayNameID</key>
+			<string>mv7peJ</string>
+			<key>INEnumGeneratesHeader</key>
+			<true/>
+			<key>INEnumName</key>
+			<string>WidgetSourceEnum</string>
+			<key>INEnumType</key>
+			<string>Regular</string>
+			<key>INEnumValues</key>
+			<array>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>unknown</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>c4SzHP</string>
+					<key>INEnumValueName</key>
+					<string>unknown</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Fox</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>n416uz</string>
+					<key>INEnumValueIndex</key>
+					<integer>2</integer>
+					<key>INEnumValueName</key>
+					<string>fox</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Sony</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>IRJ2D6</string>
+					<key>INEnumValueIndex</key>
+					<integer>3</integer>
+					<key>INEnumValueName</key>
+					<string>sony</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>MCU</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>TxkLSl</string>
+					<key>INEnumValueIndex</key>
+					<integer>4</integer>
+					<key>INEnumValueName</key>
+					<string>mcu</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Marvel Television</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>ghVHas</string>
+					<key>INEnumValueIndex</key>
+					<integer>5</integer>
+					<key>INEnumValueName</key>
+					<string>marvelTelevision</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Marvel Other</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>j8owj9</string>
+					<key>INEnumValueIndex</key>
+					<integer>6</integer>
+					<key>INEnumValueName</key>
+					<string>marvelOther</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>Defenders</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>g2jUMy</string>
+					<key>INEnumValueIndex</key>
+					<integer>7</integer>
+					<key>INEnumValueName</key>
+					<string>defenders</string>
+				</dict>
+			</array>
+		</dict>
 	</array>
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
 	<key>INIntentDefinitionNamespace</key>
 	<string>88xZPY</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22A400</string>
+	<string>22F82</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>14E300c</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -133,7 +216,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>16</integer>
+			<integer>18</integer>
 			<key>INIntentName</key>
 			<string>UpcomingWidget</string>
 			<key>INIntentParameters</key>
@@ -242,11 +325,66 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
+					<string>Source</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>nix0Q6</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterEnumType</key>
+					<string>WidgetSourceEnum</string>
+					<key>INIntentParameterEnumTypeNamespace</key>
+					<string>88xZPY</string>
+					<key>INIntentParameterName</key>
+					<string>Source</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>There are ${count} options matching ‘${Source}’.</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>3FSDMv</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>DisambiguationIntroduction</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>Just to confirm, you wanted ‘${Source}’?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>fgmRMh</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Confirmation</string>
+						</dict>
+					</array>
+					<key>INIntentParameterTag</key>
+					<integer>18</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
 					<string>Show Text</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>UoOdUJ</string>
 					<key>INIntentParameterDisplayPriority</key>
-					<integer>3</integer>
+					<integer>4</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
