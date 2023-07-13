@@ -11,9 +11,7 @@ import UIKit
 
 class IntentHandler: INExtension, SpecificWidgetIntentHandling {
     func provideSelectedProjectsOptionsCollection(for intent: SpecificWidgetIntent) async throws -> INObjectCollection<SelectableProject> {
-        let image = INImage(named: "AvengersIcon")
-        
-        var projects = await ProjectService.getAll()
+       var projects = await ProjectService.getAll()
             .compactMap {
                 let proj = SelectableProject(identifier: "mcu-\($0.id)", display: "\($0.attributes.title)", subtitle: "MCU", image: nil)
                 proj.sortKey = "MCU-\($0.attributes.title)"
@@ -27,7 +25,6 @@ class IntentHandler: INExtension, SpecificWidgetIntentHandling {
                 return proj
             }
         
-//        projects.forEach { $0.displayImage = image }
         projects = projects.sorted(by: { $0.sortKey ?? "" < $1.sortKey ?? "" })
         return INObjectCollection(items: projects)
     }

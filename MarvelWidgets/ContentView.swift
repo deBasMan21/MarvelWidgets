@@ -91,7 +91,7 @@ struct ContentView: View {
                 if let project = openUrlHelper?.lastProject {
                     projects.append(project)
                 }
-            })
+            }).preferredColorScheme(.dark)
     }
 }
 

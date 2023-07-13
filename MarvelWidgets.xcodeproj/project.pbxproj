@@ -157,6 +157,9 @@
 		EF6B834C2932956400A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83542933A17000A5D69C /* PersonSortKeys.swift */; };
 		EF6B83572933A1B400A5D69C /* PersonListPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83562933A1B400A5D69C /* PersonListPageViewModel.swift */; };
+		EF7571762A604C3900231750 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571752A604C3900231750 /* ImageSize.swift */; };
+		EF7571772A604C3900231750 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571752A604C3900231750 /* ImageSize.swift */; };
+		EF7571782A604C3900231750 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571752A604C3900231750 /* ImageSize.swift */; };
 		EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
 		EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
 		EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
@@ -455,6 +458,7 @@
 		EF6B82D9292D577500A5D69C /* PersonListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListPageView.swift; sourceTree = "<group>"; };
 		EF6B83542933A17000A5D69C /* PersonSortKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSortKeys.swift; sourceTree = "<group>"; };
 		EF6B83562933A1B400A5D69C /* PersonListPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListPageViewModel.swift; sourceTree = "<group>"; };
+		EF7571752A604C3900231750 /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
 		EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCircularWidget.swift; sourceTree = "<group>"; };
 		EF78F5C32993BC7500CA9028 /* AccessoryInlineWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryInlineWidget.swift; sourceTree = "<group>"; };
 		EF78F5C72993BE3B00CA9028 /* AccessoryRectengularWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryRectengularWidget.swift; sourceTree = "<group>"; };
@@ -797,6 +801,7 @@
 				EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */,
 				EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */,
 				EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */,
+				EF7571752A604C3900231750 /* ImageSize.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1481,6 +1486,7 @@
 				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
 				EFF0E2B42921097200854E5F /* RelatedProject.swift in Sources */,
 				EF50A51829E6BC79007518BF /* UrlBuilder.swift in Sources */,
+				EF7571782A604C3900231750 /* ImageSize.swift in Sources */,
 				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
 				EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EF1BE44A2A1936620072CC26 /* NotificationTopics.swift in Sources */,
@@ -1603,6 +1609,7 @@
 				EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */,
 				EFF0E2892921084F00854E5F /* Director.swift in Sources */,
 				EFF0E2622920EDB100854E5F /* FullscreenImageView.swift in Sources */,
+				EF7571762A604C3900231750 /* ImageSize.swift in Sources */,
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
 				EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */,
@@ -1697,6 +1704,7 @@
 				EFF0E2A92921097100854E5F /* RelatedProjects.swift in Sources */,
 				EFF0E29E2921097100854E5F /* Actors.swift in Sources */,
 				EF6B83492932956200A5D69C /* UserDefaultsService.swift in Sources */,
+				EF7571772A604C3900231750 /* ImageSize.swift in Sources */,
 				EF0CA0BC29DDEEB200A2322A /* DebugConfig.swift in Sources */,
 				EF50A52A29E7346B007518BF /* AutoSizingSheet.swift in Sources */,
 				EF28E7FD29A69EFF00B7C845 /* ListPageType.swift in Sources */,

@@ -38,16 +38,16 @@ struct Episode: Codable, Identifiable, Equatable {
         case categories
     }
     
-    func getUrlString() -> String {
+    func getUrlString(large: Bool) -> String {
         if let imageUrl = imageUrl {
-            return imageUrl
+            return imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .still(large ? .original : .w300)))
         } else {
             return "https://mcuwidgets.buijsenserver.nl/uploads/mcu_Widgets_Logo_Dark_3de3442c2b_86a938dd99.png"
         }
     }
     
-    func getUrl() -> URL {
-        URL(string: getUrlString())!
+    func getUrl(large: Bool) -> URL {
+        URL(string: getUrlString(large: large))!
     }
     
     func toProjectWrapper(source: ProjectSource) -> ProjectWrapper {
@@ -82,7 +82,7 @@ struct Episode: Codable, Identifiable, Equatable {
                 posters: [
                     Poster(
                         id: 0,
-                        posterURL: getUrlString()
+                        posterURL: getUrlString(large: true)
                     )
                 ],
                 seasons: nil,
