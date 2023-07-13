@@ -13,6 +13,7 @@ import FirebaseRemoteConfig
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
     @State var inSheet: Bool
+    @State var isEpisode: Bool = false
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
@@ -133,7 +134,13 @@ struct ProjectDetailView: View {
                 )
             })
         }).baseTintColor(Color("AccentColor"))
-            .headerHeight({ _ in 500 })
+            .headerHeight({ _ in
+                if isEpisode {
+                    return UIScreen.main.bounds.width / (16 / 9)
+                } else {
+                    return 500
+                }
+            })
             .alert(isPresented: $viewModel.showCalendarAppointment, content: {
                 Alert(title: Text("Calendar"),
                       message: Text("Do you want to add this project to your calendar?"),

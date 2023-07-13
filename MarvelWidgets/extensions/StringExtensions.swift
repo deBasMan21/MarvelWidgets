@@ -24,6 +24,13 @@ extension String {
         let string = formatter.string(from: NSNumber(value: intFromString)) ?? ""
         return "$\(string)"
     }
+    
+    func replaceUrlPlaceholders(imageSize: ImageSize) -> String {
+        var url = self
+        url.replace("[INSERT_SIZE]", with: imageSize.sizeString)
+        
+        return url
+    }
 }
 
 extension Int {

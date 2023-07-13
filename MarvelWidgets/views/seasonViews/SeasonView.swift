@@ -66,9 +66,17 @@ struct SeasonEpisodeListView: View {
             VStack {
                 ForEach(episodes) { episode in
                     VStack {
-                        NavigationLink(destination: ProjectDetailView(viewModel: ProjectDetailViewModel(project: episode.toProjectWrapper(source: source)), inSheet: true)) {
+                        NavigationLink(
+                            destination: ProjectDetailView(
+                                viewModel: ProjectDetailViewModel(
+                                    project: episode.toProjectWrapper(source: source)
+                                ),
+                                inSheet: true,
+                                isEpisode: true
+                            )
+                        ) {
                             HStack {
-                                KFImage(episode.getUrl())
+                                KFImage(episode.getUrl(large: false))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 100, height: 100)
