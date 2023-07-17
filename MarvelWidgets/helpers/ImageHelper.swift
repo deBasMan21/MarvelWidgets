@@ -44,7 +44,6 @@ class ImageHelper {
 
 extension UIImage {
     func resized(maxWidth width: CGFloat) -> UIImage? {
-        print("debug: width \(width)")
         // If the image is already small enough just return the image
         guard width < size.width else { return self }
         

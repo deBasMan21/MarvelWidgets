@@ -27,7 +27,6 @@ struct AutoSizingSheet<Content: View>: View {
                             GeometryReader { geo in
                                 Color.clear.onAppear {
                                     contentSize = geo.size
-                                    print("debug: size \(contentSize.height)")
                                 }
                             }
                         )
