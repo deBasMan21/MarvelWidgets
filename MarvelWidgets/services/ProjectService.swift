@@ -119,6 +119,19 @@ extension ProjectService {
     }
 }
 
+// MARK: Collections
+extension ProjectService {
+    static func getCollectionById(id: Int) async -> ProjectCollection? {
+        let url = UrlBuilder(baseUrl: config.baseUrl, entity: .collection)
+            .addId(id: "\(id)")
+            .addPopulate(type: .populateCollection)
+            .getString()
+        
+        let result: CollectionWrapper? = await getPrivate(url: url, force: true, cachingKey: .none)
+        return result?.data
+    }
+}
+
 // MARK: Helper
 extension ProjectService {
     enum CachingKeys: String {

@@ -13,6 +13,9 @@ import FirebaseRemoteConfig
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
     @State var inSheet: Bool
+    @State var isEpisode: Bool = false
+    
+    let spacing: CGFloat = 30
     
     var body: some View {
         NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
@@ -27,7 +30,7 @@ struct ProjectDetailView: View {
                 }
             }
         }, content: {
-            VStack(spacing: 30) {
+            VStack(spacing: spacing) {
                     ProjectInformationView(
                         project: $viewModel.project,
                         posterIndex: $viewModel.posterIndex,
@@ -59,7 +62,7 @@ struct ProjectDetailView: View {
                         )
                     }
                     
-                    VStack(spacing: 30) {
+                    VStack(spacing: spacing) {
                         if let rating = viewModel.project.attributes.rating {
                             RatingView(
                                 rating: rating,
@@ -80,8 +83,19 @@ struct ProjectDetailView: View {
                         }
                     }
                     
-                    if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
-                        TrailersView(trailers: trailers)
+                    VStack(spacing: spacing) {
+                        if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
+                            TrailersView(trailers: trailers)
+                        }
+                    
+                        if let spotifyEmbed = viewModel.project.attributes.spotifyEmbed {
+                            SpotifyView(embedUrl: spotifyEmbed)
+                                .frame(height: 180)
+                        }
+                        
+                        if let collection = viewModel.project.attributes.collection?.data {
+                            CollectionView(collection: collection, inSheet: inSheet)
+                        }
                     }
                     
                     if viewModel.tableViewContent.count > 0 {
@@ -103,6 +117,7 @@ struct ProjectDetailView: View {
                     if let relatedProjects = viewModel.project.attributes.relatedProjects, relatedProjects.data.count > 0 {
                         RelatedProjectsView(relatedProjects: relatedProjects)
                     }
+                    
                 }.padding(.top, -60)
                 .padding(.bottom, inSheet ? 0 : -30)
                 .padding(.horizontal, 20)
@@ -133,7 +148,13 @@ struct ProjectDetailView: View {
                 )
             })
         }).baseTintColor(Color("AccentColor"))
-            .headerHeight({ _ in 500 })
+            .headerHeight({ _ in
+                if isEpisode {
+                    return UIScreen.main.bounds.width / (16 / 9)
+                } else {
+                    return 500
+                }
+            })
             .alert(isPresented: $viewModel.showCalendarAppointment, content: {
                 Alert(title: Text("Calendar"),
                       message: Text("Do you want to add this project to your calendar?"),
