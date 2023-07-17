@@ -8,7 +8,7 @@
 import WebKit
 import SwiftUI
 
-struct VideoView: UIViewRepresentable{
+struct VideoView: UIViewRepresentable {
 
     let videoURL: String
 

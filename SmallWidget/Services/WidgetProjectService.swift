@@ -15,7 +15,7 @@ class WidgetProjectService {
         let smallestDateProject = allProjects.first
         
         let image = ImageHelper.downloadImage(
-            from: smallestDateProject?.attributes.posters?.randomElement()?.posterURL ?? "",
+            from: smallestDateProject?.attributes.getPosterUrls(imageSize: ImageSize(size: .poster(.w500))).randomElement() ?? "",
             widgetFamily: widgetFamily
         )
         
@@ -32,7 +32,7 @@ class WidgetProjectService {
         
         if let project = project {
             let image = ImageHelper.downloadImage(
-                from: project.attributes.posters?.randomElement()?.posterURL ?? "",
+                from: project.attributes.getPosterUrls(imageSize: ImageSize(size: .poster(.w500))).randomElement() ?? "",
                 widgetFamily: widgetFamily
             )
             

@@ -44,16 +44,28 @@ class ImageHelper {
 
 extension UIImage {
     func resized(maxWidth width: CGFloat) -> UIImage? {
+        print("debug: width \(width)")
         // If the image is already small enough just return the image
-        guard width > size.width else { return self }
+        guard width < size.width else { return self }
         
         // Calculate the height based on the current aspect ratio
         let height = width * (size.height / size.width)
-        let size = CGSize(width: width, height: height)
+        let newSize = CGSize(width: width, height: height)
         
         // Redraw the image with the correct size
-        return UIGraphicsImageRenderer(size: size).image { _ in
-            draw(in: CGRect(origin: .zero, size: size))
-        }
+        guard let cgImage = cgImage, let colorSpace = cgImage.colorSpace else { return nil }
+        let bitsPerComponent = cgImage.bitsPerComponent
+        let bytesPerRow = cgImage.bytesPerRow
+        let bitmapInfo = cgImage.bitmapInfo
+
+        guard let context = CGContext(data: nil, width: Int(width), height: Int(height),
+                                      bitsPerComponent: bitsPerComponent,
+                                      bytesPerRow: bytesPerRow, space: colorSpace,
+                                      bitmapInfo: bitmapInfo.rawValue) else { return nil }
+        context.interpolationQuality = .high
+        let rect = CGRect(origin: CGPoint.zero, size: newSize)
+        context.draw(cgImage, in: rect)
+
+        return context.makeImage().flatMap { UIImage(cgImage: $0) }
     }
 }

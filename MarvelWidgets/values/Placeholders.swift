@@ -25,6 +25,8 @@ class Placeholders {
             phase: .unkown,
             saga: .infinitySaga,
             overview: "",
+            spotifyEmbed: nil,
+            backdropUrl: nil,
             type: .movie,
             source: .mcu,
             boxOffice: nil,
@@ -63,7 +65,8 @@ class Placeholders {
             rankingCurrentRank: nil,
             rankingChangeDirection: nil,
             chronology: nil,
-            episodes: nil
+            episodes: nil,
+            collection: nil
         )
     )
     
@@ -83,6 +86,8 @@ class Placeholders {
             phase: .unkown,
             saga: .infinitySaga,
             overview: "",
+            spotifyEmbed: nil,
+            backdropUrl: nil,
             type: .movie,
             source: .mcu,
             boxOffice: nil,
@@ -121,7 +126,8 @@ class Placeholders {
             rankingCurrentRank: nil,
             rankingChangeDirection: nil,
             chronology: nil,
-            episodes: nil
+            episodes: nil,
+            collection: nil
         )
     )
     
@@ -140,6 +146,8 @@ class Placeholders {
             phase: .unkown,
             saga: .infinitySaga,
             overview: "",
+            spotifyEmbed: nil,
+            backdropUrl: nil,
             type: .special,
             source: .mcu,
             boxOffice: nil,
@@ -163,7 +171,8 @@ class Placeholders {
             rankingCurrentRank: nil,
             rankingChangeDirection: nil,
             chronology: nil,
-            episodes: nil
+            episodes: nil,
+            collection: nil
         )
     )
     
@@ -183,6 +192,8 @@ class Placeholders {
                 phase: .unkown,
                 saga: .infinitySaga,
                 overview: "",
+                spotifyEmbed: nil,
+                backdropUrl: nil,
                 type: .movie,
                 source: .mcu,
                 boxOffice: nil,
@@ -206,7 +217,8 @@ class Placeholders {
                 rankingCurrentRank: nil,
                 rankingChangeDirection: nil,
                 chronology: nil,
-                episodes: nil
+                episodes: nil,
+                collection: nil
             )
         )
     }

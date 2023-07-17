@@ -66,6 +66,8 @@ struct Episode: Codable, Identifiable, Equatable {
                 phase: nil,
                 saga: nil,
                 overview: episodeDescription,
+                spotifyEmbed: nil,
+                backdropUrl: nil,
                 type: .serie,
                 source: source,
                 boxOffice: nil,
@@ -94,7 +96,8 @@ struct Episode: Codable, Identifiable, Equatable {
                 rankingCurrentRank: nil,
                 rankingChangeDirection: nil,
                 chronology: nil,
-                episodes: nil
+                episodes: nil,
+                collection: nil
             )
         )
     }

@@ -12,14 +12,14 @@ import EventKit
 class ProjectDetailViewModel: ObservableObject {
     @Published var project: ProjectWrapper {
         didSet {    
-            posterURL = project.attributes.posters?.first?.posterURL
+            posterURL = project.attributes.getPosterUrls().first
         }
     }
     @Published var posterURL: String?
     @Published var posterIndex: Int = 0 {
         didSet {
             withAnimation {
-                posterURL = project.attributes.posters?[posterIndex].posterURL
+                posterURL = project.attributes.getPosterUrls()[posterIndex]
             }
         }
     }
@@ -30,7 +30,7 @@ class ProjectDetailViewModel: ObservableObject {
     
     init(project: ProjectWrapper) {
         self.project = project
-        self.posterURL = project.attributes.posters?.first?.posterURL
+        self.posterURL = project.attributes.getPosterUrls().first
         
         getTableViewContent()
         
@@ -82,19 +82,19 @@ class ProjectDetailViewModel: ObservableObject {
     }
     
     func swipeImage(direction: SwipeHVDirection) {
-        if let posters = project.attributes.posters {
-            if direction == .right {
-                if posterIndex + 1 < posters.count {
-                    posterIndex += 1
-                } else {
-                    posterIndex = 0
-                }
-            } else if direction == .left {
-                if posterIndex - 1 >= 0 {
-                    posterIndex -= 1
-                } else {
-                    posterIndex = posters.count - 1
-                }
+        let posters = project.attributes.getPosterUrls()
+        
+        if direction == .right {
+            if posterIndex + 1 < posters.count {
+                posterIndex += 1
+            } else {
+                posterIndex = 0
+            }
+        } else if direction == .left {
+            if posterIndex - 1 >= 0 {
+                posterIndex -= 1
+            } else {
+                posterIndex = posters.count - 1
             }
         }
     }

@@ -42,7 +42,7 @@ struct Provider: IntentTimelineProvider {
             
             var image: Image = Image("AppIcon")
             if let proj = proj {
-                image = ImageHelper.downloadImage(from: proj.attributes.posters?.randomElement()?.posterURL ?? "", widgetFamily: context.family)
+                image = ImageHelper.downloadImage(from: proj.attributes.getPosterUrls(imageSize: ImageSize(size: .poster(.w500))).randomElement() ?? "", widgetFamily: context.family)
             }
             
             let projEntry = SimpleEntry(date: Date.now, configuration: configuration, upcomingProject: proj, nextProject: nil, image: image, nextImage: nil)
