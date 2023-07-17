@@ -176,17 +176,12 @@
 		EF75718A2A65818E00231750 /* CollectionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571882A65818E00231750 /* CollectionAttributes.swift */; };
 		EF75718B2A65818E00231750 /* CollectionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571882A65818E00231750 /* CollectionAttributes.swift */; };
 		EF75718E2A6581C400231750 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75718D2A6581C400231750 /* CollectionView.swift */; };
-		EF75718F2A6581C400231750 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75718D2A6581C400231750 /* CollectionView.swift */; };
-		EF7571902A6581C400231750 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75718D2A6581C400231750 /* CollectionView.swift */; };
 		EF7571922A65820400231750 /* CollectionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571912A65820400231750 /* CollectionPageView.swift */; };
-		EF7571932A65820400231750 /* CollectionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571912A65820400231750 /* CollectionPageView.swift */; };
-		EF7571942A65820400231750 /* CollectionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571912A65820400231750 /* CollectionPageView.swift */; };
 		EF7571962A65822400231750 /* CollectionProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571952A65822400231750 /* CollectionProjectListView.swift */; };
-		EF7571972A65822400231750 /* CollectionProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571952A65822400231750 /* CollectionProjectListView.swift */; };
-		EF7571982A65822400231750 /* CollectionProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571952A65822400231750 /* CollectionProjectListView.swift */; };
 		EF75719A2A65823E00231750 /* HorizontalProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571992A65823E00231750 /* HorizontalProjectView.swift */; };
-		EF75719B2A65823E00231750 /* HorizontalProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571992A65823E00231750 /* HorizontalProjectView.swift */; };
-		EF75719C2A65823E00231750 /* HorizontalProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571992A65823E00231750 /* HorizontalProjectView.swift */; };
+		EF75719D2A65848200231750 /* CollectionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571882A65818E00231750 /* CollectionAttributes.swift */; };
+		EF75719E2A65848500231750 /* ProjectCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571842A65817E00231750 /* ProjectCollection.swift */; };
+		EF75719F2A65848800231750 /* CollectionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571802A65816D00231750 /* CollectionWrapper.swift */; };
 		EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
 		EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
 		EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
@@ -1447,7 +1442,9 @@
 				EF1BE43D2A1936600072CC26 /* Director.swift in Sources */,
 				EF1BE4392A1936600072CC26 /* Actors.swift in Sources */,
 				EF1BE4302A19362F0072CC26 /* UrlComponents.swift in Sources */,
+				EF75719E2A65848500231750 /* ProjectCollection.swift in Sources */,
 				EF1BE43B2A1936600072CC26 /* SingleResponseWrapper.swift in Sources */,
+				EF75719D2A65848200231750 /* CollectionAttributes.swift in Sources */,
 				EF1BE41D2A191BB50072CC26 /* NotificationViewController.swift in Sources */,
 				EF1BE4312A19363A0072CC26 /* UrlBuilder.swift in Sources */,
 				EF1BE4382A1936600072CC26 /* NotificationTopics.swift in Sources */,
@@ -1457,6 +1454,7 @@
 				EF75717A2A632CD800231750 /* ImageSize.swift in Sources */,
 				EF1BE45B2A1939B30072CC26 /* RedChipText.swift in Sources */,
 				EF1BE42A2A191BD00072CC26 /* NotificationView.swift in Sources */,
+				EF75719F2A65848800231750 /* CollectionWrapper.swift in Sources */,
 				EF1BE4492A1936600072CC26 /* RelatedProjectWrapper.swift in Sources */,
 				EF1BE44E2A19369F0072CC26 /* StringExtensions.swift in Sources */,
 				EF1BE44D2A1936840072CC26 /* UrlBuilderType.swift in Sources */,
@@ -1545,14 +1543,11 @@
 				EF50A51829E6BC79007518BF /* UrlBuilder.swift in Sources */,
 				EF7571782A604C3900231750 /* ImageSize.swift in Sources */,
 				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
-				EF7571942A65820400231750 /* CollectionPageView.swift in Sources */,
 				EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EF1BE44A2A1936620072CC26 /* NotificationTopics.swift in Sources */,
 				EFF0E2BB2921097200854E5F /* Directors.swift in Sources */,
 				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
-				EF7571902A6581C400231750 /* CollectionView.swift in Sources */,
 				EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */,
-				EF75719C2A65823E00231750 /* HorizontalProjectView.swift in Sources */,
 				EF28E7F729A6988E00B7C845 /* OtherWidgets.swift in Sources */,
 				EFF0E2B22921097200854E5F /* Actors.swift in Sources */,
 				EF6B834C2932956400A5D69C /* UserDefaultsService.swift in Sources */,
@@ -1560,7 +1555,6 @@
 				EF1BE44C2A1936620072CC26 /* PersonSortKeys.swift in Sources */,
 				EF50A52B29E7346C007518BF /* AutoSizingSheet.swift in Sources */,
 				EF28E7FE29A69EFF00B7C845 /* ListPageType.swift in Sources */,
-				EF7571982A65822400231750 /* CollectionProjectListView.swift in Sources */,
 				EF7571872A65817E00231750 /* ProjectCollection.swift in Sources */,
 				EFF0E2B62921097200854E5F /* Season.swift in Sources */,
 				EFF0E2BC2921097200854E5F /* Poster.swift in Sources */,
@@ -1725,7 +1719,6 @@
 				EFF0E2A12921097100854E5F /* Trailer.swift in Sources */,
 				EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */,
 				EFF0E29B2921097100854E5F /* Saga.swift in Sources */,
-				EF7571972A65822400231750 /* CollectionProjectListView.swift in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EF4D265928A4512A00B7BCEE /* ConfigValues.swift in Sources */,
 				EF78F5C52993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
@@ -1738,14 +1731,12 @@
 				EF28E7F829A6996300B7C845 /* WidgetProjectService.swift in Sources */,
 				EF84046C29DF5E0700E8F969 /* RedChipText.swift in Sources */,
 				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
-				EF75718F2A6581C400231750 /* CollectionView.swift in Sources */,
 				EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */,
 				EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF50A51529E6BC64007518BF /* UrlComponents.swift in Sources */,
 				EF78F62129959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EF84046E29DF5E1900E8F969 /* TextExtension.swift in Sources */,
 				EF7571862A65817E00231750 /* ProjectCollection.swift in Sources */,
-				EF75719B2A65823E00231750 /* HorizontalProjectView.swift in Sources */,
 				EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
 				EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */,
@@ -1760,7 +1751,6 @@
 				EFF0E2A32921097100854E5F /* RelatedProjectWrapper.swift in Sources */,
 				EFF0E2A62921097100854E5F /* ProjectWrapper.swift in Sources */,
 				EFF0E2AA2921097100854E5F /* ListResponseWrapper.swift in Sources */,
-				EF7571932A65820400231750 /* CollectionPageView.swift in Sources */,
 				EF0CA0B729DDEE4400A2322A /* Config.swift in Sources */,
 				EFF0E2AB2921097100854E5F /* ProjectType.swift in Sources */,
 				EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */,

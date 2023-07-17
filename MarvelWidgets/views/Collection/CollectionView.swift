@@ -8,7 +8,7 @@
 import Kingfisher
 import SwiftUI
 
-struct CollectionView: View {
+struct CollectionsView: View {
     @State var collection: ProjectCollection
     @State var inSheet: Bool
     
