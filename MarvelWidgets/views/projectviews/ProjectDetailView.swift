@@ -8,7 +8,6 @@
 import SwiftUI
 import Kingfisher
 import SwiftUINavigationHeader
-import FirebaseRemoteConfig
 
 struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
@@ -94,7 +93,7 @@ struct ProjectDetailView: View {
                         }
                         
                         if let collection = viewModel.project.attributes.collection?.data {
-                            CollectionView(collection: collection, inSheet: inSheet)
+                            CollectionsView(collection: collection, inSheet: inSheet)
                         }
                     }
                     
