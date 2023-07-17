@@ -184,7 +184,7 @@ class ProjectSwipingContent: SwipingContent {
         self.uuid = UUID()
         self.title = project.attributes.title
         self.description = project.attributes.overview ?? ""
-        self.imageUrl = project.attributes.posters?.first?.posterURL ?? ""
+        self.imageUrl = project.attributes.getPosterUrls().first ?? ""
         self.project = project
     }
     

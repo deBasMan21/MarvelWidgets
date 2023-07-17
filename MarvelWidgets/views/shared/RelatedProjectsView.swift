@@ -31,7 +31,7 @@ struct RelatedProjectsView: View {
                             )
                         } label: {
                             PosterListViewItem(
-                                posterUrl: project.attributes.posters?.first?.posterURL ?? "",
+                                posterUrl: project.attributes.getPosterUrls().first ?? "",
                                 title: project.attributes.title,
                                 subTitle: project.attributes.getReleaseDateString()
                             )

@@ -69,7 +69,7 @@ struct PersonDetailView: View {
                                                 )
                                             } label: {
                                                 VStack{
-                                                    ImageSizedView(url: project.attributes.posters?.first?.posterURL ?? "")
+                                                    ImageSizedView(url: project.attributes.getPosterUrls().first ?? "")
                                                     
                                                     Text(project.attributes.title)
                                                         .font(Font.headline.bold())

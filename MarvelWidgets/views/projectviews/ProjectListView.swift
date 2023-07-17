@@ -68,7 +68,7 @@ struct ProjectListView: View {
                                     )
                                 } label: {
                                     PosterListViewItem(
-                                        posterUrl: item.attributes.posters?.first?.posterURL ?? "",
+                                        posterUrl: item.attributes.getPosterUrls().first ?? "",
                                         title: item.attributes.title,
                                         subTitle: item.attributes.getReleaseDateString(),
                                         showGradient: true

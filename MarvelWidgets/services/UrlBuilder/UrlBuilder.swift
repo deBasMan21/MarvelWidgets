@@ -17,6 +17,7 @@ class UrlBuilder: UrlBuilderType {
         case director = "directors"
         case actor = "actors"
         case project = "mcu-projects"
+        case collection = "collections"
     }
     
     init(baseUrl: String, entity: Entity) {
@@ -49,6 +50,10 @@ class UrlBuilder: UrlBuilderType {
     
     private func isPerson() -> Bool {
         return entity == .actor || entity == .director
+    }
+    
+    private func isCollection() -> Bool {
+        return entity == .collection
     }
 }
 
@@ -137,6 +142,7 @@ extension UrlBuilder {
         case .populatePersonPosters: return addPersonPostersPopulate()
         case .populateNormalWithRelatedPosters: return addProjectDetailPopulate()
         case .populateWidget: return addWidgetPopulate()
+        case .populateCollection: return addCollectionPopulate()
         default: return self
         }
     }
@@ -170,7 +176,14 @@ extension UrlBuilder {
     private func addProjectDetailPopulate() -> UrlBuilder {
         guard isProject() else { return self }
         addFilterParameter()
-        currentUrl += "populate[0]=related_projects.Posters&populate[1]=Posters&populate[2]=Trailers&populate[3]=actors&populate[4]=directors&populate[5]=Seasons&populate[6]=Seasons.seasonProject&populate[7]=episodes"
+        currentUrl += "populate[0]=related_projects.Posters&populate[1]=Posters&populate[2]=Trailers&populate[3]=actors&populate[4]=directors&populate[5]=Seasons&populate[6]=Seasons.seasonProject&populate[7]=episodes&populate[8]=collection"
+        return self
+    }
+    
+    private func addCollectionPopulate() -> UrlBuilder {
+        guard isCollection() else { return self }
+        addFilterParameter()
+        currentUrl += "populate[0]=projects&populate[1]=projects.Posters"
         return self
     }
 }

@@ -112,6 +112,8 @@ struct ProjectRecommendation: Codable {
                     phase: nil,
                     saga: nil,
                     overview: overview,
+                    spotifyEmbed: nil,
+                    backdropUrl: nil,
                     type: type,
                     source: source,
                     boxOffice: nil,
@@ -140,7 +142,8 @@ struct ProjectRecommendation: Codable {
                     rankingCurrentRank: nil,
                     rankingChangeDirection: nil,
                     chronology: nil,
-                    episodes: nil
+                    episodes: nil,
+                    collection: nil
                 )
             )
         )

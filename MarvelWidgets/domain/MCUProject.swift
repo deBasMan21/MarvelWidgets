@@ -26,7 +26,7 @@ struct MCUProject: Codable, Comparable {
     let postCreditScenes, duration, voteCount, awardsNominated, awardsWon, productionBudget: Int?
     let phase: Phase?
     let saga: Saga?
-    let overview: String?
+    let overview, spotifyEmbed, backdropUrl: String?
     let type: ProjectType
     let source: ProjectSource
     let boxOffice, createdAt, updatedAt, disneyPlusUrl, categories, quote, quoteCaption: String?
@@ -42,6 +42,7 @@ struct MCUProject: Codable, Comparable {
     let rankingChangeDirection: RankingChangeDirection?
     let chronology: Int?
     let episodes: [Episode]?
+    let collection: CollectionWrapper?
  
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -73,6 +74,8 @@ struct MCUProject: Codable, Comparable {
         case rankingDifference, rankingCurrentRank, rankingChangeDirection
         case chronology
         case episodes
+        case spotifyEmbed
+        case collection, backdropUrl
     }
     
     func getReleaseDateString(withDayCount: Bool = false) -> String {
@@ -121,6 +124,20 @@ struct MCUProject: Codable, Comparable {
         case .flat: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter()))"
         default: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter())\(rankingDifference))"
         }
+    }
+    
+    func getPosterUrls(imageSize: ImageSize = ImageSize(size: .poster(.original))) -> [String] {
+        guard let posters = posters else { return [] }
+        return posters.compactMap {
+            $0.posterURL.replaceUrlPlaceholders(imageSize: imageSize)
+        }
+    }
+    
+    func getBackdropUrl(imageSize: ImageSize = ImageSize(size: .backdrop(.w780))) -> String? {
+        guard let backdropUrl = backdropUrl else {
+            return getPosterUrls().first
+        }
+        return backdropUrl.replaceUrlPlaceholders(imageSize: imageSize)
     }
 }
 
