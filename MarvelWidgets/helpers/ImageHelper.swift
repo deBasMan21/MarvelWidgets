@@ -10,20 +10,19 @@ import SwiftUI
 import WidgetKit
 
 class ImageHelper {
-    static func downloadImage(from url: URL, widgetFamily: WidgetFamily) -> Image {
+    static func downloadImage(from url: URL, size: CGSize) -> Image {
         let data = try? Data(contentsOf: url)
         
-        let widgetWidth = WidgetHelper.widgetSize(forFamily: widgetFamily).width
-        if let data = data, let uiImage = UIImage(data: data)?.resized(maxWidth: widgetWidth) {
+        if let data = data, let uiImage = UIImage(data: data)?.resized(maxWidth: size.width) {
             return Image(uiImage: uiImage)
         } else {
             return Image("secret wars")
         }
     }
     
-    static func downloadImage(from link: String, widgetFamily: WidgetFamily) -> Image {
+    static func downloadImage(from link: String, size: CGSize) -> Image {
         if let url = URL(string: link) {
-            return downloadImage(from: url, widgetFamily: widgetFamily)
+            return downloadImage(from: url, size: size)
         } else {
             return Image("secret wars")
         }

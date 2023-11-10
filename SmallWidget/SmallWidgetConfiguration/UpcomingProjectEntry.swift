@@ -14,4 +14,5 @@ struct UpcomingProjectEntry: TimelineEntry {
     let configuration: UpcomingWidgetIntent
     let upcomingProject: ProjectWrapper?
     let image: Image
+    let size: CGSize
 }

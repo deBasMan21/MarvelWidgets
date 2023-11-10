@@ -12,6 +12,7 @@ struct SmallWidgetView: View {
     let upcomingProject: ProjectWrapper
     let image: Image
     let showText: Bool
+    let size: CGSize
     
     let gradient = LinearGradient(
             gradient: Gradient(stops: [
@@ -28,7 +29,7 @@ struct SmallWidgetView: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: WidgetHelper.widgetSize(forFamily: .systemSmall).width, height: WidgetHelper.widgetSize(forFamily: .systemSmall).height)
+                .frame(width: size.width, height: size.height)
                 .clipped()
                 .if(showText) { view in
                     view.overlay(gradient)
@@ -53,7 +54,9 @@ struct SmallWidgetView: View {
                         }
                     }
                 }
-            }.padding(.vertical, 3)
+                
+                Spacer()
+            }.padding(5)
             
             VStack {
                 HStack {
@@ -69,5 +72,6 @@ struct SmallWidgetView: View {
                 Spacer()
             }
         }.widgetURL(upcomingProject.getUrl())
+            .frame(width: size.width, height: size.height)
     }
 }
