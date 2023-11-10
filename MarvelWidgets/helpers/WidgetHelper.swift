@@ -13,7 +13,6 @@ import UIKit
 class WidgetHelper {
     static func widgetSize(forFamily family: WidgetFamily) -> CGSize {
         // better to use getTimeline func context.displaySize before this one.
-        print("debug: size \(UIScreen.main.bounds.size)")
         switch family {
         case .systemSmall:
             switch UIScreen.main.bounds.size {
