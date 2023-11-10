@@ -8,7 +8,6 @@
 import Foundation
 
 struct ActorsWrapper: Codable, Identifiable, Equatable {
-    let uuid = UUID()
     let id: Int
     let attributes: Actor
     

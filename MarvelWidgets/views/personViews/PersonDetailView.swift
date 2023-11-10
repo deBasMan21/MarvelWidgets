@@ -58,7 +58,7 @@ struct PersonDetailView: View {
                                 LazyVGrid(columns: columns, spacing: 15){
                                     ForEach(projects.sorted(by: {
                                         $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
-                                    }), id: \.uuid) { project in
+                                    }), id: \.id) { project in
                                         VStack {
                                             NavigationLink {
                                                 ProjectDetailView(

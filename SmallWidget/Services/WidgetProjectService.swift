@@ -11,43 +11,56 @@ import Intents
 import SwiftUI
 
 class WidgetProjectService {
-    static func upcomingProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent, widgetFamily: WidgetFamily) -> UpcomingProjectEntry {
+    static func upcomingProject(
+        from allProjects: [ProjectWrapper],
+        with configuration: UpcomingWidgetIntent,
+        widgetFamily: WidgetFamily,
+        size: CGSize
+    ) -> UpcomingProjectEntry {
         let smallestDateProject = allProjects.first
         
         let image = ImageHelper.downloadImage(
             from: smallestDateProject?.attributes.getPosterUrls(imageSize: ImageSize(size: .poster(.w500))).randomElement() ?? "",
-            widgetFamily: widgetFamily
+            size: size
         )
         
         return UpcomingProjectEntry(
             date: Date.now,
             configuration: configuration,
             upcomingProject: smallestDateProject,
-            image: image
+            image: image,
+            size: size
         )
     }
     
-    static func randomProject(from allProjects: [ProjectWrapper], with configuration: UpcomingWidgetIntent, widgetFamily: WidgetFamily) -> UpcomingProjectEntry {
+    static func randomProject(
+        from allProjects: [ProjectWrapper],
+        with configuration: UpcomingWidgetIntent,
+        widgetFamily: WidgetFamily,
+        size: CGSize
+    ) -> UpcomingProjectEntry {
         let project = allProjects.randomElement()
         
         if let project = project {
             let image = ImageHelper.downloadImage(
                 from: project.attributes.getPosterUrls(imageSize: ImageSize(size: .poster(.w500))).randomElement() ?? "",
-                widgetFamily: widgetFamily
+                size: size
             )
             
             return UpcomingProjectEntry(
                 date: Date.now,
                 configuration: configuration,
                 upcomingProject: project,
-                image: image
+                image: image,
+                size: size
             )
         } else {
             return UpcomingProjectEntry(
                 date: Date.now,
                 configuration: configuration,
                 upcomingProject: nil,
-                image: Image("secret wars")
+                image: Image("secret wars"),
+                size: size
             )
         }
         

@@ -11,6 +11,7 @@ import SwiftUI
 struct MediumWidgetView: View {
     let upcomingProject: ProjectWrapper
     let image: Image
+    let size: CGSize
     
     let gradient = LinearGradient(
             gradient: Gradient(stops: [
@@ -45,7 +46,7 @@ struct MediumWidgetView: View {
                 .frame(width: 120)
                 .clipped()
                 .overlay(gradient)
-        }.frame(width: WidgetHelper.widgetSize(forFamily: .systemMedium).width, height: WidgetHelper.widgetSize(forFamily: .systemMedium).height)
+        }.frame(width: size.width, height: size.height)
             .widgetURL(upcomingProject.getUrl())
             .overlay(
                 VStack {

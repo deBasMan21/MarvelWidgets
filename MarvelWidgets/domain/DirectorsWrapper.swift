@@ -8,7 +8,6 @@
 import Foundation
 
 struct DirectorsWrapper: Codable, Identifiable, Equatable  {
-    let uuid = UUID()
     let id: Int
     let attributes: Director
     
