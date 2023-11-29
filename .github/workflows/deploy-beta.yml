@@ -1,0 +1,34 @@
+name: Deploy to TestFlight (iOS)
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      checkout_branch:
+        description: "Build from branch"
+        required: true
+        default: "master"
+
+env:
+  CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+  KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+  ENCRYPT_KEY: ${{ secrets.ENCRYPT_KEY }}
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy app to testflight
+    runs-on: macos-13
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event_name == 'push' && 'master' || github.event.inputs.checkout_branch }}
+      - name: Prepare environment
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install
+      - name: Build app
+        run: bundle exec fastlane ios beta

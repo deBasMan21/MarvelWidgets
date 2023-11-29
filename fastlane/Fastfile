@@ -1,0 +1,99 @@
+require 'fileutils'
+require 'spaceship'
+
+platform :ios do
+    lane :beta do |options|
+        decrypt_secret_files
+
+        xcversion(
+            version: "~> 15",
+        )
+
+        setup_code_signing(
+            ENV["KEYCHAIN_PASSWORD"], 
+            ENV["CERTIFICATE_PASSWORD"], 
+            [
+                './.secret/McuWidgets_distribution.mobileprovision',
+                './.secret/MCUWidgets_MCUWidgetsRPN_distribution.mobileprovision',
+                './.secret/MCUWidgets_MCUWidgetsRPNContent_distribution.mobileprovision',
+                './.secret/MCUWidgets_SmallWidget_distribution.mobileprovision',
+                './.secret/MCUWidgets_WidgetTypeConfiguration_distribution.mobileprovision',
+            ],
+            './.secret/distribution.p12'
+        )
+
+        build_num = app_store_build_number(
+            live: false,
+            app_identifier: "nl.Buijsen.MCUWidgets",
+            api_key_path: "./.secret/connect_api_key.json"
+        )
+
+        ios_set_build_number(
+            xcodeproj: "./MarvelWidgets.xcodeproj",
+            build_number: build_num + 1
+        )
+
+        build_app(
+            scheme: "MCUWidgets",
+            configuration: "Release",
+            project: "./MarvelWidgets.xcodeproj",
+            xcargs: "-skipPackagePluginValidation",
+            export_options: {
+                provisioningProfiles: {
+                    "nl.Buijsen.MCUWidgets" => "McuWidgets distribution",
+                    "nl.Buijsen.MCUWidgets.MCUWidgetsRPN" => "MCUWidgets MCUWidgetsRPN distribution",
+                    "nl.Buijsen.MCUWidgets.MCUWidgetsRPNContent" => "MCUWidgets MCUWidgetsRPNContent distribution",
+                    "nl.Buijsen.MCUWidgets.SmallWidget" => "MCUWidgets SmallWidget distribution",
+                    "nl.Buijsen.MCUWidgets.WidgetTypeConfiguration" => "MCUWidgets WidgetTypeConfiguration distribution",
+                }
+            }
+        )
+
+        upload_to_testflight(
+            api_key_path: "./.secret/connect_api_key.json",
+            skip_waiting_for_build_processing: true,
+        )
+
+        clean_up_secret_files
+    end
+
+    def setup_code_signing(keychain_password, certificate_password, profile_paths, certificate_path)
+        create_keychain(
+            name: "CI",
+            password: keychain_password,
+            default_keychain: true,
+            unlock: true,
+            timeout: 3600,
+            lock_when_sleeps: false
+        )
+
+        for profile_path in profile_paths do
+            install_provisioning_profile(
+                path: profile_path
+            )
+        end
+
+        import_certificate(
+            certificate_path: "./.secret/AppleWWDRCAG3.cer",
+            keychain_name: "CI",
+            keychain_password: keychain_password,
+            log_output: true
+        )
+
+        import_certificate(
+            certificate_path: certificate_path,
+            certificate_password: certificate_password,
+            keychain_name: "CI",
+            keychain_password: keychain_password,
+            log_output: true
+        )
+    end
+end
+
+def decrypt_secret_files
+    sh("../.secret/decrypt.sh")
+end
+
+def clean_up_secret_files
+    sh("../.secret/cleanup.sh")
+end
