@@ -42,7 +42,7 @@ platform :ios do
                 provisioningProfiles: {
                     "nl.Buijsen.MCUWidgets" => "McuWidgets distribution",
                     "nl.Buijsen.MCUWidgets.MCUWidgetsRPN" => "MCUWidgets MCUWidgetsRPN distribution",
-                    "nl.Buijsen.MCUWidgets.MCUWidgetsRPNContent" => "MCUWidgets MCUWidgetsRPNContent distribution",
+                    "nl.Buijsen.MCUWidgets.McuWidgetsRPNContent" => "MCUWidgets MCUWidgetsRPNContent distribution",
                     "nl.Buijsen.MCUWidgets.SmallWidget" => "MCUWidgets SmallWidget distribution",
                     "nl.Buijsen.MCUWidgets.WidgetTypeConfiguration" => "MCUWidgets WidgetTypeConfiguration distribution",
                 }
