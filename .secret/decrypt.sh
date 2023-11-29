@@ -1,0 +1,2 @@
+gpg --batch --yes --decrypt --passphrase="$ENCRYPT_KEY" --output ./../.secret/distribution.p12 ./../.secret/distribution.p12.gpg
+gpg --batch --yes --decrypt --passphrase="$ENCRYPT_KEY" --output ./../.secret/connect_api_key.json ./../.secret/connect_api_key.json.gpg
