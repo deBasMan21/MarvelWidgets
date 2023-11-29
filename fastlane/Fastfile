@@ -34,7 +34,7 @@ platform :ios do
         )
 
         build_app(
-            scheme: "MCUWidgets",
+            scheme: "MarvelWidgets",
             configuration: "Release",
             project: "./MarvelWidgets.xcodeproj",
             xcargs: "-skipPackagePluginValidation",
