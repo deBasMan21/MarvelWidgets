@@ -20,7 +20,6 @@ struct ProjectWrapper: Codable, Comparable, Hashable, Identifiable {
         hasher.combine(id)
     }
     
-    let uuid = UUID()
     let id: Int
     let attributes: MCUProject
     

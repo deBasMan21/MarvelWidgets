@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import WidgetKit
+import SwiftUI
 
 struct MCUProject: Codable, Comparable {
     static func < (lhs: MCUProject, rhs: MCUProject) -> Bool {
@@ -124,6 +126,28 @@ struct MCUProject: Codable, Comparable {
         case .flat: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter()))"
         default: return "\(rankingCurrentRank) (\(rankingChangeDirection.toCharacter())\(rankingDifference))"
         }
+    }
+    
+    func getWidgetImage(
+        widgetFamily: WidgetFamily,
+        size: CGSize
+    ) -> Image {
+        let posterUrl = getPosterUrls(
+            imageSize: ImageSize(size: .poster(.w500))
+        ).randomElement() ?? ""
+        
+        let widgetUrl = if widgetFamily == .systemLarge {
+            getBackdropUrl(
+                imageSize: ImageSize(size: .poster(.w500))
+            ) ?? posterUrl
+        } else {
+            posterUrl
+        }
+        
+        return ImageHelper.downloadImage(
+            from: widgetUrl,
+            size: size
+        )
     }
     
     func getPosterUrls(imageSize: ImageSize = ImageSize(size: .poster(.original))) -> [String] {

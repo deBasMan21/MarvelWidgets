@@ -10,21 +10,22 @@ import SwiftUI
 import Intents
 
 struct SmallWidgetProvider: IntentTimelineProvider {
-    var projectEntry: UpcomingProjectEntry {
+    func getProjectEntry(size: CGSize) -> UpcomingProjectEntry {
         return UpcomingProjectEntry(
             date: Date(),
             configuration: UpcomingWidgetIntent(),
             upcomingProject: Placeholders.emptyProject,
-            image: Image("secret wars")
+            image: Image("secret wars"),
+            size: size
         )
     }
     
     func placeholder(in context: Context) -> UpcomingProjectEntry {
-        projectEntry
+        getProjectEntry(size: context.displaySize)
     }
 
     func getSnapshot(for configuration: UpcomingWidgetIntent, in context: Context, completion: @escaping (UpcomingProjectEntry) -> ()) {
-        completion(projectEntry)
+        completion(getProjectEntry(size: context.displaySize))
     }
 
     func getTimeline(for configuration: UpcomingWidgetIntent, in context: Context, completion: @escaping (Timeline<UpcomingProjectEntry>) -> ()) {
@@ -37,13 +38,39 @@ struct SmallWidgetProvider: IntentTimelineProvider {
             
             switch configuration.RandomOrNext {
             case .random:
-                upcomingProjects.append(contentsOf: await ProjectService.getByTypeAndSource(type: widgetType, source: widgetSource, populate: .populateWidget, force: true))
+                upcomingProjects.append(
+                    contentsOf: await ProjectService.getByTypeAndSource(
+                        type: widgetType,
+                        source: widgetSource,
+                        populate: .populateWidget,
+                        force: true
+                    )
+                )
                 
-                entries.append(WidgetProjectService.randomProject(from: upcomingProjects, with: configuration, widgetFamily: context.family))
+                entries.append(
+                    WidgetProjectService.randomProject(
+                        from: upcomingProjects,
+                        with: configuration,
+                        widgetFamily: context.family,
+                        size: context.displaySize
+                    )
+                )
             default:
-                upcomingProjects = await ProjectService.getFirstUpcoming(for: widgetType, source: widgetSource, populate: .populateWidget, force: true)
+                upcomingProjects = await ProjectService.getFirstUpcoming(
+                    for: widgetType,
+                    source: widgetSource,
+                    populate: .populateWidget,
+                    force: true
+                )
                 
-                entries.append(WidgetProjectService.upcomingProject(from: upcomingProjects, with: configuration, widgetFamily: context.family))
+                entries.append(
+                    WidgetProjectService.upcomingProject(
+                        from: upcomingProjects,
+                        with: configuration,
+                        widgetFamily: context.family,
+                        size: context.displaySize
+                    )
+                )
             }
             
             completion(Timeline(entries: entries, policy: .atEnd))

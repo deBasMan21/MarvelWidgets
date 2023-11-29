@@ -21,7 +21,7 @@ struct RelatedProjectsView: View {
                 HStack(spacing: 15){
                     ForEach(relatedProjects.data.sorted(by: {
                         $0.attributes.releaseDate ?? "" < $1.attributes.releaseDate ?? ""
-                    }), id: \.uuid) { project in
+                    }), id: \.id) { project in
                         NavigationLink {
                             ProjectDetailView(
                                 viewModel: ProjectDetailViewModel(

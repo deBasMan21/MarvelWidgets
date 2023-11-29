@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 struct LargeWidgetView: View {
-    @State var project: ProjectWrapper
-    @State var image: Image
+    var project: ProjectWrapper
+    var image: Image
+    var size: CGSize
     
     let gradient = LinearGradient(
             gradient: Gradient(stops: [
@@ -26,7 +27,7 @@ struct LargeWidgetView: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(height: WidgetHelper.widgetSize(forFamily: .systemLarge).height / 1.7)
+                .frame(height: size.height / 1.7)
                 .clipped()
                 .overlay(gradient)
             
@@ -70,7 +71,7 @@ struct LargeWidgetView: View {
             }.padding(.top, -20)
             
             Spacer()
-        }.frame(width: WidgetHelper.widgetSize(forFamily: .systemLarge).width, height: WidgetHelper.widgetSize(forFamily: .systemLarge).height)
+        }.frame(width: size.width, height: size.height)
             .widgetURL(project.getUrl())
             .overlay(
                 VStack {

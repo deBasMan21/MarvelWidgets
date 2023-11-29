@@ -211,7 +211,10 @@
 		EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF84047329DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF87794A2A2B447600FFBBB5 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8779492A2B447600FFBBB5 /* SwipingView.swift */; };
+		EF90E2202B177D0700ACA0AE /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
+		EFA11AE72AFE7697001AD59B /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
+		EFA11AE82AFE7BE1001AD59B /* WidgetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */; };
 		EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E129DCB4F000586017 /* AutoSizingSheet.swift */; };
 		EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E429DCB53200586017 /* TypeFilter.swift */; };
 		EFB503E729DCB55200586017 /* PhaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB503E629DCB55200586017 /* PhaseFilter.swift */; };
@@ -1462,6 +1465,7 @@
 				EF1BE42E2A19361C0072CC26 /* ProjectService.swift in Sources */,
 				EF1BE4342A1936500072CC26 /* MCUProject.swift in Sources */,
 				EF1BE4472A1936600072CC26 /* WidgetType.swift in Sources */,
+				EF90E2202B177D0700ACA0AE /* ImageHelper.swift in Sources */,
 				EF1BE45E2A193A920072CC26 /* TextExtension.swift in Sources */,
 				EF1BE4592A19397B0072CC26 /* LargeWidgetView.swift in Sources */,
 				EF1BE45A2A19399D0072CC26 /* WidgetHelper.swift in Sources */,
@@ -1482,6 +1486,7 @@
 				EF0CA0B429DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
 				EF75717B2A632D0100231750 /* StringExtensions.swift in Sources */,
 				EF0CA0BE29DDEEB200A2322A /* DebugConfig.swift in Sources */,
+				EFA11AE82AFE7BE1001AD59B /* WidgetHelper.swift in Sources */,
 				EF6B82CF29258DDB00A5D69C /* UNNotificationAttachmentExtension.swift in Sources */,
 				EF28E7FF29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */,
@@ -1705,6 +1710,7 @@
 				EF0CA0B129DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
 				EF185A5E2A378185002BF289 /* RecommendationService.swift in Sources */,
 				EF50A51D29E700C6007518BF /* Person.swift in Sources */,
+				EFA11AE72AFE7697001AD59B /* OtherWidgets.swift in Sources */,
 				EFF04BE829BE6A1A00437A6E /* OnboardingPageFiveView.swift in Sources */,
 				EF7571812A65816D00231750 /* CollectionWrapper.swift in Sources */,
 				EFF04BD529BE527100437A6E /* NotificationView.swift in Sources */,
