@@ -48,14 +48,10 @@ struct Provider: IntentTimelineProvider {
                 }
             }
             
-            var image: Image = Image("AppIcon")
+            var image: Image = Image("secret wars")
             if let proj = proj {
-                image = ImageHelper.downloadImage(
-                    from: proj.attributes.getPosterUrls(
-                        imageSize: ImageSize(
-                            size: .poster(.w500)
-                        )
-                    ).randomElement() ?? "",
+                image = proj.attributes.getWidgetImage(
+                    widgetFamily: context.family,
                     size: context.displaySize
                 )
             }
