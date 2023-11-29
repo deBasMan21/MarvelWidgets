@@ -1,0 +1,7 @@
+# ignore everything except for encrypted scripts, encrypted files and profiles
+*
+!*.sh 
+!*.gpg
+!*.mobileprovision
+!AppleWWDRCAG3.cer
+!.gitignore
