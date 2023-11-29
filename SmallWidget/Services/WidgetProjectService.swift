@@ -19,10 +19,10 @@ class WidgetProjectService {
     ) -> UpcomingProjectEntry {
         let smallestDateProject = allProjects.first
         
-        let image = ImageHelper.downloadImage(
-            from: smallestDateProject?.attributes.getPosterUrls(imageSize: ImageSize(size: .poster(.w500))).randomElement() ?? "",
+        let image = smallestDateProject?.attributes.getWidgetImage(
+            widgetFamily: widgetFamily,
             size: size
-        )
+        ) ?? Image("secret wars")
         
         return UpcomingProjectEntry(
             date: Date.now,
@@ -42,8 +42,8 @@ class WidgetProjectService {
         let project = allProjects.randomElement()
         
         if let project = project {
-            let image = ImageHelper.downloadImage(
-                from: project.attributes.getPosterUrls(imageSize: ImageSize(size: .poster(.w500))).randomElement() ?? "",
+            let image = project.attributes.getWidgetImage(
+                widgetFamily: widgetFamily,
                 size: size
             )
             

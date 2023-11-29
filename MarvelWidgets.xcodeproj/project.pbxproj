@@ -211,6 +211,7 @@
 		EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF84047329DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF87794A2A2B447600FFBBB5 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8779492A2B447600FFBBB5 /* SwipingView.swift */; };
+		EF90E2202B177D0700ACA0AE /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFA11AE72AFE7697001AD59B /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
 		EFA11AE82AFE7BE1001AD59B /* WidgetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */; };
@@ -1464,6 +1465,7 @@
 				EF1BE42E2A19361C0072CC26 /* ProjectService.swift in Sources */,
 				EF1BE4342A1936500072CC26 /* MCUProject.swift in Sources */,
 				EF1BE4472A1936600072CC26 /* WidgetType.swift in Sources */,
+				EF90E2202B177D0700ACA0AE /* ImageHelper.swift in Sources */,
 				EF1BE45E2A193A920072CC26 /* TextExtension.swift in Sources */,
 				EF1BE4592A19397B0072CC26 /* LargeWidgetView.swift in Sources */,
 				EF1BE45A2A19399D0072CC26 /* WidgetHelper.swift in Sources */,
