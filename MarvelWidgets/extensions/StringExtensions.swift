@@ -17,6 +17,10 @@ extension String {
         return formatter.date(from: self)
     }
     
+    func toDateFromDateTime() -> Date? {
+        toDate(dateFormat: "yyyy-MM-dd'T'HH:mm:ss.sssZ")
+    }
+    
     func toMoney() -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal

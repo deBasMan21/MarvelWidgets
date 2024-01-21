@@ -62,9 +62,4 @@ enum ProjectSource: String, Codable, CaseIterable {
         default: return nil
         }
     }
-    
-    static func getRelatedTypes() -> [ProjectSource] {
-        // Return everything but mcu (the first entry)
-        return Array(Self.allCases.dropFirst())
-    }
 }

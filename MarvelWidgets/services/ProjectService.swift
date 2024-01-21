@@ -25,13 +25,12 @@ class ProjectService {
 
 // MARK:  MCU Projects
 extension ProjectService {
-    static func getAll(for type: ListPageType = .mcu, populate: UrlPopulateComponents = .populatePosters, force: Bool = false) async -> [ProjectWrapper] {
+    static func getAll(populate: UrlPopulateComponents = .populatePosters, force: Bool = false) async -> [ProjectWrapper] {
         let url = UrlBuilder(baseUrl: config.baseUrl, entity: .project)
-            .addMcuOrRelatedFilter(type: type)
             .addPopulate(type: populate)
             .getString()
         
-        let result: ListResponseWrapper? = await getPrivate(url: url, force: force, cachingKey: CachingKeys.getFromListPageType(type: type))
+        let result: ListResponseWrapper? = await getPrivate(url: url, force: force, cachingKey: .projects)
         return result?.data ?? []
     }
     
@@ -135,18 +134,10 @@ extension ProjectService {
 // MARK: Helper
 extension ProjectService {
     enum CachingKeys: String {
-        case mcu = "mcuProjects"
-        case related = "relatedProjects"
+        case projects = "project"
         case actor = "actors"
         case director = "directors"
         case none = ""
-        
-        static func getFromListPageType(type: ListPageType) -> CachingKeys {
-            switch type {
-            case .mcu: return .mcu
-            case .other: return .related
-            }
-        }
     }
     
     private static func getPrivate<T: Codable>(url: String, force: Bool, cachingKey: CachingKeys) async -> T? {

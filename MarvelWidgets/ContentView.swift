@@ -34,18 +34,18 @@ struct ContentView: View {
             
             TabView(selection: $activeTab) {
                 NavigationStack(path: $projects) {
-                    ProjectListView(pageType: .mcu)
+                    ProjectListView()
                         .navigationDestination(for: ProjectWrapper.self) { i in
                             ProjectDetailView(viewModel: ProjectDetailViewModel(project: i),  inSheet: false)
                         }
                 }.tabItem{
-                    Label("MCU", systemImage: "list.dash")
+                    Label("Projects", systemImage: "film")
                 }.tag(0)
                 
                 NavigationView {
-                    ProjectListView(pageType: .other)
-                }.tabItem{
-                    Label("Related", systemImage: "film")
+                    NewsListPageView()
+                }.tabItem {
+                    Label("News", systemImage: "newspaper.fill")
                 }.tag(1)
                 
                 NavigationView {

@@ -10,7 +10,7 @@ import SwiftUI
 import WebKit
 
 struct InstagramView: View {
-    @StateObject var webView = WebViewModel()
+    @StateObject var webView = WebViewModel(url: "https://twitter.com/themcutimes")
     
     var body: some View {
         VStack {
@@ -24,10 +24,10 @@ class WebViewModel: ObservableObject {
     let webView: WKWebView
     let url: URL
     
-    init() {
+    init(url: String) {
         webView = WKWebView(frame: .zero)
         
-        url = URL(string: "https://twitter.com/themcutimes")!
+        self.url = URL(string: url)!
 
         loadUrl()
     }
