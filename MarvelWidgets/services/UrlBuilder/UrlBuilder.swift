@@ -196,7 +196,7 @@ extension UrlBuilder {
     private func addPersonPostersPopulate() -> UrlBuilder {
         guard isPerson() else { return self }
         addFilterParameter()
-        currentUrl += "populate[0]=related_projects&populate[1]=related_projects.Posters&populate=*&populate[2]=mcu_projects&populate[3]=mcu_projects.Posters"
+        currentUrl += "populate=*,mcu_projects.Posters"
         return self
     }
     
