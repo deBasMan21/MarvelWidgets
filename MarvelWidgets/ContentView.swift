@@ -34,18 +34,18 @@ struct ContentView: View {
             
             TabView(selection: $activeTab) {
                 NavigationStack(path: $projects) {
-                    ProjectListView(pageType: .mcu)
+                    ProjectListView()
                         .navigationDestination(for: ProjectWrapper.self) { i in
                             ProjectDetailView(viewModel: ProjectDetailViewModel(project: i),  inSheet: false)
                         }
                 }.tabItem{
-                    Label("MCU", systemImage: "list.dash")
+                    Label("Projects", systemImage: "film")
                 }.tag(0)
                 
                 NavigationView {
-                    ProjectListView(pageType: .other)
-                }.tabItem{
-                    Label("Related", systemImage: "film")
+                    NewsListPageView(newsItems: [])
+                }.tabItem {
+                    Label("News", systemImage: "newspaper.fill")
                 }.tag(1)
                 
                 NavigationView {
@@ -55,22 +55,16 @@ struct ContentView: View {
                 }.tag(2)
                 
                 NavigationView {
-                    NewsListPageView(newsItems: [])
-                }.tabItem {
-                    Label("News", systemImage: "newspaper.fill")
-                }.tag(3)
-                
-                NavigationView {
                     PersonListPageView(type: .actor)
                 }.tabItem {
                     Label("Actors", systemImage: "person.fill")
-                }.tag(4)
+                }.tag(3)
                 
                 NavigationView {
                     PersonListPageView(type: .director)
                 }.tabItem {
                     Label("Directors", systemImage: "megaphone")
-                }.tag(5)
+                }.tag(4)
             }.onAppear {
                 // Fix to always show the tabbar background
                 let tabBarAppearance = UITabBarAppearance()

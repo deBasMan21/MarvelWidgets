@@ -13,20 +13,13 @@ class IntentHandler: INExtension, SpecificWidgetIntentHandling {
     func provideSelectedProjectsOptionsCollection(for intent: SpecificWidgetIntent) async throws -> INObjectCollection<SelectableProject> {
        var projects = await ProjectService.getAll()
             .compactMap {
-                let proj = SelectableProject(identifier: "mcu-\($0.id)", display: "\($0.attributes.title)", subtitle: "MCU", image: nil)
-                proj.sortKey = "MCU-\($0.attributes.title)"
+                let isMCU = $0.attributes.source == .mcu
+                let proj = SelectableProject(identifier: "\(isMCU ? "mcu" : "other")-\($0.id)", display: "\($0.attributes.title)", subtitle: isMCU ? "MCU" : "Other Marvel projects", image: nil)
+                proj.sortKey = "\(isMCU ? "mcu" : "other")-\($0.attributes.title)"
                 return proj
             }
         
-        projects += await ProjectService.getAll(for: .other, populate: .populateNone)
-            .compactMap {
-                let proj = SelectableProject(identifier: "other-\($0.id)", display: "\($0.attributes.title)", subtitle: "Related to MCU", image: nil)
-                proj.sortKey = "Other-\($0.attributes.title)"
-                return proj
-            }
-        
-        projects = projects.sorted(by: { $0.sortKey ?? "" < $1.sortKey ?? "" })
-        return INObjectCollection(items: projects)
+        return INObjectCollection(items: projects.sorted(by: { $0.sortKey ?? "" < $1.sortKey ?? "" }))
     }
 
     override func handler(for intent: INIntent) -> Any {

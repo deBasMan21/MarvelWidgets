@@ -12,10 +12,6 @@ extension ProjectListView {
     class ProjectListViewModel: ObservableObject {
         var filterCallback: (Bool, Int) -> Void = { _, _ in }
         
-        @Published var scrollViewHeight: CGFloat = 0
-        @Published var proportion: CGFloat = 0
-        @Published var proportionName: String = "scroll"
-        @Published var pageType: ListPageType = .mcu
         @Published var showFilters: Bool = false
         private var allProjects: [ProjectWrapper] = []
         @Published var projects: [ProjectWrapper] = []
@@ -86,21 +82,11 @@ extension ProjectListView {
             GridItem(.flexible())
         ]
         
-        var navigationTitle: String {
-            switch pageType {
-            case .mcu:
-                return "MCU Projects"
-            case .other:
-                return "Marvel other"
-            }
-        }
-        
-        init(pageType: ListPageType) {
-            self.pageType = pageType
+        init() {
         }
         
         func fetchProjects(force: Bool = false) async {
-            allProjects = await ProjectService.getAll(for: pageType, force: force)
+            allProjects = await ProjectService.getAll(force: force)
             
             await filterProjects()
             await orderProjects()

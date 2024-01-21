@@ -10,17 +10,10 @@ import SwiftUI
 import ScrollViewIfNeeded
 
 struct ProjectListView: View {
-    @StateObject var viewModel: ProjectListViewModel
-    
-    init(pageType: ListPageType) {
-        self._viewModel = StateObject(wrappedValue: ProjectListViewModel(pageType: pageType))
-    }
+    @StateObject var viewModel = ProjectListViewModel()
     
     var body: some View {
         VStack {
-            Text("**\(viewModel.projects.count)** \(viewModel.navigationTitle)")
-            
-
             ScrollView {
                 LazyVGrid(columns: viewModel.columns, spacing: 20)  {
                     ForEach(viewModel.projects, id: \.id) { item in
@@ -40,25 +33,16 @@ struct ProjectListView: View {
                             )
                         }.id(item.id)
                     }
-                }.modifier(ScrollReadVStackModifier(
-                    scrollViewHeight: $viewModel.scrollViewHeight,
-                    proportion: $viewModel.proportion,
-                    proportionName: viewModel.proportionName
-                ))
+                }
             }.searchable(text: $viewModel.searchQuery)
                 .refreshable {
                     await viewModel.refresh(force: true)
-                }.modifier(ScrollReadScrollViewModifier(
-                    scrollViewHeight: $viewModel.scrollViewHeight,
-                    proportionName: viewModel.proportionName
-                ))
-            
-            ProgressView(value: viewModel.proportion, total: 1)
+                }
         }.task {
             if viewModel.projects.count <= 0 {
                 await viewModel.fetchProjects()
             }
-        }.navigationTitle(viewModel.navigationTitle)
+        }.navigationTitle("Marvel Projects")
             .navigationBarTitleDisplayMode(.large)
             .showTabBar()
             .sheet(isPresented: $viewModel.showFilters) {
@@ -90,19 +74,15 @@ struct ProjectFilterSheet: View {
                     .bold()
                     .padding()
                 
+                TypeFilter(title: "Source", values: ProjectSource.allCases, selectedTypes: $viewModel.selectedSources)
+                
                 TypeFilter(
                     title: "Type",
                     values: ProjectType.allCases,
                     selectedTypes: $viewModel.selectedTypes
                 )
                 
-                if viewModel.pageType == .mcu {
-                    PhaseFilter(selectedFilters: $viewModel.selectedFilters)
-                    
-                    CategoryFilterView(selectedCategories: $viewModel.selectedCategories)
-                } else {
-                    TypeFilter(title: "Source", values: ProjectSource.getRelatedTypes(), selectedTypes: $viewModel.selectedSources)
-                }
+                CategoryFilterView(selectedCategories: $viewModel.selectedCategories)
                 
                 // Date filters
                 DateFilter(date: $viewModel.afterDate, title: "After:")
