@@ -19,6 +19,7 @@ class RecommendationService {
     }
     
     static func getRecommendations(page: Int) async -> [any SwipingContent] {
+        return await ProjectService.getAll().compactMap { ProjectSwipingContent(project: $0) }.sorted(by: { _, _ in UUID().uuidString < UUID().uuidString })
         let url = "\(config.trackingUrl)/recommendations/mostPopular?page=\(page)&pageSize=5"
         let result = try? await APIService.apiCall(url: url, body: nil, method: "GET", as: [RecommendationReturnType].self)
         

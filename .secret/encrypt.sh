@@ -1,0 +1,2 @@
+gpg --symmetric --cipher-algo AES256 --passphrase="$ENCRYPT_KEY" --batch --yes ./../.secret/distribution.p12
+gpg --symmetric --cipher-algo AES256 --passphrase="$ENCRYPT_KEY" --batch --yes ./../.secret/connect_api_key.json

@@ -90,8 +90,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-
-# temp for fastlane
-fastlane
-Gemfile
-Gemfile.lock
+.env

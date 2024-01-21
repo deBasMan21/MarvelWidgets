@@ -20,33 +20,6 @@ struct PersonListPageView: View {
     
     var body: some View {
         VStack {
-            Text("**\(viewModel.filteredPersons.count)** \(viewModel.personType.rawValue)")
-                .sheet(isPresented: $viewModel.showFilters) {
-                    ScrollViewIfNeeded {
-                        VStack {
-                            Text("Filters and Sorting")
-                                .font(.largeTitle)
-                                .bold()
-                                .padding()
-                            
-                            DateFilter(date: $viewModel.filterAfterDate, title: "Born after:")
-                            
-                            DateFilter(date: $viewModel.filterBeforeDate, title: "Born before:")
-                            
-                            OrderFilterView(orderType: $viewModel.orderType)
-                            
-                            Button(action: {
-                                Task {
-                                    await viewModel.resetFilters()
-                                }
-                            }, label: {
-                                Text("Reset")
-                            })
-                        }.padding(.horizontal)
-                    }.presentationDetents([.medium])
-                        .presentationDragIndicator(.visible)
-                }
-            
             ZStack {
                 ScrollView {
                     VStack {
@@ -61,8 +34,7 @@ struct PersonListPageView: View {
                                 }
                             }
                         }
-                    }.modifier(ScrollReadVStackModifier(scrollViewHeight: $viewModel.scrollViewHeight, proportion: $viewModel.proportion, proportionName: viewModel.proportionName)
-                    )
+                    }
                 }.searchable(text: $viewModel.filterSearchQuery)
                     .refreshable {
                         await viewModel.getPersons()
@@ -87,9 +59,7 @@ struct PersonListPageView: View {
                         })
                     ]
                 )
-            }.modifier(ScrollReadScrollViewModifier(scrollViewHeight: $viewModel.scrollViewHeight, proportionName: viewModel.proportionName))
-            
-            ProgressView(value: viewModel.proportion, total: 1)
+            }
         }.onAppear {
             Task {
                 await viewModel.getPersons()
@@ -98,6 +68,7 @@ struct PersonListPageView: View {
             .sheet(isPresented: $viewModel.showSheet, content: {
                 getSheetView()
             }).showTabBar()
+            .sheet(isPresented: $viewModel.showFilters) { getFilterView() }
     }
     
     func getView(actorObj: any Person) -> some View {
@@ -171,6 +142,32 @@ struct PersonListPageView: View {
                 Spacer()
             }.padding()
         }.presentationDetents(viewModel.detents, selection: $viewModel.sheetHeight)
+            .presentationDragIndicator(.visible)
+    }
+    
+    func getFilterView() -> some View {
+        ScrollViewIfNeeded {
+            VStack {
+                Text("Filters and Sorting")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding()
+                
+                DateFilter(date: $viewModel.filterAfterDate, title: "Born after:")
+                
+                DateFilter(date: $viewModel.filterBeforeDate, title: "Born before:")
+                
+                OrderFilterView(orderType: $viewModel.orderType)
+                
+                Button(action: {
+                    Task {
+                        await viewModel.resetFilters()
+                    }
+                }, label: {
+                    Text("Reset")
+                })
+            }.padding(.horizontal)
+        }.presentationDetents([.medium])
             .presentationDragIndicator(.visible)
     }
 }

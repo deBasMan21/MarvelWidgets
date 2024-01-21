@@ -138,6 +138,13 @@
 		EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5DA628A43E2A0004AAC7 /* UserDefaultValues.swift */; };
 		EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EF578F3D28A458C3006272AA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
+		EF59BD1F2B5D534F0090E28D /* NewsListPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD1E2B5D534F0090E28D /* NewsListPageView.swift */; };
+		EF59BD212B5D54D80090E28D /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD202B5D54D80090E28D /* NewsService.swift */; };
+		EF59BD232B5D555F0090E28D /* NewsItemsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD222B5D555F0090E28D /* NewsItemsWrapper.swift */; };
+		EF59BD252B5D56070090E28D /* NewsItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD242B5D56070090E28D /* NewsItemWrapper.swift */; };
+		EF59BD272B5D56170090E28D /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD262B5D56170090E28D /* NewsItem.swift */; };
+		EF59BD292B5D562A0090E28D /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD282B5D562A0090E28D /* NewsCategory.swift */; };
+		EF59BD2B2B5D563A0090E28D /* NewsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD2A2B5D563A0090E28D /* NewsImage.swift */; };
 		EF67932D29BF96A900ED1451 /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF67932C29BF96A900ED1451 /* StarsView.swift */; };
 		EF6B82BE2925816800A5D69C /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
 		EF6B82C629258B9300A5D69C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82C529258B9300A5D69C /* NotificationService.swift */; };
@@ -231,6 +238,7 @@
 		EFBE482729C621820036185E /* QuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482629C621820036185E /* QuoteView.swift */; };
 		EFBE482929C621990036185E /* ProjectInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482829C621990036185E /* ProjectInformationView.swift */; };
 		EFBE482B29C621BE0036185E /* RelatedProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482A29C621BE0036185E /* RelatedProjectsView.swift */; };
+		EFCA4CF32B5D7A4B001B1657 /* NewsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA4CF22B5D7A4B001B1657 /* NewsItemView.swift */; };
 		EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
 		EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
@@ -469,6 +477,13 @@
 		EF50A51E29E700D8007518BF /* DirectorPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorPerson.swift; sourceTree = "<group>"; };
 		EF50A52029E700E9007518BF /* ActorPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorPerson.swift; sourceTree = "<group>"; };
 		EF50A52229E7010F007518BF /* PersonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonType.swift; sourceTree = "<group>"; };
+		EF59BD1E2B5D534F0090E28D /* NewsListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListPageView.swift; sourceTree = "<group>"; };
+		EF59BD202B5D54D80090E28D /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		EF59BD222B5D555F0090E28D /* NewsItemsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemsWrapper.swift; sourceTree = "<group>"; };
+		EF59BD242B5D56070090E28D /* NewsItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemWrapper.swift; sourceTree = "<group>"; };
+		EF59BD262B5D56170090E28D /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
+		EF59BD282B5D562A0090E28D /* NewsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCategory.swift; sourceTree = "<group>"; };
+		EF59BD2A2B5D563A0090E28D /* NewsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImage.swift; sourceTree = "<group>"; };
 		EF67932C29BF96A900ED1451 /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
 		EF6B8298292412CA00A5D69C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
@@ -518,6 +533,7 @@
 		EFBE482629C621820036185E /* QuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteView.swift; sourceTree = "<group>"; };
 		EFBE482829C621990036185E /* ProjectInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInformationView.swift; sourceTree = "<group>"; };
 		EFBE482A29C621BE0036185E /* RelatedProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedProjectsView.swift; sourceTree = "<group>"; };
+		EFCA4CF22B5D7A4B001B1657 /* NewsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemView.swift; sourceTree = "<group>"; };
 		EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		EFCA5D7B28A3F5100004AAC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -743,6 +759,27 @@
 			path = Person;
 			sourceTree = "<group>";
 		};
+		EF59BD1D2B5D533D0090E28D /* News */ = {
+			isa = PBXGroup;
+			children = (
+				EF59BD1E2B5D534F0090E28D /* NewsListPageView.swift */,
+				EFCA4CF22B5D7A4B001B1657 /* NewsItemView.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		EF59BD2C2B5D56450090E28D /* News */ = {
+			isa = PBXGroup;
+			children = (
+				EF59BD222B5D555F0090E28D /* NewsItemsWrapper.swift */,
+				EF59BD242B5D56070090E28D /* NewsItemWrapper.swift */,
+				EF59BD262B5D56170090E28D /* NewsItem.swift */,
+				EF59BD282B5D562A0090E28D /* NewsCategory.swift */,
+				EF59BD2A2B5D563A0090E28D /* NewsImage.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		EF6B82C429258B9300A5D69C /* MCUWidgetsRPN */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +987,7 @@
 				EFF04BC029BE225A00437A6E /* NotificationService.swift */,
 				EF185A5B2A377BC6002BF289 /* TrackingService.swift */,
 				EF185A5D2A378185002BF289 /* RecommendationService.swift */,
+				EF59BD202B5D54D80090E28D /* NewsService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -957,6 +995,7 @@
 		EFCE381F28A3DDF800B4CC0D /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				EF59BD2C2B5D56450090E28D /* News */,
 				EF50A51B29E700B9007518BF /* Person */,
 				EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */,
 				EFF0E270292107B500854E5F /* ListResponseWrapper.swift */,
@@ -992,6 +1031,7 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EF59BD1D2B5D533D0090E28D /* News */,
 				EF75718C2A6581BA00231750 /* Collection */,
 				EF8779482A2B445B00FFBBB5 /* Recommendations */,
 				EF26F68B29DADC0F00E1A74D /* personViews */,
@@ -1585,8 +1625,11 @@
 				EFBE482529C6216E0036185E /* TableRowView.swift in Sources */,
 				EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */,
+				EF59BD252B5D56070090E28D /* NewsItemWrapper.swift in Sources */,
 				EFBE482129C6213A0036185E /* RatingView.swift in Sources */,
+				EF59BD212B5D54D80090E28D /* NewsService.swift in Sources */,
 				EFCA5D7628A3EFAE0004AAC7 /* StringExtensions.swift in Sources */,
+				EF59BD1F2B5D534F0090E28D /* NewsListPageView.swift in Sources */,
 				EF4D265B28A451E300B7BCEE /* CachingService.swift in Sources */,
 				EFBE482B29C621BE0036185E /* RelatedProjectsView.swift in Sources */,
 				EFF0E27F2921081200854E5F /* Actors.swift in Sources */,
@@ -1629,6 +1672,7 @@
 				EF1F065429E6B92D009CC97A /* UrlBuilderType.swift in Sources */,
 				EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF75718E2A6581C400231750 /* CollectionView.swift in Sources */,
+				EF59BD292B5D562A0090E28D /* NewsCategory.swift in Sources */,
 				EF1F065829E6B947009CC97A /* UrlComponents.swift in Sources */,
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
 				EFF04BCE29BE306D00437A6E /* OnboardingPageFourView.swift in Sources */,
@@ -1638,6 +1682,7 @@
 				EF0CA0B629DDEE4400A2322A /* Config.swift in Sources */,
 				EFB503E729DCB55200586017 /* PhaseFilter.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* ConfigValues.swift in Sources */,
+				EF59BD2B2B5D563A0090E28D /* NewsImage.swift in Sources */,
 				EF7571892A65818E00231750 /* CollectionAttributes.swift in Sources */,
 				EF6B83572933A1B400A5D69C /* PersonListPageViewModel.swift in Sources */,
 				EFBE482929C621990036185E /* ProjectInformationView.swift in Sources */,
@@ -1680,6 +1725,7 @@
 				EF7571762A604C3900231750 /* ImageSize.swift in Sources */,
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
+				EF59BD272B5D56170090E28D /* NewsItem.swift in Sources */,
 				EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */,
 				EFF20E142A2CAE14004BCF58 /* String+averageColor.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
@@ -1688,6 +1734,7 @@
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
 				EFF0E2852921083600854E5F /* Directors.swift in Sources */,
 				EF84047129DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */,
+				EFCA4CF32B5D7A4B001B1657 /* NewsItemView.swift in Sources */,
 				EFF04BD929BE554000437A6E /* OnboardingOverlayView.swift in Sources */,
 				EFBE482329C621550036185E /* ReviewView.swift in Sources */,
 				EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
@@ -1699,6 +1746,7 @@
 				EFD8D77128A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EFCA5D9E28A41D2B0004AAC7 /* WidgetType.swift in Sources */,
 				EFF0E2D329240B7B00854E5F /* AppDelegate.swift in Sources */,
+				EF59BD232B5D555F0090E28D /* NewsItemsWrapper.swift in Sources */,
 				EF4D265528A44BC900B7BCEE /* IntentHandler.swift in Sources */,
 				EF78F62429959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */,
 				EFF04BCC29BE305600437A6E /* OnboardingPageThreeView.swift in Sources */,
@@ -1835,9 +1883,11 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = McuWidgetsRPNContent/McuWidgetsRPNContent.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = McuWidgetsRPNContent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = McuWidgetsRPNContent;
@@ -1851,6 +1901,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.McuWidgetsRPNContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets MCUWidgetsRPNContent dev";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1863,9 +1915,11 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = McuWidgetsRPNContent/McuWidgetsRPNContent.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = McuWidgetsRPNContent/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = McuWidgetsRPNContent;
@@ -1879,6 +1933,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.McuWidgetsRPNContent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets MCUWidgetsRPNContent distribution";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1891,9 +1947,11 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MCUWidgetsRPN/MCUWidgetsRPN.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MCUWidgetsRPN/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MCUWidgetsRPN;
@@ -1907,6 +1965,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.MCUWidgetsRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets MCUWidgetsRPN dev";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1919,9 +1979,11 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = MCUWidgetsRPN/MCUWidgetsRPN.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MCUWidgetsRPN/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MCUWidgetsRPN;
@@ -1935,6 +1997,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.MCUWidgetsRPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets MCUWidgetsRPN distribution";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1946,9 +2010,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WidgetTypeConfiguration/WidgetTypeConfiguration.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetTypeConfiguration;
@@ -1962,6 +2028,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.WidgetTypeConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets WidgetTypeConfiguration dev";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1973,9 +2041,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WidgetTypeConfiguration/WidgetTypeConfiguration.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WidgetTypeConfiguration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetTypeConfiguration;
@@ -1989,6 +2059,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.WidgetTypeConfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets WidgetTypeConfiguration distribution";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2121,10 +2193,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelWidgets/Info.plist;
@@ -2135,7 +2209,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2143,6 +2217,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets dev";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -2161,10 +2237,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = MarvelWidgets/MarvelWidgets.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"MarvelWidgets/Preview Content\"";
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MarvelWidgets/Info.plist;
@@ -2175,7 +2253,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2183,6 +2261,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "McuWidgets distribution";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -2198,9 +2278,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmallWidget;
@@ -2214,6 +2296,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.SmallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets SmallWidget dev";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2227,9 +2311,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SmallWidget/SmallWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_TEAM = 963LK66N4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SmallWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SmallWidget;
@@ -2243,6 +2329,8 @@
 				MARKETING_VERSION = "${VERSION_STRING}";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.SmallWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets SmallWidget distribution";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

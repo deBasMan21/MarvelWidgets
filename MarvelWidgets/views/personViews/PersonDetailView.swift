@@ -68,16 +68,12 @@ struct PersonDetailView: View {
                                                     inSheet: inSheet
                                                 )
                                             } label: {
-                                                VStack{
-                                                    ImageSizedView(url: project.attributes.getPosterUrls().first ?? "")
-                                                    
-                                                    Text(project.attributes.title)
-                                                        .font(Font.headline.bold())
-                                                    
-                                                    Text(project.attributes.getReleaseDateString())
-                                                        .font(Font.body.italic())
-                                                        .foregroundColor(Color(uiColor: UIColor.label))
-                                                }
+                                                PosterListViewItem(
+                                                    posterUrl: project.attributes.getPosterUrls().first ?? "",
+                                                    title: project.attributes.title,
+                                                    subTitle: project.attributes.getReleaseDateString(),
+                                                    showGradient: true
+                                                )
                                             }
                                             
                                             Spacer()
