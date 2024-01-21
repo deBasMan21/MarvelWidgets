@@ -43,7 +43,7 @@ struct ContentView: View {
                 }.tag(0)
                 
                 NavigationView {
-                    NewsListPageView(newsItems: [])
+                    NewsListPageView()
                 }.tabItem {
                     Label("News", systemImage: "newspaper.fill")
                 }.tag(1)
