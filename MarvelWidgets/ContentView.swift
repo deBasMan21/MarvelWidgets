@@ -55,16 +55,22 @@ struct ContentView: View {
                 }.tag(2)
                 
                 NavigationView {
+                    NewsListPageView(newsItems: [])
+                }.tabItem {
+                    Label("News", systemImage: "newspaper.fill")
+                }.tag(3)
+                
+                NavigationView {
                     PersonListPageView(type: .actor)
                 }.tabItem {
                     Label("Actors", systemImage: "person.fill")
-                }.tag(3)
+                }.tag(4)
                 
                 NavigationView {
                     PersonListPageView(type: .director)
                 }.tabItem {
                     Label("Directors", systemImage: "megaphone")
-                }.tag(4)
+                }.tag(5)
             }.onAppear {
                 // Fix to always show the tabbar background
                 let tabBarAppearance = UITabBarAppearance()

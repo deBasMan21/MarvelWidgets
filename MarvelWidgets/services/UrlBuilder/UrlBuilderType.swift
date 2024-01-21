@@ -13,6 +13,9 @@ protocol UrlBuilderType {
     func addFirstUpcomingFilter() -> UrlBuilderType
     func addTypeFilter(type: WidgetType) -> UrlBuilderType
     
+    func addSortByPublishDate() -> UrlBuilderType
+    func addPagination(pageSize: Int, page: Int) -> UrlBuilderType
+    
     func addMcuOrRelatedFilter(type: ListPageType) -> UrlBuilderType
     func addMcuProjectFilter() -> UrlBuilderType
     func addRelatedProjectFilter() -> UrlBuilderType

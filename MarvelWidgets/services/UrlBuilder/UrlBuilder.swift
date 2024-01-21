@@ -18,6 +18,7 @@ class UrlBuilder: UrlBuilderType {
         case actor = "actors"
         case project = "mcu-projects"
         case collection = "collections"
+        case newsItems = "news-items"
     }
     
     init(baseUrl: String, entity: Entity) {
@@ -54,6 +55,10 @@ class UrlBuilder: UrlBuilderType {
     
     private func isCollection() -> Bool {
         return entity == .collection
+    }
+    
+    private func isNewsItem() -> Bool {
+        return entity == .newsItems
     }
 }
 
@@ -129,6 +134,28 @@ extension UrlBuilder {
         guard isProject() else { return self }
         addFilterParameter()
         currentUrl += "filters[type][$eq]=Special"
+        return self
+    }
+}
+
+// MARK: Sort
+extension UrlBuilder {
+    func addSortByPublishDate() -> UrlBuilderType {
+        guard isNewsItem() else { return self }
+        addFilterParameter()
+        currentUrl += "sort[0]=date_published:desc"
+        return self
+    }
+}
+
+// MARK: Paging
+extension UrlBuilder {
+    func addPagination(pageSize: Int = 5, page: Int) -> UrlBuilderType {
+        guard isNewsItem() else { return self }
+        addFilterParameter()
+        currentUrl += "pagination[pageSize]=\(pageSize)"
+        addFilterParameter()
+        currentUrl += "pagination[page]=\(page)"
         return self
     }
 }
