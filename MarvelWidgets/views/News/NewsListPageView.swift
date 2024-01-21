@@ -23,7 +23,7 @@ struct NewsListPageView: View {
                 .bold()
             
             ScrollView {
-                LazyVStack() {
+                LazyVStack {
                     ForEach(newsItems) { item in
                         NavigationLink(
                             destination: {
