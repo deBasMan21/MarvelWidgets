@@ -27,4 +27,5 @@ public enum UrlPopulateComponents {
     case populateNormalWithRelatedPosters
     case populateWidget
     case populateCollection
+    case populateDeep(level: Int)
 }

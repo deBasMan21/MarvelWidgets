@@ -41,6 +41,7 @@ struct ProjectListView: View {
         }.task {
             if viewModel.projects.count <= 0 {
                 await viewModel.fetchProjects()
+                print(await HomepageService.getHomepage())
             }
         }.navigationTitle("Marvel Projects")
             .navigationBarTitleDisplayMode(.large)
