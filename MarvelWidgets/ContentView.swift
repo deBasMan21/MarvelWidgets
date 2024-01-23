@@ -55,9 +55,10 @@ struct ContentView: View {
                 }.tag(2)
                 
                 NavigationView {
-                    PersonListPageView(type: .actor)
+//                    PersonListPageView(type: .actor)
+                    HomePageView()
                 }.tabItem {
-                    Label("Actors", systemImage: "person.fill")
+                    Label("Homepage", systemImage: "house.fill")
                 }.tag(3)
                 
                 NavigationView {

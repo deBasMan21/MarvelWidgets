@@ -244,6 +244,12 @@
 		EFBAD7B92B5F05BC00E14807 /* TitleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B82B5F05BC00E14807 /* TitleComponent.swift */; };
 		EFBAD7BB2B5F05C900E14807 /* ActorsPageLinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7BA2B5F05C900E14807 /* ActorsPageLinkComponent.swift */; };
 		EFBAD7BD2B5F05D400E14807 /* DirectorsPageLinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7BC2B5F05D400E14807 /* DirectorsPageLinkComponent.swift */; };
+		EFBAD7C02B60333700E14807 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7BF2B60333700E14807 /* HomePageView.swift */; };
+		EFBAD7C32B6036B500E14807 /* TextComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7C22B6036B500E14807 /* TextComponentView.swift */; };
+		EFBAD7C52B6036C900E14807 /* HighlightComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7C42B6036C900E14807 /* HighlightComponentView.swift */; };
+		EFBAD7C72B6042F000E14807 /* SingleNewsItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7C62B6042F000E14807 /* SingleNewsItemWrapper.swift */; };
+		EFBAD7C92B60475900E14807 /* YoutubeComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7C82B60475900E14807 /* YoutubeComponentView.swift */; };
+		EFBAD7CB2B60494300E14807 /* TitleComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7CA2B60494300E14807 /* TitleComponentView.swift */; };
 		EFBE482129C6213A0036185E /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482029C6213A0036185E /* RatingView.swift */; };
 		EFBE482329C621550036185E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482229C621550036185E /* ReviewView.swift */; };
 		EFBE482529C6216E0036185E /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482429C6216E0036185E /* TableRowView.swift */; };
@@ -550,6 +556,12 @@
 		EFBAD7B82B5F05BC00E14807 /* TitleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleComponent.swift; sourceTree = "<group>"; };
 		EFBAD7BA2B5F05C900E14807 /* ActorsPageLinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsPageLinkComponent.swift; sourceTree = "<group>"; };
 		EFBAD7BC2B5F05D400E14807 /* DirectorsPageLinkComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorsPageLinkComponent.swift; sourceTree = "<group>"; };
+		EFBAD7BF2B60333700E14807 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		EFBAD7C22B6036B500E14807 /* TextComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponentView.swift; sourceTree = "<group>"; };
+		EFBAD7C42B6036C900E14807 /* HighlightComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightComponentView.swift; sourceTree = "<group>"; };
+		EFBAD7C62B6042F000E14807 /* SingleNewsItemWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNewsItemWrapper.swift; sourceTree = "<group>"; };
+		EFBAD7C82B60475900E14807 /* YoutubeComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeComponentView.swift; sourceTree = "<group>"; };
+		EFBAD7CA2B60494300E14807 /* TitleComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleComponentView.swift; sourceTree = "<group>"; };
 		EFBE482029C6213A0036185E /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EFBE482229C621550036185E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		EFBE482429C6216E0036185E /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
@@ -797,6 +809,7 @@
 				EF59BD242B5D56070090E28D /* NewsItemWrapper.swift */,
 				EF59BD262B5D56170090E28D /* NewsItem.swift */,
 				EF59BD282B5D562A0090E28D /* NewsCategory.swift */,
+				EFBAD7C62B6042F000E14807 /* SingleNewsItemWrapper.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -903,6 +916,26 @@
 				EFBAD7B82B5F05BC00E14807 /* TitleComponent.swift */,
 				EFBAD7BA2B5F05C900E14807 /* ActorsPageLinkComponent.swift */,
 				EFBAD7BC2B5F05D400E14807 /* DirectorsPageLinkComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EFBAD7BE2B60332000E14807 /* Homepage */ = {
+			isa = PBXGroup;
+			children = (
+				EFBAD7C12B6036AA00E14807 /* Components */,
+				EFBAD7BF2B60333700E14807 /* HomePageView.swift */,
+			);
+			path = Homepage;
+			sourceTree = "<group>";
+		};
+		EFBAD7C12B6036AA00E14807 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EFBAD7C22B6036B500E14807 /* TextComponentView.swift */,
+				EFBAD7C42B6036C900E14807 /* HighlightComponentView.swift */,
+				EFBAD7C82B60475900E14807 /* YoutubeComponentView.swift */,
+				EFBAD7CA2B60494300E14807 /* TitleComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1080,12 +1113,12 @@
 		EFCE382028A3DDFD00B4CC0D /* views */ = {
 			isa = PBXGroup;
 			children = (
+				EFBAD7BE2B60332000E14807 /* Homepage */,
 				EF59BD1D2B5D533D0090E28D /* News */,
 				EF75718C2A6581BA00231750 /* Collection */,
 				EF8779482A2B445B00FFBBB5 /* Recommendations */,
 				EF26F68B29DADC0F00E1A74D /* personViews */,
 				EF238AA029B26B1A00C3FC9C /* Onboarding */,
-				EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */,
 				EFF0E26E2920EECB00854E5F /* shared */,
 				EFF0E26D2920EEC200854E5F /* seasonViews */,
 				EFFE152A28A5480700DCF804 /* projectviews */,
@@ -1241,6 +1274,7 @@
 		EFF0E26E2920EECB00854E5F /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				EF6B82D0292AAC1D00A5D69C /* InstagramView.swift */,
 				EFF0E2692920EE3500854E5F /* ActorListView.swift */,
 				EFB503FC29DD8B6800586017 /* scrollviewListener */,
 				EFB503EE29DCB5A800586017 /* options */,
@@ -1718,12 +1752,14 @@
 				EF59BD292B5D562A0090E28D /* NewsCategory.swift in Sources */,
 				EF1F065829E6B947009CC97A /* UrlComponents.swift in Sources */,
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
+				EFBAD7C52B6036C900E14807 /* HighlightComponentView.swift in Sources */,
 				EFF04BCE29BE306D00437A6E /* OnboardingPageFourView.swift in Sources */,
 				EFB503F029DCB5BA00586017 /* OptionCircleButton.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EFBAD7A62B5F053700E14807 /* HomepagesWrapper.swift in Sources */,
 				EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */,
 				EF0CA0B629DDEE4400A2322A /* Config.swift in Sources */,
+				EFBAD7CB2B60494300E14807 /* TitleComponentView.swift in Sources */,
 				EFB503E729DCB55200586017 /* PhaseFilter.swift in Sources */,
 				EF4D265728A4512600B7BCEE /* ConfigValues.swift in Sources */,
 				EF7571892A65818E00231750 /* CollectionAttributes.swift in Sources */,
@@ -1737,6 +1773,8 @@
 				EFF04BE329BE55A900437A6E /* OnboardingPageThreeHeader.swift in Sources */,
 				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EF6B82DA292D577500A5D69C /* PersonListPageView.swift in Sources */,
+				EFBAD7C32B6036B500E14807 /* TextComponentView.swift in Sources */,
+				EFBAD7C92B60475900E14807 /* YoutubeComponentView.swift in Sources */,
 				EF04E67D29AD491C003C0420 /* CircularImageView.swift in Sources */,
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFBAD7B52B5F05A300E14807 /* HorizontalListComponent.swift in Sources */,
@@ -1745,6 +1783,7 @@
 				EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */,
 				EFF0E2C22922B79200854E5F /* PersonDetailView.swift in Sources */,
 				EFB503ED29DCB59300586017 /* PosterListViewItem.swift in Sources */,
+				EFBAD7C02B60333700E14807 /* HomePageView.swift in Sources */,
 				EFD9566229AAA5E1009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFF0E279292107EB00854E5F /* Phase.swift in Sources */,
 				EF178C4C28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
@@ -1758,6 +1797,7 @@
 				EFCE381E28A3DD4200B4CC0D /* APIService.swift in Sources */,
 				EFB503E929DCB56700586017 /* DateFilter.swift in Sources */,
 				EFCE380F28A3D7A700B4CC0D /* MarvelWidgetsApp.swift in Sources */,
+				EFBAD7C72B6042F000E14807 /* SingleNewsItemWrapper.swift in Sources */,
 				EFF04BEC29BE710A00437A6E /* AppIcon.swift in Sources */,
 				EF26F68A29DA110300E1A74D /* ZoomableScrollView.swift in Sources */,
 				EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */,

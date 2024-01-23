@@ -8,6 +8,7 @@
 import Foundation
 
 struct HorizontalListComponent: Codable {
+    let id: Int
     let title: String?
     let openMoreLink: Bool
     let numberOfItems: Int

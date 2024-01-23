@@ -8,6 +8,7 @@
 import Foundation
 
 struct YoutubeEmbedComponent: Codable {
+    let id: Int
     let embedUrl: String
     let title: String?
 }

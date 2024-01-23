@@ -8,5 +8,6 @@
 import Foundation
 
 struct TitleComponent: Codable {
+    let id: Int
     let title: String
 }
