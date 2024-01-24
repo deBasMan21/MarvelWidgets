@@ -14,4 +14,10 @@ struct HorizontalListComponent: Codable {
     let numberOfItems: Int
     let contentType: CMSContentType
     let filterAndSortKey: String?
+    let viewType: ViewType
+}
+
+enum ViewType: String, Codable {
+    case poster = "poster"
+    case circle = "circle"
 }

@@ -1,5 +1,5 @@
 //
-//  HorizontalListComponentView.swift
+//  VerticalListComponentView.swift
 //  MarvelWidgets
 //
 //  Created by Bas Buijsen on 24/01/2024.
@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct HorizontalListComponentView: View {
-    @State var component: HorizontalListComponent
+struct VerticalListComponentView: View {
+    @State var component: VerticalListComponent
     @State var entities: [any HomepageEntity]? = nil
     @State var error: Bool = false
     
@@ -22,28 +22,16 @@ struct HorizontalListComponentView: View {
                             .font(.title)
                     }
                     
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(entities, id: \.id) { entity in
-                                NavigationLink(
-                                    destination: AnyView(entity.getDestinationView())
-                                ) {
-                                    switch component.viewType {
-                                    case .poster:
-                                        PosterListViewItem(
-                                            posterUrl: entity.getImageUrl(),
-                                            title: entity.getTitle(),
-                                            subTitle: entity.getSubtitle(),
-                                            showGradient: true
-                                        )
-                                    case .circle:
-                                        CircleListItemView(
-                                            imageUrl: entity.getImageUrl(),
-                                            title: entity.getTitle(),
-                                            subTitle: entity.getSubtitle()
-                                        )
-                                    }
-                                }
+                    ScrollView {
+                        ForEach(entities, id: \.id) { entity in
+                            NavigationLink(
+                                destination: AnyView(entity.getDestinationView())
+                            ) {
+                                HorizontalListItemView(
+                                    imageUrl: entity.getImageUrl(),
+                                    title: entity.getTitle(),
+                                    multilineDescription: entity.getMultilineDescription()
+                                )
                             }
                         }
                     }.scrollClipDisabled()

@@ -16,15 +16,29 @@ struct HomePageView: View {
         VStack {
             if let homepage {
                 ScrollView {
-                    VStack(spacing: 10) {
+                    VStack(spacing: 25) {
                         ForEach(homepage.attributes.components) { component in
                             switch component {
-                            case .highlight(let component): HighlightComponentView(highlightComponent: component)
-                            case .text(let component): TextComponentView(textComponent: component)
-                            case .youtube(let component): YoutubeComponentView(title: component.title, url: component.embedUrl)
-                            case .title(let component): TitleComponentView(component: component)
-                            case .horizontalList(let component): HorizontalListComponentView(component: component)
-                            default: EmptyView()
+                            case .highlight(let component): 
+                                HighlightComponentView(highlightComponent: component)
+                                
+                            case .text(let component): 
+                                TextComponentView(textComponent: component)
+                                
+                            case .youtube(let component): 
+                                YoutubeComponentView(title: component.title, url: component.embedUrl)
+                                
+                            case .title(let component): 
+                                TitleComponentView(component: component)
+                                
+                            case .horizontalList(let component): 
+                                HorizontalListComponentView(component: component)
+                                
+                            case .verticalList(let component): 
+                                VerticalListComponentView(component: component)
+                                
+                            case .none: 
+                                EmptyView()
                             }
                         }
                     }.padding(.horizontal, 20)

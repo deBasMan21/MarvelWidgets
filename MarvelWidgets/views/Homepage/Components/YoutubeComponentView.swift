@@ -16,8 +16,7 @@ struct YoutubeComponentView: View {
         VStack {
             if let title {
                 Text(title)
-                    .bold()
-                    .foregroundColor(.accentColor)
+                    .font(.title)
             }
             
             VideoView(videoURL: url)

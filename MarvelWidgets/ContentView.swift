@@ -33,13 +33,10 @@ struct ContentView: View {
             }
             
             TabView(selection: $activeTab) {
-                NavigationStack(path: $projects) {
-                    ProjectListView()
-                        .navigationDestination(for: ProjectWrapper.self) { i in
-                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: i),  inSheet: false)
-                        }
-                }.tabItem{
-                    Label("Projects", systemImage: "film")
+                NavigationView {
+                    HomePageView()
+                }.tabItem {
+                    Label("Homepage", systemImage: "house.fill")
                 }.tag(0)
                 
                 NavigationView {
@@ -54,11 +51,13 @@ struct ContentView: View {
                     Label("Discover", systemImage: "star.fill")
                 }.tag(2)
                 
-                NavigationView {
-//                    PersonListPageView(type: .actor)
-                    HomePageView()
-                }.tabItem {
-                    Label("Homepage", systemImage: "house.fill")
+                NavigationStack(path: $projects) {
+                    ProjectListView()
+                        .navigationDestination(for: ProjectWrapper.self) { i in
+                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: i),  inSheet: false)
+                        }
+                }.tabItem{
+                    Label("Projects", systemImage: "film")
                 }.tag(3)
                 
                 NavigationView {

@@ -14,10 +14,8 @@ enum HomepageComponent: Codable, Identifiable {
         case .youtube(let component): return "youtube-\(component.id)"
         case .text(let component): return "text-\(component.id)"
         case .title(let component): return "title-\(component.id)"
-        case .actorsList(let component): return "actors-\(component.id)"
-        case .directorsList(let component): return "directors-\(component.id)"
         case .horizontalList(let component): return "horizontal-\(component.id)"
-        case .newsItemsList(let component): return "newsItems-\(component.id)"
+        case .verticalList(let component): return "vertical-\(component.id)"
         case .none: return UUID().uuidString
         }
     }
@@ -26,10 +24,8 @@ enum HomepageComponent: Codable, Identifiable {
     case youtube(YoutubeEmbedComponent)
     case text(TextComponent)
     case title(TitleComponent)
-    case actorsList(ActorsPageLinkComponent)
-    case directorsList(DirectorsPageLinkComponent)
     case horizontalList(HorizontalListComponent)
-    case newsItemsList(NewsItemsListComponent)
+    case verticalList(VerticalListComponent)
     case none
     
     init(from decoder: Decoder) throws {
@@ -56,21 +52,13 @@ enum HomepageComponent: Codable, Identifiable {
             if let component = try? container.decode(TitleComponent.self) {
                 .title(component)
             } else { .none }
-        case .actorsList:
-            if let component = try? container.decode(ActorsPageLinkComponent.self) {
-                .actorsList(component)
-            } else { .none }
-        case .directorsList:
-            if let component = try? container.decode(DirectorsPageLinkComponent.self) {
-                .directorsList(component)
-            } else { .none }
         case .horizontalList:
             if let component = try? container.decode(HorizontalListComponent.self) {
                 .horizontalList(component)
             } else { .none }
-        case .newsItemsList:
-            if let component = try? container.decode(NewsItemsListComponent.self) {
-                .newsItemsList(component)
+        case .verticalList:
+            if let component = try? container.decode(VerticalListComponent.self) {
+                .verticalList(component)
             } else { .none }
         }
     }
@@ -89,8 +77,6 @@ enum HomepageComponentType: String, Codable {
     case youtube = "home-page.youtube-embed"
     case text = "home-page.text-component"
     case title = "home-page.title"
-    case actorsList = "home-page.actors-page"
-    case directorsList = "home-page.directors-page"
     case horizontalList = "home-page.horizontal-list"
-    case newsItemsList = "home-page.news-item-list"
+    case verticalList = "home-page.vertical-list"
 }

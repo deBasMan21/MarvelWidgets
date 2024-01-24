@@ -29,18 +29,11 @@ struct ActorListView: View {
                                             person: actor.person
                                         )
                                     ) {
-                                        VStack {
-                                            CircularImageView(imageUrl: imageUrl)
-                                            
-                                            Text("\(actor.attributes.firstName) \(actor.attributes.lastName)")
-                                                .bold()
-                                                .foregroundColor(.accentColor)
-                                            
-                                            if let birthDay = actor.attributes.dateOfBirth?.toDate()?.toFormattedString() {
-                                                Text("\(birthDay)")
-                                                    .foregroundColor(.foregroundColor)
-                                            }
-                                        }
+                                        CircleListItemView(
+                                            imageUrl: imageUrl,
+                                            title: "\(actor.attributes.firstName) \(actor.attributes.lastName)",
+                                            subTitle: actor.attributes.dateOfBirth?.toDate()?.toFormattedString()
+                                        )
                                     }
                                     
                                     
