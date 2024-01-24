@@ -1,5 +1,5 @@
 //
-//  HorizontalListItemView.swift
+//  VerticalListItemView.swift
 //  MarvelWidgets
 //
 //  Created by Bas Buijsen on 24/01/2024.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Kingfisher
 
-struct HorizontalListItemView: View {
+struct VerticalListItemView: View {
     @State var imageUrl: String
     @State var title: String
     @State var multilineDescription: String
@@ -26,7 +26,8 @@ struct HorizontalListItemView: View {
             VStack(alignment: .leading) {
                 Text(title)
                     .bold()
-                    .lineLimit(1)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
                 
                 Text(multilineDescription)
                     .foregroundColor(Color.foregroundColor)

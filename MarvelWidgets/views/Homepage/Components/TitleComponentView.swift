@@ -14,5 +14,7 @@ struct TitleComponentView: View {
     var body: some View {
         Text(component.title)
             .font(.title)
+            .bold()
+            .multilineTextAlignment(.center)
     }
 }

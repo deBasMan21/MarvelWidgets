@@ -23,7 +23,7 @@ struct CollectionsView: View {
                 KFImage(URL(string: imageUrl))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width - 40, height: (UIScreen.main.bounds.width - 40) * (9/16))
+                    .frame(width: UIScreen.main.bounds.width - 40, height: (UIScreen.main.bounds.width - 40) * (9/16), alignment: .top)
                     .overlay {
                         LinearGradient(
                             gradient: Gradient(

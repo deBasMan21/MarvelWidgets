@@ -19,23 +19,20 @@ struct VerticalListComponentView: View {
                 VStack {
                     if let title = component.title {
                         Text(title)
-                            .font(.title)
+                            .font(.title2)
                     }
                     
-                    ScrollView {
-                        ForEach(entities, id: \.id) { entity in
-                            NavigationLink(
-                                destination: AnyView(entity.getDestinationView())
-                            ) {
-                                HorizontalListItemView(
-                                    imageUrl: entity.getImageUrl(),
-                                    title: entity.getTitle(),
-                                    multilineDescription: entity.getMultilineDescription()
-                                )
-                            }
+                    ForEach(entities, id: \.id) { entity in
+                        NavigationLink(
+                            destination: AnyView(entity.getDestinationView())
+                        ) {
+                            VerticalListItemView(
+                                imageUrl: entity.getImageUrl(),
+                                title: entity.getTitle(),
+                                multilineDescription: entity.getMultilineDescription()
+                            )
                         }
-                    }.scrollClipDisabled()
-                        .scrollIndicators(.hidden)
+                    }
                     
                     if component.openMoreLink {
                         HStack {

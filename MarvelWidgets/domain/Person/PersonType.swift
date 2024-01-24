@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PersonType: String {
+enum PersonType: String, CaseIterable {
     case actor = "Actors"
     case director = "Directors"
     

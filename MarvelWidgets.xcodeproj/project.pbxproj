@@ -258,7 +258,7 @@
 		EFBD33CE2B6153F30053EF35 /* VerticalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33CD2B6153F30053EF35 /* VerticalListComponent.swift */; };
 		EFBD33D02B6154800053EF35 /* ListComponentViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33CF2B6154800053EF35 /* ListComponentViewHelper.swift */; };
 		EFBD33D22B6155040053EF35 /* VerticalListComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33D12B6155040053EF35 /* VerticalListComponentView.swift */; };
-		EFBD33D42B61572B0053EF35 /* HorizontalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33D32B61572B0053EF35 /* HorizontalListItemView.swift */; };
+		EFBD33D42B61572B0053EF35 /* VerticalListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33D32B61572B0053EF35 /* VerticalListItemView.swift */; };
 		EFBD33D62B61573F0053EF35 /* SeasonEpisodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33D52B61573F0053EF35 /* SeasonEpisodeListView.swift */; };
 		EFBD33D82B61575B0053EF35 /* SeasonEpisodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33D72B61575B0053EF35 /* SeasonEpisodeView.swift */; };
 		EFBD33DB2B615BAA0053EF35 /* HomepageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33DA2B615BAA0053EF35 /* HomepageEntity.swift */; };
@@ -588,7 +588,7 @@
 		EFBD33CD2B6153F30053EF35 /* VerticalListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalListComponent.swift; sourceTree = "<group>"; };
 		EFBD33CF2B6154800053EF35 /* ListComponentViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponentViewHelper.swift; sourceTree = "<group>"; };
 		EFBD33D12B6155040053EF35 /* VerticalListComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalListComponentView.swift; sourceTree = "<group>"; };
-		EFBD33D32B61572B0053EF35 /* HorizontalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalListItemView.swift; sourceTree = "<group>"; };
+		EFBD33D32B61572B0053EF35 /* VerticalListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalListItemView.swift; sourceTree = "<group>"; };
 		EFBD33D52B61573F0053EF35 /* SeasonEpisodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonEpisodeListView.swift; sourceTree = "<group>"; };
 		EFBD33D72B61575B0053EF35 /* SeasonEpisodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonEpisodeView.swift; sourceTree = "<group>"; };
 		EFBD33DA2B615BAA0053EF35 /* HomepageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageEntity.swift; sourceTree = "<group>"; };
@@ -1321,7 +1321,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF0E25D2920ED6400854E5F /* SeasonView.swift */,
-				EFBD33D32B61572B0053EF35 /* HorizontalListItemView.swift */,
+				EFBD33D32B61572B0053EF35 /* VerticalListItemView.swift */,
 				EFBD33D52B61573F0053EF35 /* SeasonEpisodeListView.swift */,
 				EFBD33D72B61575B0053EF35 /* SeasonEpisodeView.swift */,
 			);
@@ -1859,7 +1859,7 @@
 				EF178C3F28AE8CC3003B9B76 /* MediumWidgetView.swift in Sources */,
 				EFF0E27B292107F500854E5F /* Saga.swift in Sources */,
 				EFBAD7B32B5F059400E14807 /* TextComponent.swift in Sources */,
-				EFBD33D42B61572B0053EF35 /* HorizontalListItemView.swift in Sources */,
+				EFBD33D42B61572B0053EF35 /* VerticalListItemView.swift in Sources */,
 				EFBD33DD2B615BC10053EF35 /* HomepageProjectEntity.swift in Sources */,
 				EFBAD7A82B5F054600E14807 /* HomepageWrapper.swift in Sources */,
 				EFBD33E12B615BE00053EF35 /* DirectorProjectEntity.swift in Sources */,

@@ -41,7 +41,7 @@ class ActorPerson: Person, Hashable {
     }
     
     func getSubtitle() -> String {
-        role
+        "Actor"
     }
     
     func getSearchString() -> String {
@@ -54,6 +54,10 @@ class ActorPerson: Person, Hashable {
     
     func getPopulated() async -> (any Person)? {
         await ActorService.getActorById(id: self.id)?.person
+    }
+    
+    func getIconName() -> String {
+        "star.fill"
     }
 }
 

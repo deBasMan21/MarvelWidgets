@@ -40,7 +40,7 @@ class DirectorPerson: Person, Hashable {
     }
     
     func getSubtitle() -> String {
-        dateOfBirth?.toDate()?.toFormattedString() ?? "No Date Of Birth"
+        "Director"
     }
     
     func getSearchString() -> String {
@@ -53,6 +53,10 @@ class DirectorPerson: Person, Hashable {
     
     func getPopulated() async -> (any Person)? {
         await DirectorService.getDirectorById(id: self.id)?.person
+    }
+    
+    func getIconName() -> String {
+        "megaphone.fill"
     }
 }
 

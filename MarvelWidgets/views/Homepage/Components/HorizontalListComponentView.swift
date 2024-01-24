@@ -19,7 +19,7 @@ struct HorizontalListComponentView: View {
                 VStack {
                     if let title = component.title {
                         Text(title)
-                            .font(.title)
+                            .font(.title2)
                     }
                     
                     ScrollView(.horizontal) {

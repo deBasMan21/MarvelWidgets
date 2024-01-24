@@ -61,9 +61,9 @@ struct ContentView: View {
                 }.tag(3)
                 
                 NavigationView {
-                    PersonListPageView(type: .director)
+                    PersonListPageView()
                 }.tabItem {
-                    Label("Directors", systemImage: "megaphone")
+                    Label("Persons", systemImage: "person.fill")
                 }.tag(4)
             }.onAppear {
                 // Fix to always show the tabbar background
@@ -79,10 +79,7 @@ struct ContentView: View {
                     }
                 })
             }.onOpenURL(perform: { url in
-                if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
-                   let id = Int(url.lastPathComponent) {
-                    projects.append(Placeholders.loadingProject(id: id))
-                }
+                _ = handleUrl(url: url)
             })
         }.navigationBarState(.compact, displayMode: .automatic)
             .toast(isPresenting: $showAlert, duration: 10, tapToDismiss: true, alert: {
@@ -92,6 +89,19 @@ struct ContentView: View {
                     projects.append(project)
                 }
             }).preferredColorScheme(.dark)
+            .onOpenUrlAction { url in
+                handleUrl(url: url)
+            }
+    }
+    
+    func handleUrl(url: URL) -> Bool {
+        if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
+           let id = Int(url.lastPathComponent) {
+            activeTab = 3
+            projects.append(Placeholders.loadingProject(id: id))
+            return true
+        }
+        return false
     }
 }
 
@@ -129,5 +139,30 @@ class OpenUrlWrapper {
             
             callback(inApp)
         }
+    }
+}
+
+struct OpenURLHandlerAction {
+    typealias Action = (URL) -> Bool
+    let action: Action
+    func callAsFunction(_ url: URL) -> Bool {
+        action(url)
+    }
+}
+
+struct OpenURLActionKey: EnvironmentKey {
+    static var defaultValue: OpenURLHandlerAction? = nil
+}
+
+extension EnvironmentValues {
+    var openURLHandlerAction: OpenURLHandlerAction? {
+        get { self[OpenURLActionKey.self] }
+        set { self[OpenURLActionKey.self] = newValue }
+    }
+}
+
+extension View {
+    func onOpenUrlAction(_ action: @escaping OpenURLHandlerAction.Action) -> some View {
+        self.environment(\.openURLHandlerAction, OpenURLHandlerAction(action: action))
     }
 }

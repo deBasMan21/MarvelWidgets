@@ -14,7 +14,6 @@ extension PersonListPageView {
         @Published var sheetHeight: PresentationDetent = .medium
         @Published var detents: Set<PresentationDetent> = [.medium]
         
-        @Published var personType: PersonType
         @Published var birthdayPersons: [any Person] = []
         @Published var persons: [any Person] = []
         @Published var filteredPersons: [any Person] = []
@@ -53,9 +52,7 @@ extension PersonListPageView {
         private var minimumBeforeDate: Date = Date.now
         private var maximumAfterDate: Date = Date.now
         
-        init(personType: PersonType) {
-            self.personType = personType
-        }
+        init() { }
         
         let columns = [
                 GridItem(.flexible()),
@@ -63,9 +60,10 @@ extension PersonListPageView {
             ]
         
         func getPersons() async {
-            let persons = await personType.getPersons()
+            let actors = await PersonType.actor.getPersons()
+            let directors = await PersonType.director.getPersons()
             await MainActor.run {
-                self.persons = persons
+                self.persons = actors + directors
             }
             
             await updateBirthdayPersons()

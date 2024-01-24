@@ -19,7 +19,7 @@ struct SeasonView: View {
             ForEach(seasons) { season in
                 if let project = season.seasonProject?.data {
                     NavigationLink(destination: ProjectDetailView(viewModel: ProjectDetailViewModel(project: project), inSheet: false)) {
-                        HorizontalListItemView(
+                        VerticalListItemView(
                             imageUrl: season.imageUrl ?? "",
                             title: project.attributes.title,
                             multilineDescription: "\(project.attributes.getReleaseDateString())\nSeason \(season.seasonNumber)\n\(season.numberOfEpisodes ?? 0) episodes"

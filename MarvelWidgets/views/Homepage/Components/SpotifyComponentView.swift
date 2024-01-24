@@ -15,7 +15,7 @@ struct SpotifyComponentView: View {
         VStack {
             if let title = component.title {
                 Text(title)
-                    .font(.title)
+                    .font(.title2)
             }
             
             SpotifyView(embedUrl: component.embedCode)

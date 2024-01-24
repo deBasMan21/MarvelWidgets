@@ -16,7 +16,7 @@ struct HomePageView: View {
         VStack {
             if let homepage {
                 ScrollView {
-                    VStack(spacing: 25) {
+                    VStack(spacing: 40) {
                         ForEach(homepage.attributes.components) { component in
                             switch component {
                             case .highlight(let component): 

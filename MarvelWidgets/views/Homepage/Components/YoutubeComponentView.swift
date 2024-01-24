@@ -16,7 +16,7 @@ struct YoutubeComponentView: View {
         VStack {
             if let title {
                 Text(title)
-                    .font(.title)
+                    .font(.title2)
             }
             
             VideoView(videoURL: url)
