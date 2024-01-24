@@ -11,7 +11,7 @@ import SwiftUI
 struct PosterListViewItem: View {
     @State var posterUrl: String
     @State var title: String
-    @State var subTitle: String
+    @State var subTitle: String?
     @State var showGradient: Bool = true
     
     var body: some View {
@@ -28,10 +28,11 @@ struct PosterListViewItem: View {
                             .multilineTextAlignment(.leading)
                             .lineLimit(2)
                         
-                        Text(subTitle)
-                            .font(.system(size: 12))
-                            .foregroundColor(Color(uiColor: .lightGray))
-                        
+                        if let subTitle {
+                            Text(subTitle)
+                                .font(.system(size: 12))
+                                .foregroundColor(Color(uiColor: .lightGray))
+                        }
                     }.padding(7)
                     
                     Spacer()

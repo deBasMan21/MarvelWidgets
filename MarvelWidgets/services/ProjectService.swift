@@ -77,6 +77,17 @@ extension ProjectService {
         let result: SingleResponseWrapper? = await getPrivate(url: url, force: force, cachingKey: .none)
         return result?.data
     }
+    
+    static func getAllWithFilterAndSortKey(filterAndSortKey: String, limitItems: Int) async -> [ProjectWrapper]? {
+        let url = UrlBuilder(baseUrl: config.baseUrl, entity: .project)
+            .addCustomFilterAndSortKey(key: filterAndSortKey)
+            .addPopulate(type: .populatePosters)
+            .addPagination(pageSize: limitItems, page: 1)
+            .getString()
+        
+        let result: ListResponseWrapper? = await getPrivate(url: url, force: true, cachingKey: .none)
+        return result?.data
+    }
 }
 
 // MARK: Persons
@@ -114,6 +125,28 @@ extension ProjectService {
             .getString()
         
         let result: SignleDirector? = await getPrivate(url: url, force: true, cachingKey: .none)
+        return result?.data
+    }
+    
+    static func getActorsWithFilterAndSortKey(filterAndSortKey: String, limitItems: Int) async -> [ActorsWrapper]? {
+        let url = UrlBuilder(baseUrl: config.baseUrl, entity: .actor)
+            .addCustomFilterAndSortKey(key: filterAndSortKey)
+            .addPopulate(type: .populatePersonPosters)
+            .addPagination(pageSize: limitItems, page: 1)
+            .getString()
+        
+        let result: Actors? = await getPrivate(url: url, force: true, cachingKey: .none)
+        return result?.data
+    }
+    
+    static func getDirectorsWithFilterAndSortKey(filterAndSortKey: String, limitItems: Int) async -> [DirectorsWrapper]? {
+        let url = UrlBuilder(baseUrl: config.baseUrl, entity: .director)
+            .addCustomFilterAndSortKey(key: filterAndSortKey)
+            .addPopulate(type: .populatePersonPosters)
+            .addPagination(pageSize: limitItems, page: 1)
+            .getString()
+        
+        let result: Directors? = await getPrivate(url: url, force: true, cachingKey: .none)
         return result?.data
     }
 }

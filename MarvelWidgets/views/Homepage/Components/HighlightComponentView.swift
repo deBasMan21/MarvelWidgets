@@ -68,7 +68,8 @@ struct HighlightComponentView: View {
     }
 }
 
-protocol HomepageEntity {
+protocol HomepageEntity: Identifiable {
+    var id: String { get }
     func getTitle() -> String
     func getSubtitle() -> String?
     func getImageUrl() -> String
@@ -76,10 +77,12 @@ protocol HomepageEntity {
 }
 
 class HomepageProjectEntity: HomepageEntity {
+    var id: String
     private let project: ProjectWrapper
     
     init(project: ProjectWrapper) {
         self.project = project
+        self.id = "project-\(project.id)"
     }
     
     func getTitle() -> String {
@@ -100,10 +103,12 @@ class HomepageProjectEntity: HomepageEntity {
 }
 
 class ActorProjectEntity: HomepageEntity {
+    var id: String
     private let actor: ActorsWrapper
     
     init(actor: ActorsWrapper) {
         self.actor = actor
+        self.id = "actor-\(actor.id)"
     }
     
     func getTitle() -> String {
@@ -124,10 +129,12 @@ class ActorProjectEntity: HomepageEntity {
 }
 
 class DirectorProjectEntity: HomepageEntity {
+    var id: String
     private let director: DirectorsWrapper
     
     init(director: DirectorsWrapper) {
         self.director = director
+        self.id = "director-\(director.id)"
     }
     
     func getTitle() -> String {
@@ -148,10 +155,12 @@ class DirectorProjectEntity: HomepageEntity {
 }
 
 class CollectionProjectEntity: HomepageEntity {
+    var id: String
     private let collection: ProjectCollection
     
     init(collection: ProjectCollection) {
         self.collection = collection
+        self.id = "collection-\(collection.id)"
     }
     
     func getTitle() -> String {
@@ -172,10 +181,12 @@ class CollectionProjectEntity: HomepageEntity {
 }
 
 class NewsItemProjectEntity: HomepageEntity {
+    var id: String
     private let newsItem: NewsItemWrapper
     
     init(newsItem: NewsItemWrapper) {
         self.newsItem = newsItem
+        self.id = "newsItem-\(newsItem.id)"
     }
     
     func getTitle() -> String {
