@@ -16,6 +16,8 @@ enum HomepageComponent: Codable, Identifiable {
         case .title(let component): return "title-\(component.id)"
         case .horizontalList(let component): return "horizontal-\(component.id)"
         case .verticalList(let component): return "vertical-\(component.id)"
+        case .spotify(let component): return "spotify-\(component.id)"
+        case .nytReview(let component): return "nyt-\(component.id)"
         case .none: return UUID().uuidString
         }
     }
@@ -26,6 +28,8 @@ enum HomepageComponent: Codable, Identifiable {
     case title(TitleComponent)
     case horizontalList(HorizontalListComponent)
     case verticalList(VerticalListComponent)
+    case spotify(SpotifyComponent)
+    case nytReview(NytReviewComponent)
     case none
     
     init(from decoder: Decoder) throws {
@@ -60,6 +64,14 @@ enum HomepageComponent: Codable, Identifiable {
             if let component = try? container.decode(VerticalListComponent.self) {
                 .verticalList(component)
             } else { .none }
+        case .spotify:
+            if let component = try? container.decode(SpotifyComponent.self) {
+                .spotify(component)
+            } else { .none }
+        case .nytReview:
+            if let component = try? container.decode(NytReviewComponent.self) {
+                .nytReview(component)
+            } else { .none }
         }
     }
 }
@@ -79,4 +91,6 @@ enum HomepageComponentType: String, Codable {
     case title = "home-page.title"
     case horizontalList = "home-page.horizontal-list"
     case verticalList = "home-page.vertical-list"
+    case spotify = "home-page.spotify-embed"
+    case nytReview = "home-page.nyt-review"
 }

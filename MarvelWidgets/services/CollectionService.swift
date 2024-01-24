@@ -25,7 +25,6 @@ class CollectionService: Service {
             .getString()
         
         let result: CollectionsWrapper? = await getPrivate(url: url, force: true, cachingKey: .none)
-        print("debug: result \(result)")
         return result?.data
     }
 }

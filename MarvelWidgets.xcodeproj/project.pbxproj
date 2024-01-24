@@ -267,6 +267,10 @@
 		EFBD33E12B615BE00053EF35 /* DirectorProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33E02B615BE00053EF35 /* DirectorProjectEntity.swift */; };
 		EFBD33E32B615BED0053EF35 /* CollectionProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33E22B615BED0053EF35 /* CollectionProjectEntity.swift */; };
 		EFBD33E52B615BFA0053EF35 /* NewsItemProjectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33E42B615BFA0053EF35 /* NewsItemProjectEntity.swift */; };
+		EFBD33E72B61612A0053EF35 /* SpotifyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33E62B61612A0053EF35 /* SpotifyComponent.swift */; };
+		EFBD33E92B6161C20053EF35 /* SpotifyComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33E82B6161C20053EF35 /* SpotifyComponentView.swift */; };
+		EFBD33EB2B6165CF0053EF35 /* NytReviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33EA2B6165CF0053EF35 /* NytReviewComponent.swift */; };
+		EFBD33ED2B61668B0053EF35 /* NytReviewComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33EC2B61668B0053EF35 /* NytReviewComponentView.swift */; };
 		EFBE482129C6213A0036185E /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482029C6213A0036185E /* RatingView.swift */; };
 		EFBE482329C621550036185E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482229C621550036185E /* ReviewView.swift */; };
 		EFBE482529C6216E0036185E /* TableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE482429C6216E0036185E /* TableRowView.swift */; };
@@ -593,6 +597,10 @@
 		EFBD33E02B615BE00053EF35 /* DirectorProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectorProjectEntity.swift; sourceTree = "<group>"; };
 		EFBD33E22B615BED0053EF35 /* CollectionProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionProjectEntity.swift; sourceTree = "<group>"; };
 		EFBD33E42B615BFA0053EF35 /* NewsItemProjectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemProjectEntity.swift; sourceTree = "<group>"; };
+		EFBD33E62B61612A0053EF35 /* SpotifyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyComponent.swift; sourceTree = "<group>"; };
+		EFBD33E82B6161C20053EF35 /* SpotifyComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyComponentView.swift; sourceTree = "<group>"; };
+		EFBD33EA2B6165CF0053EF35 /* NytReviewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NytReviewComponent.swift; sourceTree = "<group>"; };
+		EFBD33EC2B61668B0053EF35 /* NytReviewComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NytReviewComponentView.swift; sourceTree = "<group>"; };
 		EFBE482029C6213A0036185E /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		EFBE482229C621550036185E /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		EFBE482429C6216E0036185E /* TableRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowView.swift; sourceTree = "<group>"; };
@@ -937,6 +945,8 @@
 				EFBAD7B42B5F05A300E14807 /* HorizontalListComponent.swift */,
 				EFBAD7B82B5F05BC00E14807 /* TitleComponent.swift */,
 				EFBD33CD2B6153F30053EF35 /* VerticalListComponent.swift */,
+				EFBD33E62B61612A0053EF35 /* SpotifyComponent.swift */,
+				EFBD33EA2B6165CF0053EF35 /* NytReviewComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -960,6 +970,8 @@
 				EFBAD7CA2B60494300E14807 /* TitleComponentView.swift */,
 				EFBD33C72B614D340053EF35 /* HorizontalListComponentView.swift */,
 				EFBD33D12B6155040053EF35 /* VerticalListComponentView.swift */,
+				EFBD33E82B6161C20053EF35 /* SpotifyComponentView.swift */,
+				EFBD33EC2B61668B0053EF35 /* NytReviewComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1741,6 +1753,7 @@
 				EFF04BEA29BE6A2E00437A6E /* OnboardingPageFiveHeader.swift in Sources */,
 				EFBD33D62B61573F0053EF35 /* SeasonEpisodeListView.swift in Sources */,
 				EFF0E271292107B500854E5F /* ListResponseWrapper.swift in Sources */,
+				EFBD33EB2B6165CF0053EF35 /* NytReviewComponent.swift in Sources */,
 				EF75719A2A65823E00231750 /* HorizontalProjectView.swift in Sources */,
 				EFF0E2972921089F00854E5F /* Episode.swift in Sources */,
 				EFD8D75F28A7AC8D00CA8DAC /* SaveService.swift in Sources */,
@@ -1809,6 +1822,7 @@
 				EFBAD7A62B5F053700E14807 /* HomepagesWrapper.swift in Sources */,
 				EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */,
 				EFBAD7CD2B61395600E14807 /* ActorService.swift in Sources */,
+				EFBD33ED2B61668B0053EF35 /* NytReviewComponentView.swift in Sources */,
 				EF0CA0B629DDEE4400A2322A /* Config.swift in Sources */,
 				EFBAD7CB2B60494300E14807 /* TitleComponentView.swift in Sources */,
 				EFB503E729DCB55200586017 /* PhaseFilter.swift in Sources */,
@@ -1871,11 +1885,13 @@
 				EF7571762A604C3900231750 /* ImageSize.swift in Sources */,
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EFF0E25E2920ED6400854E5F /* SeasonView.swift in Sources */,
+				EFBD33E92B6161C20053EF35 /* SpotifyComponentView.swift in Sources */,
 				EF59BD272B5D56170090E28D /* NewsItem.swift in Sources */,
 				EFB503E229DCB4F000586017 /* AutoSizingSheet.swift in Sources */,
 				EFF20E142A2CAE14004BCF58 /* String+averageColor.swift in Sources */,
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFBD33D82B61575B0053EF35 /* SeasonEpisodeView.swift in Sources */,
+				EFBD33E72B61612A0053EF35 /* SpotifyComponent.swift in Sources */,
 				EFF04BDF29BE557A00437A6E /* OnboardingPageOneHeader.swift in Sources */,
 				EFBAD7D12B61399400E14807 /* Service.swift in Sources */,
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,

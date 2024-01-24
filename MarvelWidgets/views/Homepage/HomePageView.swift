@@ -37,12 +37,18 @@ struct HomePageView: View {
                             case .verticalList(let component): 
                                 VerticalListComponentView(component: component)
                                 
-                            case .none: 
+                            case .spotify(let component):
+                                SpotifyComponentView(component: component)
+                            
+                            case .nytReview(let component):
+                                NytReviewComponentView(component: component)
+                                
+                            case .none:
                                 EmptyView()
                             }
                         }
                     }.padding(.horizontal, 20)
-                }
+                }.contentMargins(.bottom, 20, for: .scrollContent)
             } else {
                 ProgressView()
             }
