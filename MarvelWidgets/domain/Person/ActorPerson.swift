@@ -53,7 +53,7 @@ class ActorPerson: Person, Hashable {
     }
     
     func getPopulated() async -> (any Person)? {
-        await ProjectService.getActorById(id: self.id)?.person
+        await ActorService.getActorById(id: self.id)?.person
     }
 }
 

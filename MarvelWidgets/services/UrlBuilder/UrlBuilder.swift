@@ -37,6 +37,7 @@ class UrlBuilder: UrlBuilderType {
     }
     
     func addCustomFilterAndSortKey(key: String) -> UrlBuilderType {
+        guard !key.isEmpty else { return self }
         addFilterParameter()
         currentUrl += key
         return self

@@ -52,7 +52,7 @@ class DirectorPerson: Person, Hashable {
     }
     
     func getPopulated() async -> (any Person)? {
-        await ProjectService.getDirectorById(id: self.id)?.person
+        await DirectorService.getDirectorById(id: self.id)?.person
     }
 }
 

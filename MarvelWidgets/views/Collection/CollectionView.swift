@@ -22,7 +22,8 @@ struct CollectionsView: View {
             ZStack {
                 KFImage(URL(string: imageUrl))
                     .resizable()
-                    .aspectRatio(16/9, contentMode: .fill)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width - 40, height: (UIScreen.main.bounds.width - 40) * (9/16))
                     .overlay {
                         LinearGradient(
                             gradient: Gradient(

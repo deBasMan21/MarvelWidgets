@@ -7,19 +7,7 @@
 
 import Foundation
 
-class HomepageService {
-    static var config: Config {
-        if UserDefaultsService.standard.useConfig,
-            !UserDefaultsService.standard.token.isEmpty,
-            !UserDefaultsService.standard.baseUrl.isEmpty {
-            return DebugConfig.standard
-        } else {
-            return ProductionConfig.standard
-        }
-    }
-}
-
-extension HomepageService {
+class HomepageService: Service {
     static func getHomepage() async -> HomepageWrapper? {
         let url = UrlBuilder(baseUrl: config.baseUrl, entity: .homePage)
             .addPopulate(type: .populateDeep(level: 3))

@@ -18,7 +18,7 @@ struct HighlightComponentView: View {
         VStack {
             if let entity {
                 CollectionsView(
-                    imageUrl: entity.getImageUrl(),
+                    imageUrl: entity.getBackdropUrl(),
                     titleText: highlightComponent.title ?? entity.getTitle(),
                     subTitleText: highlightComponent.subtitle ?? entity.getSubtitle(),
                     inSheet: false,
@@ -42,17 +42,17 @@ struct HighlightComponentView: View {
             }
             
         case .actors:
-            if let actor = await ProjectService.getActorById(id: highlightComponent.contentTypeId) {
+            if let actor = await ActorService.getActorById(id: highlightComponent.contentTypeId) {
                 entity = ActorProjectEntity(actor: actor)
             }
             
         case .directors:
-            if let director = await ProjectService.getDirectorById(id: highlightComponent.contentTypeId) {
+            if let director = await DirectorService.getDirectorById(id: highlightComponent.contentTypeId) {
                 entity = DirectorProjectEntity(director: director)
             }
             
         case .collections:
-            if let collection = await ProjectService.getCollectionById(id: highlightComponent.contentTypeId) {
+            if let collection = await CollectionService.getCollectionById(id: highlightComponent.contentTypeId) {
                 entity = CollectionProjectEntity(collection: collection)
             }
             
@@ -73,7 +73,14 @@ protocol HomepageEntity: Identifiable {
     func getTitle() -> String
     func getSubtitle() -> String?
     func getImageUrl() -> String
+    func getBackdropUrl() -> String
     func getDestinationView() -> any View
+}
+
+extension HomepageEntity {
+    func getBackdropUrl() -> String {
+        getImageUrl()
+    }
 }
 
 class HomepageProjectEntity: HomepageEntity {
@@ -95,6 +102,10 @@ class HomepageProjectEntity: HomepageEntity {
     
     func getImageUrl() -> String {
         project.attributes.getPosterUrls().first ?? ""
+    }
+    
+    func getBackdropUrl() -> String {
+        project.attributes.getBackdropUrl() ?? getImageUrl()
     }
     
     func getDestinationView() -> any View {
@@ -194,7 +205,7 @@ class NewsItemProjectEntity: HomepageEntity {
     }
     
     func getSubtitle() -> String? {
-        newsItem.attributes.summary
+        newsItem.attributes.date_published.toDateFromDateTime()?.toFormattedString()
     }
     
     func getImageUrl() -> String {
@@ -203,5 +214,6 @@ class NewsItemProjectEntity: HomepageEntity {
     
     func getDestinationView() -> any View {
         WebView(webView: WebViewModel(url: newsItem.attributes.url).webView)
+            .navigationTitle(newsItem.attributes.title)
     }
 }

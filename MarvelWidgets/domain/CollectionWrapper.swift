@@ -10,3 +10,7 @@ import Foundation
 struct CollectionWrapper: Codable {
     let data: ProjectCollection?
 }
+
+struct CollectionsWrapper: Codable {
+    let data: [ProjectCollection]
+}

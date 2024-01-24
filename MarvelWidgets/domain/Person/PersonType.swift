@@ -14,9 +14,9 @@ enum PersonType: String {
     func getPersons() async -> [any Person] {
         switch self {
         case .actor:
-            return await ProjectService.getActors().compactMap { $0.person }
+            return await ActorService.getActors().compactMap { $0.person }
         case .director:
-            return await ProjectService.getDirectors().compactMap { $0.person }
+            return await DirectorService.getDirectors().compactMap { $0.person }
         }
     }
 }

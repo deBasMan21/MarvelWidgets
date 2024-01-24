@@ -13,5 +13,5 @@ struct HorizontalListComponent: Codable {
     let openMoreLink: Bool
     let numberOfItems: Int
     let contentType: CMSContentType
-    let filterAndSortKey: String
+    let filterAndSortKey: String?
 }
