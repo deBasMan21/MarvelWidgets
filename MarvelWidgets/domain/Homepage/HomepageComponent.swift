@@ -18,6 +18,9 @@ enum HomepageComponent: Codable, Identifiable {
         case .verticalList(let component): return "vertical-\(component.id)"
         case .spotify(let component): return "spotify-\(component.id)"
         case .nytReview(let component): return "nyt-\(component.id)"
+        case .divider(let component): return "divider-\(component.id)"
+        case .headerWidget(let component): return "header-\(component.id)"
+        case .notificationDialog(let component): return "notification-\(component.id)"
         case .none: return UUID().uuidString
         }
     }
@@ -30,6 +33,9 @@ enum HomepageComponent: Codable, Identifiable {
     case verticalList(VerticalListComponent)
     case spotify(SpotifyComponent)
     case nytReview(NytReviewComponent)
+    case divider(DividerComponent)
+    case headerWidget(HeaderWidgetComponent)
+    case notificationDialog(NotificationsDialogComponent)
     case none
     
     init(from decoder: Decoder) throws {
@@ -72,6 +78,18 @@ enum HomepageComponent: Codable, Identifiable {
             if let component = try? container.decode(NytReviewComponent.self) {
                 .nytReview(component)
             } else { .none }
+        case .divider:
+            if let component = try? container.decode(DividerComponent.self) {
+                .divider(component)
+            } else { .none }
+        case .headerWidget:
+            if let component = try? container.decode(HeaderWidgetComponent.self) {
+                .headerWidget(component)
+            } else { .none }
+        case .notificationDialog:
+            if let component = try? container.decode(NotificationsDialogComponent.self) {
+                .notificationDialog(component)
+            } else { .none }
         }
     }
 }
@@ -93,4 +111,7 @@ enum HomepageComponentType: String, Codable {
     case verticalList = "home-page.vertical-list"
     case spotify = "home-page.spotify-embed"
     case nytReview = "home-page.nyt-review"
+    case divider = "home-page.divider"
+    case headerWidget = "home-page.header-widget"
+    case notificationDialog = "home-page.notifications-dialog"
 }

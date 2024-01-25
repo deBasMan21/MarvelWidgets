@@ -14,16 +14,20 @@ class NotificationService {
     init(){}
     
     func toggleTopic(_ topic: NotificationTopics) {
+        toggleTopic(topic.rawValue)
+    }
+    
+    func toggleTopic(_ topic: String) {
         requestAuthorization()
         
         var topics = UserDefaultsService.standard.subscribeTopics
 
-        if let index = topics.firstIndex(of: topic.rawValue) {
+        if let index = topics.firstIndex(of: topic) {
             topics.remove(at: index)
-            Messaging.messaging().unsubscribe(fromTopic: topic.rawValue)
+            Messaging.messaging().unsubscribe(fromTopic: topic)
         } else {
-            topics.append(topic.rawValue)
-            Messaging.messaging().subscribe(toTopic: topic.rawValue)
+            topics.append(topic)
+            Messaging.messaging().subscribe(toTopic: topic)
         }
         
         UserDefaultsService.standard.subscribeTopics = topics
@@ -34,7 +38,11 @@ class NotificationService {
     }
     
     func isSubscribedTo(topic: NotificationTopics) -> Bool {
-        return getTopics().contains(topic.rawValue)
+        isSubscribedTo(topic: topic.rawValue)
+    }
+    
+    func isSubscribedTo(topic: String) -> Bool {
+        getTopics().contains(topic)
     }
     
     private func requestAuthorization() {
