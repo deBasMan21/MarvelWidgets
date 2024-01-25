@@ -24,7 +24,7 @@ struct NewsItemView: View {
     
     var body: some View {
         VStack {
-            KFImage(URL(string: item.attributes.image?.url ?? ""))
+            KFImage(URL(string: item.attributes.imageUrl))
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: height / 1.7)

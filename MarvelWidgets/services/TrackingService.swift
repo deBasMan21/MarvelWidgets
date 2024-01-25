@@ -8,17 +8,7 @@
 import Foundation
 import UIKit
 
-class TrackingService {
-    private static var config: Config {
-        if UserDefaultsService.standard.useConfig,
-            !UserDefaultsService.standard.token.isEmpty,
-            !UserDefaultsService.standard.baseUrl.isEmpty {
-            return DebugConfig.standard
-        } else {
-            return ProductionConfig.standard
-        }
-    }
-    
+class TrackingService: Service {
     static func trackPage(page: TrackingPage) async {
         guard let url = URL(string: "\(config.trackingUrl)/tracking"),
               let deviceId = await UIDevice.current.identifierForVendor?.uuidString else { return }

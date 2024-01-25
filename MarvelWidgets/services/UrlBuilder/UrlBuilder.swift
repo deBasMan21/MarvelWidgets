@@ -19,6 +19,7 @@ class UrlBuilder: UrlBuilderType {
         case project = "mcu-projects"
         case collection = "collections"
         case newsItems = "news-items"
+        case homePage = "homepage"
     }
     
     init(baseUrl: String, entity: Entity) {
@@ -32,6 +33,13 @@ class UrlBuilder: UrlBuilderType {
     
     func addId(id: String) -> UrlBuilderType {
         currentUrl += "/\(id)"
+        return self
+    }
+    
+    func addCustomFilterAndSortKey(key: String) -> UrlBuilderType {
+        guard !key.isEmpty else { return self }
+        addFilterParameter()
+        currentUrl += key
         return self
     }
     
@@ -151,7 +159,6 @@ extension UrlBuilder {
 // MARK: Paging
 extension UrlBuilder {
     func addPagination(pageSize: Int = 5, page: Int) -> UrlBuilderType {
-        guard isNewsItem() else { return self }
         addFilterParameter()
         currentUrl += "pagination[pageSize]=\(pageSize)"
         addFilterParameter()
@@ -170,8 +177,18 @@ extension UrlBuilder {
         case .populateNormalWithRelatedPosters: return addProjectDetailPopulate()
         case .populateWidget: return addWidgetPopulate()
         case .populateCollection: return addCollectionPopulate()
+        case .populateDeep(let level): return addPopulateDeep(level: level)
         default: return self
         }
+    }
+    
+    private func addPopulateDeep(level: Int?) -> UrlBuilder {
+        addFilterParameter()
+        currentUrl += "populate=deep"
+        if let level {
+            currentUrl += ",\(level)"
+        }
+        return self
     }
     
     private func addWidgetPopulate() -> UrlBuilder {

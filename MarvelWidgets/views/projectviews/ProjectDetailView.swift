@@ -93,7 +93,16 @@ struct ProjectDetailView: View {
                         }
                         
                         if let collection = viewModel.project.attributes.collection?.data {
-                            CollectionsView(collection: collection, inSheet: inSheet)
+                            CollectionsView(
+                                imageUrl: collection.attributes.getBackdropUrl(size: ImageSize(size: .backdrop(.w780))),
+                                titleText: collection.attributes.name,
+                                subTitleText: "Part of",
+                                inSheet: inSheet,
+                                destinationView: CollectionPageView(
+                                    collection: collection,
+                                    inSheet: inSheet
+                                )
+                            )
                         }
                     }
                     

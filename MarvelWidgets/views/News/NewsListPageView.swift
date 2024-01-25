@@ -47,6 +47,7 @@ struct NewsListPageView: View {
                 }.scrollTargetLayout()
             }.scrollTargetBehavior(.viewAligned(limitBehavior: .always))
                 .defaultScrollAnchor(.topLeading)
+                .scrollIndicators(.hidden)
                 .refreshable {
                     page = 1
                     newsItems = await NewsService.getNewsItems(page: page)

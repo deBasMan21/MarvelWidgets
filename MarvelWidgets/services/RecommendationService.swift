@@ -7,17 +7,7 @@
 
 import Foundation
 
-class RecommendationService {
-    private static var config: Config {
-        if UserDefaultsService.standard.useConfig,
-            !UserDefaultsService.standard.token.isEmpty,
-            !UserDefaultsService.standard.baseUrl.isEmpty {
-            return DebugConfig.standard
-        } else {
-            return ProductionConfig.standard
-        }
-    }
-    
+class RecommendationService: Service {
     static func getRecommendations(page: Int) async -> [any SwipingContent] {
         return await ProjectService.getAll().compactMap { ProjectSwipingContent(project: $0) }.sorted(by: { _, _ in UUID().uuidString < UUID().uuidString })
         let url = "\(config.trackingUrl)/recommendations/mostPopular?page=\(page)&pageSize=5"

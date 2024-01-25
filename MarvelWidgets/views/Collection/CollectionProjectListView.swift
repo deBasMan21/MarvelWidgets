@@ -23,7 +23,7 @@ struct CollectionProjectListView: View {
     }
     
     func getCollectionDetails() async {
-        let collection = await ProjectService.getCollectionById(id: collectionId)
+        let collection = await CollectionService.getCollectionById(id: collectionId)
         guard let projects = collection?.attributes.projects?.data else { return }
         self.projects = projects
     }
