@@ -19,4 +19,5 @@ protocol Person: Hashable {
     func getSearchString() -> String
     func getProjectsTitle() -> String
     func getPopulated() async -> (any Person)?
+    func getIconName() -> String
 }

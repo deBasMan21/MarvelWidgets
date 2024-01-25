@@ -10,13 +10,9 @@ import SwiftUI
 import ScrollViewIfNeeded
 
 struct PersonListPageView: View {
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel = ViewModel()
     
     @State var navigationPath = NavigationPath()
-    
-    init(type: PersonType) {
-        self._viewModel = StateObject(wrappedValue: ViewModel(personType: type))
-    }
     
     var body: some View {
         VStack {
@@ -64,7 +60,7 @@ struct PersonListPageView: View {
             Task {
                 await viewModel.getPersons()
             }
-        }.navigationTitle(viewModel.personType.rawValue)
+        }.navigationTitle("Persons")
             .sheet(isPresented: $viewModel.showSheet, content: {
                 getSheetView()
             }).showTabBar()

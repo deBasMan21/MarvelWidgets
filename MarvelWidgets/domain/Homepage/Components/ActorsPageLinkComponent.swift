@@ -8,5 +8,6 @@
 import Foundation
 
 struct ActorsPageLinkComponent: Codable {
+    let id: Int
     let actors: Actors
 }

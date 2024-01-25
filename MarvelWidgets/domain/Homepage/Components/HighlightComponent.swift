@@ -8,8 +8,17 @@
 import Foundation
 
 struct HighlightComponent: Codable {
-    let contentType: String
+    let id: Int
+    let contentType: CMSContentType
     let contentTypeId: Int
     let title: String?
     let subtitle: String?
+}
+
+enum CMSContentType: String, Codable {
+    case projects = "mcu-projects"
+    case actors = "actors"
+    case directors = "directors"
+    case collections = "collections"
+    case newsItems = "news-items"
 }

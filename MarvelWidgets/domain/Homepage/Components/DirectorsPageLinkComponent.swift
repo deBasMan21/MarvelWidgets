@@ -8,5 +8,6 @@
 import Foundation
 
 struct DirectorsPageLinkComponent: Codable {
+    let id: Int
     let directors: Directors
 }

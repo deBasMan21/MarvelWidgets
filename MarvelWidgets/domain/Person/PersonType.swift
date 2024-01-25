@@ -7,16 +7,16 @@
 
 import Foundation
 
-enum PersonType: String {
+enum PersonType: String, CaseIterable {
     case actor = "Actors"
     case director = "Directors"
     
     func getPersons() async -> [any Person] {
         switch self {
         case .actor:
-            return await ProjectService.getActors().compactMap { $0.person }
+            return await ActorService.getActors().compactMap { $0.person }
         case .director:
-            return await ProjectService.getDirectors().compactMap { $0.person }
+            return await DirectorService.getDirectors().compactMap { $0.person }
         }
     }
 }

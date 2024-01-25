@@ -9,20 +9,21 @@ import Kingfisher
 import SwiftUI
 
 struct CollectionsView: View {
-    @State var collection: ProjectCollection
+    @State var imageUrl: String
+    @State var titleText: String?
+    @State var subTitleText: String?
     @State var inSheet: Bool
+    var destinationView: any View
     
     var body: some View {
         NavigationLink(
-            destination: CollectionPageView(
-                collection: collection,
-                inSheet: inSheet
-            )
+            destination: AnyView(destinationView)
         ) {
             ZStack {
-                KFImage(URL(string: collection.attributes.getBackdropUrl(size: ImageSize(size: .backdrop(.w780)))))
+                KFImage(URL(string: imageUrl))
                     .resizable()
-                    .aspectRatio(16/9, contentMode: .fill)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: UIScreen.main.bounds.width - 40, height: (UIScreen.main.bounds.width - 40) * (9/16), alignment: .top)
                     .overlay {
                         LinearGradient(
                             gradient: Gradient(
@@ -35,17 +36,21 @@ struct CollectionsView: View {
                             endPoint: .bottom
                         )
                     }
-                    
-                VStack {
-                    Spacer()
-                    
-                    Text("Part of")
-                        .font(.caption)
-                    
-                    Text(collection.attributes.name)
-                        .font(.title2)
-                        .bold()
-                }.padding(.bottom, 5)
+                
+                if let titleText {
+                    VStack {
+                        Spacer()
+                        
+                        if let subTitleText {
+                            Text(subTitleText)
+                                .font(.caption)
+                        }
+                        
+                        Text(titleText)
+                            .font(.title2)
+                            .bold()
+                    }.padding(.bottom, 5)
+                }
             }.foregroundColor(.white)
                 .cornerRadius(10)
                 .clipped()

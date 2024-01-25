@@ -36,6 +36,13 @@ class UrlBuilder: UrlBuilderType {
         return self
     }
     
+    func addCustomFilterAndSortKey(key: String) -> UrlBuilderType {
+        guard !key.isEmpty else { return self }
+        addFilterParameter()
+        currentUrl += key
+        return self
+    }
+    
     private func addFilterParameter() {
         guard hasFilters else {
             currentUrl += "?"
@@ -152,7 +159,6 @@ extension UrlBuilder {
 // MARK: Paging
 extension UrlBuilder {
     func addPagination(pageSize: Int = 5, page: Int) -> UrlBuilderType {
-        guard isNewsItem() else { return self }
         addFilterParameter()
         currentUrl += "pagination[pageSize]=\(pageSize)"
         addFilterParameter()

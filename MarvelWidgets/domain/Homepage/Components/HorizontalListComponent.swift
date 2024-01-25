@@ -8,9 +8,16 @@
 import Foundation
 
 struct HorizontalListComponent: Codable {
+    let id: Int
     let title: String?
     let openMoreLink: Bool
     let numberOfItems: Int
-    let contentType: String
-    let filterAndSortKey: String
+    let contentType: CMSContentType
+    let filterAndSortKey: String?
+    let viewType: ViewType
+}
+
+enum ViewType: String, Codable {
+    case poster = "poster"
+    case circle = "circle"
 }

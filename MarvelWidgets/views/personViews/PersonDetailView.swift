@@ -33,20 +33,75 @@ struct PersonDetailView: View {
         }, content: {
             VStack {
                 ScrollView {
-                    VStack {
+                    VStack(spacing: 20) {
                         Text("\(person.firstName) \(person.lastName)")
                             .font(Font.largeTitle)
                             .bold()
                             .multilineTextAlignment(.center)
                         
-                        Text(person.getSubtitle())
-                            .font(Font.subheadline)
-                            .bold()
-                            .multilineTextAlignment(.center)
-                        
-                        if let actor = person as? ActorPerson {
-                            Text(actor.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
-                        }
+                        LazyVGrid(columns: columns, alignment: .leading)  {
+                            HStack {
+                                Image(systemName: person.getIconName())
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Type")
+                                        .bold()
+                                        .foregroundColor(Color.accentColor)
+                                    
+                                    Text(person.getSubtitle())
+                                }
+                            }
+                            
+                            if let actor = person as? ActorPerson {
+                                HStack {
+                                    Image(systemName: "person.crop.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("Role")
+                                            .bold()
+                                            .foregroundColor(Color.accentColor)
+                                        
+                                        Text(actor.role)
+                                    }
+                                }
+                                
+                                HStack {
+                                    Image(systemName: "calendar")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("Date of birth")
+                                            .bold()
+                                            .foregroundColor(Color.accentColor)
+                                        
+                                        Text(actor.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
+                                    }
+                                }
+                            } else if let director = person as? DirectorPerson {
+                                HStack {
+                                    Image(systemName: "calendar")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text("Date of birth")
+                                            .bold()
+                                            .foregroundColor(Color.accentColor)
+                                        
+                                        Text(director.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
+                                    }
+                                }
+                            }
+                        }.padding(.horizontal, 20)
                     }
                         
                     if projects.count > 0 {
