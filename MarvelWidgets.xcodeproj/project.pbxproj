@@ -306,6 +306,11 @@
 		EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381D28A3DD4200B4CC0D /* APIService.swift */; };
 		EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382428A3E0A700B4CC0D /* LogService.swift */; };
+		EFD13F762B62750B0022FCD3 /* DividerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F752B62750B0022FCD3 /* DividerComponent.swift */; };
+		EFD13F782B6275900022FCD3 /* DividerComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F772B6275900022FCD3 /* DividerComponentView.swift */; };
+		EFD13F7A2B627A110022FCD3 /* HeaderWidgetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F792B627A110022FCD3 /* HeaderWidgetComponent.swift */; };
+		EFD13F7C2B628A500022FCD3 /* NotificationDialogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F7B2B628A500022FCD3 /* NotificationDialogComponent.swift */; };
+		EFD13F7E2B628AE10022FCD3 /* NotificationsDialogComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F7D2B628AE10022FCD3 /* NotificationsDialogComponentView.swift */; };
 		EFD8D75928A54F6000CA8DAC /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
 		EFD8D75B28A55BFE00CA8DAC /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */; };
 		EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D75C28A5791D00CA8DAC /* ProjectDetailViewModel.swift */; };
@@ -636,6 +641,11 @@
 		EFCE383128A3E22E00B4CC0D /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
 		EFCE383428A3E22F00B4CC0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFCE383628A3E22F00B4CC0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFD13F752B62750B0022FCD3 /* DividerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerComponent.swift; sourceTree = "<group>"; };
+		EFD13F772B6275900022FCD3 /* DividerComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerComponentView.swift; sourceTree = "<group>"; };
+		EFD13F792B627A110022FCD3 /* HeaderWidgetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderWidgetComponent.swift; sourceTree = "<group>"; };
+		EFD13F7B2B628A500022FCD3 /* NotificationDialogComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDialogComponent.swift; sourceTree = "<group>"; };
+		EFD13F7D2B628AE10022FCD3 /* NotificationsDialogComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDialogComponentView.swift; sourceTree = "<group>"; };
 		EFD8D75A28A55BFE00CA8DAC /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		EFD8D75C28A5791D00CA8DAC /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		EFD8D75E28A7AC8C00CA8DAC /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
@@ -927,6 +937,7 @@
 		EFBAD7A42B5F052800E14807 /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
+				EFBD33D92B615B9D0053EF35 /* HomepageEntity */,
 				EFBAD7AD2B5F056F00E14807 /* Components */,
 				EFBAD7A52B5F053700E14807 /* HomepagesWrapper.swift */,
 				EFBAD7A72B5F054600E14807 /* HomepageWrapper.swift */,
@@ -947,6 +958,9 @@
 				EFBD33CD2B6153F30053EF35 /* VerticalListComponent.swift */,
 				EFBD33E62B61612A0053EF35 /* SpotifyComponent.swift */,
 				EFBD33EA2B6165CF0053EF35 /* NytReviewComponent.swift */,
+				EFD13F752B62750B0022FCD3 /* DividerComponent.swift */,
+				EFD13F792B627A110022FCD3 /* HeaderWidgetComponent.swift */,
+				EFD13F7B2B628A500022FCD3 /* NotificationDialogComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -954,7 +968,6 @@
 		EFBAD7BE2B60332000E14807 /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
-				EFBD33D92B615B9D0053EF35 /* HomepageEntity */,
 				EFBAD7C12B6036AA00E14807 /* Components */,
 				EFBAD7BF2B60333700E14807 /* HomePageView.swift */,
 			);
@@ -972,6 +985,8 @@
 				EFBD33D12B6155040053EF35 /* VerticalListComponentView.swift */,
 				EFBD33E82B6161C20053EF35 /* SpotifyComponentView.swift */,
 				EFBD33EC2B61668B0053EF35 /* NytReviewComponentView.swift */,
+				EFD13F772B6275900022FCD3 /* DividerComponentView.swift */,
+				EFD13F7D2B628AE10022FCD3 /* NotificationsDialogComponentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1820,6 +1835,7 @@
 				EFB503F029DCB5BA00586017 /* OptionCircleButton.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
 				EFBAD7A62B5F053700E14807 /* HomepagesWrapper.swift in Sources */,
+				EFD13F7A2B627A110022FCD3 /* HeaderWidgetComponent.swift in Sources */,
 				EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */,
 				EFBAD7CD2B61395600E14807 /* ActorService.swift in Sources */,
 				EFBD33ED2B61668B0053EF35 /* NytReviewComponentView.swift in Sources */,
@@ -1846,6 +1862,7 @@
 				EFCA5D7828A3F00F0004AAC7 /* DateExtension.swift in Sources */,
 				EFBAD7B52B5F05A300E14807 /* HorizontalListComponent.swift in Sources */,
 				EFBAD7AF2B5F057900E14807 /* HighlightComponent.swift in Sources */,
+				EFD13F7E2B628AE10022FCD3 /* NotificationsDialogComponentView.swift in Sources */,
 				EFD8D75D28A5791D00CA8DAC /* ProjectDetailViewModel.swift in Sources */,
 				EFB503E529DCB53200586017 /* TypeFilter.swift in Sources */,
 				EFF0E2C22922B79200854E5F /* PersonDetailView.swift in Sources */,
@@ -1881,6 +1898,7 @@
 				EFB503F229DCB5D000586017 /* FloatingActionButtonOverlay.swift in Sources */,
 				EFFE153628A54BE000DCF804 /* ProjectListView.swift in Sources */,
 				EFF0E2892921084F00854E5F /* Director.swift in Sources */,
+				EFD13F762B62750B0022FCD3 /* DividerComponent.swift in Sources */,
 				EFF0E2622920EDB100854E5F /* FullscreenImageView.swift in Sources */,
 				EF7571762A604C3900231750 /* ImageSize.swift in Sources */,
 				EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */,
@@ -1892,6 +1910,7 @@
 				EFCA5D8C28A3FEFC0004AAC7 /* ImageHelper.swift in Sources */,
 				EFBD33D82B61575B0053EF35 /* SeasonEpisodeView.swift in Sources */,
 				EFBD33E72B61612A0053EF35 /* SpotifyComponent.swift in Sources */,
+				EFD13F7C2B628A500022FCD3 /* NotificationDialogComponent.swift in Sources */,
 				EFF04BDF29BE557A00437A6E /* OnboardingPageOneHeader.swift in Sources */,
 				EFBAD7D12B61399400E14807 /* Service.swift in Sources */,
 				EF78F62029959CF600CA9028 /* ViewExtensions.swift in Sources */,
@@ -1900,6 +1919,7 @@
 				EFCA4CF32B5D7A4B001B1657 /* NewsItemView.swift in Sources */,
 				EFF04BD929BE554000437A6E /* OnboardingOverlayView.swift in Sources */,
 				EFBE482329C621550036185E /* ReviewView.swift in Sources */,
+				EFD13F782B6275900022FCD3 /* DividerComponentView.swift in Sources */,
 				EF78F5C82993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF6B83552933A17000A5D69C /* PersonSortKeys.swift in Sources */,
 				EFF0E2872921084400854E5F /* DirectorsWrapper.swift in Sources */,

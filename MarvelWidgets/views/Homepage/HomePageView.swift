@@ -43,11 +43,21 @@ struct HomePageView: View {
                             case .nytReview(let component):
                                 NytReviewComponentView(component: component)
                                 
+                            case .divider(let component):
+                                DividerComponentView(component: component)
+                                
+                            case .headerWidget(let component):
+                                NewsItemView(item: component, appearingAnimation: false, whiteText: true, height: nil)
+                                
+                            case .notificationDialog(let component):
+                                NotificationsDialogComponentView(component: component)
+                                
                             case .none:
                                 EmptyView()
                             }
                         }
                     }.padding(.horizontal, 20)
+                        .frame(width: UIScreen.main.bounds.width)
                 }.contentMargins(.bottom, 20, for: .scrollContent)
             } else {
                 ProgressView()
