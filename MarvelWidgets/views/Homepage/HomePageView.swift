@@ -23,7 +23,7 @@ struct HomePageView: View {
                                 HighlightComponentView(highlightComponent: component)
                                 
                             case .text(let component): 
-                                TextComponentView(textComponent: component)
+                                TextComponentView(textComponent: component, style: TextStyle(font: nil, color: nil))
                                 
                             case .youtube(let component): 
                                 YoutubeComponentView(title: component.title, url: component.embedUrl)
@@ -68,5 +68,12 @@ struct HomePageView: View {
             homepage = await HomepageService.getHomepage()
         }.showTabBar()
             .navigationTitle("Home")
+            .toolbar(content: {
+                NavigationLink(
+                    destination: WidgetSettingsView()
+                ) {
+                    Image(systemName: "gearshape.fill")
+                }
+            })
     }
 }

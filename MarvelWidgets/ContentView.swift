@@ -86,6 +86,7 @@ struct ContentView: View {
                 AlertToast(displayMode: .hud, type: .systemImage("bell", .accentColor), title: openUrlHelper?.lastTitle ?? "", subTitle: openUrlHelper?.lastBody)
             }, onTap: {
                 if let project = openUrlHelper?.lastProject {
+                    activeTab = 3
                     projects.append(project)
                 }
             }).preferredColorScheme(.dark)
@@ -98,7 +99,9 @@ struct ContentView: View {
         if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
            let id = Int(url.lastPathComponent) {
             activeTab = 3
-            projects.append(Placeholders.loadingProject(id: id))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.projects.append(Placeholders.loadingProject(id: id))
+            }
             return true
         }
         return false

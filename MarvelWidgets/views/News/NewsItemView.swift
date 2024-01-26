@@ -68,12 +68,13 @@ struct NewsItemView: View {
                 }
                 
                 if let description = item.description {
-                    Text(LocalizedStringKey(description))
-                        .if(!whiteText) { view in
-                            view.font(.system(size: 12))
-                        }.foregroundColor(whiteText ? .white : Color(uiColor: .lightGray))
-                        .multilineTextAlignment(.center)
-                        .padding(.top, 4)
+                    TextComponentView(
+                        textComponent: TextComponent(id: 1, text: description),
+                        style: TextStyle(
+                            font: whiteText ? nil : .system(size: 12),
+                            color: whiteText ? .white : Color(uiColor: .lightGray)
+                        )
+                    ).padding(.top, 4)
                 }
             }.padding(.top, -20)
                 .padding(.horizontal)
