@@ -56,7 +56,7 @@ class DirectorPerson: Person, Hashable {
     }
     
     func getIconName() -> String {
-        "megaphone.fill"
+        "d.circle.fill"
     }
 }
 

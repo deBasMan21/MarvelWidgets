@@ -18,38 +18,46 @@ struct WidgetSettingsView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     VStack {
-                        VStack {
-                            Text("Notification settings")
-                                .font(Font.title2.bold())
-                                .foregroundColor(.accentColor)
-                            
-                            Text("If you enable the notifications for a type of project you get a notification when a project of that type is released.")
-                                .multilineTextAlignment(.center)
-                                .padding(.bottom)
-                        }
+                        Text("Notifications")
+                            .font(.title2)
+                            .bold()
                         
                         Toggle(isOn: $viewModel.notificationMovie) {
                             Text("Marvel Movies")
-                        }
+                        }.tint(.accentColor)
                         
                         Toggle(isOn: $viewModel.notificationSerie) {
                             Text("Marvel Series")
-                        }
+                        }.tint(.accentColor)
                         
                         Toggle(isOn: $viewModel.notificationSpecial) {
                             Text("Marvel Specials")
-                        }
+                        }.tint(.accentColor)
                         
                         Toggle(isOn: $viewModel.notificationRelated) {
                             Text("Related projects (not MCU)")
-                        }
+                        }.tint(.accentColor)
                         
                         #if DEBUG
                             Toggle(isOn: $viewModel.notificationTesting) {
                                 Text("Testing")
-                            }
+                            }.tint(.accentColor)
                         #endif
                     }
+                    
+                    Divider()
+                    
+                    VStack {
+                        Text("App icon")
+                            .font(.title2)
+                            .bold()
+                        
+                        AppIconSelectView()
+                    }
+                    
+                    Divider()
+                    
+                    Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
                     
                     #if DEBUG
                         Divider()
@@ -60,14 +68,9 @@ struct WidgetSettingsView: View {
                             Text("Reload widgets")
                         })
                     #endif
-                    
-                    Spacer()
-                }.padding()
+                }.padding(.horizontal, 20)
             }
-            
-            Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
-                .padding()
         }.navigationTitle("Settings")
-            .showTabBar()
+            .hiddenTabBar()
     }
 }

@@ -64,7 +64,7 @@ struct NewsItemView: View {
                         ForEach(gridItems, id: \.title) { item in
                             WidgetItemView(imageName: item.iconName, title: item.title, value: item.value)
                         }
-                    }.padding(.horizontal)
+                    }
                 }
                 
                 if let description = item.description {
