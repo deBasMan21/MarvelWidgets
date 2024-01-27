@@ -49,7 +49,9 @@ struct NewsListPageView: View {
                                             value: item.attributes.author
                                         )
                                     ],
-                                    description: item.attributes.summary
+                                    description: item.attributes.summary,
+                                    contentType: nil,
+                                    contentTypeId: nil
                                 ),
                                  appearingAnimation: true,
                                  whiteText: false,
