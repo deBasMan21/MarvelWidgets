@@ -233,7 +233,7 @@ extension ProjectListView {
         }
         
         func getFilterCount() -> Int {
-            var count: Int = selectedFilters.count + selectedTypes.count
+            var count: Int = selectedFilters.count + selectedTypes.count + selectedSources.count + selectedCategories.count
             count += minimalBeforeDate == beforeDate ? 0 : 1
             count += maximalAfterDate == afterDate ? 0 : 1
             return count

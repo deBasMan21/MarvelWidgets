@@ -14,6 +14,8 @@ struct HeaderWidgetComponent: Codable {
     let categories: [HeaderWidgetCategory]?
     let gridItems: [HeaderWidgetGridItem]?
     let description: String?
+    let contentType: CMSContentType?
+    let contentTypeId: Int?
 }
 
 struct HeaderWidgetCategory: Codable {

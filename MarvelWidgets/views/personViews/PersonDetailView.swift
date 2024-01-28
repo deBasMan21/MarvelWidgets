@@ -40,66 +40,30 @@ struct PersonDetailView: View {
                             .multilineTextAlignment(.center)
                         
                         LazyVGrid(columns: columns, alignment: .leading)  {
-                            HStack {
-                                Image(systemName: person.getIconName())
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 40, height: 40)
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Type")
-                                        .bold()
-                                        .foregroundColor(Color.accentColor)
-                                    
-                                    Text(person.getSubtitle())
-                                }
-                            }
+                            GridItemView(
+                                imageName: person.getIconName(),
+                                title: "Type",
+                                value: person.getSubtitle()
+                            )
                             
                             if let actor = person as? ActorPerson {
-                                HStack {
-                                    Image(systemName: "person.crop.circle.fill")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 40, height: 40)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text("Role")
-                                            .bold()
-                                            .foregroundColor(Color.accentColor)
-                                        
-                                        Text(actor.role)
-                                    }
-                                }
+                                GridItemView(
+                                    imageName: "person.crop.circle.fill",
+                                    title: "Role",
+                                    value: actor.role
+                                )
                                 
-                                HStack {
-                                    Image(systemName: "calendar")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 40, height: 40)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text("Date of birth")
-                                            .bold()
-                                            .foregroundColor(Color.accentColor)
-                                        
-                                        Text(actor.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
-                                    }
-                                }
+                                GridItemView(
+                                    imageName: "calendar.circle.fill",
+                                    title: "Date of birth",
+                                    value: actor.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown"
+                                )
                             } else if let director = person as? DirectorPerson {
-                                HStack {
-                                    Image(systemName: "calendar")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 40, height: 40)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text("Date of birth")
-                                            .bold()
-                                            .foregroundColor(Color.accentColor)
-                                        
-                                        Text(director.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown")
-                                    }
-                                }
+                                GridItemView(
+                                    imageName: "calendar.circle.fill",
+                                    title: "Date of birth",
+                                    value: director.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown"
+                                )
                             }
                         }.padding(.horizontal, 20)
                     }
@@ -138,16 +102,10 @@ struct PersonDetailView: View {
                             }.padding()
                         }
                 }.padding(.vertical, -50)
-            }.onAppear {
-                Task {
-                    if let person = await person.getPopulated() {
-                        await MainActor.run {
-                            withAnimation {
-                                self.person = person
-                                self.projects = person.projects
-                            }
-                        }
-                    }
+            }.task {
+                if let person = await person.getPopulated() {
+                    self.person = person
+                    self.projects = person.projects
                 }
             }.onDisappear {
                 onDisappearCallback()

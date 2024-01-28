@@ -18,7 +18,6 @@ struct NotificationsDialogComponentView: View {
                 .font(.title2)
             
             Text(component.description)
-                .font(.system(size: 12))
                 .foregroundColor(Color(uiColor: .lightGray))
                 .multilineTextAlignment(.center)
             
@@ -26,7 +25,7 @@ struct NotificationsDialogComponentView: View {
                 ForEach(component.topics, id: \.hashValue) { topic in
                     Toggle(isOn: binding(for: topic)) {
                         Text(topic)
-                    }
+                    }.tint(.accentColor)
                     
                     if topic != component.topics.last {
                         Divider()

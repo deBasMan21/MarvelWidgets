@@ -25,12 +25,13 @@ struct VerticalListItemView: View {
             
             VStack(alignment: .leading) {
                 Text(title)
+                    .foregroundColor(Color.foregroundColor)
                     .bold()
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                 
                 Text(multilineDescription)
-                    .foregroundColor(Color.foregroundColor)
+                    .foregroundColor(Color(uiColor: .lightGray))
                     .multilineTextAlignment(.leading)
                     .lineLimit(3)
             }

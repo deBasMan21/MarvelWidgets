@@ -21,4 +21,5 @@ enum CMSContentType: String, Codable {
     case directors = "directors"
     case collections = "collections"
     case newsItems = "news-items"
+    case page = "pages"
 }

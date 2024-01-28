@@ -75,7 +75,7 @@ struct ContentView: View {
                     if inApp {
                         showAlert = true
                     } else {
-                        self.projects.append(openUrlHelper?.lastProject)
+                        _ = handleUrl(url: openUrlHelper?.lastUrl)
                     }
                 })
             }.onOpenURL(perform: { url in
@@ -85,20 +85,21 @@ struct ContentView: View {
             .toast(isPresenting: $showAlert, duration: 10, tapToDismiss: true, alert: {
                 AlertToast(displayMode: .hud, type: .systemImage("bell", .accentColor), title: openUrlHelper?.lastTitle ?? "", subTitle: openUrlHelper?.lastBody)
             }, onTap: {
-                if let project = openUrlHelper?.lastProject {
-                    projects.append(project)
-                }
+                _ = handleUrl(url: openUrlHelper?.lastUrl)
             }).preferredColorScheme(.dark)
             .onOpenUrlAction { url in
                 handleUrl(url: url)
             }
     }
     
-    func handleUrl(url: URL) -> Bool {
+    func handleUrl(url: URL?) -> Bool {
+        guard let url else { return false }
         if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
            let id = Int(url.lastPathComponent) {
             activeTab = 3
-            projects.append(Placeholders.loadingProject(id: id))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.projects.append(Placeholders.loadingProject(id: id))
+            }
             return true
         }
         return false
@@ -109,7 +110,7 @@ class OpenUrlWrapper {
     let callback: (Bool) -> Void
     var lastTitle: String = ""
     var lastBody: String?
-    var lastProject: ProjectWrapper?
+    var lastUrl: URL?
     
     init(callback: @escaping (Bool) -> Void) {
         self.callback = callback
@@ -130,12 +131,11 @@ class OpenUrlWrapper {
             let url = URL(string: url),
             let inApp = inApp,
             let title = title,
-            let id = Int(url.lastPathComponent),
             ((url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link") {
             
             self.lastTitle = title
             self.lastBody = body
-            self.lastProject = Placeholders.loadingProject(id: id)
+            self.lastUrl = url
             
             callback(inApp)
         }

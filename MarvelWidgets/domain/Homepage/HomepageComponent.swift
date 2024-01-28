@@ -21,6 +21,7 @@ enum HomepageComponent: Codable, Identifiable {
         case .divider(let component): return "divider-\(component.id)"
         case .headerWidget(let component): return "header-\(component.id)"
         case .notificationDialog(let component): return "notification-\(component.id)"
+        case .pageLink(let component): return "link-\(component.id)"
         case .none: return UUID().uuidString
         }
     }
@@ -36,6 +37,7 @@ enum HomepageComponent: Codable, Identifiable {
     case divider(DividerComponent)
     case headerWidget(HeaderWidgetComponent)
     case notificationDialog(NotificationsDialogComponent)
+    case pageLink(PageLinkComponent)
     case none
     
     init(from decoder: Decoder) throws {
@@ -90,6 +92,10 @@ enum HomepageComponent: Codable, Identifiable {
             if let component = try? container.decode(NotificationsDialogComponent.self) {
                 .notificationDialog(component)
             } else { .none }
+        case .pageLink:
+            if let component = try? container.decode(PageLinkComponent.self) {
+                .pageLink(component)
+            } else { .none }
         }
     }
 }
@@ -114,4 +120,5 @@ enum HomepageComponentType: String, Codable {
     case divider = "home-page.divider"
     case headerWidget = "home-page.header-widget"
     case notificationDialog = "home-page.notifications-dialog"
+    case pageLink = "home-page.page-link"
 }

@@ -65,6 +65,13 @@ struct PersonListPageView: View {
                 getSheetView()
             }).showTabBar()
             .sheet(isPresented: $viewModel.showFilters) { getFilterView() }
+            .toolbar(content: {
+                NavigationLink(
+                    destination: WidgetSettingsView()
+                ) {
+                    Image(systemName: "gearshape.fill")
+                }
+            })
     }
     
     func getView(actorObj: any Person) -> some View {
