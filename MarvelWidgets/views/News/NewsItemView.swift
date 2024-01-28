@@ -26,21 +26,26 @@ struct NewsItemView: View {
     
     var body: some View {
         VStack {
-            KFImage(URL(string: item.imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original)))))
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .if(height != nil) { view in
-                    view.frame(height: height! / 1.7)
-                }.if(height == nil) { view in
-                    view.frame(height: (UIScreen.main.bounds.width) * (9/16), alignment: .top)
-                }
-                .clipped()
-                .overlay(gradient)
+            if item.showImage {
+                KFImage(URL(string: item.imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original)))))
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .if(height != nil) { view in
+                        view.frame(height: height! / 1.7)
+                    }.if(height == nil) { view in
+                        view.frame(height: (UIScreen.main.bounds.width) * (9/16), alignment: .top)
+                    }
+                    .clipped()
+                    .overlay(gradient)
+            }
             
             VStack {
                 Text(item.title)
-                    .fontWeight(.bold)
-                    .font(.headline)
+                    .if(item.largeTitleAndGrid) { view in
+                        view.font(.largeTitle)
+                    }.if(!item.largeTitleAndGrid) { view in
+                        view.font(.headline)
+                    }.bold()
                     .fixedSize(horizontal: false, vertical: true)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
@@ -50,8 +55,9 @@ struct NewsItemView: View {
                         ForEach(categories.compactMap { $0.category }.prefix(3), id: \.hashValue) { category in
                             Text(category)
                                 .textStyle(RedChipText())
-                                .font(.system(size: 14))
-                                .fixedSize(horizontal: true, vertical: false)
+                                .if(!item.largeTitleAndGrid) { view in
+                                    view.font(.system(size: 14))
+                                }.fixedSize(horizontal: true, vertical: false)
                         }
                     }.padding(.horizontal)
                 }
@@ -62,7 +68,12 @@ struct NewsItemView: View {
                         GridItem(.flexible())
                     ], alignment: .leading, spacing: 10) {
                         ForEach(gridItems, id: \.title) { item in
-                            WidgetItemView(imageName: item.iconName, title: item.title, value: item.value)
+                            if self.item.largeTitleAndGrid {
+                                GridItemView(imageName: item.iconName, title: item.title, value: item.value)
+                            } else {
+                                WidgetItemView(imageName: item.iconName, title: item.title, value: item.value)
+                            }
+                            
                         }
                     }
                 }
@@ -76,7 +87,7 @@ struct NewsItemView: View {
                         )
                     ).padding(.top, 4)
                 }
-            }.padding(.top, -20)
+            }.padding(.top, item.showImage ? -20 : 0)
                 .padding(.horizontal)
             
             Spacer()

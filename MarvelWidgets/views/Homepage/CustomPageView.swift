@@ -17,10 +17,12 @@ struct CustomPageView: View {
     var body: some View {
         VStack {
             if let custompage, let components = custompage.attributes.components {
-                if let config = custompage.attributes.parallaxConfig  {
+                if let config = custompage.attributes.parallaxConfig {
+                    let imageUrl = config.imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original)))
+                    
                     NavigationHeaderContainer(bottomFadeout: true, headerAlignment: .center, header: {
-                        NavigationLink(destination: FullscreenImageView(url: config.imageUrl)) {
-                            KFImage(URL(string: config.imageUrl))
+                        NavigationLink(destination: FullscreenImageView(url: imageUrl)) {
+                            KFImage(URL(string: imageUrl))
                                 .resizable()
                                 .scaledToFill()
                         }
