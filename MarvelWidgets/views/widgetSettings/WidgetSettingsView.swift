@@ -57,7 +57,31 @@ struct WidgetSettingsView: View {
                     
                     Divider()
                     
-                    Text("Version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")")
+                    VStack(spacing: 15) {
+                        Text("Credits")
+                            .font(.title2)
+                            .bold()
+                        
+                        CompanyCopyrightView(
+                            imageName: "tmdbLogo",
+                            text: "This app uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB."
+                        )
+                        
+                        CompanyCopyrightView(
+                            imageName: "nytBigLogo",
+                            text: "This app uses the New York Times API to gather movie reviews. All reviews fall under copyright of NYT and in no case are presented as own content."
+                        )
+                        
+                        CompanyCopyrightView(
+                            imageName: "theDirectLogo",
+                            text: "This app uses a RSS feed from The Direct for the latest news. All rights for newes articles in this app belong to The Direct."
+                        )
+                    }
+                    
+                    Divider()
+                    
+                    Text("Version: ") +
+                    Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")").bold()
                     
                     #if DEBUG
                         Divider()
