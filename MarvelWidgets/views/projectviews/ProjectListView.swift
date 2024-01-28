@@ -60,6 +60,13 @@ struct ProjectListView: View {
                     ]
                 )
             }
+            .toolbar(content: {
+                NavigationLink(
+                    destination: WidgetSettingsView()
+                ) {
+                    Image(systemName: "gearshape.fill")
+                }
+            })
     }
 }
 

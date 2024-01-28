@@ -20,6 +20,7 @@ class UrlBuilder: UrlBuilderType {
         case collection = "collections"
         case newsItems = "news-items"
         case homePage = "homepage"
+        case page = "pages"
     }
     
     init(baseUrl: String, entity: Entity) {

@@ -57,7 +57,7 @@ class ActorPerson: Person, Hashable {
     }
     
     func getIconName() -> String {
-        "star.fill"
+        "star.circle.fill"
     }
 }
 
