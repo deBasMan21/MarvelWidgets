@@ -9,16 +9,12 @@ import Foundation
 import SwiftUI
 
 struct OnboardingPageThreeView: View {
-    @State var notificationMovie: Bool
-    @State var notificationSerie: Bool
-    @State var notificationSpecial: Bool
+    @State var notificationNews: Bool
     
     let notificationService = NotificationService()
     
     init() {
-        notificationMovie = notificationService.isSubscribedTo(topic: .movie)
-        notificationSerie = notificationService.isSubscribedTo(topic: .serie)
-        notificationSpecial = notificationService.isSubscribedTo(topic: .special)
+        notificationNews = notificationService.isSubscribedTo(topic: Constants.newsTopic)
     }
     
     var body: some View {
@@ -27,28 +23,18 @@ struct OnboardingPageThreeView: View {
                 .font(.largeTitle)
                 .bold()
             
-            Text("For these types projects you can receive notifications about updates and releases.")
+            Text("If you want to stay up to date with all the latest mcu news, you can follow the news topic below.")
             
             VStack {
-                Toggle("Movies", isOn: $notificationMovie)
-                    .onChange(of: notificationMovie, perform: { _ in
-                        toggleTopic(.movie)
-                    })
-                
-                Toggle("Series", isOn: $notificationSerie)
-                    .onChange(of: notificationSerie, perform: { _ in
-                        toggleTopic(.serie)
-                    })
-                
-                Toggle("Specials", isOn: $notificationSpecial)
-                    .onChange(of: notificationSpecial, perform: { _ in
-                        toggleTopic(.special)
+                Toggle("News", isOn: $notificationNews)
+                    .onChange(of: notificationNews, { _, _ in
+                        toggleTopic(Constants.newsTopic)
                     })
             }
         }
     }
     
-    func toggleTopic(_ topic: NotificationTopics) {
+    func toggleTopic(_ topic: String) {
         notificationService.toggleTopic(topic)
     }
 }

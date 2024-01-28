@@ -88,7 +88,9 @@ struct NewsItemView: View {
                     ).padding(.top, 4)
                 }
             }.padding(.top, item.showImage ? -20 : 0)
-                .padding(.horizontal)
+                .if(!item.largeTitleAndGrid) { view in
+                    view.padding(.horizontal)
+                }
             
             Spacer()
         }.frame(height: height)

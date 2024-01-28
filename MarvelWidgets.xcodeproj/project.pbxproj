@@ -62,7 +62,6 @@
 		EF1BE4352A1936600072CC26 /* RelatedProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28C2921086600854E5F /* RelatedProjects.swift */; };
 		EF1BE4362A1936600072CC26 /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27C2921080600854E5F /* ProjectType.swift */; };
 		EF1BE4372A1936600072CC26 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2962921089F00854E5F /* Episode.swift */; };
-		EF1BE4382A1936600072CC26 /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
 		EF1BE4392A1936600072CC26 /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27E2921081200854E5F /* Actors.swift */; };
 		EF1BE43A2A1936600072CC26 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28A2921085900854E5F /* Poster.swift */; };
 		EF1BE43B2A1936600072CC26 /* SingleResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */; };
@@ -79,7 +78,6 @@
 		EF1BE4472A1936600072CC26 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
 		EF1BE4482A1936600072CC26 /* PersonSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83542933A17000A5D69C /* PersonSortKeys.swift */; };
 		EF1BE4492A1936600072CC26 /* RelatedProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28E2921087300854E5F /* RelatedProjectWrapper.swift */; };
-		EF1BE44A2A1936620072CC26 /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
 		EF1BE44C2A1936620072CC26 /* PersonSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83542933A17000A5D69C /* PersonSortKeys.swift */; };
 		EF1BE44D2A1936840072CC26 /* UrlBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */; };
 		EF1BE44E2A19369F0072CC26 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
@@ -115,6 +113,7 @@
 		EF28E7FD29A69EFF00B7C845 /* ListPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */; };
 		EF28E7FE29A69EFF00B7C845 /* ListPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */; };
 		EF28E7FF29A69EFF00B7C845 /* ListPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */; };
+		EF2DD0872B66DC9000BA604C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2DD0862B66DC9000BA604C /* Constants.swift */; };
 		EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* ProjectService.swift */; };
 		EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* ProjectService.swift */; };
 		EF38FD74291FF56400EA4BD9 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* ProjectService.swift */; };
@@ -343,7 +342,6 @@
 		EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */; };
 		EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
 		EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC029BE225A00437A6E /* NotificationService.swift */; };
-		EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
 		EFF04BC629BE2FFD00437A6E /* OnboardingPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */; };
 		EFF04BC829BE302400437A6E /* OnboardingPageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC729BE302400437A6E /* OnboardingPageOneView.swift */; };
 		EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC929BE303F00437A6E /* OnboardingPageTwoView.swift */; };
@@ -532,6 +530,7 @@
 		EF238AA129B26B9A00C3FC9C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EF26F68929DA110300E1A74D /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
 		EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageType.swift; sourceTree = "<group>"; };
+		EF2DD0862B66DC9000BA604C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EF38FD71291FF56400EA4BD9 /* ProjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* ConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigValues.swift; sourceTree = "<group>"; };
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
@@ -675,7 +674,6 @@
 		EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingProjectEntry.swift; sourceTree = "<group>"; };
 		EFE69E4A29A69568002345FF /* WidgetProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProjectService.swift; sourceTree = "<group>"; };
 		EFF04BC029BE225A00437A6E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		EFF04BC229BE229F00437A6E /* NotificationTopics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTopics.swift; sourceTree = "<group>"; };
 		EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageContainer.swift; sourceTree = "<group>"; };
 		EFF04BC729BE302400437A6E /* OnboardingPageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageOneView.swift; sourceTree = "<group>"; };
 		EFF04BC929BE303F00437A6E /* OnboardingPageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageTwoView.swift; sourceTree = "<group>"; };
@@ -1055,6 +1053,7 @@
 				EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */,
 				EF7571752A604C3900231750 /* ImageSize.swift */,
 				EFBD33CF2B6154800053EF35 /* ListComponentViewHelper.swift */,
+				EF2DD0862B66DC9000BA604C /* Constants.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1196,7 +1195,6 @@
 				EFF0E2942921089400854E5F /* Season.swift */,
 				EFF0E2962921089F00854E5F /* Episode.swift */,
 				EF6B83542933A17000A5D69C /* PersonSortKeys.swift */,
-				EFF04BC229BE229F00437A6E /* NotificationTopics.swift */,
 				EFF04BEB29BE710A00437A6E /* AppIcon.swift */,
 				EF7571802A65816D00231750 /* CollectionWrapper.swift */,
 				EF7571842A65817E00231750 /* ProjectCollection.swift */,
@@ -1668,7 +1666,6 @@
 				EF75719D2A65848200231750 /* CollectionAttributes.swift in Sources */,
 				EF1BE41D2A191BB50072CC26 /* NotificationViewController.swift in Sources */,
 				EF1BE4312A19363A0072CC26 /* UrlBuilder.swift in Sources */,
-				EF1BE4382A1936600072CC26 /* NotificationTopics.swift in Sources */,
 				EF1BE4532A1936D90072CC26 /* LogService.swift in Sources */,
 				EF1BE4412A1936600072CC26 /* Season.swift in Sources */,
 				EF1BE4452A1936600072CC26 /* RelatedProject.swift in Sources */,
@@ -1768,7 +1765,6 @@
 				EF7571782A604C3900231750 /* ImageSize.swift in Sources */,
 				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
 				EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
-				EF1BE44A2A1936620072CC26 /* NotificationTopics.swift in Sources */,
 				EFF0E2BB2921097200854E5F /* Directors.swift in Sources */,
 				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
 				EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */,
@@ -1890,6 +1886,7 @@
 				EFF04BE329BE55A900437A6E /* OnboardingPageThreeHeader.swift in Sources */,
 				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EF6B82DA292D577500A5D69C /* PersonListPageView.swift in Sources */,
+				EF2DD0872B66DC9000BA604C /* Constants.swift in Sources */,
 				EFBAD7C32B6036B500E14807 /* TextComponentView.swift in Sources */,
 				EFBAD7C92B60475900E14807 /* YoutubeComponentView.swift in Sources */,
 				EF04E67D29AD491C003C0420 /* CircularImageView.swift in Sources */,
@@ -1926,7 +1923,6 @@
 				EF0A7B582B654B7200C5A614 /* HeaderWidgetComponentView.swift in Sources */,
 				EFF04BEC29BE710A00437A6E /* AppIcon.swift in Sources */,
 				EF26F68A29DA110300E1A74D /* ZoomableScrollView.swift in Sources */,
-				EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */,
 				EF84046929DF574E00E8F969 /* LargeWidgetView.swift in Sources */,
 				EFBD33E32B615BED0053EF35 /* CollectionProjectEntity.swift in Sources */,
 				EFBAD7B92B5F05BC00E14807 /* TitleComponent.swift in Sources */,

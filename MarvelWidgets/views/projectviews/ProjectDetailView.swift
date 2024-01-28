@@ -86,6 +86,17 @@ struct ProjectDetailView: View {
                         if let trailers = viewModel.project.attributes.trailers, trailers.count > 0 {
                             TrailersView(trailers: trailers)
                         }
+                        
+                        if let notificationTopic = viewModel.project.attributes.notificationTopic {
+                            NotificationsDialogComponentView(
+                                component: NotificationsDialogComponent(
+                                    id: 1,
+                                    title: "Do you want to stay up to date?",
+                                    description: "To get all the latest updates for this project you can toggle the notifications here.",
+                                    topics: [NotificationsDialogTopic(id: 1, topic: notificationTopic)]
+                                )
+                            )
+                        }
                     
                         if let spotifyEmbed = viewModel.project.attributes.spotifyEmbed {
                             SpotifyView(embedUrl: spotifyEmbed)

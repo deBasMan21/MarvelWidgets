@@ -97,7 +97,8 @@ struct Episode: Codable, Identifiable, Equatable {
                 rankingChangeDirection: nil,
                 chronology: nil,
                 episodes: nil,
-                collection: nil
+                collection: nil, 
+                notificationTopic: nil
             )
         )
     }

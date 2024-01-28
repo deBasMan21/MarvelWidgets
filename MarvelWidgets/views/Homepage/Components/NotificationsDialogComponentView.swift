@@ -22,12 +22,12 @@ struct NotificationsDialogComponentView: View {
                 .multilineTextAlignment(.center)
             
             VStack {
-                ForEach(component.topics, id: \.hashValue) { topic in
-                    Toggle(isOn: binding(for: topic)) {
-                        Text(topic)
+                ForEach(component.topics, id: \.topic.hashValue) { topic in
+                    Toggle(isOn: binding(for: topic.topic)) {
+                        Text(topic.topic.replacingOccurrences(of: "_", with: " "))
                     }.tint(.accentColor)
                     
-                    if topic != component.topics.last {
+                    if topic.id != component.topics.last?.id {
                         Divider()
                     }
                 }
@@ -50,7 +50,7 @@ struct NotificationsDialogComponentView: View {
     func setupSubscribedTopics() {
         let service = NotificationService()
         subscribedTopics = component.topics.reduce(into: [String: Bool](), { acc, value in
-            acc[value] = service.isSubscribedTo(topic: value)
+            acc[value.topic] = service.isSubscribedTo(topic: value.topic)
         })
     }
 }

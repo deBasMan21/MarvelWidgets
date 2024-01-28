@@ -16,5 +16,6 @@ struct DividerComponentView: View {
             .fill(Color(hex: component.color) ?? .accentGray)
             .frame(height: CGFloat(component.height))
             .edgesIgnoringSafeArea(.horizontal)
+            .cornerRadius(10)
     }
 }
