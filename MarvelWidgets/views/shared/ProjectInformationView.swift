@@ -49,20 +49,6 @@ struct ProjectInformationView: View {
                     title: "Type project",
                     value: project.attributes.type.rawValue
                 )
-//                HStack {
-//                    Image(systemName: project.attributes.type.imageString())
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 40, height: 40)
-//                    
-//                    VStack(alignment: .leading) {
-//                        Text("Type project")
-//                            .bold()
-//                            .foregroundColor(Color.accentColor)
-//                        
-//                        Text(project.attributes.type.rawValue)
-//                    }
-//                }
             
                 GridItemView(
                     imageName: "calendar.circle.fill",
@@ -71,42 +57,12 @@ struct ProjectInformationView: View {
                 ).onTapGesture {
                     showCalendarAppointment = true
                 }
-//                HStack {
-//                    Image(systemName: "calendar.circle.fill")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 40, height: 40)
-//                    
-//                    VStack(alignment: .leading) {
-//                        Text("Release date")
-//                            .bold()
-//                            .foregroundColor(Color.accentColor)
-//                        
-//                        Text(project.attributes.getReleaseDateString())
-//                    }
-//                }.onTapGesture {
-//                    showCalendarAppointment = true
-//                }
                 
                 GridItemView(
                     imageName: "s.circle.fill",
                     title: "Source",
                     value: project.attributes.source.toString()
                 )
-//                HStack {
-//                    Image(systemName: "s.circle.fill")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 40, height: 40)
-//                    
-//                    VStack(alignment: .leading) {
-//                        Text("Source")
-//                            .bold()
-//                            .foregroundColor(Color.accentColor)
-//                        
-//                        Text(project.attributes.source.toString())
-//                    }
-//                }
                 
                 if let duration = project.attributes.duration {
                     GridItemView(
@@ -114,20 +70,6 @@ struct ProjectInformationView: View {
                         title: "Duration",
                         value: "\(duration) minutes"
                     )
-//                    HStack {
-//                        Image(systemName: "clock.fill")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 40, height: 40)
-//                        
-//                        VStack(alignment: .leading)  {
-//                            Text("Duration")
-//                                .bold()
-//                                .foregroundColor(Color.accentColor)
-//                            
-//                            Text("\(duration) minutes")
-//                        }
-//                    }
                 }
                 
                 if let directors = project.attributes.directors, directors.data.count > 0 {
@@ -138,22 +80,6 @@ struct ProjectInformationView: View {
                                 title: "Director",
                                 value: "\(director.attributes.firstName) \(director.attributes.lastName)"
                             ).foregroundStyle(.white)
-//                            HStack {
-//                                KFImage(URL(string: director.attributes.imageURL ?? "")!)
-//                                    .resizable()
-//                                    .scaledToFill()
-//                                    .frame(width: 40, height: 40)
-//                                    .clipShape(Circle())
-//                                
-//                                VStack(alignment: .leading)  {
-//                                    Text("Director")
-//                                        .bold()
-//                                    
-//                                    Text("\(director.attributes.firstName) \(director.attributes.lastName)")
-//                                        .lineLimit(1)
-//                                        .foregroundColor(Color.foregroundColor)
-//                                }
-//                            }
                         }
                     }
                 }
@@ -164,20 +90,6 @@ struct ProjectInformationView: View {
                         title: "Ranking",
                         value: project.attributes.getRankingChangeString()
                     )
-//                    HStack {
-//                        Image(systemName: rankingChangeDirection.toImage())
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 40, height: 40)
-//                        
-//                        VStack(alignment: .leading)  {
-//                            Text("Ranking")
-//                                .bold()
-//                                .foregroundColor(Color.accentColor)
-//                            
-//                            Text(project.attributes.getRankingChangeString())
-//                        }
-//                    }
                 }
             }
         }
