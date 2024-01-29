@@ -17,6 +17,8 @@ struct PageLinkComponentView: View {
         VStack {
             if let entity {
                 NavigationLink(destination: AnyView(entity.getDestinationView())) {
+                    let color = Color(hex: component.backgroundColor) ?? .accentColor
+                    
                     HStack {
                         if component.iconName == nil {
                             Spacer()
@@ -26,15 +28,25 @@ struct PageLinkComponentView: View {
                             .bold()
                         
                         Spacer()
-                        
-                        if let iconName = component.iconName {
-                            Image(systemName: iconName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                        }
                     }.padding()
-                        .background(Color(hex: component.backgroundColor) ?? .accentColor)
+                        .if(component.iconName != nil) { view in
+                            view.overlay(
+                                HStack {
+                                    Spacer()
+                                    
+                                    Image(systemName: component.iconName ?? "")
+                                }.padding()
+                            )
+                        }.background(
+                            LinearGradient(
+                                stops: [
+                                    .init(color: color, location: 0.0),
+                                    .init(color: color.withAlphaComponent(0.5), location: 1.0)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
                         .foregroundStyle(.white)
                         .cornerRadius(10)
                 }

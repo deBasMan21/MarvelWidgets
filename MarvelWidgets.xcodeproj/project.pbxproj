@@ -46,59 +46,7 @@
 		EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */; };
 		EF185A5C2A377BC6002BF289 /* TrackingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF185A5B2A377BC6002BF289 /* TrackingService.swift */; };
 		EF185A5E2A378185002BF289 /* RecommendationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF185A5D2A378185002BF289 /* RecommendationService.swift */; };
-		EF1BE4192A191BB50072CC26 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6B8298292412CA00A5D69C /* UserNotifications.framework */; };
-		EF1BE41A2A191BB50072CC26 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF6B829A292412CA00A5D69C /* UserNotificationsUI.framework */; };
-		EF1BE41D2A191BB50072CC26 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1BE41C2A191BB50072CC26 /* NotificationViewController.swift */; };
-		EF1BE4202A191BB50072CC26 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF1BE41E2A191BB50072CC26 /* MainInterface.storyboard */; };
-		EF1BE4242A191BB50072CC26 /* McuWidgetsRPNContent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF1BE4182A191BB50072CC26 /* McuWidgetsRPNContent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		EF1BE42A2A191BD00072CC26 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1BE4292A191BD00072CC26 /* NotificationView.swift */; };
-		EF1BE42E2A19361C0072CC26 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* ProjectService.swift */; };
-		EF1BE42F2A1936240072CC26 /* ListPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */; };
-		EF1BE4302A19362F0072CC26 /* UrlComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065729E6B947009CC97A /* UrlComponents.swift */; };
-		EF1BE4312A19363A0072CC26 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065529E6B93B009CC97A /* UrlBuilder.swift */; };
-		EF1BE4322A1936460072CC26 /* ListResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E270292107B500854E5F /* ListResponseWrapper.swift */; };
-		EF1BE4332A1936490072CC26 /* ProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E274292107CE00854E5F /* ProjectWrapper.swift */; };
-		EF1BE4342A1936500072CC26 /* MCUProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E276292107DE00854E5F /* MCUProject.swift */; };
-		EF1BE4352A1936600072CC26 /* RelatedProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28C2921086600854E5F /* RelatedProjects.swift */; };
-		EF1BE4362A1936600072CC26 /* ProjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27C2921080600854E5F /* ProjectType.swift */; };
-		EF1BE4372A1936600072CC26 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2962921089F00854E5F /* Episode.swift */; };
-		EF1BE4382A1936600072CC26 /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
-		EF1BE4392A1936600072CC26 /* Actors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27E2921081200854E5F /* Actors.swift */; };
-		EF1BE43A2A1936600072CC26 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28A2921085900854E5F /* Poster.swift */; };
-		EF1BE43B2A1936600072CC26 /* SingleResponseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E272292107C100854E5F /* SingleResponseWrapper.swift */; };
-		EF1BE43C2A1936600072CC26 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2822921082A00854E5F /* Actor.swift */; };
-		EF1BE43D2A1936600072CC26 /* Director.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2882921084F00854E5F /* Director.swift */; };
-		EF1BE43E2A1936600072CC26 /* Trailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2922921088900854E5F /* Trailer.swift */; };
-		EF1BE43F2A1936600072CC26 /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E278292107EB00854E5F /* Phase.swift */; };
-		EF1BE4402A1936600072CC26 /* ActorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2802921081F00854E5F /* ActorsWrapper.swift */; };
-		EF1BE4412A1936600072CC26 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2942921089400854E5F /* Season.swift */; };
-		EF1BE4422A1936600072CC26 /* Directors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2842921083600854E5F /* Directors.swift */; };
-		EF1BE4432A1936600072CC26 /* DirectorsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2862921084400854E5F /* DirectorsWrapper.swift */; };
-		EF1BE4452A1936600072CC26 /* RelatedProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E2902921087F00854E5F /* RelatedProject.swift */; };
-		EF1BE4462A1936600072CC26 /* Saga.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E27A292107F500854E5F /* Saga.swift */; };
-		EF1BE4472A1936600072CC26 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D9D28A41D2B0004AAC7 /* WidgetType.swift */; };
-		EF1BE4482A1936600072CC26 /* PersonSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83542933A17000A5D69C /* PersonSortKeys.swift */; };
-		EF1BE4492A1936600072CC26 /* RelatedProjectWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF0E28E2921087300854E5F /* RelatedProjectWrapper.swift */; };
-		EF1BE44A2A1936620072CC26 /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
 		EF1BE44C2A1936620072CC26 /* PersonSortKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B83542933A17000A5D69C /* PersonSortKeys.swift */; };
-		EF1BE44D2A1936840072CC26 /* UrlBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */; };
-		EF1BE44E2A19369F0072CC26 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
-		EF1BE44F2A1936A70072CC26 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0CA0B529DDEE4400A2322A /* Config.swift */; };
-		EF1BE4502A1936AD0072CC26 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6B82BD2925816800A5D69C /* UserDefaultsService.swift */; };
-		EF1BE4512A1936B40072CC26 /* CachingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4D265A28A451E300B7BCEE /* CachingService.swift */; };
-		EF1BE4522A1936BC0072CC26 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE381D28A3DD4200B4CC0D /* APIService.swift */; };
-		EF1BE4532A1936D90072CC26 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE382428A3E0A700B4CC0D /* LogService.swift */; };
-		EF1BE4542A1936E50072CC26 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7728A3F00F0004AAC7 /* DateExtension.swift */; };
-		EF1BE4552A1936EF0072CC26 /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0CA0BA29DDEEB200A2322A /* DebugConfig.swift */; };
-		EF1BE4562A1936F30072CC26 /* ProductionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0CA0B029DDEE3D00A2322A /* ProductionConfig.swift */; };
-		EF1BE4582A1937300072CC26 /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = EF1BE4572A1937300072CC26 /* DataCache */; };
-		EF1BE4592A19397B0072CC26 /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84046829DF574E00E8F969 /* LargeWidgetView.swift */; };
-		EF1BE45A2A19399D0072CC26 /* WidgetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */; };
-		EF1BE45B2A1939B30072CC26 /* RedChipText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BD229BE30C600437A6E /* RedChipText.swift */; };
-		EF1BE45C2A1939BB0072CC26 /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C3E28AE8CC3003B9B76 /* MediumWidgetView.swift */; };
-		EF1BE45D2A1939E10072CC26 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */; };
-		EF1BE45E2A193A920072CC26 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF238A9B29AE8D7300C3FC9C /* TextExtension.swift */; };
-		EF1BE4602A193F400072CC26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1BE45F2A193F400072CC26 /* Assets.xcassets */; };
 		EF1F065429E6B92D009CC97A /* UrlBuilderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */; };
 		EF1F065629E6B93B009CC97A /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065529E6B93B009CC97A /* UrlBuilder.swift */; };
 		EF1F065829E6B947009CC97A /* UrlComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F065729E6B947009CC97A /* UrlComponents.swift */; };
@@ -115,6 +63,7 @@
 		EF28E7FD29A69EFF00B7C845 /* ListPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */; };
 		EF28E7FE29A69EFF00B7C845 /* ListPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */; };
 		EF28E7FF29A69EFF00B7C845 /* ListPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */; };
+		EF2DD0872B66DC9000BA604C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2DD0862B66DC9000BA604C /* Constants.swift */; };
 		EF38FD72291FF56400EA4BD9 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* ProjectService.swift */; };
 		EF38FD73291FF56400EA4BD9 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* ProjectService.swift */; };
 		EF38FD74291FF56400EA4BD9 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38FD71291FF56400EA4BD9 /* ProjectService.swift */; };
@@ -176,7 +125,6 @@
 		EF7571772A604C3900231750 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571752A604C3900231750 /* ImageSize.swift */; };
 		EF7571782A604C3900231750 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571752A604C3900231750 /* ImageSize.swift */; };
 		EF7571792A632CD500231750 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571752A604C3900231750 /* ImageSize.swift */; };
-		EF75717A2A632CD800231750 /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571752A604C3900231750 /* ImageSize.swift */; };
 		EF75717B2A632D0100231750 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D7528A3EFAE0004AAC7 /* StringExtensions.swift */; };
 		EF75717D2A65810E00231750 /* SpotifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75717C2A65810D00231750 /* SpotifyView.swift */; };
 		EF75717E2A65810E00231750 /* SpotifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75717C2A65810D00231750 /* SpotifyView.swift */; };
@@ -194,9 +142,6 @@
 		EF7571922A65820400231750 /* CollectionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571912A65820400231750 /* CollectionPageView.swift */; };
 		EF7571962A65822400231750 /* CollectionProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571952A65822400231750 /* CollectionProjectListView.swift */; };
 		EF75719A2A65823E00231750 /* HorizontalProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571992A65823E00231750 /* HorizontalProjectView.swift */; };
-		EF75719D2A65848200231750 /* CollectionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571882A65818E00231750 /* CollectionAttributes.swift */; };
-		EF75719E2A65848500231750 /* ProjectCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571842A65817E00231750 /* ProjectCollection.swift */; };
-		EF75719F2A65848800231750 /* CollectionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7571802A65816D00231750 /* CollectionWrapper.swift */; };
 		EF78F5C02993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
 		EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
 		EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5BF2993BB7200CA9028 /* AccessoryCircularWidget.swift */; };
@@ -226,7 +171,6 @@
 		EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF84047329DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */; };
 		EF87794A2A2B447600FFBBB5 /* SwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8779492A2B447600FFBBB5 /* SwipingView.swift */; };
-		EF90E2202B177D0700ACA0AE /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCA5D8B28A3FEFC0004AAC7 /* ImageHelper.swift */; };
 		EF9B914028B9045200C5F7B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EF9B913F28B9045200C5F7B2 /* Kingfisher */; };
 		EFA11AE72AFE7697001AD59B /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
 		EFA11AE82AFE7BE1001AD59B /* WidgetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF178C4B28AEC78D003B9B76 /* WidgetHelper.swift */; };
@@ -259,7 +203,6 @@
 		EFBAD7CF2B61397900E14807 /* CollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7CE2B61397900E14807 /* CollectionService.swift */; };
 		EFBAD7D12B61399400E14807 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7D02B61399400E14807 /* Service.swift */; };
 		EFBAD7D22B613C0700E14807 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7D02B61399400E14807 /* Service.swift */; };
-		EFBAD7D52B613C0800E14807 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7D02B61399400E14807 /* Service.swift */; };
 		EFBAD7D62B613C0B00E14807 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7D02B61399400E14807 /* Service.swift */; };
 		EFBD33C82B614D340053EF35 /* HorizontalListComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33C72B614D340053EF35 /* HorizontalListComponentView.swift */; };
 		EFBD33CA2B614F970053EF35 /* LabelIconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33C92B614F970053EF35 /* LabelIconStyle.swift */; };
@@ -343,7 +286,6 @@
 		EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */; };
 		EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F5E829956D1600CA9028 /* OtherWidgets.swift */; };
 		EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC029BE225A00437A6E /* NotificationService.swift */; };
-		EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC229BE229F00437A6E /* NotificationTopics.swift */; };
 		EFF04BC629BE2FFD00437A6E /* OnboardingPageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */; };
 		EFF04BC829BE302400437A6E /* OnboardingPageOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC729BE302400437A6E /* OnboardingPageOneView.swift */; };
 		EFF04BCA29BE303F00437A6E /* OnboardingPageTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF04BC929BE303F00437A6E /* OnboardingPageTwoView.swift */; };
@@ -448,13 +390,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EF1BE4222A191BB50072CC26 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EFCE380328A3D7A700B4CC0D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EF1BE4172A191BB50072CC26;
-			remoteInfo = McuWidgetsRPNContent;
-		};
 		EF6B82C829258B9300A5D69C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EFCE380328A3D7A700B4CC0D /* Project object */;
@@ -486,7 +421,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				EFCE383B28A3E22F00B4CC0D /* SmallWidgetExtension.appex in Embed Foundation Extensions */,
-				EF1BE4242A191BB50072CC26 /* McuWidgetsRPNContent.appex in Embed Foundation Extensions */,
 				EFCA5DC728A445B40004AAC7 /* WidgetTypeConfiguration.appex in Embed Foundation Extensions */,
 				EF6B82CA29258B9300A5D69C /* MCUWidgetsRPN.appex in Embed Foundation Extensions */,
 			);
@@ -516,15 +450,8 @@
 		EF178C4F28AEC898003B9B76 /* WidgetPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviewView.swift; sourceTree = "<group>"; };
 		EF185A5B2A377BC6002BF289 /* TrackingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingService.swift; sourceTree = "<group>"; };
 		EF185A5D2A378185002BF289 /* RecommendationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationService.swift; sourceTree = "<group>"; };
-		EF1BE4182A191BB50072CC26 /* McuWidgetsRPNContent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = McuWidgetsRPNContent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF1BE41C2A191BB50072CC26 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		EF1BE41F2A191BB50072CC26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		EF1BE4212A191BB50072CC26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EF1BE4292A191BD00072CC26 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		EF1BE42B2A19229B0072CC26 /* McuWidgetsRPNContent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = McuWidgetsRPNContent.entitlements; sourceTree = "<group>"; };
 		EF1BE42C2A1929690072CC26 /* MCUWidgetsRPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MCUWidgetsRPN.entitlements; sourceTree = "<group>"; };
 		EF1BE42D2A1929740072CC26 /* WidgetTypeConfiguration.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetTypeConfiguration.entitlements; sourceTree = "<group>"; };
-		EF1BE45F2A193F400072CC26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF1F065329E6B92D009CC97A /* UrlBuilderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlBuilderType.swift; sourceTree = "<group>"; };
 		EF1F065529E6B93B009CC97A /* UrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlBuilder.swift; sourceTree = "<group>"; };
 		EF1F065729E6B947009CC97A /* UrlComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlComponents.swift; sourceTree = "<group>"; };
@@ -532,6 +459,7 @@
 		EF238AA129B26B9A00C3FC9C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EF26F68929DA110300E1A74D /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
 		EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageType.swift; sourceTree = "<group>"; };
+		EF2DD0862B66DC9000BA604C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EF38FD71291FF56400EA4BD9 /* ProjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		EF4D265628A4512600B7BCEE /* ConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigValues.swift; sourceTree = "<group>"; };
 		EF4D265A28A451E300B7BCEE /* CachingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingService.swift; sourceTree = "<group>"; };
@@ -675,7 +603,6 @@
 		EFD9566129AAA5E1009D5EDD /* UpcomingProjectEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingProjectEntry.swift; sourceTree = "<group>"; };
 		EFE69E4A29A69568002345FF /* WidgetProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetProjectService.swift; sourceTree = "<group>"; };
 		EFF04BC029BE225A00437A6E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		EFF04BC229BE229F00437A6E /* NotificationTopics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTopics.swift; sourceTree = "<group>"; };
 		EFF04BC529BE2FFD00437A6E /* OnboardingPageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageContainer.swift; sourceTree = "<group>"; };
 		EFF04BC729BE302400437A6E /* OnboardingPageOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageOneView.swift; sourceTree = "<group>"; };
 		EFF04BC929BE303F00437A6E /* OnboardingPageTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageTwoView.swift; sourceTree = "<group>"; };
@@ -730,16 +657,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EF1BE4152A191BB50072CC26 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EF1BE41A2A191BB50072CC26 /* UserNotificationsUI.framework in Frameworks */,
-				EF1BE4192A191BB50072CC26 /* UserNotifications.framework in Frameworks */,
-				EF1BE4582A1937300072CC26 /* DataCache in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EF6B82C029258B9300A5D69C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -797,27 +714,6 @@
 				EF0CA0BA29DDEEB200A2322A /* DebugConfig.swift */,
 			);
 			path = configs;
-			sourceTree = "<group>";
-		};
-		EF1BE41B2A191BB50072CC26 /* McuWidgetsRPNContent */ = {
-			isa = PBXGroup;
-			children = (
-				EF1BE42B2A19229B0072CC26 /* McuWidgetsRPNContent.entitlements */,
-				EF1BE4282A191BC00072CC26 /* views */,
-				EF1BE41C2A191BB50072CC26 /* NotificationViewController.swift */,
-				EF1BE41E2A191BB50072CC26 /* MainInterface.storyboard */,
-				EF1BE4212A191BB50072CC26 /* Info.plist */,
-				EF1BE45F2A193F400072CC26 /* Assets.xcassets */,
-			);
-			path = McuWidgetsRPNContent;
-			sourceTree = "<group>";
-		};
-		EF1BE4282A191BC00072CC26 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				EF1BE4292A191BD00072CC26 /* NotificationView.swift */,
-			);
-			path = views;
 			sourceTree = "<group>";
 		};
 		EF1F065229E6B91F009CC97A /* UrlBuilder */ = {
@@ -1055,6 +951,7 @@
 				EF28E7FB29A69EFF00B7C845 /* ListPageType.swift */,
 				EF7571752A604C3900231750 /* ImageSize.swift */,
 				EFBD33CF2B6154800053EF35 /* ListComponentViewHelper.swift */,
+				EF2DD0862B66DC9000BA604C /* Constants.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1097,7 +994,6 @@
 				EFCE383028A3E22E00B4CC0D /* SmallWidget */,
 				EFCA5DB028A445B40004AAC7 /* WidgetTypeConfiguration */,
 				EF6B82C429258B9300A5D69C /* MCUWidgetsRPN */,
-				EF1BE41B2A191BB50072CC26 /* McuWidgetsRPNContent */,
 				EFCE382B28A3E22E00B4CC0D /* Frameworks */,
 				EFCE380C28A3D7A700B4CC0D /* Products */,
 			);
@@ -1110,7 +1006,6 @@
 				EFCE382A28A3E22E00B4CC0D /* SmallWidgetExtension.appex */,
 				EFCA5DAD28A445B40004AAC7 /* WidgetTypeConfiguration.appex */,
 				EF6B82C329258B9300A5D69C /* MCUWidgetsRPN.appex */,
-				EF1BE4182A191BB50072CC26 /* McuWidgetsRPNContent.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1196,7 +1091,6 @@
 				EFF0E2942921089400854E5F /* Season.swift */,
 				EFF0E2962921089F00854E5F /* Episode.swift */,
 				EF6B83542933A17000A5D69C /* PersonSortKeys.swift */,
-				EFF04BC229BE229F00437A6E /* NotificationTopics.swift */,
 				EFF04BEB29BE710A00437A6E /* AppIcon.swift */,
 				EF7571802A65816D00231750 /* CollectionWrapper.swift */,
 				EF7571842A65817E00231750 /* ProjectCollection.swift */,
@@ -1413,26 +1307,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EF1BE4172A191BB50072CC26 /* McuWidgetsRPNContent */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EF1BE4272A191BB50072CC26 /* Build configuration list for PBXNativeTarget "McuWidgetsRPNContent" */;
-			buildPhases = (
-				EF1BE4142A191BB50072CC26 /* Sources */,
-				EF1BE4152A191BB50072CC26 /* Frameworks */,
-				EF1BE4162A191BB50072CC26 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = McuWidgetsRPNContent;
-			packageProductDependencies = (
-				EF1BE4572A1937300072CC26 /* DataCache */,
-			);
-			productName = McuWidgetsRPNContent;
-			productReference = EF1BE4182A191BB50072CC26 /* McuWidgetsRPNContent.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		EF6B82C229258B9300A5D69C /* MCUWidgetsRPN */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF6B82CB29258B9400A5D69C /* Build configuration list for PBXNativeTarget "MCUWidgetsRPN" */;
@@ -1486,7 +1360,6 @@
 				EFCE383A28A3E22F00B4CC0D /* PBXTargetDependency */,
 				EFCA5DC628A445B40004AAC7 /* PBXTargetDependency */,
 				EF6B82C929258B9300A5D69C /* PBXTargetDependency */,
-				EF1BE4232A191BB50072CC26 /* PBXTargetDependency */,
 			);
 			name = MarvelWidgets;
 			packageProductDependencies = (
@@ -1537,9 +1410,6 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					EF1BE4172A191BB50072CC26 = {
-						CreatedOnToolsVersion = 14.3;
-					};
 					EF6B82C229258B9300A5D69C = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -1579,21 +1449,11 @@
 				EFCE382928A3E22E00B4CC0D /* SmallWidgetExtension */,
 				EFCA5DAC28A445B40004AAC7 /* WidgetTypeConfiguration */,
 				EF6B82C229258B9300A5D69C /* MCUWidgetsRPN */,
-				EF1BE4172A191BB50072CC26 /* McuWidgetsRPNContent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EF1BE4162A191BB50072CC26 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EF1BE4602A193F400072CC26 /* Assets.xcassets in Resources */,
-				EF1BE4202A191BB50072CC26 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EF6B82C129258B9300A5D69C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1637,64 +1497,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EF1BE4142A191BB50072CC26 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EF1BE4322A1936460072CC26 /* ListResponseWrapper.swift in Sources */,
-				EF1BE4522A1936BC0072CC26 /* APIService.swift in Sources */,
-				EF1BE4432A1936600072CC26 /* DirectorsWrapper.swift in Sources */,
-				EF1BE4372A1936600072CC26 /* Episode.swift in Sources */,
-				EF1BE4352A1936600072CC26 /* RelatedProjects.swift in Sources */,
-				EF1BE4362A1936600072CC26 /* ProjectType.swift in Sources */,
-				EF1BE42F2A1936240072CC26 /* ListPageType.swift in Sources */,
-				EF1BE43C2A1936600072CC26 /* Actor.swift in Sources */,
-				EF1BE4422A1936600072CC26 /* Directors.swift in Sources */,
-				EF1BE4562A1936F30072CC26 /* ProductionConfig.swift in Sources */,
-				EF1BE43E2A1936600072CC26 /* Trailer.swift in Sources */,
-				EFBAD7D52B613C0800E14807 /* Service.swift in Sources */,
-				EF1BE45D2A1939E10072CC26 /* ColorExtensions.swift in Sources */,
-				EF1BE45C2A1939BB0072CC26 /* MediumWidgetView.swift in Sources */,
-				EF1BE4512A1936B40072CC26 /* CachingService.swift in Sources */,
-				EF1BE43F2A1936600072CC26 /* Phase.swift in Sources */,
-				EF1BE4462A1936600072CC26 /* Saga.swift in Sources */,
-				EF1BE43A2A1936600072CC26 /* Poster.swift in Sources */,
-				EF1BE4502A1936AD0072CC26 /* UserDefaultsService.swift in Sources */,
-				EF1BE43D2A1936600072CC26 /* Director.swift in Sources */,
-				EF1BE4392A1936600072CC26 /* Actors.swift in Sources */,
-				EF1BE4302A19362F0072CC26 /* UrlComponents.swift in Sources */,
-				EF75719E2A65848500231750 /* ProjectCollection.swift in Sources */,
-				EF1BE43B2A1936600072CC26 /* SingleResponseWrapper.swift in Sources */,
-				EF75719D2A65848200231750 /* CollectionAttributes.swift in Sources */,
-				EF1BE41D2A191BB50072CC26 /* NotificationViewController.swift in Sources */,
-				EF1BE4312A19363A0072CC26 /* UrlBuilder.swift in Sources */,
-				EF1BE4382A1936600072CC26 /* NotificationTopics.swift in Sources */,
-				EF1BE4532A1936D90072CC26 /* LogService.swift in Sources */,
-				EF1BE4412A1936600072CC26 /* Season.swift in Sources */,
-				EF1BE4452A1936600072CC26 /* RelatedProject.swift in Sources */,
-				EF75717A2A632CD800231750 /* ImageSize.swift in Sources */,
-				EF1BE45B2A1939B30072CC26 /* RedChipText.swift in Sources */,
-				EF1BE42A2A191BD00072CC26 /* NotificationView.swift in Sources */,
-				EF75719F2A65848800231750 /* CollectionWrapper.swift in Sources */,
-				EF1BE4492A1936600072CC26 /* RelatedProjectWrapper.swift in Sources */,
-				EF1BE44E2A19369F0072CC26 /* StringExtensions.swift in Sources */,
-				EF1BE44D2A1936840072CC26 /* UrlBuilderType.swift in Sources */,
-				EF1BE4552A1936EF0072CC26 /* DebugConfig.swift in Sources */,
-				EF1BE42E2A19361C0072CC26 /* ProjectService.swift in Sources */,
-				EF1BE4342A1936500072CC26 /* MCUProject.swift in Sources */,
-				EF1BE4472A1936600072CC26 /* WidgetType.swift in Sources */,
-				EF90E2202B177D0700ACA0AE /* ImageHelper.swift in Sources */,
-				EF1BE45E2A193A920072CC26 /* TextExtension.swift in Sources */,
-				EF1BE4592A19397B0072CC26 /* LargeWidgetView.swift in Sources */,
-				EF1BE45A2A19399D0072CC26 /* WidgetHelper.swift in Sources */,
-				EF1BE4332A1936490072CC26 /* ProjectWrapper.swift in Sources */,
-				EF1BE44F2A1936A70072CC26 /* Config.swift in Sources */,
-				EF1BE4402A1936600072CC26 /* ActorsWrapper.swift in Sources */,
-				EF1BE4542A1936E50072CC26 /* DateExtension.swift in Sources */,
-				EF1BE4482A1936600072CC26 /* PersonSortKeys.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EF6B82BF29258B9300A5D69C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1768,7 +1570,6 @@
 				EF7571782A604C3900231750 /* ImageSize.swift in Sources */,
 				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
 				EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
-				EF1BE44A2A1936620072CC26 /* NotificationTopics.swift in Sources */,
 				EFF0E2BB2921097200854E5F /* Directors.swift in Sources */,
 				EF578F3B28A45728006272AA /* UserDefaultValues.swift in Sources */,
 				EFF0E2BD2921097200854E5F /* RelatedProjects.swift in Sources */,
@@ -1890,6 +1691,7 @@
 				EFF04BE329BE55A900437A6E /* OnboardingPageThreeHeader.swift in Sources */,
 				EFF0E273292107C100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EF6B82DA292D577500A5D69C /* PersonListPageView.swift in Sources */,
+				EF2DD0872B66DC9000BA604C /* Constants.swift in Sources */,
 				EFBAD7C32B6036B500E14807 /* TextComponentView.swift in Sources */,
 				EFBAD7C92B60475900E14807 /* YoutubeComponentView.swift in Sources */,
 				EF04E67D29AD491C003C0420 /* CircularImageView.swift in Sources */,
@@ -1926,7 +1728,6 @@
 				EF0A7B582B654B7200C5A614 /* HeaderWidgetComponentView.swift in Sources */,
 				EFF04BEC29BE710A00437A6E /* AppIcon.swift in Sources */,
 				EF26F68A29DA110300E1A74D /* ZoomableScrollView.swift in Sources */,
-				EFF04BC329BE229F00437A6E /* NotificationTopics.swift in Sources */,
 				EF84046929DF574E00E8F969 /* LargeWidgetView.swift in Sources */,
 				EFBD33E32B615BED0053EF35 /* CollectionProjectEntity.swift in Sources */,
 				EFBAD7B92B5F05BC00E14807 /* TitleComponent.swift in Sources */,
@@ -2074,11 +1875,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EF1BE4232A191BB50072CC26 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EF1BE4172A191BB50072CC26 /* McuWidgetsRPNContent */;
-			targetProxy = EF1BE4222A191BB50072CC26 /* PBXContainerItemProxy */;
-		};
 		EF6B82C929258B9300A5D69C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EF6B82C229258B9300A5D69C /* MCUWidgetsRPN */;
@@ -2096,82 +1892,7 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		EF1BE41E2A191BB50072CC26 /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF1BE41F2A191BB50072CC26 /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		EF1BE4252A191BB50072CC26 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = McuWidgetsRPNContent/McuWidgetsRPNContent.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = McuWidgetsRPNContent/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = McuWidgetsRPNContent;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.McuWidgetsRPNContent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets MCUWidgetsRPNContent dev";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		EF1BE4262A191BB50072CC26 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CODE_SIGN_ENTITLEMENTS = McuWidgetsRPNContent/McuWidgetsRPNContent.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 963LK66N4P;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = McuWidgetsRPNContent/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = McuWidgetsRPNContent;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.Buijsen.MCUWidgets.McuWidgetsRPNContent;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MCUWidgets MCUWidgetsRPNContent distribution";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		EF6B82CC29258B9400A5D69C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2571,15 +2292,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF1BE4272A191BB50072CC26 /* Build configuration list for PBXNativeTarget "McuWidgetsRPNContent" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EF1BE4252A191BB50072CC26 /* Debug */,
-				EF1BE4262A191BB50072CC26 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		EF6B82CB29258B9400A5D69C /* Build configuration list for PBXNativeTarget "MCUWidgetsRPN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2683,11 +2395,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EF04E67929AD24C4003C0420 /* XCRemoteSwiftPackageReference "SwiftUINavigationHeader" */;
 			productName = SwiftUINavigationHeader;
-		};
-		EF1BE4572A1937300072CC26 /* DataCache */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EF6B8342293233A300A5D69C /* XCRemoteSwiftPackageReference "DataCache" */;
-			productName = DataCache;
 		};
 		EF50A52529E7026D007518BF /* AlertToast */ = {
 			isa = XCSwiftPackageProductDependency;

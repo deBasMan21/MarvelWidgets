@@ -16,30 +16,9 @@ extension WidgetSettingsView {
         @Published var selectedProject: Int? = nil
         @Published var selectedProjectTitle: String? = nil
         @Published var selectedProjectObject: ProjectWrapper? = nil
-        
-        @Published var notificationMovie: Bool {
+        @Published var notificationNews: Bool {
             didSet {
-                self.toggleTopic(.movie)
-            }
-        }
-        @Published var notificationSerie: Bool {
-            didSet {
-                self.toggleTopic(.serie)
-            }
-        }
-        @Published var notificationSpecial: Bool {
-            didSet {
-                self.toggleTopic(.special)
-            }
-        }
-        @Published var notificationTesting: Bool {
-            didSet {
-                self.toggleTopic(.testing)
-            }
-        }
-        @Published var notificationRelated: Bool {
-            didSet {
-                self.toggleTopic(.related)
+                toggleTopic(Constants.newsTopic)
             }
         }
         
@@ -49,12 +28,7 @@ extension WidgetSettingsView {
         init() {
             selectedProject = userDefs.integer(forKey: UserDefaultValues.specificSelectedProject)
             selectedProjectTitle = userDefs.string(forKey: UserDefaultValues.specificSelectedProjectTitle)
-            
-            notificationMovie = notificationService.isSubscribedTo(topic: .movie)
-            notificationSerie = notificationService.isSubscribedTo(topic: .serie)
-            notificationSpecial = notificationService.isSubscribedTo(topic: .special)
-            notificationRelated = notificationService.isSubscribedTo(topic: .related)
-            notificationTesting = notificationService.isSubscribedTo(topic: .testing)
+            notificationNews = notificationService.isSubscribedTo(topic: Constants.newsTopic)
             
             Task {
                 await MainActor.run {
@@ -86,7 +60,7 @@ extension WidgetSettingsView {
             return await ProjectService.getById(id)
         }
         
-        func toggleTopic(_ topic: NotificationTopics) {
+        func toggleTopic(_ topic: String) {
             notificationService.toggleTopic(topic)
         }
     }

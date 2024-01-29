@@ -22,27 +22,9 @@ struct WidgetSettingsView: View {
                             .font(.title2)
                             .bold()
                         
-                        Toggle(isOn: $viewModel.notificationMovie) {
-                            Text("Marvel Movies")
+                        Toggle(isOn: $viewModel.notificationNews) {
+                            Text("News")
                         }.tint(.accentColor)
-                        
-                        Toggle(isOn: $viewModel.notificationSerie) {
-                            Text("Marvel Series")
-                        }.tint(.accentColor)
-                        
-                        Toggle(isOn: $viewModel.notificationSpecial) {
-                            Text("Marvel Specials")
-                        }.tint(.accentColor)
-                        
-                        Toggle(isOn: $viewModel.notificationRelated) {
-                            Text("Related projects (not MCU)")
-                        }.tint(.accentColor)
-                        
-                        #if DEBUG
-                            Toggle(isOn: $viewModel.notificationTesting) {
-                                Text("Testing")
-                            }.tint(.accentColor)
-                        #endif
                     }
                     
                     Divider()

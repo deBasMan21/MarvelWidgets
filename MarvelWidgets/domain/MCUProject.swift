@@ -45,6 +45,7 @@ struct MCUProject: Codable, Comparable {
     let chronology: Int?
     let episodes: [Episode]?
     let collection: CollectionWrapper?
+    let notificationTopic: String?
  
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -77,7 +78,7 @@ struct MCUProject: Codable, Comparable {
         case chronology
         case episodes
         case spotifyEmbed
-        case collection, backdropUrl
+        case collection, backdropUrl, notificationTopic
     }
     
     func getReleaseDateString(withDayCount: Bool = false) -> String {

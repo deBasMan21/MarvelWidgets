@@ -13,10 +13,6 @@ import UIKit
 class NotificationService {
     init(){}
     
-    func toggleTopic(_ topic: NotificationTopics) {
-        toggleTopic(topic.rawValue)
-    }
-    
     func toggleTopic(_ topic: String) {
         requestAuthorization()
         
@@ -35,10 +31,6 @@ class NotificationService {
     
     func getTopics() -> [String] {
         UserDefaultsService.standard.subscribeTopics
-    }
-    
-    func isSubscribedTo(topic: NotificationTopics) -> Bool {
-        isSubscribedTo(topic: topic.rawValue)
     }
     
     func isSubscribedTo(topic: String) -> Bool {

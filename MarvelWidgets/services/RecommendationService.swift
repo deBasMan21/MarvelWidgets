@@ -134,7 +134,8 @@ struct ProjectRecommendation: Codable {
                     rankingChangeDirection: nil,
                     chronology: nil,
                     episodes: nil,
-                    collection: nil
+                    collection: nil,
+                    notificationTopic: nil
                 )
             )
         )

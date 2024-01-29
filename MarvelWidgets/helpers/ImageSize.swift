@@ -31,7 +31,7 @@ class ImageSize {
         case original = "original"
         case w1280 = "w1280"
         case w780 = "w780"
-        case w300 = "2300"
+        case w300 = "w300"
     }
     
     enum PosterSize: String {
