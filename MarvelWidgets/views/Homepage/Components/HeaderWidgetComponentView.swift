@@ -17,11 +17,20 @@ struct HeaderWidgetComponentView: View {
         VStack {
             if let entity {
                 NavigationLink(destination: AnyView(entity.getDestinationView())) {
-                    NewsItemView(item: component, appearingAnimation: false, whiteText: true, height: nil)
-                        .foregroundStyle(.white)
+                    NewsItemView(
+                        item: component,
+                        appearingAnimation: false,
+                        whiteText: true,
+                        height: nil
+                    ).foregroundStyle(.white)
                 }
             } else if !loading {
-                NewsItemView(item: component, appearingAnimation: false, whiteText: true, height: nil)
+                NewsItemView(
+                    item: component,
+                    appearingAnimation: false,
+                    whiteText: true,
+                    height: nil
+                )
             } else {
                 ProgressView()
             }

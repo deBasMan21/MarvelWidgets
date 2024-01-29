@@ -11,5 +11,10 @@ struct NotificationsDialogComponent: Codable {
     let id: Int
     let title: String
     let description: String
-    let topics: [String]
+    let topics: [NotificationsDialogTopic]
+}
+
+struct NotificationsDialogTopic: Codable, Identifiable {
+    let id: Int
+    let topic: String
 }

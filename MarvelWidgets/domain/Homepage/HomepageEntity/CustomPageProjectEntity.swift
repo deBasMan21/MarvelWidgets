@@ -30,7 +30,7 @@ struct CustomPageProjectEntity: HomepageEntity {
     }
     
     func getImageUrl() -> String {
-        customPage.attributes.imageUrl
+        customPage.attributes.imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original)))
     }
     
     func getDestinationView() -> any View {

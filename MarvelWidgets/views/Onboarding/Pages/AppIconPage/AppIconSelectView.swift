@@ -30,9 +30,6 @@ struct AppIconSelectView: View {
             
             ForEach(icons) { icon in
                 VStack {
-                    Text(icon.visibleName)
-                        .bold()
-                    
                     Image(icon.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -50,6 +47,11 @@ struct AppIconSelectView: View {
                                     .clipShape(Circle())
                             )
                         })
+                    
+                    Text(icon.visibleName)
+                        .if(selectedImage == icon.appIconName) { view in
+                            view.bold()
+                        }
                 }.onTapGesture {
                     if selectedImage != icon.appIconName {
                         selectedImage = icon.appIconName

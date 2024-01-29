@@ -66,7 +66,8 @@ class Placeholders {
             rankingChangeDirection: nil,
             chronology: nil,
             episodes: nil,
-            collection: nil
+            collection: nil,
+            notificationTopic: nil
         )
     )
     
@@ -127,7 +128,8 @@ class Placeholders {
             rankingChangeDirection: nil,
             chronology: nil,
             episodes: nil,
-            collection: nil
+            collection: nil,
+            notificationTopic: nil
         )
     )
     
@@ -172,7 +174,8 @@ class Placeholders {
             rankingChangeDirection: nil,
             chronology: nil,
             episodes: nil,
-            collection: nil
+            collection: nil,
+            notificationTopic: nil
         )
     )
     
@@ -218,7 +221,8 @@ class Placeholders {
                 rankingChangeDirection: nil,
                 chronology: nil,
                 episodes: nil,
-                collection: nil
+                collection: nil,
+                notificationTopic: nil
             )
         )
     }

@@ -16,6 +16,8 @@ struct HeaderWidgetComponent: Codable {
     let description: String?
     let contentType: CMSContentType?
     let contentTypeId: Int?
+    let showImage: Bool
+    let largeTitleAndGrid: Bool
 }
 
 struct HeaderWidgetCategory: Codable {

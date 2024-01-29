@@ -51,11 +51,13 @@ struct NewsListPageView: View {
                                     ],
                                     description: item.attributes.summary,
                                     contentType: nil,
-                                    contentTypeId: nil
+                                    contentTypeId: nil,
+                                    showImage: true,
+                                    largeTitleAndGrid: false
                                 ),
-                                 appearingAnimation: true,
-                                 whiteText: false,
-                                 height: minimumOffset
+                                appearingAnimation: true,
+                                whiteText: false,
+                                height: minimumOffset
                             ).onAppear {
                                 guard let thresholdIndex = newsItems.last?.id else { return }
                                 guard thresholdIndex == item.id else { return }
