@@ -24,7 +24,11 @@ struct NotificationsDialogComponentView: View {
             VStack {
                 ForEach(component.topics, id: \.topic.hashValue) { topic in
                     Toggle(isOn: binding(for: topic.topic)) {
-                        Text(topic.topic.replacingOccurrences(of: "_", with: " "))
+                        Text(
+                            topic.topic
+                                .replacingOccurrences(of: "_", with: " ")
+                                .replacingOccurrences(of: "~", with: ":")
+                        )
                     }.tint(.accentColor)
                     
                     if topic.id != component.topics.last?.id {

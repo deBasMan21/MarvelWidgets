@@ -22,6 +22,7 @@ class NotificationService: UNNotificationServiceExtension {
             bestAttemptContent.categoryIdentifier = "myNotificationCategory"
             
             if let imageUrl = bestAttemptContent.userInfo["gcm.notification.imageUrl"] as? String {
+                let imageUrl = imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.w342)))
                 downloadImage(from: imageUrl) { image in
                     if let attachment = UNNotificationAttachment.create(identifier: "temporaryNotificationImage", image: image, options: [:]) {
                         bestAttemptContent.attachments = [attachment]
@@ -31,6 +32,7 @@ class NotificationService: UNNotificationServiceExtension {
                     }
                 }
             } else if let fcmOptions = bestAttemptContent.userInfo["fcm_options"] as? [String: Any], let imageUrl = fcmOptions["image"] as? String {
+                let imageUrl = imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.w342)))
                 downloadImage(from: imageUrl) { image in
                     if let attachment = UNNotificationAttachment.create(identifier: "temporaryNotificationImage", image: image, options: [:]) {
                         bestAttemptContent.attachments = [attachment]
