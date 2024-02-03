@@ -30,10 +30,10 @@ class CollectionProjectEntity: HomepageEntity {
     }
     
     func getImageUrl() -> String {
-        collection.attributes.backdropUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original)))
+        collection.attributes.backdropUrl?.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original))) ?? ""
     }
     
-    func getDestinationView() -> any View {
-        CollectionPageView(collection: collection, inSheet: false)
+    func getDestinationUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: .collection, id: collection.id, homepage: true)
     }
 }

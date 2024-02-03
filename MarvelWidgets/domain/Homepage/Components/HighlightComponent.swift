@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HighlightComponent: Codable {
+struct HighlightComponent: Codable, Hashable {
     let id: Int
     let contentType: CMSContentType
     let contentTypeId: Int
@@ -22,4 +22,15 @@ enum CMSContentType: String, Codable {
     case collections = "collections"
     case newsItems = "news-items"
     case page = "pages"
+    
+    func getUrlEntity() -> InternalUrlBuilder.Entity {
+        return switch self {
+        case .projects: .project
+        case .actors: .actor
+        case .directors: .director
+        case .collections: .collection
+        case .newsItems: .news
+        case .page: .page
+        }
+    }
 }

@@ -226,4 +226,77 @@ class Placeholders {
             )
         )
     }
+    
+    static func loadingActor(id: Int) -> ActorsWrapper {
+        ActorsWrapper(
+            id: id,
+            attributes: Actor(
+                firstName: "",
+                lastName: "",
+                character: nil,
+                dateOfBirth: nil,
+                createdAt: "",
+                updatedAt: "",
+                imageURL: nil,
+                mcuProjects: nil
+            )
+        )
+    }
+    
+    static func loadingDirector(id: Int) -> DirectorsWrapper {
+        DirectorsWrapper(
+            id: id,
+            attributes: Director(
+                firstName: "",
+                lastName: "",
+                createdAt: "",
+                updatedAt: "",
+                imageURL: nil,
+                dateOfBirth: nil,
+                mcuProjects: nil
+            )
+        )
+    }
+    
+    static func loadingNews(id: Int) -> NewsItemWrapper {
+        NewsItemWrapper(
+            id: id,
+            attributes: NewsItem(
+                guid: "",
+                url: "",
+                title: "",
+                summary: "",
+                date_published: "",
+                author: "",
+                content: "",
+                categories: nil,
+                imageUrl: ""
+            )
+        )
+    }
+    
+    static func loadingPage(id: Int) -> CustomPageWrapper {
+        CustomPageWrapper(
+            id: id,
+            attributes: CustomPage(
+                components: nil,
+                title: "",
+                parallaxConfig: nil,
+                imageUrl: "",
+                showShareButton: true
+            )
+        )
+    }
+    
+    static func loadingCollection(id: Int) -> ProjectCollection {
+        ProjectCollection(
+            id: id,
+            attributes: CollectionAttributes(
+                name: "",
+                backdropUrl: nil,
+                overview: "",
+                projects: nil
+            )
+        )
+    }
 }

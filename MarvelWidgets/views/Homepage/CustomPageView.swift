@@ -49,6 +49,22 @@ struct CustomPageView: View {
                 view.navigationTitle(custompage!.attributes.title)
             }.task {
                 custompage = await PageService.getPageById(id: pageId)
+            }.toolbar {
+                if custompage?.attributes.showShareButton == true {
+                    ShareLink(
+                        item: getUrl(),
+                        subject: Text(custompage?.attributes.title ?? "Unkown"),
+                        message: Text("\"\(custompage?.attributes.title ?? "Unkown")\" is shared with you! Open with MCUWidgets via: \(getUrl())"),
+                        preview: SharePreview(
+                            custompage?.attributes.title ?? "Unkown",
+                            image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
+                        )
+                    )
+                }
             }
+    }
+    
+    func getUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: .page, id: pageId, homepage: false)
     }
 }

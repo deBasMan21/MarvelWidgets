@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HorizontalListComponentView: View {
+    @Environment(\.openURLHandlerAction) private var openUrlHandler
     @State var component: HorizontalListComponent
     @State var entities: [any HomepageEntity]? = nil
     @State var error: Bool = false
@@ -25,9 +26,11 @@ struct HorizontalListComponentView: View {
                     ScrollView(.horizontal) {
                         HStack {
                             ForEach(entities, id: \.id) { entity in
-                                NavigationLink(
-                                    destination: AnyView(entity.getDestinationView())
-                                ) {
+                                Button(action: {
+                                    _ = openUrlHandler?.callAsFunction(
+                                        URL(string: entity.getDestinationUrl())
+                                    )
+                                }) {
                                     switch component.viewType {
                                     case .poster:
                                         PosterListViewItem(

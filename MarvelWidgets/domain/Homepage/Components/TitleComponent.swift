@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TitleComponent: Codable {
+struct TitleComponent: Codable, Hashable {
     let id: Int
     let title: String
 }

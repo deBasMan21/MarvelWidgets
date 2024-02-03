@@ -15,7 +15,7 @@ protocol HomepageEntity: Identifiable {
     func getMultilineDescription() -> String
     func getImageUrl() -> String
     func getBackdropUrl() -> String
-    func getDestinationView() -> any View
+    func getDestinationUrl() -> String
 }
 
 extension HomepageEntity {

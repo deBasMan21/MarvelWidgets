@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Actor: Codable {
-    let firstName, lastName, character: String
-    let dateOfBirth: String?
+struct Actor: Codable, Hashable {
+    let firstName, lastName: String
+    let character, dateOfBirth: String?
     let createdAt, updatedAt: String
     let imageURL: String?
     let mcuProjects: ListResponseWrapper?

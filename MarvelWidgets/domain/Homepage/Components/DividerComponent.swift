@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DividerComponent: Codable {
+struct DividerComponent: Codable, Hashable {
     let id: Int
     let height: Int
     let color: String?

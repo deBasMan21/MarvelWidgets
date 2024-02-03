@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HeaderWidgetComponent: Codable {
+struct HeaderWidgetComponent: Codable, Hashable {
     let id: Int
     let imageUrl: String
     let title: String
@@ -20,11 +20,11 @@ struct HeaderWidgetComponent: Codable {
     let largeTitleAndGrid: Bool
 }
 
-struct HeaderWidgetCategory: Codable {
+struct HeaderWidgetCategory: Codable, Hashable {
     let category: String
 }
 
-struct HeaderWidgetGridItem: Codable {
+struct HeaderWidgetGridItem: Codable, Hashable {
     let iconName: String
     let title: String
     let value: String

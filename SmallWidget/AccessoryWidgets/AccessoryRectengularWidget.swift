@@ -30,6 +30,6 @@ struct AccessoryRectengularWidget: View {
                     .font(.system(size: 10))
                     .lineLimit(1)
             }
-        }.widgetURL(project.getUrl())
+        }.widgetURL(URL(string: project.getUrl()))
     }
 }

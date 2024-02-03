@@ -56,7 +56,7 @@ struct WidgetSettingsView: View {
                         
                         CompanyCopyrightView(
                             imageName: "theDirectLogo",
-                            text: "This app uses a RSS feed from The Direct for the latest news. All rights for newes articles in this app belong to The Direct."
+                            text: "This app uses a RSS feed from The Direct for the latest news. All rights for news articles in this app belong to The Direct."
                         )
                     }
                     

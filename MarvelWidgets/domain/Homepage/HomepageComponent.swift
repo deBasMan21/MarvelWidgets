@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HomepageComponent: Codable, Identifiable {
+enum HomepageComponent: Codable, Identifiable, Hashable {
     var id: String {
         switch self {
         case .highlight(let component): return "highlight-\(component.id)"

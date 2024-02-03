@@ -33,8 +33,7 @@ class NewsItemProjectEntity: HomepageEntity {
         newsItem.attributes.imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original)))
     }
     
-    func getDestinationView() -> any View {
-        WebView(webView: WebViewModel(url: newsItem.attributes.url).webView)
-            .navigationTitle(newsItem.attributes.title)
+    func getDestinationUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: .news, id: newsItem.id, homepage: true)
     }
 }

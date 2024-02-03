@@ -27,8 +27,7 @@ struct NewsListPageView: View {
                     ForEach(newsItems) { item in
                         NavigationLink(
                             destination: {
-                                WebView(webView: WebViewModel(url: item.attributes.url).webView)
-                                    .navigationTitle(item.attributes.title)
+                                NewsItemDetailView(newsItem: item)
                             }
                         ) {
                             NewsItemView(
@@ -88,6 +87,6 @@ struct NewsListPageView: View {
                 ) {
                     Image(systemName: "gearshape.fill")
                 }
-            })
+            }).showTabBar()
     }
 }

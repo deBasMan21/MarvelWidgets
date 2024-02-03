@@ -47,7 +47,7 @@ struct MediumWidgetView: View {
                 .clipped()
                 .overlay(gradient)
         }.frame(width: size.width, height: size.height)
-            .widgetURL(upcomingProject.getUrl())
+            .widgetURL(URL(string: upcomingProject.getUrl()))
             .overlay(
                 VStack {
                     HStack {

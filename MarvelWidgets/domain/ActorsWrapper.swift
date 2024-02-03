@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ActorsWrapper: Codable, Identifiable, Equatable {
+struct ActorsWrapper: Codable, Identifiable, Equatable, Hashable {
     let id: Int
     let attributes: Actor
     
