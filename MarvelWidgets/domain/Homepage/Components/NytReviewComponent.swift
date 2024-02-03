@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NytReviewComponent: Codable {
+struct NytReviewComponent: Codable, Hashable {
     let id: Int
     let reviewTitle: String
     let reviewSummary: String

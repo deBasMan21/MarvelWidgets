@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DirectorsWrapper: Codable, Identifiable, Equatable  {
+struct DirectorsWrapper: Codable, Identifiable, Equatable, Hashable  {
     let id: Int
     let attributes: Director
     

@@ -9,55 +9,51 @@ import Foundation
 import SwiftUI
 
 struct PageLinkComponentView: View {
+    @Environment(\.openURLHandlerAction) private var openUrlHandler
     @State var component: PageLinkComponent
-    @State var entity: (any HomepageEntity)?
-    @State var error = false
     
     var body: some View {
         VStack {
-            if let entity {
-                NavigationLink(destination: AnyView(entity.getDestinationView())) {
-                    let color = Color(hex: component.backgroundColor) ?? .accentColor
-                    
-                    HStack {
-                        if component.iconName == nil {
-                            Spacer()
-                        }
-                        
-                        Text(component.text)
-                            .bold()
-                        
+            Button(action: {
+                _ = openUrlHandler?.callAsFunction(
+                    URL(
+                        string: InternalUrlBuilder.createUrl(entity: component.contentType.getUrlEntity(), id: component.contentTypeId, homepage: true)
+                    )   
+                )
+            }) {
+                let color = Color(hex: component.backgroundColor) ?? .accentColor
+                
+                HStack {
+                    if component.iconName == nil {
                         Spacer()
-                    }.padding()
-                        .if(component.iconName != nil) { view in
-                            view.overlay(
-                                HStack {
-                                    Spacer()
-                                    
-                                    Image(systemName: component.iconName ?? "")
-                                }.padding()
-                            )
-                        }.background(
-                            LinearGradient(
-                                stops: [
-                                    .init(color: color, location: 0.0),
-                                    .init(color: color.withAlphaComponent(0.5), location: 1.0)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
+                    }
+                    
+                    Text(component.text)
+                        .bold()
+                    
+                    Spacer()
+                }.padding()
+                    .if(component.iconName != nil) { view in
+                        view.overlay(
+                            HStack {
+                                Spacer()
+                                
+                                Image(systemName: component.iconName ?? "")
+                            }.padding()
                         )
-                        .foregroundStyle(.white)
-                        .cornerRadius(10)
-                }
-            } else if error {
-                EmptyView()
-            } else {
-                ProgressView()
+                    }.background(
+                        LinearGradient(
+                            stops: [
+                                .init(color: color, location: 0.0),
+                                .init(color: color.withAlphaComponent(0.5), location: 1.0)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .foregroundStyle(.white)
+                    .cornerRadius(10)
             }
-        }.task {
-            entity = await ListComponentViewHelper.fetchSingleContentType(contentType: component.contentType, contentTypeId: component.contentTypeId)
-            error = entity == nil
         }
     }
 }

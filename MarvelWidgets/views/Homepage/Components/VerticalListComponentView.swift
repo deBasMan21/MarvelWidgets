@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct VerticalListComponentView: View {
+    @Environment(\.openURLHandlerAction) private var openUrlHandler
     @State var component: VerticalListComponent
     @State var entities: [any HomepageEntity]? = nil
     @State var error: Bool = false
@@ -23,9 +24,11 @@ struct VerticalListComponentView: View {
                     }
                     
                     ForEach(entities, id: \.id) { entity in
-                        NavigationLink(
-                            destination: AnyView(entity.getDestinationView())
-                        ) {
+                        Button(action: {
+                            _ = openUrlHandler?.callAsFunction(
+                                URL(string: entity.getDestinationUrl())
+                            )
+                        }) {
                             VerticalListItemView(
                                 imageUrl: entity.getImageUrl(),
                                 title: entity.getTitle(),

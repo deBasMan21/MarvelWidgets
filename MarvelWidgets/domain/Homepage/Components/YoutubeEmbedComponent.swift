@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YoutubeEmbedComponent: Codable {
+struct YoutubeEmbedComponent: Codable, Hashable {
     let id: Int
     let embedUrl: String
     let title: String?

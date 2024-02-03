@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Director: Codable {
+struct Director: Codable, Hashable {
     let firstName, lastName: String
     let createdAt, updatedAt: String
     let imageURL, dateOfBirth: String?

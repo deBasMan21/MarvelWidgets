@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct RelatedProjects: Codable {
+struct RelatedProjects: Codable, Hashable {
     let data: [ProjectWrapper]
 }

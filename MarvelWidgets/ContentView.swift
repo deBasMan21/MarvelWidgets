@@ -12,7 +12,6 @@ import AlertToast
 
 struct ContentView: View {
     @State var showView = false
-    @State var projects = NavigationPath()
     @State var showAlert: Bool = false
     @State var activeTab: Int = 0
     @State var showOnboarding: Bool = {
@@ -21,6 +20,11 @@ struct ContentView: View {
     
     @State var detailView: ProjectDetailView?
     @State var openUrlHelper: OpenUrlWrapper?
+    
+    @State var pages = NavigationPath()
+    @State var news = NavigationPath()
+    @State var projects = NavigationPath()
+    @State var persons = NavigationPath()
     
     var body: some View {
         ZStack {
@@ -33,14 +37,16 @@ struct ContentView: View {
             }
             
             TabView(selection: $activeTab) {
-                NavigationView {
+                NavigationStack(path: $pages) {
                     HomePageView()
+                        .addAllNavigationDestinations()
                 }.tabItem {
                     Label("Homepage", systemImage: "house.fill")
                 }.tag(0)
                 
-                NavigationView {
+                NavigationStack(path: $news) {
                     NewsListPageView()
+                        .addAllNavigationDestinations()
                 }.tabItem {
                     Label("News", systemImage: "newspaper.fill")
                 }.tag(1)
@@ -53,15 +59,14 @@ struct ContentView: View {
                 
                 NavigationStack(path: $projects) {
                     ProjectListView()
-                        .navigationDestination(for: ProjectWrapper.self) { i in
-                            ProjectDetailView(viewModel: ProjectDetailViewModel(project: i),  inSheet: false)
-                        }
+                        .addAllNavigationDestinations()
                 }.tabItem{
                     Label("Projects", systemImage: "film")
                 }.tag(3)
                 
-                NavigationView {
+                NavigationStack(path: $persons) {
                     PersonListPageView()
+                        .addAllNavigationDestinations()
                 }.tabItem {
                     Label("Persons", systemImage: "person.fill")
                 }.tag(4)
@@ -94,12 +99,65 @@ struct ContentView: View {
     
     func handleUrl(url: URL?) -> Bool {
         guard let url else { return false }
-        if (url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link",
-           let id = Int(url.lastPathComponent) {
-            activeTab = 3
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.projects.append(Placeholders.loadingProject(id: id))
+        
+        if url.host == "mcuwidgets.page.link" {
+            guard let id = Int(url.lastPathComponent) else { return false }
+            guard url.pathComponents.count > 1 else { return false }
+            
+            var activeTab = 0
+            var item: any Hashable = ""
+            var isHomePage = false
+            
+            var pathComponent = url.pathComponents[1]
+            if pathComponent == "home" {
+                isHomePage = true
+                pathComponent = url.pathComponents[2]
             }
+            
+            switch pathComponent {
+            case "project":
+                activeTab = 3
+                item = Placeholders.loadingProject(id: id)
+                
+            case "actor":
+                activeTab = 4
+                item = Placeholders.loadingActor(id: id)
+                
+            case "director":
+                activeTab = 4
+                item = Placeholders.loadingDirector(id: id)
+                
+            case "page":
+                activeTab = 0
+                item = Placeholders.loadingPage(id: id)
+                
+            case "news":
+                activeTab = 1
+                item = Placeholders.loadingNews(id: id)
+                
+            case "collection":
+                activeTab = 3
+                item = Placeholders.loadingCollection(id: id)
+
+            default: return false
+            }
+            
+            if isHomePage {
+                activeTab = 0
+            }
+            
+            self.activeTab = activeTab
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                switch activeTab {
+                case 0: pages.append(item)
+                case 1: news.append(item)
+                case 3: projects.append(item)
+                case 4: persons.append(item)
+                default: break
+                }
+            }
+            
             return true
         }
         return false
@@ -131,7 +189,7 @@ class OpenUrlWrapper {
             let url = URL(string: url),
             let inApp = inApp,
             let title = title,
-            ((url.scheme == "mcuwidgets" && url.host == "project") || url.host == "mcuwidgets.page.link") {
+            url.host == "mcuwidgets.page.link" {
             
             self.lastTitle = title
             self.lastBody = body
@@ -143,9 +201,9 @@ class OpenUrlWrapper {
 }
 
 struct OpenURLHandlerAction {
-    typealias Action = (URL) -> Bool
+    typealias Action = (URL?) -> Bool
     let action: Action
-    func callAsFunction(_ url: URL) -> Bool {
+    func callAsFunction(_ url: URL?) -> Bool {
         action(url)
     }
 }
@@ -164,5 +222,30 @@ extension EnvironmentValues {
 extension View {
     func onOpenUrlAction(_ action: @escaping OpenURLHandlerAction.Action) -> some View {
         self.environment(\.openURLHandlerAction, OpenURLHandlerAction(action: action))
+    }
+    
+    func addAllNavigationDestinations() -> some View {
+        self
+            .navigationDestination(for: CustomPageWrapper.self) { i in
+                CustomPageView(pageId: i.id)
+            }
+            .navigationDestination(for: NewsItemWrapper.self) { i in
+                NewsItemDetailView(newsItem: i)
+            }
+            .navigationDestination(for: ProjectWrapper.self) { i in
+                ProjectDetailView(
+                    viewModel: ProjectDetailViewModel(
+                        project: i
+                    ),
+                    inSheet: false
+                )
+            }
+            .navigationDestination(for: ActorsWrapper.self) { i in
+                PersonDetailView(person: i.person)
+            }.navigationDestination(for: DirectorsWrapper.self) { i in
+                PersonDetailView(person: i.person)
+            }.navigationDestination(for: ProjectCollection.self) { i in
+                CollectionPageView(collection: i, inSheet: false)
+            }
     }
 }

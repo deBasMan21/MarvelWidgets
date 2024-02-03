@@ -33,7 +33,7 @@ class ActorProjectEntity: HomepageEntity {
         actor.attributes.imageURL?.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original))) ?? ""
     }
     
-    func getDestinationView() -> any View {
-        PersonDetailView(person: actor.person)
+    func getDestinationUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: .actor, id: actor.id, homepage: true)
     }
 }

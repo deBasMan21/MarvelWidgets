@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HeaderWidgetComponentView: View {
+    @Environment(\.openURLHandlerAction) private var openUrlHandler
     @State var component: HeaderWidgetComponent
     @State var entity: (any HomepageEntity)?
     @State var loading = true
@@ -16,7 +17,11 @@ struct HeaderWidgetComponentView: View {
     var body: some View {
         VStack {
             if let entity {
-                NavigationLink(destination: AnyView(entity.getDestinationView())) {
+                Button(action: {
+                    _ = openUrlHandler?.callAsFunction(
+                        URL(string: entity.getDestinationUrl())
+                    )
+                }) {
                     NewsItemView(
                         item: component,
                         appearingAnimation: false,

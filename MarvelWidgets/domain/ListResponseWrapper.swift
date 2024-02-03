@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ListResponseWrapper: Codable {
+struct ListResponseWrapper: Codable, Hashable {
     let data: [ProjectWrapper]
 }

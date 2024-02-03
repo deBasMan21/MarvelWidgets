@@ -72,7 +72,7 @@ struct LargeWidgetView: View {
             
             Spacer()
         }.frame(width: size.width, height: size.height)
-            .widgetURL(project.getUrl())
+            .widgetURL(URL(string: project.getUrl()))
             .overlay(
                 VStack {
                     HStack {

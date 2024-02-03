@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SpotifyComponent: Codable {
+struct SpotifyComponent: Codable, Hashable {
     let id: Int
     let embedCode: String
     let title: String?

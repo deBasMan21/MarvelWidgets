@@ -46,24 +46,21 @@ struct PersonDetailView: View {
                                 value: person.getSubtitle()
                             )
                             
-                            if let actor = person as? ActorPerson {
+                            if let role = (person as? ActorPerson)?.role {
                                 GridItemView(
                                     imageName: "person.crop.circle.fill",
                                     title: "Role",
-                                    value: actor.role
+                                    value: role
+                                )
+                            }
+                            
+                            if let dateOfBirth = person.dateOfBirth {
+                                GridItemView(
+                                    imageName: "calendar.circle.fill",
+                                    title: "Date of birth",
+                                    value: dateOfBirth.toDate()?.toFormattedString() ?? "Unkown"
                                 )
                                 
-                                GridItemView(
-                                    imageName: "calendar.circle.fill",
-                                    title: "Date of birth",
-                                    value: actor.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown"
-                                )
-                            } else if let director = person as? DirectorPerson {
-                                GridItemView(
-                                    imageName: "calendar.circle.fill",
-                                    title: "Date of birth",
-                                    value: director.dateOfBirth?.toDate()?.toFormattedString() ?? "Unkown"
-                                )
                             }
                         }.padding(.horizontal, 20)
                     }
@@ -116,6 +113,20 @@ struct PersonDetailView: View {
             .task {
                 let type: Page = person is ActorPerson ? .actor : .director
                 await TrackingService.trackPage(page: TrackingPage(pageId: person.id, pageType: type))
+            }.toolbar {
+                ShareLink(
+                    item: getUrl(),
+                    subject: Text("\(person.firstName) \(person.lastName)"),
+                    message: Text("\"\(person.firstName) \(person.lastName)\" is shared with you! Open with MCUWidgets via: \(getUrl())"),
+                    preview: SharePreview(
+                        "\(person.firstName) \(person.lastName)",
+                        image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
+                    )
+                )
             }
+    }
+    
+    func getUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: (person is ActorPerson) ? .actor : .director, id: person.id, homepage: false)
     }
 }

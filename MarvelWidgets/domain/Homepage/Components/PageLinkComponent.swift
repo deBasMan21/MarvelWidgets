@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PageLinkComponent: Codable {
+struct PageLinkComponent: Codable, Hashable {
     let id: Int
     let contentType: CMSContentType
     let contentTypeId: Int

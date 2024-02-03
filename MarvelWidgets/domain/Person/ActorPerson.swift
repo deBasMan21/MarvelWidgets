@@ -22,7 +22,7 @@ class ActorPerson: Person, Hashable {
     var id: Int
     var firstName: String
     var lastName: String
-    var role: String
+    var role: String?
     var dateOfBirth: String?
     var projects: [ProjectWrapper]
     var imageUrl: URL?
@@ -36,7 +36,9 @@ class ActorPerson: Person, Hashable {
         self.role = actor.attributes.character
         self.dateOfBirth = actor.attributes.dateOfBirth
         self.projects = actor.attributes.mcuProjects?.data ?? []
-        self.imageUrl = URL(string: actor.attributes.imageURL ?? "")
+        if let imageUrl = actor.attributes.imageURL {
+            self.imageUrl = URL(string: imageUrl)
+        }
         self.actor = actor
     }
     
@@ -45,7 +47,7 @@ class ActorPerson: Person, Hashable {
     }
     
     func getSearchString() -> String {
-        firstName + " " + lastName + " " + role
+        firstName + " " + lastName + " " + (role ?? "")
     }
     
     func getProjectsTitle() -> String {

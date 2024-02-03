@@ -71,7 +71,7 @@ struct SmallWidgetView: View {
                 }
                 Spacer()
             }
-        }.widgetURL(upcomingProject.getUrl())
+        }.widgetURL(URL(string: upcomingProject.getUrl()))
             .frame(width: size.width, height: size.height)
     }
 }

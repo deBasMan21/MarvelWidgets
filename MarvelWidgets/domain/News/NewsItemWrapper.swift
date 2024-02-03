@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NewsItemWrapper: Identifiable, Codable {
+struct NewsItemWrapper: Identifiable, Codable, Hashable {
     let id: Int
     let attributes: NewsItem
 }
