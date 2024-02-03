@@ -157,6 +157,44 @@
 		EF78F62429959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
 		EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */; };
+		EF7B87B52B697D4D0098CF47 /* NewsItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD242B5D56070090E28D /* NewsItemWrapper.swift */; };
+		EF7B87B62B697D520098CF47 /* CustomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A7B592B65880600C5A614 /* CustomPage.swift */; };
+		EF7B87B72B697D520098CF47 /* CustomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A7B592B65880600C5A614 /* CustomPage.swift */; };
+		EF7B87B82B697D590098CF47 /* NewsItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD242B5D56070090E28D /* NewsItemWrapper.swift */; };
+		EF7B87B92B697D7F0098CF47 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD262B5D56170090E28D /* NewsItem.swift */; };
+		EF7B87BA2B697D800098CF47 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD262B5D56170090E28D /* NewsItem.swift */; };
+		EF7B87BB2B697D820098CF47 /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD282B5D562A0090E28D /* NewsCategory.swift */; };
+		EF7B87BC2B697D830098CF47 /* NewsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF59BD282B5D562A0090E28D /* NewsCategory.swift */; };
+		EF7B87BD2B697D930098CF47 /* HomepageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7AB2B5F056300E14807 /* HomepageComponent.swift */; };
+		EF7B87BE2B697D930098CF47 /* HomepageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7AB2B5F056300E14807 /* HomepageComponent.swift */; };
+		EF7B87BF2B697DB40098CF47 /* NotificationDialogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F7B2B628A500022FCD3 /* NotificationDialogComponent.swift */; };
+		EF7B87C02B697DB40098CF47 /* HorizontalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B42B5F05A300E14807 /* HorizontalListComponent.swift */; };
+		EF7B87C12B697DB40098CF47 /* DividerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F752B62750B0022FCD3 /* DividerComponent.swift */; };
+		EF7B87C22B697DB40098CF47 /* HighlightComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7AE2B5F057900E14807 /* HighlightComponent.swift */; };
+		EF7B87C32B697DB40098CF47 /* HeaderWidgetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F792B627A110022FCD3 /* HeaderWidgetComponent.swift */; };
+		EF7B87C42B697DB40098CF47 /* PageLinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A7B5B2B658D1100C5A614 /* PageLinkComponent.swift */; };
+		EF7B87C52B697DB40098CF47 /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B22B5F059400E14807 /* TextComponent.swift */; };
+		EF7B87C62B697DB40098CF47 /* YoutubeEmbedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B02B5F058600E14807 /* YoutubeEmbedComponent.swift */; };
+		EF7B87C72B697DB40098CF47 /* TitleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B82B5F05BC00E14807 /* TitleComponent.swift */; };
+		EF7B87C82B697DB40098CF47 /* VerticalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33CD2B6153F30053EF35 /* VerticalListComponent.swift */; };
+		EF7B87C92B697DB40098CF47 /* SpotifyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33E62B61612A0053EF35 /* SpotifyComponent.swift */; };
+		EF7B87CA2B697DB40098CF47 /* NytReviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33EA2B6165CF0053EF35 /* NytReviewComponent.swift */; };
+		EF7B87CB2B697DB50098CF47 /* NotificationDialogComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F7B2B628A500022FCD3 /* NotificationDialogComponent.swift */; };
+		EF7B87CC2B697DB50098CF47 /* HorizontalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B42B5F05A300E14807 /* HorizontalListComponent.swift */; };
+		EF7B87CD2B697DB50098CF47 /* DividerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F752B62750B0022FCD3 /* DividerComponent.swift */; };
+		EF7B87CE2B697DB50098CF47 /* HighlightComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7AE2B5F057900E14807 /* HighlightComponent.swift */; };
+		EF7B87CF2B697DB50098CF47 /* HeaderWidgetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD13F792B627A110022FCD3 /* HeaderWidgetComponent.swift */; };
+		EF7B87D02B697DB50098CF47 /* PageLinkComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A7B5B2B658D1100C5A614 /* PageLinkComponent.swift */; };
+		EF7B87D12B697DB50098CF47 /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B22B5F059400E14807 /* TextComponent.swift */; };
+		EF7B87D22B697DB50098CF47 /* YoutubeEmbedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B02B5F058600E14807 /* YoutubeEmbedComponent.swift */; };
+		EF7B87D32B697DB50098CF47 /* TitleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBAD7B82B5F05BC00E14807 /* TitleComponent.swift */; };
+		EF7B87D42B697DB50098CF47 /* VerticalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33CD2B6153F30053EF35 /* VerticalListComponent.swift */; };
+		EF7B87D52B697DB50098CF47 /* SpotifyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33E62B61612A0053EF35 /* SpotifyComponent.swift */; };
+		EF7B87D62B697DB50098CF47 /* NytReviewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD33EA2B6165CF0053EF35 /* NytReviewComponent.swift */; };
+		EF7B87D82B69808B0098CF47 /* NewsItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7B87D72B69808B0098CF47 /* NewsItemDetailView.swift */; };
+		EF7B87DA2B6EA6DF0098CF47 /* InternalUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7B87D92B6EA6DF0098CF47 /* InternalUrlBuilder.swift */; };
+		EF7B87DB2B6EA7090098CF47 /* InternalUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7B87D92B6EA6DF0098CF47 /* InternalUrlBuilder.swift */; };
+		EF7B87DC2B6EA70A0098CF47 /* InternalUrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7B87D92B6EA6DF0098CF47 /* InternalUrlBuilder.swift */; };
 		EF84046429DEDC4400E8F969 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF84046329DEDC4400E8F969 /* Assets.xcassets */; };
 		EF84046529DF521500E8F969 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */; };
 		EF84046729DF521700E8F969 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0377DE299D2BDB0058C2FF /* ColorExtensions.swift */; };
@@ -502,6 +540,8 @@
 		EF78F5E829956D1600CA9028 /* OtherWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherWidgets.swift; sourceTree = "<group>"; };
 		EF78F61F29959CF600CA9028 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		EF78F62329959D2000CA9028 /* ProjectWrapperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWrapperExtensions.swift; sourceTree = "<group>"; };
+		EF7B87D72B69808B0098CF47 /* NewsItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemDetailView.swift; sourceTree = "<group>"; };
+		EF7B87D92B6EA6DF0098CF47 /* InternalUrlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalUrlBuilder.swift; sourceTree = "<group>"; };
 		EF84046329DEDC4400E8F969 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF84046829DF574E00E8F969 /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
 		EF84047029DF6CBB00E8F969 /* CategoryFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilterView.swift; sourceTree = "<group>"; };
@@ -763,6 +803,7 @@
 			children = (
 				EF59BD1E2B5D534F0090E28D /* NewsListPageView.swift */,
 				EFCA4CF22B5D7A4B001B1657 /* NewsItemView.swift */,
+				EF7B87D72B69808B0098CF47 /* NewsItemDetailView.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -952,6 +993,7 @@
 				EF7571752A604C3900231750 /* ImageSize.swift */,
 				EFBD33CF2B6154800053EF35 /* ListComponentViewHelper.swift */,
 				EF2DD0862B66DC9000BA604C /* Constants.swift */,
+				EF7B87D92B6EA6DF0098CF47 /* InternalUrlBuilder.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -1520,8 +1562,10 @@
 			files = (
 				EF178C4E28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
 				EFF0E2B52921097200854E5F /* Trailer.swift in Sources */,
+				EF7B87C32B697DB40098CF47 /* HeaderWidgetComponent.swift in Sources */,
 				EF84047329DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */,
 				EFF0E2AF2921097200854E5F /* Saga.swift in Sources */,
+				EF7B87C82B697DB40098CF47 /* VerticalListComponent.swift in Sources */,
 				EF578F3A28A45721006272AA /* LogService.swift in Sources */,
 				EFD8D76A28A7F84C00CA8DAC /* APIService.swift in Sources */,
 				EF78F5C62993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
@@ -1532,18 +1576,23 @@
 				EF50A51A29E6BC80007518BF /* UrlBuilderType.swift in Sources */,
 				EF38FD74291FF56400EA4BD9 /* ProjectService.swift in Sources */,
 				EF28E7F929A6996400B7C845 /* WidgetProjectService.swift in Sources */,
+				EF7B87C62B697DB40098CF47 /* YoutubeEmbedComponent.swift in Sources */,
 				EF84046D29DF5E0800E8F969 /* RedChipText.swift in Sources */,
 				EF75718B2A65818E00231750 /* CollectionAttributes.swift in Sources */,
 				EFF0E2B82921097200854E5F /* Director.swift in Sources */,
 				EF78F5C22993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF78F62229959CF600CA9028 /* ViewExtensions.swift in Sources */,
+				EF7B87BD2B697D930098CF47 /* HomepageComponent.swift in Sources */,
 				EF50A51629E6BC64007518BF /* UrlComponents.swift in Sources */,
+				EF7B87BC2B697D830098CF47 /* NewsCategory.swift in Sources */,
 				EFF0E2AE2921097200854E5F /* Phase.swift in Sources */,
 				EF84046F29DF5E1900E8F969 /* TextExtension.swift in Sources */,
 				EF6B834129322D7E00A5D69C /* InstagramView.swift in Sources */,
 				EFF0E2B92921097200854E5F /* Episode.swift in Sources */,
 				EFD8D76128A7ACFD00CA8DAC /* SaveService.swift in Sources */,
+				EF7B87C12B697DB40098CF47 /* DividerComponent.swift in Sources */,
 				EF84046B29DF574E00E8F969 /* LargeWidgetView.swift in Sources */,
+				EF7B87C72B697DB40098CF47 /* TitleComponent.swift in Sources */,
 				EFD9566029AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */,
 				EFD9566429AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFD8D76628A7F82100CA8DAC /* SmallWidget.swift in Sources */,
@@ -1558,16 +1607,25 @@
 				EF0CA0B829DDEE4400A2322A /* Config.swift in Sources */,
 				EF178C5228AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EF7571832A65816D00231750 /* CollectionWrapper.swift in Sources */,
+				EF7B87BF2B697DB40098CF47 /* NotificationDialogComponent.swift in Sources */,
 				EFD8D76528A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
 				EFBAD7D62B613C0B00E14807 /* Service.swift in Sources */,
+				EF7B87C52B697DB40098CF47 /* TextComponent.swift in Sources */,
+				EF7B87C22B697DB40098CF47 /* HighlightComponent.swift in Sources */,
 				EF78F62629959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */,
+				EF7B87C92B697DB40098CF47 /* SpotifyComponent.swift in Sources */,
 				EF578F3928A45633006272AA /* CachingService.swift in Sources */,
+				EF7B87B62B697D520098CF47 /* CustomPage.swift in Sources */,
 				EFD8D77328A7FFD900CA8DAC /* SmallWidget.intentdefinition in Sources */,
 				EF578F3C28A458C1006272AA /* StringExtensions.swift in Sources */,
 				EFCA5DB228A445B40004AAC7 /* IntentHandler.swift in Sources */,
+				EF7B87CA2B697DB40098CF47 /* NytReviewComponent.swift in Sources */,
+				EF7B87C42B697DB40098CF47 /* PageLinkComponent.swift in Sources */,
 				EFF0E2B42921097200854E5F /* RelatedProject.swift in Sources */,
 				EF50A51829E6BC79007518BF /* UrlBuilder.swift in Sources */,
+				EF7B87C02B697DB40098CF47 /* HorizontalListComponent.swift in Sources */,
 				EF7571782A604C3900231750 /* ImageSize.swift in Sources */,
+				EF7B87B92B697D7F0098CF47 /* NewsItem.swift in Sources */,
 				EFF0E2B12921097200854E5F /* MCUProject.swift in Sources */,
 				EF178C4528AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EFF0E2BB2921097200854E5F /* Directors.swift in Sources */,
@@ -1579,6 +1637,7 @@
 				EF0CA0BD29DDEEB200A2322A /* DebugConfig.swift in Sources */,
 				EF1BE44C2A1936620072CC26 /* PersonSortKeys.swift in Sources */,
 				EF50A52B29E7346C007518BF /* AutoSizingSheet.swift in Sources */,
+				EF7B87B52B697D4D0098CF47 /* NewsItemWrapper.swift in Sources */,
 				EF28E7FE29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EF7571872A65817E00231750 /* ProjectCollection.swift in Sources */,
 				EFF0E2B62921097200854E5F /* Season.swift in Sources */,
@@ -1586,6 +1645,7 @@
 				EF4D265828A4512900B7BCEE /* ConfigValues.swift in Sources */,
 				EFF0E2B02921097200854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFF0E2B32921097200854E5F /* ActorsWrapper.swift in Sources */,
+				EF7B87DC2B6EA70A0098CF47 /* InternalUrlBuilder.swift in Sources */,
 				EF78F5CA2993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
 				EF0CA0B329DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
 				EF84046729DF521700E8F969 /* ColorExtensions.swift in Sources */,
@@ -1604,6 +1664,7 @@
 				EFF0E2972921089F00854E5F /* Episode.swift in Sources */,
 				EFD8D75F28A7AC8D00CA8DAC /* SaveService.swift in Sources */,
 				EF50A52129E700E9007518BF /* ActorPerson.swift in Sources */,
+				EF7B87DA2B6EA6DF0098CF47 /* InternalUrlBuilder.swift in Sources */,
 				EFBE482529C6216E0036185E /* TableRowView.swift in Sources */,
 				EF178C5028AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFF04BC129BE225A00437A6E /* NotificationService.swift in Sources */,
@@ -1665,6 +1726,7 @@
 				EF1F065829E6B947009CC97A /* UrlComponents.swift in Sources */,
 				EFF0E2812921081F00854E5F /* ActorsWrapper.swift in Sources */,
 				EFBAD7C52B6036C900E14807 /* HighlightComponentView.swift in Sources */,
+				EF7B87D82B69808B0098CF47 /* NewsItemDetailView.swift in Sources */,
 				EFF04BCE29BE306D00437A6E /* OnboardingPageFourView.swift in Sources */,
 				EFB503F029DCB5BA00586017 /* OptionCircleButton.swift in Sources */,
 				EFCE381128A3D7A700B4CC0D /* ContentView.swift in Sources */,
@@ -1800,12 +1862,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF178C4D28AEC78D003B9B76 /* WidgetHelper.swift in Sources */,
+				EF7B87D42B697DB50098CF47 /* VerticalListComponent.swift in Sources */,
 				EFF0E2A12921097100854E5F /* Trailer.swift in Sources */,
 				EF84047229DF6CBB00E8F969 /* CategoryFilterView.swift in Sources */,
 				EFF0E29B2921097100854E5F /* Saga.swift in Sources */,
+				EF7B87CC2B697DB50098CF47 /* HorizontalListComponent.swift in Sources */,
 				EFCA5D7A28A3F0980004AAC7 /* DateExtension.swift in Sources */,
 				EF4D265928A4512A00B7BCEE /* ConfigValues.swift in Sources */,
 				EF78F5C52993BC7500CA9028 /* AccessoryInlineWidget.swift in Sources */,
+				EF7B87D32B697DB50098CF47 /* TitleComponent.swift in Sources */,
+				EF7B87D22B697DB50098CF47 /* YoutubeEmbedComponent.swift in Sources */,
+				EF7B87D12B697DB50098CF47 /* TextComponent.swift in Sources */,
 				EFF0E2982921097100854E5F /* Actor.swift in Sources */,
 				EFCA5D8D28A3FF140004AAC7 /* ImageHelper.swift in Sources */,
 				EFCE384528A3E50F00B4CC0D /* APIService.swift in Sources */,
@@ -1815,6 +1882,7 @@
 				EF28E7F829A6996300B7C845 /* WidgetProjectService.swift in Sources */,
 				EF84046C29DF5E0700E8F969 /* RedChipText.swift in Sources */,
 				EFF0E2A42921097100854E5F /* Director.swift in Sources */,
+				EF7B87D62B697DB50098CF47 /* NytReviewComponent.swift in Sources */,
 				EFE69E4229A69364002345FF /* OtherWidgets.swift in Sources */,
 				EF78F5C12993BB7200CA9028 /* AccessoryCircularWidget.swift in Sources */,
 				EF50A51529E6BC64007518BF /* UrlComponents.swift in Sources */,
@@ -1825,21 +1893,27 @@
 				EFF0E29A2921097100854E5F /* Phase.swift in Sources */,
 				EF6B834029322D7C00A5D69C /* InstagramView.swift in Sources */,
 				EF84046A29DF574E00E8F969 /* LargeWidgetView.swift in Sources */,
+				EF7B87CD2B697DB50098CF47 /* DividerComponent.swift in Sources */,
+				EF7B87D02B697DB50098CF47 /* PageLinkComponent.swift in Sources */,
 				EFD9565F29AAA5D5009D5EDD /* SmallWidgetProvider.swift in Sources */,
 				EFD9566329AAA5F4009D5EDD /* UpcomingProjectEntry.swift in Sources */,
 				EFF0E2A52921097100854E5F /* Episode.swift in Sources */,
 				EFD8D76028A7ACFD00CA8DAC /* SaveService.swift in Sources */,
 				EF225DF829DDB05200577C91 /* Placeholders.swift in Sources */,
+				EF7B87D52B697DB50098CF47 /* SpotifyComponent.swift in Sources */,
 				EFCE383228A3E22E00B4CC0D /* SmallWidget.swift in Sources */,
 				EFF0E2992921097100854E5F /* DirectorsWrapper.swift in Sources */,
 				EFF0E2A32921097100854E5F /* RelatedProjectWrapper.swift in Sources */,
 				EFF0E2A62921097100854E5F /* ProjectWrapper.swift in Sources */,
 				EFF0E2AA2921097100854E5F /* ListResponseWrapper.swift in Sources */,
+				EF7B87CF2B697DB50098CF47 /* HeaderWidgetComponent.swift in Sources */,
 				EF0CA0B729DDEE4400A2322A /* Config.swift in Sources */,
+				EF7B87B72B697D520098CF47 /* CustomPage.swift in Sources */,
 				EFF0E2AB2921097100854E5F /* ProjectType.swift in Sources */,
 				EFCA5D9F28A41D520004AAC7 /* WidgetType.swift in Sources */,
 				EF75718A2A65818E00231750 /* CollectionAttributes.swift in Sources */,
 				EFCA5D7928A3F0960004AAC7 /* StringExtensions.swift in Sources */,
+				EF7B87CB2B697DB50098CF47 /* NotificationDialogComponent.swift in Sources */,
 				EF78F62529959D2000CA9028 /* ProjectWrapperExtensions.swift in Sources */,
 				EF178C5128AEC898003B9B76 /* WidgetPreviewView.swift in Sources */,
 				EFCE384628A3E51200B4CC0D /* LogService.swift in Sources */,
@@ -1848,6 +1922,7 @@
 				EF50A51729E6BC79007518BF /* UrlBuilder.swift in Sources */,
 				EFF0E2A02921097100854E5F /* RelatedProject.swift in Sources */,
 				EFF0E29D2921097100854E5F /* MCUProject.swift in Sources */,
+				EF7B87BB2B697D820098CF47 /* NewsCategory.swift in Sources */,
 				EF178C4428AE8D47003B9B76 /* SmallWidgetView.swift in Sources */,
 				EFF0E2A72921097100854E5F /* Directors.swift in Sources */,
 				EFCA5DA828A43E2A0004AAC7 /* UserDefaultValues.swift in Sources */,
@@ -1859,6 +1934,9 @@
 				EFBAD7D22B613C0700E14807 /* Service.swift in Sources */,
 				EF7571772A604C3900231750 /* ImageSize.swift in Sources */,
 				EF0CA0BC29DDEEB200A2322A /* DebugConfig.swift in Sources */,
+				EF7B87B82B697D590098CF47 /* NewsItemWrapper.swift in Sources */,
+				EF7B87DB2B6EA7090098CF47 /* InternalUrlBuilder.swift in Sources */,
+				EF7B87CE2B697DB50098CF47 /* HighlightComponent.swift in Sources */,
 				EF50A52A29E7346B007518BF /* AutoSizingSheet.swift in Sources */,
 				EF28E7FD29A69EFF00B7C845 /* ListPageType.swift in Sources */,
 				EFF0E2A22921097100854E5F /* Season.swift in Sources */,
@@ -1866,7 +1944,9 @@
 				EFD8D76428A7F6A600CA8DAC /* MarvelWidgetBundle.swift in Sources */,
 				EFF0E29C2921097100854E5F /* SingleResponseWrapper.swift in Sources */,
 				EFF0E29F2921097100854E5F /* ActorsWrapper.swift in Sources */,
+				EF7B87BE2B697D930098CF47 /* HomepageComponent.swift in Sources */,
 				EF78F5C92993BE3B00CA9028 /* AccessoryRectengularWidget.swift in Sources */,
+				EF7B87BA2B697D800098CF47 /* NewsItem.swift in Sources */,
 				EF0CA0B229DDEE3D00A2322A /* ProductionConfig.swift in Sources */,
 				EF84046529DF521500E8F969 /* ColorExtensions.swift in Sources */,
 			);

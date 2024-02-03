@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HorizontalListComponent: Codable {
+struct HorizontalListComponent: Codable, Hashable {
     let id: Int
     let title: String?
     let openMoreLink: Bool

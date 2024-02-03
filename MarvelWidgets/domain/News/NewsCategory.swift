@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NewsCategory: Codable {
+struct NewsCategory: Codable, Hashable {
     let id: Int
     let category: String
 }

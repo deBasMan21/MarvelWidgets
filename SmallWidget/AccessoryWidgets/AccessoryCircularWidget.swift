@@ -24,6 +24,6 @@ struct AccessoryCircularWidget: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
             }
-        }.widgetURL(project.getUrl())
+        }.widgetURL(URL(string: project.getUrl()))
     }
 }

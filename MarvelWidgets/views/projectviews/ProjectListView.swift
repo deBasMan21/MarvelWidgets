@@ -10,6 +10,7 @@ import SwiftUI
 import ScrollViewIfNeeded
 
 struct ProjectListView: View {
+    @Environment(\.openURLHandlerAction) private var openUrlHandler
     @StateObject var viewModel = ProjectListViewModel()
     
     var body: some View {
@@ -17,14 +18,11 @@ struct ProjectListView: View {
             ScrollView {
                 LazyVGrid(columns: viewModel.columns, spacing: 20)  {
                     ForEach(viewModel.projects, id: \.id) { item in
-                        NavigationLink {
-                            ProjectDetailView(
-                                viewModel: ProjectDetailViewModel(
-                                    project: item
-                                ),
-                                inSheet: false
+                        Button(action: {
+                            _ = openUrlHandler?.callAsFunction(
+                                URL(string: InternalUrlBuilder.createUrl(entity: .project, id: item.id, homepage: false))
                             )
-                        } label: {
+                        }) {
                             PosterListViewItem(
                                 posterUrl: item.attributes.getPosterUrls().first ?? "",
                                 title: item.attributes.title,

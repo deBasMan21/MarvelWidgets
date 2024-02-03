@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProjectCollection: Codable {
+struct ProjectCollection: Codable, Hashable {
     let id: Int
     let attributes: CollectionAttributes
 }

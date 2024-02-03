@@ -105,14 +105,11 @@ struct ProjectDetailView: View {
                         
                         if let collection = viewModel.project.attributes.collection?.data {
                             CollectionsView(
-                                imageUrl: collection.attributes.getBackdropUrl(size: ImageSize(size: .backdrop(.w780))),
+                                imageUrl: collection.attributes.getBackdropUrl(size: ImageSize(size: .backdrop(.w780))) ?? "",
                                 titleText: collection.attributes.name,
                                 subTitleText: "Part of",
                                 inSheet: inSheet,
-                                destinationView: CollectionPageView(
-                                    collection: collection,
-                                    inSheet: inSheet
-                                )
+                                destinationUrl: URL(string: InternalUrlBuilder.createUrl(entity: .collection, id: collection.id, homepage: false))
                             )
                         }
                     }
@@ -157,9 +154,9 @@ struct ProjectDetailView: View {
             
             HeaderToolbarItem(barState: state, content: {
                 ShareLink(
-                    item: viewModel.project.getUrl()!,
+                    item: viewModel.project.getUrl(),
                     subject: Text(viewModel.project.attributes.title),
-                    message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: \(viewModel.project.getUrl()?.absoluteString ?? "Link is unavailable")"),
+                    message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: \(viewModel.project.getUrl())"),
                     preview: SharePreview(
                         viewModel.project.attributes.title,
                         image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")

@@ -19,15 +19,17 @@ struct CollectionPageView: View {
             bottomFadeout: true,
             headerAlignment: .top,
             header: {
-            NavigationLink(
-                destination: FullscreenImageView(
-                    url: collection.attributes.getBackdropUrl()
-                )
-            ) {
-                KFImage(URL(string: collection.attributes.getBackdropUrl())!)
-                    .resizable()
-                    .scaledToFill()
-            }
+                if let imageUrl = collection.attributes.backdropUrl?.replaceUrlPlaceholders(imageSize: ImageSize(size: .backdrop(.w780))) {
+                    NavigationLink(
+                        destination: FullscreenImageView(
+                            url: imageUrl
+                        )
+                    ) {
+                        KFImage(URL(string: imageUrl))
+                            .resizable()
+                            .scaledToFill()
+                    }
+                }
         }, content: {
             VStack(spacing: 20) {
                 Text(collection.attributes.name)
@@ -38,10 +40,12 @@ struct CollectionPageView: View {
                 Text(collection.attributes.overview)
                     .multilineTextAlignment(.center)
                 
-                CollectionProjectListView(
-                    collectionId: collection.id,
-                    inSheet: inSheet
-                )
+                if let projects = collection.attributes.projects?.data {
+                    CollectionProjectListView(
+                        inSheet: inSheet,
+                        projects: projects
+                    )
+                }
             }.padding(.top, -60)
                 .padding(.bottom, inSheet ? 0 : -30)
                 .padding(.horizontal, 20)
@@ -50,5 +54,14 @@ struct CollectionPageView: View {
                 return UIScreen.main.bounds.width / (16 / 9)
             })
             .hiddenTabBar(inSheet: inSheet)
+            .task {
+                await getCollectionDetails()
+            }
+    }
+    
+    func getCollectionDetails() async {
+        if let collection = await CollectionService.getCollectionById(id: collection.id) {
+            self.collection = collection
+        }
     }
 }

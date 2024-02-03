@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CollectionAttributes: Codable {
+struct CollectionAttributes: Codable, Hashable {
     let name: String
-    let backdropUrl: String
+    let backdropUrl: String?
     let overview: String
     let projects: RelatedProjects?
     
@@ -18,7 +18,7 @@ struct CollectionAttributes: Codable {
         case backdropUrl = "backdrop_url"
     }
     
-    func getBackdropUrl(size: ImageSize = ImageSize(size: .backdrop(.original))) -> String {
-        return backdropUrl.replaceUrlPlaceholders(imageSize: size)
+    func getBackdropUrl(size: ImageSize = ImageSize(size: .backdrop(.original))) -> String? {
+        return backdropUrl?.replaceUrlPlaceholders(imageSize: size)
     }
 }

@@ -37,7 +37,7 @@ class HomepageProjectEntity: HomepageEntity {
         project.attributes.getBackdropUrl() ?? getImageUrl()
     }
     
-    func getDestinationView() -> any View {
-        ProjectDetailView(viewModel: ProjectDetailViewModel(project: self.project), inSheet: false)
+    func getDestinationUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: .project, id: project.id, homepage: true)
     }
 }

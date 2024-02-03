@@ -28,7 +28,7 @@ struct ProjectWrapper: Codable, Comparable, Hashable, Identifiable {
         return try? encoder.encode(self)
     }
     
-    func getUrl() -> URL? {
-        URL(string: "https://mcuwidgets.page.link/\(attributes.source.getUrlTypeString())/\(id)")
+    func getUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: .project, id: id, homepage: false)
     }
 }

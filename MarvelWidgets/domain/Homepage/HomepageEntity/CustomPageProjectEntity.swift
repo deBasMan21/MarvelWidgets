@@ -33,7 +33,7 @@ struct CustomPageProjectEntity: HomepageEntity {
         customPage.attributes.imageUrl.replaceUrlPlaceholders(imageSize: ImageSize(size: .poster(.original)))
     }
     
-    func getDestinationView() -> any View {
-        CustomPageView(pageId: customPage.id)
+    func getDestinationUrl() -> String {
+        InternalUrlBuilder.createUrl(entity: .page, id: customPage.id, homepage: true)
     }
 }

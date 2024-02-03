@@ -34,7 +34,9 @@ class DirectorPerson: Person, Hashable {
         self.lastName = director.attributes.lastName
         self.dateOfBirth = director.attributes.dateOfBirth
         self.projects = director.attributes.mcuProjects?.data ?? []
-        self.imageUrl = URL(string: director.attributes.imageURL ?? "")
+        if let imageUrl = director.attributes.imageURL {
+            self.imageUrl = URL(string: imageUrl)
+        }
         
         self.director = director
     }

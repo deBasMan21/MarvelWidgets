@@ -22,7 +22,7 @@ struct HighlightComponentView: View {
                     titleText: highlightComponent.title ?? entity.getTitle(),
                     subTitleText: highlightComponent.subtitle ?? entity.getSubtitle(),
                     inSheet: false,
-                    destinationView: entity.getDestinationView()
+                    destinationUrl: URL(string: entity.getDestinationUrl())
                 )
             } else if error {
                 EmptyView()

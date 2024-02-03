@@ -9,16 +9,17 @@ import Kingfisher
 import SwiftUI
 
 struct CollectionsView: View {
+    @Environment(\.openURLHandlerAction) private var openUrlHandler
     @State var imageUrl: String
     @State var titleText: String?
     @State var subTitleText: String?
     @State var inSheet: Bool
-    var destinationView: any View
+    var destinationUrl: URL?
     
     var body: some View {
-        NavigationLink(
-            destination: AnyView(destinationView)
-        ) {
+        Button(action: {
+            _ = openUrlHandler?.callAsFunction(destinationUrl)
+        }) {
             ZStack {
                 KFImage(URL(string: imageUrl))
                     .resizable()

@@ -15,19 +15,20 @@ struct CustomPagesListWrapper: Codable {
     let data: [CustomPageWrapper]
 }
 
-struct CustomPageWrapper: Codable {
+struct CustomPageWrapper: Codable, Hashable {
     let id: Int
     let attributes: CustomPage
 }
 
-struct CustomPage: Codable {
+struct CustomPage: Codable, Hashable {
     let components: [HomepageComponent]?
     let title: String
     let parallaxConfig: CustomPageParallaxConfig?
     let imageUrl: String
+    let showShareButton: Bool?
 }
 
-struct CustomPageParallaxConfig: Codable {
+struct CustomPageParallaxConfig: Codable, Hashable {
     let imageUrl: String
     let height: Int
 }
