@@ -14,9 +14,12 @@ import FirebaseDynamicLinks
 import FirebaseMessaging
 import FirebaseRemoteConfig
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, Observable {
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    
+    var shouldShowNotification = false
+    var notificationUserData: [String: Any] = [:]
     
     func application(
         _ application: UIApplication,
@@ -165,7 +168,10 @@ extension AppDelegate: MessagingDelegate {
 extension AppDelegate {
     func notifyView(userInfo: [AnyHashable: Any], inApp: Bool) {
         if let url = userInfo["url"], let aps = userInfo["aps"] as? [AnyHashable: Any], let alert = aps["alert"] as? [AnyHashable: Any], let title = alert["title"] {
-            NotificationCenter.default.post(name: Notification.Name("url"), object: nil, userInfo: ["url": url, "inApp": inApp, "title": title, "body": alert["body"] as Any])
+            let userInfo = ["url": url, "inApp": inApp, "title": title, "body": alert["body"] as Any]
+            self.notificationUserData = userInfo
+            self.shouldShowNotification = true
+            NotificationCenter.default.post(name: Notification.Name("url"), object: nil, userInfo: userInfo)
         }
     }
 }
