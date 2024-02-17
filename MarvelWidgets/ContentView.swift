@@ -11,6 +11,7 @@ import FirebaseRemoteConfig
 import AlertToast
 
 struct ContentView: View {
+    @State var delegate: AppDelegate
     @State var showView = false
     @State var showAlert: Bool = false
     @State var activeTab: Int = 0
@@ -83,6 +84,10 @@ struct ContentView: View {
                         _ = handleUrl(url: openUrlHelper?.lastUrl)
                     }
                 })
+                
+                if delegate.shouldShowNotification {
+                    NotificationCenter.default.post(name: Notification.Name("url"), object: nil, userInfo: delegate.notificationUserData)
+                }
             }.onOpenURL(perform: { url in
                 _ = handleUrl(url: url)
             })

@@ -13,7 +13,7 @@ struct MarvelWidgetsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(delegate: delegate)
         }
     }
 }
