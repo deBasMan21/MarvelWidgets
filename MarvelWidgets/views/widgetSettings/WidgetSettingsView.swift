@@ -66,13 +66,20 @@ struct WidgetSettingsView: View {
                     Text("\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown")").bold()
                     
                     #if DEBUG
-                        Divider()
-                        
-                        Button(action: {
-                            WidgetCenter.shared.reloadAllTimelines()
-                        }, label: {
-                            Text("Reload widgets")
-                        })
+                    Divider()
+                    
+                    Button(action: {
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }, label: {
+                        Text("Reload widgets")
+                    })
+                    
+                    Button(action: {
+                        print("debug: \(Messaging.messaging().fcmToken ?? "unkown")")
+                        UIPasteboard.general.string = Messaging.messaging().fcmToken
+                    }) {
+                        Text("Copy fcm token")
+                    }
                     #endif
                 }.padding(.horizontal, 20)
             }

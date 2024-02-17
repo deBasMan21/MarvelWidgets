@@ -13,6 +13,7 @@ struct ProjectDetailView: View {
     @StateObject var viewModel: ProjectDetailViewModel
     @State var inSheet: Bool
     @State var isEpisode: Bool = false
+    @State var isSubscribedToTopic = false
     
     let spacing: CGFloat = 30
     
@@ -139,30 +140,55 @@ struct ProjectDetailView: View {
                 .padding(.horizontal, 20)
         }, toolbar: { state in
             HeaderToolbarItem(barState: state, content: {
-                VStack {
-                    if viewModel.project.attributes.disneyPlusUrl != nil {
-                        Image(systemName: "play.fill")
-                    } else {
-                        EmptyView()
-                    }
-                }.onTapGesture {
+                Button(action: {
                     if let dpUrl = viewModel.project.attributes.disneyPlusUrl, let dpUrl = URL(string: dpUrl) {
                         UIApplication.shared.open(dpUrl)
+                    }
+                }) {
+                    VStack {
+                        if viewModel.project.attributes.disneyPlusUrl != nil {
+                            Image(systemName: "play.fill")
+                        } else {
+                            EmptyView()
+                        }
                     }
                 }
             })
             
             HeaderToolbarItem(barState: state, content: {
-                ShareLink(
-                    item: viewModel.project.getUrl(),
-                    subject: Text(viewModel.project.attributes.title),
-                    message: Text("\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: \(viewModel.project.getUrl())"),
-                    preview: SharePreview(
-                        viewModel.project.attributes.title,
-                        image: Image(UIApplication.shared.alternateIconName ?? "AppIcon")
+                Button(action: {
+                    let activityVC = UIActivityViewController(
+                        activityItems: [
+                            "\(viewModel.project.attributes.title) is shared with you! Open with MCUWidgets via: \(viewModel.project.getUrl())",
+                            viewModel.project.getUrl()
+                        ],
+                        applicationActivities: nil
                     )
-                )
+                    UIApplication.shared.key?.rootViewController?.present(activityVC, animated: true, completion: nil)
+                    
+                }) {
+                    Image(systemName: "square.and.arrow.up")
+                }
             })
+            
+            
+            if let notificationTopic = viewModel.project.attributes.notificationTopic {
+                HeaderToolbarItem(barState: state, content: {
+                    let service = NotificationService()
+                    Button(action: {
+                        service.toggleTopic(notificationTopic)
+                        isSubscribedToTopic = service.isSubscribedTo(topic: notificationTopic)
+                    }) {
+                        if isSubscribedToTopic {
+                            Image(systemName: "bell.fill")
+                        } else {
+                            Image(systemName: "bell")
+                        }
+                    }.onAppear {
+                        isSubscribedToTopic = service.isSubscribedTo(topic: notificationTopic)
+                    }
+                })
+            }
         }).baseTintColor(Color("AccentColor"))
             .headerHeight({ _ in
                 if isEpisode {
